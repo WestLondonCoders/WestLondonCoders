@@ -1,0 +1,23 @@
+.a-flash {
+  width: 100%;
+  background-color: white;
+  position: absolute;
+  top: 8px;
+  z-index: 100;
+}
+
+.a-flash__box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: solid 2px $color-blue;
+  padding: 10px;
+  margin: 10px auto;
+  width: 50%;
+}
+
+.a-flash__message {
+  margin-right: 10px;
+}
