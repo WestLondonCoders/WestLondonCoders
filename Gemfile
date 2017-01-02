@@ -14,7 +14,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'unicorn'
 gem 'devise'
-gem "omniauth-google-oauth2"
 gem 'dotenv', '~> 1.0.2'
 gem 'dotenv-rails', '~> 1.0.2', require: false
 gem 'friendly_id'
