@@ -1,0 +1,9 @@
+- set_page_title("Blog")
+
+%section.a-section
+  .a-content
+    .m-blog
+      - @posts.each do |post|
+        = render partial: 'shared/posts', locals: {post: post}
+    .u-center
+      = link_to "New post", new_post_path, class: 'a-button a-button--edit'

@@ -1,0 +1,18 @@
+- set_page_title(@post.title)
+
+%section.a-section
+  .a-content
+    .m-post
+      %h1= @post.title
+      .m-post__meta
+        %span
+          %i.fa.fa-clock-o
+          = @post.created_at.to_formatted_s(:long)
+        - if @post.author
+          %span
+            %i.fa.fa-user-circle-o
+            = @post.author
+      = @post.content.html_safe
+      .u-center
+        = link_to "Edit post", edit_post_path(@post), class: 'a-button a-button--edit'
+      = render partial: 'shared/comments'

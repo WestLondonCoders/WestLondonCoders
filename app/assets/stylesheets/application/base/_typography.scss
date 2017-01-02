@@ -5,35 +5,35 @@ $body-font: 'Montserrat';
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
-  src: url('Montserrat-Regular.ttf');
+  src: font-url('Montserrat-Regular.ttf');
 }
 
 @font-face {
   font-family: 'Montserrat';
   font-style: bold;
   font-weight: 700;
-  src: url('Montserrat-Bold.ttf');
+  src: font-url('Montserrat-Bold.ttf');
 }
 
 @font-face {
   font-family: 'Ubuntu';
   font-style: normal;
   font-weight: 400;
-  src: url('Ubuntu-Regular.ttf');
+  src: font-url('Ubuntu-Regular.ttf');
 }
 
 @font-face {
   font-family: 'Ubuntu';
   font-style: italic;
   font-weight: 400;
-  src: url('Ubuntu-Italic.ttf');
+  src: font-url('Ubuntu-Italic.ttf');
 }
 
 @font-face {
   font-family: 'Ubuntu';
   font-style: bold;
   font-weight: 700;
-  src: url('Ubuntu-Bold.ttf');
+  src: font-url('Ubuntu-Bold.ttf');
 }
 
 @mixin link-underline {
