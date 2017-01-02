@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :get_post, only: [:show, :edit, :update]
+  before_action :get_post, only: [:show, :edit, :update, :destroy]
 
   def index
     @posts = Post.order("created_at desc")
@@ -35,6 +35,13 @@ class PostsController < ApplicationController
   end
 
   def edit
+  end
+
+  def destroy
+    @post.destroy
+    respond_to do |format|
+      format.html { redirect_to posts_path, notice: 'Post deleted' }
+    end
   end
 
   private

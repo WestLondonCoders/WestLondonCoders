@@ -8,6 +8,10 @@
       = f.trix_editor :content
     .u-center
       .m-post-editor__submit
-        - unless current_page?('/posts/new')
+        - if current_page?('/posts/new')
+          = link_to "Cancel", posts_path, class: 'a-button a-button--ghost'
+          = f.submit 'Publish', class: 'a-button'
+        - else
+          = link_to "Delete", @post, method: :delete, class: 'a-button a-button--ghost'
           = link_to "Cancel", post_path(@post), class: 'a-button a-button--ghost'
-        = f.submit 'Save changes', class: 'a-button'
+          = f.submit 'Save changes', class: 'a-button'
