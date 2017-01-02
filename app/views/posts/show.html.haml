@@ -13,6 +13,7 @@
             %i.fa.fa-user-circle-o
             = @post.author
       = @post.content.html_safe
-      .u-center
-        = link_to "Edit post", edit_post_path(@post), class: 'a-button a-button--edit'
+      - if user_is_admin?
+        .u-center
+          = link_to "Edit post", edit_post_path(@post), class: 'a-button a-button--edit'
       = render partial: 'shared/comments'

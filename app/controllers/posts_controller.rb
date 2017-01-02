@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :get_post, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:edit, :update, :destroy, :new]
 
   def index
     @posts = Post.order("created_at desc")

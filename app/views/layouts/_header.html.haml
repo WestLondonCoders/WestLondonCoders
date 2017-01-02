@@ -1,57 +1,56 @@
-%header
-  .m-navbar
-    %h1.m-navbar__logo
-      %a{href: root_path}
-        %img{src: asset_path("logo.svg")}
-        West London Coders
-    .m-navbar__nav
-      %h2
-        %a{href: ""}
-          %i.fa.fa-user-circle-o{"aria-hidden" => "true"}
-          Members
-      %h2
-        %a{href: posts_path}
-          %i.fa.fa-newspaper-o{"aria-hidden" => "true"}
-          Blog
-      %h2
-        %a{href: ""}
-          %i.fa.fa-graduation-cap{"aria-hidden" => "true"}
-          Learn
-    - if current_user
-      %ul#m-dropdown
-        %li.m-dropdown.m-dropdown--hover.js-menu
-          .m-header__icon
-            %img{src: asset_path('logo.svg'), class: 'm-dropdown__trigger'}
-          %ul.m-dropdown__submenu.m-dropdown__submenu--right-small.js-submenu
-            %li
-              = link_to "My profile", user_path(current_user)
-            %li
-              = link_to "Sign out", destroy_user_session_path, method: :delete
-    - else
-      %ul#m-dropdown
-        %li.m-dropdown.m-dropdown--hover.js-menu
-          .m-header__icon
-            %a{href: '', class: 'm-dropdown__trigger'} Sign in
-          %ul.m-dropdown__submenu.m-dropdown__submenu--right.js-submenu
-            %li
-              = form_for(:user, url: session_path(:user)) do |f|
-                .m-sign-in
-                  = f.email_field :email, autofocus: true, placeholder: "Email"
-                  = f.password_field :password, autocomplete: "off", placeholder: "Password"
-                  = f.submit "Log in", class: 'a-button'
-                  = link_to "Register", new_registration_path(:user), class: 'a-button'
+.m-navbar
+  %h1.m-navbar__logo
+    %a{href: root_path}
+      %img{src: asset_path("logo.svg")}
+      West London Coders
+  .m-navbar__nav
+    %h2
+      %a{href: ""}
+        %i.fa.fa-user-circle-o{"aria-hidden" => "true"}
+        Members
+    %h2
+      %a{href: posts_path}
+        %i.fa.fa-newspaper-o{"aria-hidden" => "true"}
+        Blog
+    %h2
+      %a{href: ""}
+        %i.fa.fa-graduation-cap{"aria-hidden" => "true"}
+        Learn
+  - if current_user
+    %ul#m-dropdown
+      %li.m-dropdown.m-dropdown--hover.js-menu
+        .m-header__icon
+          %img{src: asset_path('logo.svg'), class: 'm-dropdown__trigger'}
+        %ul.m-dropdown__submenu.m-dropdown__submenu--right-small.js-submenu
+          %li
+            = link_to "My profile", user_path(current_user)
+          %li
+            = link_to "Sign out", destroy_user_session_path, method: :delete
+  - else
+    %ul#m-dropdown
+      %li.m-dropdown.m-dropdown--hover.js-menu
+        .m-header__icon
+          %a{href: '', class: 'm-dropdown__trigger'} Sign in
+        %ul.m-dropdown__submenu.m-dropdown__submenu--right.js-submenu
+          %li
+            = form_for(:user, url: session_path(:user)) do |f|
+              .m-sign-in
+                = f.email_field :email, autofocus: true, placeholder: "Email"
+                = f.password_field :password, autocomplete: "off", placeholder: "Password"
+                = f.submit "Log in", class: 'a-button'
+                = link_to "Register", new_registration_path(:user), class: 'a-button'
 
-  .a-social-links--right
-    .a-social-links
-      %a{:href => "http://meetu.ps/c/2KPMg/wK6MK/f", :target => "_blank", title: "Meetup"}
-        %i.fa.fa-meetup
-      %a{:href => "https://westlondoncoders.herokuapp.com/", :target => "_blank", title: "Slack"}
-        %i.fa.fa-slack
-      %a{:href => "https://github.com/westlondoncoders", :target => "_blank", title: "GitHub"}
-        %i.fa.fa-github
-      %a{:href => "https://twitter.com/westlondoncode", :target => "_blank", title: "Twitter"}
-        %i.fa.fa-twitter
-      %a{:href => "https://www.facebook.com/westlondoncoders", :target => "_blank", title: "Facebook"}
-        %i.fa.fa-facebook-official
-      %a{:href => "https://instagram.com/westlondoncoders", :target => "_blank", title: "Instagram"}
-        %i.fa.fa-instagram
+.a-social-links--right
+  .a-social-links
+    %a{:href => "http://meetu.ps/c/2KPMg/wK6MK/f", :target => "_blank", title: "Meetup"}
+      %i.fa.fa-meetup
+    %a{:href => "https://westlondoncoders.herokuapp.com/", :target => "_blank", title: "Slack"}
+      %i.fa.fa-slack
+    %a{:href => "https://github.com/westlondoncoders", :target => "_blank", title: "GitHub"}
+      %i.fa.fa-github
+    %a{:href => "https://twitter.com/westlondoncode", :target => "_blank", title: "Twitter"}
+      %i.fa.fa-twitter
+    %a{:href => "https://www.facebook.com/westlondoncoders", :target => "_blank", title: "Facebook"}
+      %i.fa.fa-facebook-official
+    %a{:href => "https://instagram.com/westlondoncoders", :target => "_blank", title: "Instagram"}
+      %i.fa.fa-instagram
