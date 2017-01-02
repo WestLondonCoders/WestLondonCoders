@@ -23,6 +23,7 @@ gem 'cocoon'
 gem "autoprefixer-rails"
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'thin'
+gem 'trix'
 
 group :development, :test do
   gem 'byebug'
