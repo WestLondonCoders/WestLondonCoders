@@ -1,22 +1,26 @@
 %header
   .m-navbar
     %h1.m-navbar__logo
-      %a{href: '/'}
+      %a{href: root_path}
         %img{src: asset_path("logo.svg")}
         West London Coders
     .m-navbar__nav
       %h2
-        %a{href: "/members"}
+        %a{href: ""}
           %i.fa.fa-user-circle-o{"aria-hidden" => "true"}
           Members
       %h2
-        %a{href: "/blog"}
+        %a{href: posts_path}
           %i.fa.fa-newspaper-o{"aria-hidden" => "true"}
           Blog
       %h2
-        %a{href: "/learn"}
+        %a{href: ""}
           %i.fa.fa-graduation-cap{"aria-hidden" => "true"}
           Learn
+      %h2
+        %a{href: ""}
+          %i.fa.fa-user-circle-o{"aria-hidden" => "true"}
+          Sign in
   .a-social-links--right
     .a-social-links
       %a{:href => "http://meetu.ps/c/2KPMg/wK6MK/f", :target => "_blank", title: "Meetup"}

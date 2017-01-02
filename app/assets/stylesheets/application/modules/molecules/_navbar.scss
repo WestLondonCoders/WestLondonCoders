@@ -1,5 +1,9 @@
 // Bar itself, logo and nav items are its children
 
+header {
+  margin-bottom: 50px;
+}
+
 .m-navbar {
   display: flex;
   flex-direction: column;
@@ -53,6 +57,10 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+
+  a:hover {
+    @include link-underline;
+  }
 
 // Reset h2 margins to padding so the border wraps around space, not just h2
 // content

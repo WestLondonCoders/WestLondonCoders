@@ -5,35 +5,35 @@ $body-font: 'Montserrat';
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
-  src: asset_path('fonts/Montserrat-Regular.ttf');
+  src: url('Montserrat-Regular.ttf');
 }
 
 @font-face {
   font-family: 'Montserrat';
   font-style: bold;
   font-weight: 700;
-  src: asset_path('fonts/Montserrat-Bold.ttf');
+  src: url('Montserrat-Bold.ttf');
 }
 
 @font-face {
   font-family: 'Ubuntu';
   font-style: normal;
   font-weight: 400;
-  src: asset_path('fonts/Ubuntu-Regular.ttf');
+  src: url('Ubuntu-Regular.ttf');
 }
 
 @font-face {
   font-family: 'Ubuntu';
   font-style: italic;
   font-weight: 400;
-  src: asset_path('fonts/Ubuntu-Italic.ttf');
+  src: url('Ubuntu-Italic.ttf');
 }
 
 @font-face {
   font-family: 'Ubuntu';
   font-style: bold;
   font-weight: 700;
-  src: asset_path('fonts/Ubuntu-Bold.ttf');
+  src: url('Ubuntu-Bold.ttf');
 }
 
 @mixin link-underline {
@@ -52,7 +52,8 @@ h3 {
 }
 
 p,
-a {
+a,
+input {
   font-family: $body-font;
   line-height: 1.5;
 }
@@ -69,5 +70,5 @@ a {
 }
 
 a:hover {
-  @include link-underline;
+  @include link-fade;
 }

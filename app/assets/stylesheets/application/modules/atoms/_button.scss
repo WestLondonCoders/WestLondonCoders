@@ -1,11 +1,36 @@
 .a-button {
+  display: inline-block;
   border: 0;
   background-color: $color-blue;
+  border: solid 1px $color-blue;
   color: white;
-  padding: 20px;
-  font-size: 1.2em;
+  padding: 15px;
+  cursor: pointer;
 
   &:hover {
-    @include button-fade
+    @include button-fade;
+    color: white;
+    border: solid 1px $color-pink;
+  }
+}
+
+.a-button--ghost {
+  background-color: transparent;
+  color: $color-blue;
+  &:hover {
+    @include button-fade;
+    background-color: transparent;
+    color: $color-pink;
+    border: solid 1px $color-pink;
+  }
+}
+
+.a-button--edit {
+  margin-bottom: 20px;
+
+  @media #{$from-medium} {
+    position: absolute;
+    top: 80px;
+    right: 40px;
   }
 }

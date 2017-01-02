@@ -1,20 +1,32 @@
 .m-post {
+  margin-top: 20px;
+  font-family: $body-font;
+  line-height: 1.45;
 
   h1 {
     margin: 0 0 5px;
     padding-top: 10px;
+    font-family: $header-font;
+  }
+
+  img:nth-child(1n+2) {
+    width: 50%;
+    float: right;
+    height: auto;
+    margin: 10px 0 10px 25px;
+  }
+
+  img:nth-child(1n+1) {
+    width: 50%;
+    float: right;
+    height: auto;
+    margin: 10px 0 10px 25px;
   }
 }
 
 .m-post__meta {
+  font-family: $header-font;
   width: 100%;
   margin-left: 2px;
-  margin-bottom: 40px;
-}
-
-.m-post__content {
-  img {
-    width: 100%;
-    height: auto;
-  }
+  margin-bottom: 20px;
 }
