@@ -1,0 +1,33 @@
+%header
+  .m-navbar
+    %h1.m-navbar__logo
+      %a{href: '/'}
+        %img{src: asset_path("logo.svg")}
+        West London Coders
+    .m-navbar__nav
+      %h2
+        %a{href: "/members"}
+          %i.fa.fa-user-circle-o{"aria-hidden" => "true"}
+          Members
+      %h2
+        %a{href: "/blog"}
+          %i.fa.fa-newspaper-o{"aria-hidden" => "true"}
+          Blog
+      %h2
+        %a{href: "/learn"}
+          %i.fa.fa-graduation-cap{"aria-hidden" => "true"}
+          Learn
+  .a-social-links--right
+    .a-social-links
+      %a{:href => "http://meetu.ps/c/2KPMg/wK6MK/f", :target => "_blank", title: "Meetup"}
+        %i.fa.fa-meetup
+      %a{:href => "https://westlondoncoders.herokuapp.com/", :target => "_blank", title: "Slack"}
+        %i.fa.fa-slack
+      %a{:href => "https://github.com/westlondoncoders", :target => "_blank", title: "GitHub"}
+        %i.fa.fa-github
+      %a{:href => "https://twitter.com/westlondoncode", :target => "_blank", title: "Twitter"}
+        %i.fa.fa-twitter
+      %a{:href => "https://www.facebook.com/westlondoncoders", :target => "_blank", title: "Facebook"}
+        %i.fa.fa-facebook-official
+      %a{:href => "https://instagram.com/westlondoncoders", :target => "_blank", title: "Instagram"}
+        %i.fa.fa-instagram

@@ -1,0 +1,27 @@
+// Section
+// =======
+//
+// `.a-section` is a container for self-contained, page-level content blocks.
+
+.a-section {
+  overflow: hidden;  // keep the content margins inside the section
+  padding-left: $page-padding;
+  padding-right: $page-padding;
+}
+
+.a-section--img {
+  background: url("/img/heroes/small/background.jpg");
+  background-size: cover;
+
+  @media #{$from-small} {
+    background: url("/img/heroes/medium/background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  @media #{$from-large} {
+    background: url("/img/heroes/large/background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+  }
+}

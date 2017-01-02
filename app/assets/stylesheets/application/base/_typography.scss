@@ -1,0 +1,73 @@
+$header-font: 'Ubuntu';
+$body-font: 'Montserrat';
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/Montserrat-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: bold;
+  font-weight: 700;
+  src: url('/fonts/Montserrat-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/Ubuntu-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: 400;
+  src: url('/fonts/Ubuntu-Italic.ttf');
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: bold;
+  font-weight: 700;
+  src: url('/fonts/Ubuntu-Bold.ttf');
+}
+
+@mixin link-underline {
+  border-bottom: 3px solid $color-pink;
+}
+
+body {
+  line-height: 1.25;
+}
+
+h1,
+h2,
+h3 {
+  font-family: $header-font;
+  font-weight: normal;
+}
+
+p,
+a {
+  font-family: $body-font;
+  line-height: 1.5;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $color-blue;
+}
+
+a:hover {
+  @include link-underline;
+}

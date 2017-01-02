@@ -1,0 +1,30 @@
+.m-cards {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  align-items: center;
+  margin-bottom: 150px;
+
+  @media #{$from-medium} {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.m-card {
+  background-color: white;
+  width: 75%;
+  border: solid 1px $color-light-grey;
+  padding: 15px;
+  margin-top: 40px;
+  @media #{$from-medium} {
+    width: 45%;
+    min-height: 256px;
+  }
+}
+
+.m-card__image {
+  width: 100%;
+}

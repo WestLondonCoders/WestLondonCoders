@@ -1,0 +1,30 @@
+// Content container for page-level sections
+// =========================================
+
+
+.a-content {
+
+  max-width: 50em;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media #{$from-medium} {
+    max-width: 50em;
+  }
+}
+
+.a-content-top {
+  margin-top: 15px;
+}
+
+.a-content-top--spacious {
+  margin-top: 80px;
+}
+
+.a-content--wide {
+  max-width: 70em;
+}
+
+.a-content-narrow {
+  max-width: 30em;
+}

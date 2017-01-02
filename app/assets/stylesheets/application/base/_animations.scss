@@ -1,0 +1,13 @@
+$fade-speed: 0.5s;
+
+@mixin link-fade {
+  transition: all $fade-speed;
+  border: 0;
+  color: $color-pink;
+}
+
+@mixin button-fade {
+  transition: all $fade-speed;
+  border: 0;
+  background-color: $color-pink;
+}
