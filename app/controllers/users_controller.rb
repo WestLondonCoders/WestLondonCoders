@@ -1,12 +1,21 @@
 class UsersController < ApplicationController
   before_action :get_user, only: [:show, :edit, :update]
+  before_action :require_sign_in, only: [:index]
 
   def show
   end
 
   def index
-    @users = User.all
+    @search = User.ransack(params[:q])
+    @search.sorts = 'last_active_at asc' if @search.sorts.empty?
+    @users = @search.result
   end
+
+  def search
+    index
+    render :index
+  end
+
 
   def edit
     if admin_or_current_user?

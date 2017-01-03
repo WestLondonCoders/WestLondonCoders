@@ -8,3 +8,9 @@
     border: none;
   }
 }
+
+.u-hide-on-desktop {
+  @media #{$from-medium} {
+    display: none;
+  }
+}
