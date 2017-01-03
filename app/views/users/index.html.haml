@@ -1,4 +1,7 @@
 %section.a-section
   .a-content
-    = render partial: 'shared/user_list', locals: {source: @users}
+    %h1.u-center
+      = @users.size
+      = @users.size > 1 ? "Members" : "Member"
 
+    = render partial: 'shared/user_list', locals: {source: @users}
