@@ -2,7 +2,10 @@
   - source.each do |user|
     .m-user-list__person
       = link_to user_path(user) do
-        = image_tag user.image, class: 'm-user-list__image'
+        - if user.image
+          = image_tag user.image, class: 'm-user-list__image'
+        - else
+          = image_tag "avatar.png", class: 'm-user-list__image'
       .m-user-list__details.black-link
         = link_to user_path(user) do
           %h2= user.name

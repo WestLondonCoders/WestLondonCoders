@@ -5,6 +5,8 @@
     .a-content.m-profile__header
       - if @user.image
         =image_tag @user.image, class: 'm-profile__image'
+      - else
+        =image_tag "avatar.png", class: 'm-profile__image'
       .m-profile__header-text
         %h1.m-profile__name.black-link
           = @user.name

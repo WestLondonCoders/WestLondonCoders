@@ -11,17 +11,17 @@
 
 .a-section--img {
   margin-top: -50px;
-  background: url("heroes/small/background.jpg");
+  background: image-url("heroes/small/background.jpg");
   background-size: cover;
 
   @media #{$from-small} {
-    background: url("heroes/medium/background.jpg");
+    background: image-url("heroes/medium/background.jpg");
     background-size: cover;
     background-attachment: fixed;
   }
 
   @media #{$from-large} {
-    background: url("heroes/large/background.jpg");
+    background: image-url("heroes/large/background.jpg");
     background-size: cover;
     background-attachment: fixed;
   }
