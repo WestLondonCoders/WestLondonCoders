@@ -8,4 +8,20 @@ Rails.application.routes.draw do
       match 'search' => 'users#search', via: [:get, :post], as: :search
     end
   end
+
+  resources :interests do
+    collection do
+      match 'search' => 'interests#search', via: [:get, :post], as: :search
+    end
+  end
+
+  resources :skills do
+    collection do
+      match 'search' => 'skills#search', via: [:get, :post], as: :search
+    end
+  end
+
+  get '/users/:id/edit-interests', to: 'users#edit_interests', as: 'edit_interests'
+  get '/users/:id/edit-skills', to: 'users#edit_skills', as: 'edit_skills'
+
 end

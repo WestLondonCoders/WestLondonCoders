@@ -1,0 +1,13 @@
+- set_page_title("Interests")
+
+%section.a-section
+  .a-content
+    %h1.a-heading.centered
+      #interest-search-heading
+        = render 'heading'
+
+    = render partial: 'filter_interests'
+    = render partial: 'sort_interests'
+
+    #interest-search-results
+      = render 'results'

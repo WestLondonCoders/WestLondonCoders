@@ -1,0 +1,24 @@
+- set_page_title("My Skills")
+
+= form_for @user do |f|
+  %section.a-section
+    .a-content
+      %h1 Skills
+      .a-tags
+        = f.fields_for :skills do |skill|
+          .nested-fields
+            .field.a-tags--form
+              - if skill.object.persisted?
+                %h1.a-tag.a-tag--skill
+                  = skill.object.name
+                  = link_to_remove_association "x", skill, class: 'a-tag--remove'
+              - else
+                = skill.text_field :name
+      .links
+        = link_to_add_association 'Add', f, :skills, class: 'a-button a-button--ghost', id: 'js-add'
+
+  %section.a-section
+    .a-content
+      .m-profile__form-buttons
+        %a.a-button.a-button--ghost{href: user_path} Cancel
+        = f.submit 'Save changes', class: 'a-button'

@@ -1,0 +1,6 @@
+.nested-fields
+  .field.a-tags--form
+    - if f.object.persisted?
+      %h1.a-tag.a-tag--skill= f.object.name
+    - else
+      = f.text_field :name, class: 'm-profile__edit-interest'

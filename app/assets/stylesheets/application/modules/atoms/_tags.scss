@@ -1,0 +1,73 @@
+.a-tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+.a-tag--with-face {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  .a-tag {
+    margin: 0;
+  }
+
+  .m-faces--team__face {
+    border: 0;
+  }
+}
+
+.a-tag {
+  background: $color-pink;
+  color: white;
+  font-weight: normal;
+  padding: 10px 15px;
+  margin-right: 20px;
+  transition: 1s;
+  font-size: 20px;
+
+  &:visited,
+  &:active {
+    color: white;
+  }
+}
+
+.a-tag--with-face {
+  flex-direction: row;
+}
+
+.a-tag--interest {
+  background: $color-pink;
+}
+
+.a-tag--skill {
+  background: $color-light-blue;
+}
+
+.a-tag--remove {
+  position: relative;
+  text-transform: lowercase;
+  top: -14px;
+  right: -11px;
+  color: white;
+  font-size: 17px;
+  margin-left: -8px;
+}
+
+.a-tags--form {
+  text-align: center;
+  input {
+    font-size: 2em;
+    margin: 10px 10px 0 0;
+  }
+}
+
+.links {
+  text-align: center;
+  margin-top: 20px;
+}

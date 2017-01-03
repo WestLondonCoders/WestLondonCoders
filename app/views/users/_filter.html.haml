@@ -3,5 +3,9 @@
     .m-user-list__search-item
       = f.search_field :name_cont, placeholder: 'Name'
     .m-user-list__search-item
+      = f.search_field :interests_name_cont, placeholder: 'Interests'
+    .m-user-list__search-item
+      = f.search_field :skills_name_cont, placeholder: 'Skills'
+    .m-user-list__search-item
       = f.search_field :job_title_cont, placeholder: 'Job'
     = f.submit "Search", class: 'a-button u-hide-on-desktop'

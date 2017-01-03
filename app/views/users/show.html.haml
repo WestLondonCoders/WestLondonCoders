@@ -42,3 +42,38 @@
           - if @user.website_url.present?
             = link_to "http://#{@user.website_url}", target: '_blank' do
               %i.fa.fa-link
+
+  - if @user.interests.any?
+    %section.a-section
+      .a-content.black-link
+        %h1
+          Interests
+          - if admin_or_current_user?
+            %a.m-profile__pencil{href: edit_interests_path(@user)}
+              %i.a-icon-after-text.fa.fa-pencil
+          - if @user.interests.any?
+            .a-tags
+              - @user.interests.each do |interest|
+                %h2.a-tag.a-tag--interest= interest.name
+
+  - if @user.skills.any?
+    %section.a-section
+      .a-content.black-link
+        %h1
+          Skills
+          - if admin_or_current_user?
+            %a.m-profile__pencil{href: edit_skills_path(@user)}
+              %i.a-icon-after-text.fa.fa-pencil
+
+          .a-tags
+            - @user.skills.each do |skill|
+              %h2.a-tag.a-tag--skill= skill.name
+
+  - if admin_or_current_user?
+    .u-center
+      - if @user.interests.empty?
+        .m-profile__add-interests
+          %a.a-tag.a-tag--interest{href: edit_interests_path(@user)} Add some interests
+      - if @user.skills.empty?
+        .m-profile__add-skills
+          %a.a-tag.a-tag--skill{href: edit_skills_path(@user)} Add some skills
