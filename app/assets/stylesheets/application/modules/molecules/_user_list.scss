@@ -67,13 +67,17 @@
   & + & {
     border-top: 0;
   }
+
+  @media #{$from-medium} {
+    padding-left: 20px;
+  }
 }
 
 .m-user-list__details {
   display: flex;
   flex-direction: column;
 
-  h2 {
+  h1 {
     margin: 0;
   }
 }

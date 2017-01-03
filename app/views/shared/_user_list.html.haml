@@ -8,6 +8,6 @@
           = image_tag "avatar.png", class: 'm-user-list__image'
       .m-user-list__details.black-link
         = link_to user_path(user) do
-          %h2= user.name
+          %h1= user.name
         - if user.job_title
           = user.job_title

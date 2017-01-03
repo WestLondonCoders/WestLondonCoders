@@ -21,7 +21,10 @@
       %ul#m-dropdown
         %li.m-dropdown.m-dropdown--hover.js-menu
           .m-header__icon
-            %img{src: asset_path('logo.svg'), class: 'm-dropdown__trigger'}
+            - if current_user.image
+              %img{src: current_user.image, class: 'm-dropdown__trigger'}
+            - else
+              %img{src: asset_path("avatar.png"), class: 'm-dropdown__trigger'}
           %ul.m-dropdown__submenu.m-dropdown__submenu--right-small.js-submenu
             %li
               = link_to "My profile", user_path(current_user)
