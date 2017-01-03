@@ -1,49 +1,6 @@
 %header
-  .m-navbar
-    %h1.m-navbar__logo
-      %a{href: root_path}
-        %img{src: asset_path("logo.svg")}
-        West London Coders
-    .m-navbar__nav
-      %h2
-        %a{href: users_path}
-          %i.fa.fa-user-circle-o{"aria-hidden" => "true"}
-          Members
-      %h2
-        %a{href: posts_path}
-          %i.fa.fa-newspaper-o{"aria-hidden" => "true"}
-          Blog
-      %h2
-        %a{href: learn_path}
-          %i.fa.fa-graduation-cap{"aria-hidden" => "true"}
-          Learn
-    - if current_user
-      %ul#m-dropdown
-        %li.m-dropdown.m-dropdown--hover.js-menu
-          .m-header__icon
-            - if current_user.image
-              %img{src: current_user.image, class: 'm-dropdown__trigger'}
-            - else
-              %img{src: asset_path("avatar.png"), class: 'm-dropdown__trigger'}
-          %ul.m-dropdown__submenu.m-dropdown__submenu--right-small.js-submenu
-            %li
-              = link_to "My profile", user_path(current_user)
-            %li
-              = link_to "Sign out", destroy_user_session_path, method: :delete
-    - else
-      %ul#m-dropdown
-        %li.m-dropdown.m-dropdown--hover.js-menu
-          .m-header__icon
-            %a{href: '', class: 'm-dropdown__trigger'} Sign in
-          %ul.m-dropdown__submenu.m-dropdown__submenu--right.js-submenu
-            %li
-              = form_for(:user, url: session_path(:user)) do |f|
-                .m-sign-in
-                  = f.email_field :email, autofocus: true, placeholder: "Email"
-                  = f.password_field :password, autocomplete: "off", placeholder: "Password"
-                  = f.submit "Log in", class: 'a-button'
-                  = link_to "Register", new_registration_path(:user), class: 'a-button'
-
+  = render partial: "layouts/mobile_nav"
+  = render partial: "layouts/desktop_nav"
   .a-social-links--right
     .a-social-links
       %a{:href => "http://meetu.ps/c/2KPMg/wK6MK/f", :target => "_blank", title: "Meetup"}

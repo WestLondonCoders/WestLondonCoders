@@ -23,7 +23,9 @@
 }
 
 .m-dropdown .m-dropdown__submenu--left {
-  right: -155px;
+  top: 30px;
+  right: -140px;
+  left: 5px;
 }
 
 .m-dropdown__submenu--center {
@@ -32,13 +34,13 @@
 }
 
 .m-dropdown .m-dropdown__submenu--right {
-  right: 0;
+  right: 5px;
   left: -250px;
 }
 
 .m-dropdown .m-dropdown__submenu--right-small {
-  right: 0;
-  left: -100px;
+  right: 5px;
+  left: -120px;
   text-align: center;
 }
 

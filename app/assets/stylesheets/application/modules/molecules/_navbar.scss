@@ -4,10 +4,31 @@ header {
   margin-bottom: 50px;
 }
 
+.m-navbar--mobile {
+  @media #{$from-medium} {
+    display: none;
+  }
+}
+
+.m-navbar--desktop {
+  @media #{$to-medium} {
+    display: none;
+  }
+}
+
+.m-navbar--mobile-left {
+  margin: 10px;
+}
+
+.m-navbar--mobile-right {
+  margin: 10px;
+}
+
 .m-navbar {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 
   img {
     border-radius: 50%;
@@ -20,11 +41,6 @@ header {
     font-size: 0.8em;
     white-space: nowrap;
 
-    img {
-      position: relative;
-      top: 6px;
-    }
-
     @media #{$from-medium} {
       font-size: 0.8em;
     }
@@ -32,12 +48,6 @@ header {
     @media #{$from-large} {
       font-size: 1em;
     }
-  }
-
-  a {
-    font-family: $header-font;
-    color: $color-dark-grey;
-    padding-bottom: 2px;
   }
 
   @media #{$from-medium} {
@@ -63,6 +73,12 @@ header {
   flex-direction: column;
   align-items: center;
   text-align: center;
+
+  a {
+    font-family: $header-font;
+    color: $color-dark-grey;
+    padding-bottom: 2px;
+  }
 
   a:hover {
     @include link-underline;
