@@ -10,17 +10,18 @@
 }
 
 .a-section--img {
-  background: url("/img/heroes/small/background.jpg");
+  margin-top: -50px;
+  background: url("heroes/small/background.jpg");
   background-size: cover;
 
   @media #{$from-small} {
-    background: url("/img/heroes/medium/background.jpg");
+    background: url("heroes/medium/background.jpg");
     background-size: cover;
     background-attachment: fixed;
   }
 
   @media #{$from-large} {
-    background: url("/img/heroes/large/background.jpg");
+    background: url("heroes/large/background.jpg");
     background-size: cover;
     background-attachment: fixed;
   }

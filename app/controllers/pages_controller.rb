@@ -5,4 +5,7 @@ class PagesController < ApplicationController
     @posts = Post.all
   end
 
+  def learn
+  end
+
 end

@@ -1,20 +1,21 @@
 // Hero
 
 .m-hero {
+  margin-top: -50px;
   height: 90vh;
-  background: url("/img/heroes/small/background.jpg");
+  background: url("heroes/small/background.jpg");
   background-size: cover;
 
   @media #{$from-small} {
     height: 100vh;
 
-    background: url("/img/heroes/medium/background.jpg");
+    background: url("heroes/medium/background.jpg");
     background-size: cover;
     background-attachment: fixed;
   }
 
   @media #{$from-large} {
-    background: url("/img/heroes/large/background.jpg");
+    background: url("heroes/large/background.jpg");
     background-size: cover;
     background-attachment: fixed;
   }
@@ -26,7 +27,7 @@
     video {
       display: none;
     }
-    background: url("/img/heroes/small/background.jpg");
+    background: url("heroes/small/background.jpg");
     background-size: cover;
     height: 90vh;
   }
@@ -42,18 +43,18 @@
 .m-hero--members {
   height: 75vh;
 
-  background: url("/img/heroes/small/members.jpg");
+  background: url("heroes/small/members.jpg");
   background-size: cover;
 
   @media #{$from-small} {
     height: 85vh;
-    background: url("/img/heroes/medium/members.jpg");
+    background: url("heroes/medium/members.jpg");
     background-size: cover;
     background-attachment: fixed;
   }
 
   @media #{$from-large} {
-    background: url("/img/heroes/large/members.jpg");
+    background: url("heroes/large/members.jpg");
     background-size: cover;
     background-attachment: fixed;
   }
