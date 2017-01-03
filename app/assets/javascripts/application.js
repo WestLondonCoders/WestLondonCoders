@@ -11,6 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
+//= require cocoon
 //= require trix
+//= require application/dropdown.js
+//= require application/show_section.js

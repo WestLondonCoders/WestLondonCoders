@@ -1,0 +1,164 @@
+$profile-avatar-size: 150px;
+
+// .m-profile {}
+
+.m-profile__header {
+  padding-top: 80px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: $header-font;
+
+  @media #{$from-large} {
+    padding-top: 40px;
+    flex-direction: row;
+    text-align: left;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 2.5em;
+  }
+}
+
+.m-profile__header-text {
+  display: flex;
+  flex-direction: column;
+  h3 {
+    margin: 0;
+    line-height: 1.5;
+    font-weight: normal;
+  }
+  a {
+    color: black;
+  }
+  a:hover {
+    color: $color-blue;
+  }
+}
+
+.m-profile__bio {
+  font-size: 1.2em;
+  font-family: $body-font;
+  text-align: center;
+}
+
+.m-profile__image {
+  width: $profile-avatar-size;
+  border-radius: 50%;
+  @media #{$from-large} {
+    margin: 40px 20px 0 0;
+  }
+}
+
+.m-profile__name {
+  margin-bottom: 20px;
+  a:hover {
+    color: $color-blue;
+  }
+}
+
+.m-profile__team {
+  color: $color-dark-grey;
+}
+
+.m-profile__text-input {
+  display: flex;
+  flex-direction: column;
+  max-width: 40rem;
+  align-items: center;
+
+  label {
+    margin-bottom: 10px;
+  }
+
+  input {
+    width: 80%;
+  }
+}
+
+.m-profile__details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.m-profile__links {
+  display: flex;
+  font-size: 2.2em;
+
+  i {
+    margin: 0 8px;
+  }
+}
+
+.m-profile__links--form {
+  justify-content: space-between;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.m-profile__links--field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: .7em;
+  @media #{$from-small} {
+    font-size: 1em;
+  }
+}
+
+.m-profile__title,
+.m-profile__team,
+.m-profile__discipline_team {
+  padding-left: 5px;
+}
+
+.m-profile__title select,
+.m-profile__team select,
+.m-profile__discipline_team select,
+.m-profile__desk {
+  margin: 5px 0;
+  color: black;
+  border: solid 2px $color-light-grey;
+  font-size: 0.8em;
+  max-width: 80%;
+
+  @media #{$from-small} {
+    font-size: 1.2em;
+  }
+
+  @media #{$from-large} {
+    font-size: 0.9em;
+  }
+}
+
+trix-editor {
+  border: solid 2px $color-light-grey;
+  padding: 10px;
+  width: 100%;
+}
+
+.m-profile__form-buttons {
+  text-align: center;
+  margin-bottom: 50px;
+
+  a {
+    margin-right: 20px;
+  }
+}
+
+.m-profile__add-interests {
+  margin: 50px;
+}
+
+.m-profile__add-skills {
+  margin-bottom: 100px;
+}
+
+.js-profile-image-field {
+  display: none;
+}

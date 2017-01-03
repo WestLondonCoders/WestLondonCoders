@@ -1,0 +1,42 @@
+- set_page_title(@user.name || "Profile")
+
+.m-profile
+  %section.a-section
+    .a-content.m-profile__header
+      - if @user.image
+        =image_tag @user.image, class: 'm-profile__image'
+      .m-profile__header-text
+        %h1.m-profile__name.black-link
+          = @user.name
+
+        %h3.m-profile__title.black-link
+          = @user.job_title
+
+    - if admin_or_current_user?
+      .u-center
+        = link_to "Edit profile", edit_user_path(@user), class: 'a-button a-button--edit'
+
+  - if @user.bio
+    %section.a-section
+      .a-content.m-profile__text-input.m-profile__bio
+        = @user.bio.html_safe
+
+  - if @user.has_social_links?
+    %section.a-section
+      .a-content.m-profile__details
+        .m-profile__links.black-link
+          - if @user.twitter.present?
+            = social_url(@user.twitter, :twitter)
+          - if @user.instagram.present?
+            = social_url(@user.instagram, :instagram)
+          - if @user.github.present?
+            = social_url(@user.github, :github)
+          - if @user.facebook.present?
+            = link_to "https://facebook.com/#{@user.facebook}", target: '_blank' do
+              %i.fa.fa-facebook-official
+          - if @user.linkedin.present?
+            = link_to "https://linkedin.com/in/#{@user.linkedin}", target: '_blank' do
+              %i.fa.fa-linkedin
+          - if @user.website_url.present?
+            = link_to "http://#{@user.website_url}", target: '_blank' do
+              %i.fa.fa-link

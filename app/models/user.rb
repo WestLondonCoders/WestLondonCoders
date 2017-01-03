@@ -11,4 +11,13 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
     end
   end
+
+  def has_social_links?
+    return true if twitter.present? ||
+                   facebook.present? ||
+                   github.present? ||
+                   instagram.present? ||
+                   linkedin.present? ||
+                   website_url.present?
+  end
 end

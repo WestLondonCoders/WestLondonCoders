@@ -17,6 +17,7 @@
 @import "application/modules/atoms/button";
 @import "application/modules/atoms/content";
 @import "application/modules/atoms/flash";
+@import "application/modules/atoms/icon_after_text";
 @import "application/modules/atoms/image";
 @import "application/modules/atoms/video";
 
@@ -28,10 +29,12 @@
 @import "application/modules/molecules/dropdown";
 @import "application/modules/molecules/hero";
 @import "application/modules/molecules/post";
+@import "application/modules/molecules/profile";
 @import "application/modules/molecules/post_editor";
 @import "application/modules/molecules/members";
 @import "application/modules/molecules/social_links";
 @import "application/modules/molecules/sign_in";
+@import "application/modules/molecules/user_list";
 
 // Utilities
 @import "application/utilities/utilities";

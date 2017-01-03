@@ -8,4 +8,8 @@ module ApplicationHelper
     current_user && current_user.admin
   end
 
+  def admin_or_current_user?
+    user_is_admin? || @user == current_user
+  end
+
 end

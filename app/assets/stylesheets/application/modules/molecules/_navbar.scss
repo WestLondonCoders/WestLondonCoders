@@ -60,6 +60,7 @@ header {
 
   a:hover {
     @include link-underline;
+    transition: none;
   }
 
 // Reset h2 margins to padding so the border wraps around space, not just h2
@@ -75,13 +76,11 @@ header {
   @media #{$to-medium} {
 
     a:hover {
-      @include link-fade;
       border: 0;
       color: $color-pink;
     }
 
     h2:hover {
-      @include link-fade;
       color: $color-pink;
     }
     h2 {
