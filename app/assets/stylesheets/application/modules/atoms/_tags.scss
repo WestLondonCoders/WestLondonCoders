@@ -1,3 +1,5 @@
+$tag-avatar-size: 44px;
+
 .a-tags {
   display: flex;
   flex-direction: row;
@@ -23,10 +25,12 @@
 }
 
 .m-faces--team__face {
-  width: 44px;
+  width: $tag-avatar-size;
+  height: $tag-avatar-size;
   border: 2px solid transparent;
   img {
-    width: 100%;
+    width: $tag-avatar-size;
+    height: $tag-avatar-size;
   }
 }
 

@@ -47,6 +47,7 @@ $profile-avatar-size: 150px;
 
 .m-profile__image {
   width: $profile-avatar-size;
+  height: $profile-avatar-size;
   border-radius: 50%;
   @media #{$from-large} {
     margin: 40px 20px 0 0;
