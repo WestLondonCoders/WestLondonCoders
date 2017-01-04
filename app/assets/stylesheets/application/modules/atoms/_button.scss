@@ -16,7 +16,7 @@
 
 .a-button--ghost {
   background-color: transparent;
-  color: $color-blue;
+  color: $color-blue !important;
   &:hover {
     @include button-fade;
     background-color: transparent;
