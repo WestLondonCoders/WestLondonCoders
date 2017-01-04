@@ -1,15 +1,10 @@
-var sendSearch = function() {
-  $(".js-filter-form form input").keyup(function() {
-    var $input = $(this).val();
+$(document).on('keyup', ".js-filter-form input", function() {
+  var $input = $(this).val();
+  var $form = $(this).parents('form');
 
-    if ($input.length > 2 || $input.length == 0) {
-      $.get($(".js-filter-form form").attr("action"),
-      $(".js-filter-form form").serialize(), null, "script");
-      return false;
-    }
-  });
-}
-
-$(document).ready(function(){
-  sendSearch();
+  if ($input.length > 2 || $input.length == 0) {
+    $.get($form.attr("action"),
+    $form.serialize(), null, "script");
+    return false;
+  }
 });
