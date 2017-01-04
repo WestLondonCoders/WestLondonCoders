@@ -21,7 +21,9 @@
                 %i.fa.fa-soccer-ball-o
                 Interests
             %li
-              = link_to "Skills"
+              %a{href: skills_path}
+                %i.fa.fa-code{"aria-hidden" => "true"}
+                Skills
       %h2
         %a{href: posts_path}
           %i.fa.fa-newspaper-o{"aria-hidden" => "true"}

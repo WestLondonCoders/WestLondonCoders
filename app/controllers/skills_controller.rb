@@ -1,5 +1,4 @@
 class SkillsController < ApplicationController
-    before_action :require_sign_in, only: [:index]
 
   def index
     @search = Skill.ransack(params[:q])

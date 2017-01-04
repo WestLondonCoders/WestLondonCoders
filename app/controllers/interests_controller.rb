@@ -1,5 +1,4 @@
 class InterestsController < ApplicationController
-    before_action :require_sign_in, only: [:index, :show]
 
   def index
     @search = Interest.ransack(params[:q])

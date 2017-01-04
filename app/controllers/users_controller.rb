@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :get_user, only: [:show, :edit, :update, :edit_interests, :edit_skills]
-  before_action :require_sign_in, only: [:index]
 
   def show
   end

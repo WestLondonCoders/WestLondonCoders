@@ -1,0 +1,13 @@
+- set_page_title("Skills")
+
+%section.a-section
+  .a-content
+    %h1.a-heading
+      #skill-search-heading
+        = render 'heading'
+
+    = render partial: 'filter_skills'
+    = render partial: 'sort_skills'
+
+    #skill-search-results
+      = render 'results'

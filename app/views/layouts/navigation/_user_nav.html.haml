@@ -9,8 +9,6 @@
         %li
           = link_to "My profile", user_path(current_user)
         %li
-          = link_to "Interests", interests_path
-        %li
           = link_to "Sign out", destroy_user_session_path, method: :delete
 - else
   %ul#m-dropdown
