@@ -2,8 +2,6 @@
   = form_for @post do |f|
     .m-post-editor__title
       %h1= f.text_field :title, placeholder: "Title"
-    .m-post-editor__meta
-      %h2= f.text_field :author, placeholder: "Author"
     .m-post-editor__content
       = f.trix_editor :content
     .u-center
