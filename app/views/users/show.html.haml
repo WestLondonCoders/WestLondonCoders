@@ -17,8 +17,8 @@
 
   - if @user.bio
     %section.a-section
-      .a-content.m-profile__text-input.m-profile__bio
-        = @user.bio.html_safe
+      .a-content.m-profile__bio
+        = @user.bio
 
   - if @user.has_social_links?
     %section.a-section
