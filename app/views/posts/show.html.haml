@@ -15,6 +15,10 @@
       .m-post__content
         = sanitize @post.content
 
+      .a-tags
+        - @post.tags.each do |tag|
+          %h2.a-tag.a-tag--post-tag= tag.name
+
       - if user_is_admin?
         .u-center
           = link_to "Edit post", edit_post_path(@post), class: 'a-button a-button--edit'

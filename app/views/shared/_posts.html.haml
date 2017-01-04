@@ -1,11 +1,16 @@
 .m-post
   %h1= link_to post.title, post_path(post)
-  .m-post__author
-    .m-post__author-photo
-      = link_to image_tag(avatar_url(post.created_by)), user_path(post.created_by), title: post.created_by.name
-    .m-post__meta
-      = link_to post.created_by.name, user_path(post.created_by)
-      %br
-      = post.created_at.to_formatted_s(:short)
+  .m-post__meta-strip
+    .m-post__author
+      .m-post__author-photo
+        = link_to image_tag(avatar_url(post.created_by)), user_path(post.created_by), title: post.created_by.name
+      .m-post__meta
+        = link_to post.created_by.name, user_path(post.created_by)
+        %br
+        = post.created_at.to_formatted_s(:short)
+    .m-post__tags
+      .a-tags
+        - post.tags.take(1).each do |tag|
+          %h2.a-tag.a-tag--post-tag= tag.name
   .m-post__excerpt
     = truncate(post.content, length: 400, escape: false, separator: '.')

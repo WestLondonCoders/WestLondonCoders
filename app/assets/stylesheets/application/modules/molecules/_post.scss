@@ -40,8 +40,16 @@
   }
 }
 
+.m-post__meta-strip {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .m-post__content {
   margin-top: 40px;
+  padding-bottom: 20px;
 
   img {
     padding: 20px;

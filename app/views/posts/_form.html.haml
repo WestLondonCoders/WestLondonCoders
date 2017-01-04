@@ -4,6 +4,23 @@
       %h1= f.text_field :title, placeholder: "Title"
     .m-post-editor__content
       = f.trix_editor :content
+
+    %section.a-section
+      .a-content
+        %h1 Tags
+        .a-tags
+          = f.fields_for :tags do |tag|
+            .nested-fields
+              .field.a-tags--form
+                - if tag.object.persisted?
+                  %h1.a-tag.a-tag--page-tag
+                    = tag.object.name
+                    = link_to_remove_association "x", tag, class: 'a-tag--remove'
+                - else
+                  = tag.text_field :name
+        .links
+          = link_to_add_association 'Add', f, :tags, class: 'a-button a-button--ghost', id: 'js-add'
+
     .u-center
       .m-post-editor__submit
         - if current_page?('/posts/new')

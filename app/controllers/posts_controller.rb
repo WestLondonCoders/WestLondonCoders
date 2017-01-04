@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   def index
     @search = Post.ransack(params[:q])
     @search.sorts = 'created_at desc' if @search.sorts.empty?
-    @posts = @search.result.includes(:created_by)
+    @posts = @search.result.includes(:created_by, :tags)
   end
 
   def search
@@ -14,6 +14,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @tag = Tag.find_by(id: tag_params[:id])
   end
 
   def new
@@ -26,7 +27,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Zombie was successfully created.' }
+        format.html { redirect_to @post, notice: 'Post was successfully created.' }
       else
         format.html { render :new }
       end
@@ -36,7 +37,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Zombie was successfully updated.' }
+        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -60,7 +61,11 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content )
+    params.require(:post).permit(:title, :content, tags_attributes: [:id, :name, :_destroy] )
+  end
+
+  def tag_params
+    params.permit(:id)
   end
 
 end
