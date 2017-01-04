@@ -15,6 +15,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.created_by = current_user
 
     respond_to do |format|
       if @post.save
@@ -52,7 +53,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :author, :publish_date)
+    params.require(:post).permit(:title, :content )
   end
 
 end

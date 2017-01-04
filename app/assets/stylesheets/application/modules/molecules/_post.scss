@@ -9,16 +9,45 @@
     font-family: $header-font;
   }
 
+  #disqus_thread {
+    padding-top: 40px;
+  }
+
   img {
-    width: 80%;
+    width: 100%;
     height: auto;
-    margin: 10px auto;
   }
 }
 
 .m-post__meta {
   font-family: $header-font;
-  width: 100%;
-  margin-left: 2px;
-  margin-bottom: 20px;
+}
+
+.m-post__author {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.m-post__author-photo {
+  width: 44px;
+  margin-right: 10px;
+
+  img {
+    border-radius: 50%;
+    display: block;
+  }
+}
+
+.m-post__content {
+  margin-top: 40px;
+
+  img {
+    padding: 20px;
+  }
+}
+
+.m-post__excerpt {
+  margin-top: 20px;
 }

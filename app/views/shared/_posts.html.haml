@@ -1,11 +1,11 @@
 .m-post
   %h1= link_to post.title, post_path(post)
-  .m-post__meta
-    %span
-      %i.fa.fa-clock-o
-      = post.created_at.to_formatted_s(:long)
-    - if post.author
-      %span
-        %i.fa.fa-user-circle-o
-        = post.author
-  = truncate(post.content, length: 400, escape: false, separator: '.')
+  .m-post__author
+    .m-post__author-photo
+      = link_to image_tag(avatar_url(post.created_by)), user_path(post.created_by), title: post.created_by.name
+    .m-post__meta
+      = link_to post.created_by.name, user_path(post.created_by)
+      %br
+      = post.created_at.to_formatted_s(:short)
+  .m-post__excerpt
+    = truncate(post.content, length: 400, escape: false, separator: '.')
