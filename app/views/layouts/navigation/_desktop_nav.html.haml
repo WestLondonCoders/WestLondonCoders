@@ -5,10 +5,23 @@
         %img{src: asset_path("logo.svg")}
         West London Coders
     .m-navbar__nav
-      %h2
-        %a{href: users_path}
-          %i.fa.fa-user-circle-o{"aria-hidden" => "true"}
-          Members
+      %ul#m-dropdown
+        %li.m-dropdown.m-dropdown--hover.js-menu
+          %h2
+            %a{href: '#'}
+            %i.fa.fa-user-circle-o{"aria-hidden" => "true"}
+            Members
+          %ul.m-dropdown__submenu.m-dropdown__submenu--members.js-submenu
+            %li
+              = link_to users_path do
+                %i.fa.fa-user-circle-o
+                People
+            %li
+              = link_to interests_path do
+                %i.fa.fa-soccer-ball-o
+                Interests
+            %li
+              = link_to "Skills"
       %h2
         %a{href: posts_path}
           %i.fa.fa-newspaper-o{"aria-hidden" => "true"}

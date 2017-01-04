@@ -1,5 +1,14 @@
 #m-dropdown {
   padding-left: 0;
+
+  a {
+    border: 0;
+    color: $color-blue;
+  }
+
+  a:hover {
+    @include link-fade;
+  }
 }
 
 #m-dropdown > li {
@@ -28,9 +37,11 @@
   left: 5px;
 }
 
-.m-dropdown__submenu--center {
-  left: -25px;
-  width: 100px;
+.m-dropdown__submenu--members {
+  top: 50px;
+  right: -37px;
+  left: -38px;
+  text-align: left;
 }
 
 .m-dropdown .m-dropdown__submenu--right {
@@ -60,7 +71,7 @@
 .m-dropdown-show {
   visibility: visible !important;
   opacity: 1 !important;
-  top: 55px !important;
+  top: 50px !important;
 }
 
 .m-dropdown__trigger {
