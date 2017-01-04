@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/learn', to: 'pages#learn', as: 'learn'
   get '/jekyll', to: 'pages#jekyll', as: 'jekyll'
-  resources :posts
+  resources :posts do
+    collection do
+      match 'search' => 'posts#search', via: [:get, :post], as: :search
+    end
+  end
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   resources :users do
     collection do

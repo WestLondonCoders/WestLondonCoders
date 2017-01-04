@@ -2,9 +2,16 @@
 
 %section.a-section
   .a-content
-    .m-blog
-      - @posts.each do |post|
-        = render partial: 'shared/posts', locals: {post: post}
+    %h1.a-heading
+      #post-search-heading
+        = render 'heading'
+
+    = render partial: 'filter_posts'
+    = render partial: 'sort_posts'
+
+    #post-search-results
+      = render 'results'
+
     - if user_is_admin?
       .u-center
         = link_to "New post", new_post_path, class: 'a-button a-button--edit'

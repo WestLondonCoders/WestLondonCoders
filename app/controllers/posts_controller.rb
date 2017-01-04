@@ -3,7 +3,14 @@ class PostsController < ApplicationController
   before_action :require_admin, only: [:edit, :update, :destroy, :new]
 
   def index
-    @posts = Post.order("created_at desc")
+    @search = Post.ransack(params[:q])
+    @search.sorts = 'created_at desc' if @search.sorts.empty?
+    @posts = @search.result.includes(:created_by)
+  end
+
+  def search
+    index
+    render :index
   end
 
   def show
