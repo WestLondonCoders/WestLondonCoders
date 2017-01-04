@@ -3,6 +3,6 @@
     .a-tag--with-face
       - if interest.users && interest.users.first
         .m-faces--team__face
-          = link_to image_tag(interest.users.first.image), user_path(interest.users.first), title: interest.users.first.name
+          = link_to image_tag(avatar_url(interest.users.first)), user_path(interest.users.first), title: interest.users.first.name
       %h2.a-tag.a-tag--interest
         = interest.name

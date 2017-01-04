@@ -3,10 +3,7 @@
 .m-profile
   %section.a-section
     .a-content.m-profile__header
-      - if @user.image
-        =image_tag @user.image, class: 'm-profile__image'
-      - else
-        =image_tag "avatar.png", class: 'm-profile__image'
+      = image_tag(avatar_url(@user), class: 'm-profile__image')
       .m-profile__header-text
         %h1.m-profile__name.black-link
           = @user.name

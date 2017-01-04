@@ -1,8 +1,8 @@
 - if logged_in
   %ul#m-dropdown
     %li.m-dropdown.m-dropdown--hover.js-menu
-      - if current_user.image
-        %img{src: current_user.image, class: 'm-dropdown__trigger'}
+      - if current_user
+        %img{src: avatar_url(current_user), class: 'm-dropdown__trigger'}
       - else
         %img{src: asset_path("avatar.png"), class: 'm-dropdown__trigger'}
       %ul.m-dropdown__submenu.m-dropdown__submenu--right-small.js-submenu

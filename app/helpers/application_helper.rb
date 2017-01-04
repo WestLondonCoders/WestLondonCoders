@@ -12,4 +12,9 @@ module ApplicationHelper
     user_is_admin? || @user == current_user
   end
 
+  def avatar_url(user)
+    default_url = "http://stevebrewer.uk/img/avatar.png"
+    gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
+    "http://gravatar.com/avatar/#{gravatar_id}.png?s=150&d=#{CGI.escape(default_url)}"
+  end
 end
