@@ -27,4 +27,10 @@ class User < ActiveRecord::Base
                    linkedin.present? ||
                    website_url.present?
   end
+
+  validates_presence_of :slug
+
+  def to_param
+    slug
+  end
 end
