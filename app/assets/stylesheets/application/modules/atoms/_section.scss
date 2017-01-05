@@ -10,9 +10,12 @@
 }
 
 .a-section--img {
-  margin-top: -50px;
   background: image-url("heroes/small/background.jpg");
   background-size: cover;
+
+  @media #{$to-medium} {
+    margin-top: -50px;
+  }
 
   @media #{$from-small} {
     background: image-url("heroes/medium/background.jpg");
