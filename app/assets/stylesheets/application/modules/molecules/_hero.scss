@@ -1,7 +1,6 @@
 // Hero
 
 .m-hero {
-  margin-top: -50px;
   height: 90vh;
   background: image-url("heroes/small/background.jpg");
   background-size: cover;
@@ -22,7 +21,6 @@
 }
 
 .m-hero--video {
-  margin-top: -50px;
   @media #{$to-small} {
     video {
       display: none;

@@ -1,7 +1,7 @@
 // Bar itself, logo and nav items are its children
 
 header {
-  @media #{$from-medium} {
+  @media #{$to-medium} {
     margin-bottom: 50px;
   }
 }

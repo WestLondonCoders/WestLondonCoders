@@ -29,4 +29,6 @@ Rails.application.routes.draw do
   get '/users/:id/edit-interests', to: 'users#edit_interests', as: 'edit_interests'
   get '/users/:id/edit-skills', to: 'users#edit_skills', as: 'edit_skills'
 
+  get '/meetup-17-python-hackroom', to: redirect('/posts/python-hackroom-with-ali-hamdan', status: 302)
+  get '/getting-a-job-in-software-development-shabbir-naqvi', to: redirect('http://westlondoncoders.com/posts/getting-a-job-in-software-development', status: 302)
 end
