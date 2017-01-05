@@ -54,6 +54,12 @@
   img {
     padding: 20px;
   }
+
+  a:hover {
+    @include link-underline;
+    transition: none;
+    color: $color-blue;
+  }
 }
 
 .m-post__excerpt {
