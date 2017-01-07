@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :get_post, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin, only: [:edit, :destroy]
   before_action :require_sign_in, only: [:new, :update]
+  before_action :get_owner, only:[:edit, :update, :destroy]
 
   def index
     @search = Post.ransack(params[:q])
@@ -54,12 +54,21 @@ class PostsController < ApplicationController
   end
 
   def edit
+    unless @user == current_user
+      redirect_to :back
+      flash[:alert] = "You're not authorised to do that"
+    end
   end
 
   def destroy
+    if @user == current_user
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_path, notice: 'Post deleted' }
+      format.html { redirect_to user_path(@user)}
+    end
+    else
+      redirect_to :back
+      flash[:alert] = "You're not authorised to do that"
     end
   end
 
@@ -67,6 +76,10 @@ class PostsController < ApplicationController
 
   def get_post
     @post = Post.find_by_slug(params[:id])
+  end
+
+  def get_owner
+    @user = @post.created_by if @post
   end
 
   def post_params

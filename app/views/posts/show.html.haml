@@ -1,7 +1,7 @@
 - set_page_title(@post.title)
 
 
-- if user_is_editor? || user_is_author?
+- if is_author(current_user) || @post.created_by == current_user
   .u-center
     = link_to "Edit post", edit_post_path(@post), class: 'a-button a-button--edit'
 

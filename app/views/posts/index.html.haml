@@ -12,6 +12,6 @@
     #post-search-results
       = render 'results'
 
-    - if user_is_editor?
+    - if is_editor(current_user)
       .u-center
         = link_to "New post", new_post_path, class: 'a-button a-button--edit'

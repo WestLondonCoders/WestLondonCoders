@@ -9,17 +9,37 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin
-    unless current_user.admin == true
+    unless is_admin(current_user)
       redirect_to posts_path
       flash[:alert] = 'You must be an admin to do that'
     end
   end
 
-  def user_is_admin?
-    current_user && current_user.admin
+  def require_admin
+    unless is_admin(current_user)
+      redirect_to :back
+      flash[:alert] = "You're not authorised to do that"
+    end
   end
 
-  def admin_or_current_user?
-    user_is_admin? || @user == current_user
+# User permissions
+  def this_user_or_admin(user)
+    current_user || user.permission >= 50
+  end
+
+  def is_moderator(user)
+    user.permission >= 20
+  end
+
+  def is_author(user)
+    user.permission >= 30
+  end
+
+  def is_editor(user)
+    user.permission >= 40
+  end
+
+  def is_admin(user)
+    user.permission >= 50
   end
 end

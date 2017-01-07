@@ -41,7 +41,7 @@
       .a-content.black-link
         %h1
           Interests
-          - if admin_or_current_user?
+          - if this_user_or_admin(current_user)
             %a.m-profile__pencil{href: edit_interests_path(@user)}
               %i.a-icon-after-text.fa.fa-pencil
           - if @user.interests.any?
@@ -54,7 +54,7 @@
       .a-content.black-link
         %h1
           Skills
-          - if admin_or_current_user?
+          - if this_user_or_admin(current_user)
             %a.m-profile__pencil{href: edit_skills_path(@user)}
               %i.a-icon-after-text.fa.fa-pencil
 
@@ -62,7 +62,7 @@
             - @user.skills.each do |skill|
               %h2.a-tag.a-tag--skill= skill.name
 
-  - if admin_or_current_user?
+  - if this_user_or_admin(current_user)
     .u-center
       - if @user.interests.empty?
         .m-profile__add-interests
@@ -71,9 +71,10 @@
         .m-profile__add-skills
           %a.a-tag.a-tag--skill{href: edit_skills_path(@user)} Add some skills
 
-  %section.a-section
-    .a-content
-      .m-blog
-        %h1 Posts
-        - @posts.each do |post|
-          = render partial: 'shared/posts', locals: {post: post}
+  - if @posts.any?
+    %section.a-section
+      .a-content
+        .m-blog
+          %h1 Posts
+          - @posts.each do |post|
+            = render partial: 'shared/posts', locals: {post: post}
