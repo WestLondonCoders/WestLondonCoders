@@ -1,4 +1,23 @@
+- set_page_title("New post")
+
 .m-post-editor
+  %h1 New post
+  - if user_is_admin? || user_is_editor?
+    %p
+      Your posts appear on the
+      = succeed ',' do
+        = link_to "home page", root_path
+      = link_to "your profile", user_path(current_user)
+      and the
+      = link_to "blog posts", posts_path
+      page.
+  - else
+    %p
+      Posts you publish will appear on
+      = link_to "your profile", user_path(current_user)
+      and the
+      = link_to "blog posts", posts_path
+      page, and you can edit a post from the post page itself.
   = form_for @post do |f|
     .m-post-editor__title
       %h1= f.text_field :title, placeholder: "Title"

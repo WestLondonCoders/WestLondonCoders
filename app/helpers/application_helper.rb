@@ -20,6 +20,11 @@ module ApplicationHelper
     current_user && current_user.moderator
   end
 
+  def user_is_author?
+    current_user && @post.created_by
+  end
+
+
   def avatar_url(user)
     default_url = "http://stevebrewer.uk/img/avatar.png"
     gravatar_id = Digest::MD5.hexdigest(user.email.downcase)

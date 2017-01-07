@@ -7,7 +7,7 @@
       %br
       = time_ago_in_words(comment.created_at)
       ago
-  - if current_user == comment.author || user_is_moderator?
+  - if current_user == comment.author || user_is_moderator? || user_is_author?
     = link_to 'Delete', post_comment_path(@post, comment), remote: true, method: :delete
 
 .m-comment__content

@@ -2,9 +2,8 @@ class PagesController < ApplicationController
 
   def home
     @page_title = "Home"
-    @search = Post.ransack(params[:q])
-    @search.sorts = 'created_at desc' if @search.sorts.empty?
-    @posts = @search.result.includes(:created_by, :tags)
+    @user = User.all.where(editor: true)
+    @posts = Post.all.where(created_by_id: @user).order("created_at desc")
   end
 
   def learn

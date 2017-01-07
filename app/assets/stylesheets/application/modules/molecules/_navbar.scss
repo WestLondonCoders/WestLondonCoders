@@ -1,11 +1,5 @@
 // Bar itself, logo and nav items are its children
 
-header {
-  @media #{$to-medium} {
-    margin-bottom: 50px;
-  }
-}
-
 .m-navbar--mobile {
   @media #{$from-medium} {
     display: none;

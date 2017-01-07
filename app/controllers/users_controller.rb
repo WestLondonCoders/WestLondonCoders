@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :get_user, only: [:show, :edit, :update, :edit_interests, :edit_skills]
 
   def show
+    @posts = Post.all.where(created_by_id: @user).order("created_at desc")
   end
 
   def index

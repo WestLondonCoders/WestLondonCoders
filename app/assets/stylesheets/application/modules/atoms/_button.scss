@@ -26,12 +26,10 @@
 }
 
 .a-button--edit {
-  margin-bottom: 20px;
-
   @media #{$from-medium} {
     position: absolute;
+    right: 70px;
     top: 80px;
-    right: 40px;
   }
 }
 

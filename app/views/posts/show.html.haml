@@ -1,5 +1,10 @@
 - set_page_title(@post.title)
 
+
+- if user_is_editor? || user_is_author?
+  .u-center
+    = link_to "Edit post", edit_post_path(@post), class: 'a-button a-button--edit'
+
 %section.a-section
   .a-content
     .m-post
@@ -18,10 +23,6 @@
       .a-tags
         - @post.tags.each do |tag|
           %h2.a-tag.a-tag--post-tag= tag.name
-
-      - if user_is_editor?
-        .u-center
-          = link_to "Edit post", edit_post_path(@post), class: 'a-button a-button--edit'
 
       .m-comments
         %h2
