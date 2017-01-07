@@ -1,10 +1,8 @@
 // Section
 // =======
-//
-// `.a-section` is a container for self-contained, page-level content blocks.
 
 .a-section {
-  overflow: hidden;  // keep the content margins inside the section
+  overflow: hidden;
   padding-left: $page-padding;
   padding-right: $page-padding;
 }
