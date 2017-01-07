@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :user_skills
   has_many :skills, through: :user_skills
   accepts_nested_attributes_for :skills, reject_if: :all_blank, allow_destroy: true
+  has_many :comments, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,

@@ -1,0 +1,14 @@
+%li.m-comment.m-comment--delete
+  .m-post__author
+    .m-post__author-photo
+      = link_to image_tag(avatar_url(comment.author)), user_path(comment.author), title: comment.author.name
+    .m-post__meta
+      = link_to comment.author.name, user_path(comment.author)
+      %br
+      = time_ago_in_words(comment.created_at)
+      ago
+  - if current_user == comment.author || user_is_moderator?
+    = link_to 'Delete', post_comment_path(@post, comment), remote: true, method: :delete
+
+.m-comment__content
+  = comment.body

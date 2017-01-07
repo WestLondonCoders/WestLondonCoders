@@ -19,8 +19,27 @@
         - @post.tags.each do |tag|
           %h2.a-tag.a-tag--post-tag= tag.name
 
-      - if user_is_admin?
+      - if user_is_editor?
         .u-center
           = link_to "Edit post", edit_post_path(@post), class: 'a-button a-button--edit'
 
-      = render partial: 'shared/comments'
+      .m-comments
+        %h2
+          Comments
+          %i.fa.fa-comment-o
+
+        %ul.m-comments__feed#comments-list
+          = render 'comment_feed'
+
+        - if current_user
+          .m-comment__new
+            = form_for [@post, @new_comment], class: 'js-remote-form', remote: true do |f|
+              = f.text_field :body, class: 'js-remote-text-field', autocomplete: :off, placeholder: "Write a comment..."
+        - else
+          .a-prompt
+            %p
+              Sign in with GitHub to comment
+              = link_to user_github_omniauth_authorize_path, class: 'a-button a-button--small' do
+                %i.fa.fa-github
+                Sign in
+

@@ -15,6 +15,13 @@ class PostsController < ApplicationController
 
   def show
     @tag = Tag.find_by(id: tag_params[:id])
+    @comments = @post.comments.order("created_at asc")
+    @new_comment = @post.comments.new
+  end
+
+  def new_comment
+    show
+    render :show
   end
 
   def new

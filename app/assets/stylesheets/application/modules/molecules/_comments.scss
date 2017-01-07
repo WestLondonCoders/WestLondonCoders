@@ -1,0 +1,42 @@
+@mixin post {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.m-comments {
+  margin-top: 40px;
+  padding: 15px 30px;
+  background: lighten($color-light-blue, 30%);
+}
+
+.m-comments__feed {
+  margin-bottom: 50px;
+}
+
+.m-comment__content {
+  margin-top: 10px;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.m-comment__new {
+  margin-bottom: 20px;
+
+  input {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+.m-comment--delete {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.js-reveal-section {
+  display: none;
+}
