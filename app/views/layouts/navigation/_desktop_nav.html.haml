@@ -24,14 +24,18 @@
               %a{href: skills_path}
                 %i.fa.fa-code{"aria-hidden" => "true"}
                 Skills
+            %li
+              %a{href: learn_path}
+                %i.fa.fa-graduation-cap{"aria-hidden" => "true"}
+                Learn
       %h2
         %a{href: posts_path}
           %i.fa.fa-newspaper-o{"aria-hidden" => "true"}
           Posts
       %h2
-        %a{href: learn_path}
-          %i.fa.fa-graduation-cap{"aria-hidden" => "true"}
-          Learn
+        %a{href: meetups_path}
+          %i.fa.fa-meetup{"aria-hidden" => "true"}
+          Meetups
     - if current_user
       = render partial: 'layouts/navigation/user_nav', locals: {logged_in: true}
     - else

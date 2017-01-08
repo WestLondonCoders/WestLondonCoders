@@ -4,5 +4,9 @@
 
 footer {
   margin-top: 100px;
+
+  @media #{$from-medium} {
+    margin-top: 50px;
+  }
 }
 

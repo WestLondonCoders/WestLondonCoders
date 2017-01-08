@@ -47,12 +47,14 @@
 .m-dropdown .m-dropdown__submenu--right {
   right: 5px;
   left: -250px;
+  text-align: right;
 }
 
 .m-dropdown .m-dropdown__submenu--right-small {
   right: 5px;
   left: -120px;
   text-align: center;
+  text-align: right;
 }
 
 .no-js .m-dropdown:hover .m-dropdown__submenu,

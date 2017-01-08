@@ -6,11 +6,26 @@
   margin-bottom: 40px;
   align-items: center;
   margin-bottom: 150px;
+  min-height: 70vh;
 
   @media #{$from-medium} {
     flex-direction: row;
     align-items: flex-start;
   }
+}
+
+.m-cards__header-dark {
+  text-align: center;
+  background-color: $color-dark-grey;
+  color: white;
+  padding: 10px;
+  margin: 40px auto 20px;
+  width: 60%;
+
+  @media #{$from-medium} {
+    font-size: 2.5em;
+  }
+
 }
 
 .m-card {
@@ -19,6 +34,13 @@
   border: solid 1px $color-light-grey;
   padding: 15px;
   margin-top: 40px;
+
+  .m-card__logo {
+    max-width: 80%;
+    max-height: 100px;
+    margin: 5px auto;
+  }
+
   @media #{$from-medium} {
     width: 45%;
     min-height: 256px;
@@ -27,4 +49,20 @@
 
 .m-card__image {
   width: 100%;
+}
+
+.m-card--meetup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+
+  @media #{$from-medium} {
+    min-height: 341px;
+  }
+}
+
+.m-cards__cta {
+  text-align: center;
+  margin: 40px auto 0;
 }
