@@ -11,7 +11,11 @@
         %h3.m-profile__title.black-link
           = @user.job_title
 
-  - if @user.logo
+  - if @user.logo && @user.logo_link
+    .m-profile__logo
+      = link_to @user.logo_link, target: "_blank" do
+        = image_tag(@user.logo)
+  - elsif @user.logo
     .m-profile__logo
       = image_tag(@user.logo)
 
