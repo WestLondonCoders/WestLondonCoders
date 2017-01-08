@@ -1,0 +1,48 @@
+- set_page_title("Hackrooms")
+
+%section.a-section
+  .a-content.a-content--spacious-bottom
+    %h1.a-heading--large
+      %img{src: asset_path("logo.svg")}
+      Hackrooms
+    %p
+      Hackrooms are a chance to spend time with a group of people with a shared interest, like Python or front end.
+
+    %p
+      There should be one or two facilitators to help drive the activity and converstion, but there doesn't have to be. Facilitators can help new members settle in and help the group engage. Some activities you could do:
+
+      %ul.hangingindent
+        %li
+          %i.fa.fa-wrench
+          = link_to "Code activities", learn_path
+          relevant to the group theme
+
+        %li
+          %i.fa.fa-wrench
+          Run through an example of something you've built recently that you're comfortable sharing
+
+        %li
+          %i.fa.fa-wrench
+          Setup a group
+          = link_to "Clash of Code", "https://www.codingame.com/multiplayer/clashofcode", target: "_blank"
+
+        %li
+          %i.fa.fa-wrench
+          Setup pairing on
+          = link_to "Code Wars", "http://codewars.com", target: "_blank"
+          challenges
+
+    %p
+      What hackrooms will be on at the next meetup? We're working on a clever way to display that, but for now you can be sure there'll be a Python 🐍 and a front end one, but
+      = link_to "Steve", user_path(1)
+      is planning a Rails one in the near future.
+
+    %p
+      If you'd like to organise a hackroom, let an
+      = link_to "organiser", organisers_path
+      know and we'll help you plan and/or arrange it.
+
+.m-hero--video
+  = video_tag "video/python.mov", autoplay: true, muted: true, loop: true
+
+.cancel-footer

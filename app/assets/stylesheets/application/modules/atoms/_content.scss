@@ -36,3 +36,9 @@
 .a-content-narrow {
   max-width: 30em;
 }
+
+.a-content--spacious-bottom {
+  @media #{$from-medium} {
+    margin-bottom: 50px;
+  }
+}

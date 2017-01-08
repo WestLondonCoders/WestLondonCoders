@@ -10,3 +10,8 @@ footer {
   }
 }
 
+.cancel-footer {
+  @media #{$from-medium} {
+    margin-bottom: -50px;
+  }
+}
