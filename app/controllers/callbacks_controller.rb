@@ -4,7 +4,7 @@ class CallbacksController < Devise::OmniauthCallbacksController
 
     if @user.persisted?
       sign_in(@user, event: :authentication)
-      redirect_to root_path
+      redirect_to after_sign_in_path_for(@user)
     end
   end
 end
