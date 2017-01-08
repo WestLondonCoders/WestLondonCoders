@@ -22,12 +22,7 @@
 
 .m-hero--video {
   @media #{$to-small} {
-    video {
-      display: none;
-    }
-    background: image-url("heroes/small/background.jpg");
-    background-size: cover;
-    height: 90vh;
+    display: none;
   }
   video {
     z-index: -100;

@@ -6,10 +6,10 @@
   }
 
   .a-button {
-    margin-top: 20px;
+    margin: 20px auto 30px;
   }
 
-  a:hover {
+  h3 a:hover {
     border-bottom: 3px solid $color-pink;
     transition: none;
     color: $color-blue;
