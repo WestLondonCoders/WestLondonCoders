@@ -23,6 +23,10 @@
       %h1= f.text_field :title, placeholder: "Title"
     .m-post-editor__content
       = f.trix_editor :content
+    .m-post-editor__options
+      - if is_author(current_user)
+        = f.check_box :featured
+        = f.label :featured, "Show on home page"
 
     %section.a-section
       .a-content
