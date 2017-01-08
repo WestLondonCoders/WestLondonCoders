@@ -26,14 +26,13 @@ calcDate = function(ms) {
   return formattedDate;
 };
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   var $meetupLink = $('#next-meetup-link');
   var $meetupCount = $('#next-meetup-count');
   var $meetupDate = $('#next-meetup-date');
   var $meetupVenueName = $('#next-meetup-venue-name');
   var $meetupVenue = $('#next-meetup-venue');
 
-  $meetupCount.html("");
   fetchGroups("https://api.meetup.com/West-London-Coders/events?photo-host=public&page=1&sig_id=202775078&sig=7106b5f894f37222f896b703e3a9c6e95f5a65a4", function(res) {
 
     var link      = "";
@@ -56,5 +55,3 @@ $(document).ready(function() {
     $meetupVenue.html("<a href='http://maps.google.com/?q=" + venue + "' target='_blank'>" + venue + "</a>");
   });
 });
-
-
