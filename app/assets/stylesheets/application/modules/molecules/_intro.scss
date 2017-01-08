@@ -1,0 +1,17 @@
+.m-intro {
+  text-align: center;
+
+  h1 {
+    margin-bottom: 0;
+  }
+
+  .a-button {
+    margin-top: 20px;
+  }
+
+  a:hover {
+    border-bottom: 3px solid $color-pink;
+    transition: none;
+    color: $color-blue;
+  }
+}

@@ -19,3 +19,4 @@
 //= require application/dropdown.js
 //= require application/show_section.js
 //= require application/filter.js
+//= require application/meetup.js
