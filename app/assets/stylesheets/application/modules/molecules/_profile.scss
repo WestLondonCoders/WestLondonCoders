@@ -39,6 +39,11 @@ $profile-avatar-size: 150px;
   }
 }
 
+.m-profile__logo {
+  width: 120px;
+  margin: 15px auto;
+}
+
 .m-profile__bio {
   font-size: 1.2em;
   font-family: $body-font;

@@ -11,6 +11,10 @@
         %h3.m-profile__title.black-link
           = @user.job_title
 
+  - if @user.logo
+    .m-profile__logo
+      = image_tag(@user.logo)
+
   - if @user.bio
     %section.a-section
       .a-content.m-profile__bio

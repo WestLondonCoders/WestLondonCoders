@@ -24,22 +24,22 @@ class ApplicationController < ActionController::Base
 
 # User permissions
   def this_user_or_admin(user)
-    current_user || user.permission >= 50
+    current_user || user.permission >= 50 if current_user
   end
 
   def is_moderator(user)
-    user.permission >= 20
+    user.permission >= 20 if current_user
   end
 
   def is_author(user)
-    user.permission >= 30
+    user.permission >= 30 if current_user
   end
 
   def is_editor(user)
-    user.permission >= 40
+    user.permission >= 40 if current_user
   end
 
   def is_admin(user)
-    user.permission >= 50
+    user.permission >= 50 if current_user
   end
 end
