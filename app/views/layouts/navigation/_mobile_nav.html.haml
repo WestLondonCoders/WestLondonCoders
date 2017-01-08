@@ -33,6 +33,10 @@
               %a{href: learn_path}
                 %i.fa.fa-graduation-cap{"aria-hidden" => "true"}
                 Learn
+            %li
+              = link_to organisers_path do
+                %i.fa.fa-wrench
+                Organisers
 
     .m-navbar--mobile-right
       - if current_user

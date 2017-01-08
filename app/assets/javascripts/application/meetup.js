@@ -5,8 +5,6 @@ function fetchGroups(url, cb, data) {
     method:'get',
     url:url,
     success:function(result) {
-      console.log('back with ' + result.data.length +' results');
-      console.dir(result);
       data.push.apply(data, result.data);
       if(result.meta.next_link) {
         var nextUrl = result.meta.next_link;

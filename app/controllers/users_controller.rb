@@ -36,6 +36,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def organisers
+    @users = User.all.where("permission > ?", 29)
+  end
+
   private
 
     def get_user
