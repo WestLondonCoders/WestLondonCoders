@@ -49,4 +49,11 @@ class UsersController < ApplicationController
                            [:id, :name, :_destroy],
                            skills_attributes: [:id, :name, :_destroy])
     end
+
+    def require_admin_or_owner
+      unless this_user_or_admin(current_user)
+        redirect_to :back
+        flash[:alert] = "You're not authorised to do that"
+      end
+    end
 end
