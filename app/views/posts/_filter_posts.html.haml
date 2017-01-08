@@ -1,7 +1,7 @@
 .m-user-list__search.js-filter-form
   = search_form_for @search, url: search_posts_path, method: :post, remote: true do |f|
     .m-user-list__search-item
-      = f.search_field :title_and_content_cont, placeholder: 'Content'
+      = f.search_field :title_and_content_cont, placeholder: 'Post content'
     .m-user-list__search-item
       = f.search_field :created_by_name_cont, placeholder: 'Author'
     .m-user-list__search-item

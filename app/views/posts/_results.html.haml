@@ -1,5 +1,3 @@
-%section.a-section
-  .a-content
-    .m-blog
-      - @posts.each do |post|
-        = render partial: 'shared/posts', locals: {post: post}
+.m-blog
+  - @posts.each do |post|
+    = render partial: 'shared/posts', locals: {post: post}

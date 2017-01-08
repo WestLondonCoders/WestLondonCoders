@@ -1,7 +1,7 @@
 - set_page_title("Blog")
 
 %section.a-section
-  .a-content
+  .a-content--wide
     %h1.a-heading
       #post-search-heading
         = render 'heading'
@@ -9,6 +9,7 @@
     = render partial: 'filter_posts'
     = render partial: 'sort_posts'
 
+  .a-content
     #post-search-results
       = render 'results'
 
