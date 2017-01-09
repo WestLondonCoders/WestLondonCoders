@@ -4,6 +4,18 @@ module ApplicationHelper
     @page_title = title + " | West London Coders"
   end
 
+  def set_page_description(description)
+    @page_description = description || "Dive into web development with relaxed and friendly developers at the stunning NET-A-PORTER HQ in Westfield, White City."
+  end
+
+  def set_page_image(image)
+    @page_image = image || "http://westlondoncoders.com/img/general/twitter.jpg"
+  end
+
+  def page_twitter(twitter)
+    @page_twitter = twitter || @user.twitter || @post.created_by.twitter || "@westlondoncode"
+  end
+
   def avatar_url(user)
     default_url = "http://stevebrewer.uk/img/avatar.png"
     gravatar_id = Digest::MD5.hexdigest(user.email.downcase)

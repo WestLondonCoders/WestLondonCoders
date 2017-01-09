@@ -1,0 +1,16 @@
+- content_for :og_header do
+  = tag("meta", property: "og:title", content: @post.title)
+  - if @post.description
+    = tag("meta", property: "og:description", content: @post.description)
+  - else
+    = tag("meta", property: "og:description", content: "Dive into web development with relaxed and friendly developers at the stunning NET-A-PORTER HQ in Westfield, White City.")
+  = tag("meta", property: "og:image", content: @post.twitter_image || asset_url("general/twitter.jpg"))
+  = tag("meta", property: "twitter:card", content: "summary_large_image")
+  - if @post.created_by.twitter
+    = tag("meta", property: "twitter:creator", content: @post.created_by.twitter)
+  - else
+    = tag("meta", property: "twitter:creator", content: "@westlondoncode")
+
+- if is_author(current_user) || @post.created_by == current_user
+  .u-center
+    = link_to "Edit post", edit_post_path(@post), class: 'a-button a-button--edit'

@@ -1,0 +1,17 @@
+= tag(:meta, property: "twitter:card", content: "summary_large_image")
+= tag(:meta, property: "twitter:site", content: "@westlondoncode")
+= tag(:meta, property: "twitter:creator", content: "@westlondoncode")
+
+= tag(:meta, property: "twitter:title", content: @page_title)
+= tag(:meta, property: "og:title", content: @page_title)
+
+- @page_description = @page_description || "Dive into web development with relaxed and friendly developers at the stunning NET-A-PORTER HQ in Westfield, White City."
+= tag(:meta, property: "twitter:description", content: @page_description)
+= tag(:meta, property: "og:description", content: @page_description)
+
+- @page_image = @page_image || asset_url("general/twitter.jpg")
+= tag(:meta, property: "twitter:image", content: @page_image)
+= tag(:meta, property: "og:image", content: @page_image)
+
+= tag(:meta, property: "og:url", content: request.original_url)
+= tag(:meta, property: "og:type", content: "article")
