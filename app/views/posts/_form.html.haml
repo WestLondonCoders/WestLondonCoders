@@ -2,47 +2,51 @@
 
 .m-post-editor
   %h1 New post
-  - if is_author(current_user)
-    %p
-      Your posts appear on the
-      = succeed ',' do
-        = link_to "home page", root_path
-      = link_to "your profile", user_path(current_user)
-      and the
-      = link_to "blog posts", posts_path
-      page.
-  - else
-    %p
-      Posts you publish will appear on
-      = link_to "your profile", user_path(current_user)
-      and the
-      = link_to "blog posts", posts_path
-      page, and you can edit a post from the post page itself.
+  %p
+    Your posts appear on
+    = link_to "your profile", user_path(current_user)
+    and the
+    = link_to "blog posts", posts_path
+    page. It can be a blog post or even just a link to something cool.
+
   = form_for @post do |f|
     .m-post-editor__title
       %h1= f.text_field :title, placeholder: "Title"
     .m-post-editor__content
       = f.trix_editor :content
+
     .m-post-editor__options
+      %h2 Post options
+
       - if is_author(current_user)
         = f.check_box :featured
-        = f.label :featured, "Show on home page"
+        = f.label :featured, "Show this post on the home page"
 
-    %section.a-section
-      .a-content
-        %h1 Tags
-        .a-tags
-          = f.fields_for :tags do |tag|
-            .nested-fields
-              .field.a-tags--form
-                - if tag.object.persisted?
-                  %h1.a-tag.a-tag--page-tag
-                    = tag.object.name
-                    = link_to_remove_association "x", tag, class: 'a-tag--remove'
-                - else
-                  = tag.text_field :name
-        .links
-          = link_to_add_association 'Add', f, :tags, class: 'a-button a-button--ghost', id: 'js-add'
+      %h3 Social media sharing options
+
+      %p
+        We add this by default, which you can preview
+        = link_to "here", "https://cards-dev.twitter.com/validator"
+        using westlondoncoders.com as the url, or you can customise below:
+
+      %p Description
+      = f.text_field :description
+      %p Image URL
+      = f.text_field :twitter_image
+
+      %h2 Tags
+      .a-tags
+        = f.fields_for :tags do |tag|
+          .nested-fields
+            .field.a-tags--form
+              - if tag.object.persisted?
+                %h1.a-tag.a-tag--page-tag
+                  = tag.object.name
+                  = link_to_remove_association "x", tag, class: 'a-tag--remove'
+              - else
+                = tag.text_field :name
+      .links
+        = link_to_add_association 'Add', f, :tags, class: 'a-button a-button--ghost', id: 'js-add'
 
     .u-center
       .m-post-editor__submit
@@ -50,6 +54,6 @@
           = link_to "Cancel", posts_path, class: 'a-button a-button--ghost'
           = f.submit 'Publish', class: 'a-button'
         - else
-          = link_to "Delete", @post, method: :delete, class: 'a-button a-button--ghost'
+          = link_to "Delete", @post, method: :delete, data: { confirm: 'Delete post?' }, class: 'a-button a-button--ghost'
           = link_to "Cancel", post_path(@post), class: 'a-button a-button--ghost'
           = f.submit 'Save changes', class: 'a-button'

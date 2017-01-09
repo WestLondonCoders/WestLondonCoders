@@ -2,10 +2,23 @@
   div {
     margin-bottom: 20px;
   }
+
+  trix-editor {
+    min-height: 150px;
+  }
 }
 
 .m-post-editor__title {
   input {
     width: 100%;
+  }
+}
+
+.m-post-editor__options {
+  input[type="text"] {
+    width: 100%;
+    font-size: 1em;
+    padding: 10px;
+    border: solid 1px $color-light-grey;
   }
 }
