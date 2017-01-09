@@ -2,15 +2,12 @@
   div {
     margin-bottom: 20px;
   }
-
-  trix-editor {
-    min-height: 150px;
-  }
 }
 
 .m-post-editor__title {
   input {
     width: 100%;
+    padding: 5px;
   }
 }
 
@@ -21,4 +18,11 @@
     padding: 10px;
     border: solid 1px $color-light-grey;
   }
+}
+
+.medium-editor {
+  min-height: 150px;
+  border: solid 1px $color-light-grey;
+  padding: 5px;
+  font-family: $body-font;
 }

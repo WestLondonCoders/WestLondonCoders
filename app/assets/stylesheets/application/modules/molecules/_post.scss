@@ -9,13 +9,21 @@
     font-family: $header-font;
   }
 
-  #disqus_thread {
-    padding-top: 40px;
-  }
-
   img {
     width: 100%;
     height: auto;
+  }
+
+  blockquote {
+    margin: 0;
+    background: lighten($color-light-blue, 30%);
+    padding: 5px;
+    font-family: $code-font;
+
+    p,
+    span {
+      font-family: $code-font;
+    }
   }
 }
 

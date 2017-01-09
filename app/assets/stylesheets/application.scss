@@ -1,5 +1,6 @@
 /*
-*= require trix
+*= require medium-editor/medium-editor
+*= require medium-editor/themes/tim
 *= require_self
 */
 
@@ -11,6 +12,7 @@
 @import "application/base/breakpoints";
 @import "application/base/typography";
 @import "application/base/layout";
+@import "application/base/syntax";
 
 // Atoms
 @import "application/modules/atoms/section";

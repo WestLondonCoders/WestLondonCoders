@@ -15,8 +15,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require cocoon
-//= require trix
+//= require medium-editor
 //= require application/dropdown.js
 //= require application/show_section.js
 //= require application/filter.js
 //= require application/meetup.js
+//= require application/code_highlighting.js
+

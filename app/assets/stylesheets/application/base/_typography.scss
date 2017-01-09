@@ -1,5 +1,6 @@
 $header-font: 'Ubuntu';
 $body-font: 'Montserrat';
+$code-font: 'Inconsolata';
 
 @font-face {
   font-family: 'Montserrat';
@@ -36,6 +37,20 @@ $body-font: 'Montserrat';
   src: font-url('Ubuntu-Bold.ttf');
 }
 
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: font-url('Inconsolata-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: bold;
+  font-weight: 700;
+  src: font-url('Inconsolata-Bold.ttf');
+}
+
 @mixin link-underline {
   border-bottom: 3px solid $color-pink;
 }
@@ -55,7 +70,8 @@ p,
 a,
 input,
 ul,
-li {
+li,
+label {
   font-family: $body-font;
   line-height: 1.45;
 }

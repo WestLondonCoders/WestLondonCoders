@@ -13,28 +13,35 @@
     .m-post-editor__title
       %h1= f.text_field :title, placeholder: "Title"
     .m-post-editor__content
-      = f.trix_editor :content
+      = f.text_area :content, class: 'medium-editor'
 
     .m-post-editor__options
-      %h2 Post options
+      %h2 Sharing options
 
       - if is_author(current_user)
         = f.check_box :featured
         = f.label :featured, "Show this post on the home page"
 
-      %h3 Social media sharing options
-
       %p
-        We add this by default, which you can preview
-        = link_to "here", "https://cards-dev.twitter.com/validator"
-        using westlondoncoders.com as the url, or you can customise below:
-
-      %p Description
-      = f.text_field :description
-      %p Image URL
-      = f.text_field :twitter_image
+        Below are the page description and image that appears on the link to your post when it's shared. You can preview this on
+        = link_to "Twitter", "https://cards-dev.twitter.com/validator"
+        and
+        = link_to "Facebook", "https://developers.facebook.com/tools/debug/"
+        after you've saved the post. You can edit it anytime.
+      %p
+        %i.fa.fa-twitter
+        %i.fa.fa-facebook
+        Description
+      = f.text_field :description, value: "I wrote a post on West London Coders"
+      %p
+        %i.fa.fa-twitter
+        %i.fa.fa-facebook
+        Image URL
+      = f.text_field :twitter_image, value: asset_url("general/twitter.jpg")
 
       %h2 Tags
+      %p
+        Tags make it easier to find posts on Google and when people search the site.
       .a-tags
         = f.fields_for :tags do |tag|
           .nested-fields
@@ -57,3 +64,43 @@
           = link_to "Delete", @post, method: :delete, data: { confirm: 'Delete post?' }, class: 'a-button a-button--ghost'
           = link_to "Cancel", post_path(@post), class: 'a-button a-button--ghost'
           = f.submit 'Save changes', class: 'a-button'
+
+:javascript
+  var editor = new MediumEditor('.medium-editor', {
+    placeholder: {
+      text: 'Write your post...',
+      hideOnClick: true
+  },
+    paste: {
+        forcePlainText: true,
+        cleanPastedHTML: false
+    },
+    toolbar: {
+        buttons: [
+            'bold',
+            'italic',
+            'h2',
+            'h3',
+            {
+                name: 'justifyLeft',
+                contentDefault: '<i class="fa fa-align-left"></i>',
+            },
+            {
+                name: 'justifyCenter',
+                contentDefault: '<i class="fa fa-align-center"></i>',
+            },
+            {
+                name: 'justifyRight',
+                contentDefault: '<i class="fa fa-align-right"></i>',
+            },
+            {
+                name: 'quote',
+                contentDefault: '<i class="fa fa-code"></i>',
+            },
+            {
+                name: 'anchor',
+                contentDefault: '<i class="fa fa-link"></i>',
+            },
+        ]
+    }
+  });
