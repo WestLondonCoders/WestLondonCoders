@@ -55,8 +55,8 @@ class UsersController < ApplicationController
     end
 
     def require_admin_or_owner
-      unless this_user_or_admin(current_user)
-        redirect_to :back
+      unless user_is_owner_or_admin
+        redirect_to user_path(@user)
         flash[:alert] = "You're not authorised to do that"
       end
     end

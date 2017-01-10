@@ -8,9 +8,8 @@
       %ul.m-dropdown__submenu.m-dropdown__submenu--right-small.js-submenu
         %li
           = link_to "My profile", user_path(current_user)
-        - if this_user_or_admin(current_user)
-          %li
-            = link_to "Edit profile", edit_user_path(current_user)
+        %li
+          = link_to "Edit profile", edit_user_path(current_user)
         %li
           = link_to "Write a post", new_post_path
         %li

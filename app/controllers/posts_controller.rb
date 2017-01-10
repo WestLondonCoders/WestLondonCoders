@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :get_post, only: [:show, :edit, :update, :destroy]
-  before_action :require_sign_in, only: [:new, :update]
+  before_action :require_sign_in, only: [:new, :update, :edit, :destroy]
   before_action :get_owner, only:[:edit, :update, :destroy]
 
   def index
@@ -55,7 +55,7 @@ class PostsController < ApplicationController
 
   def edit
     unless @user == current_user
-      redirect_to :back
+      redirect_to post_path(@post)
       flash[:alert] = "You're not authorised to do that"
     end
   end

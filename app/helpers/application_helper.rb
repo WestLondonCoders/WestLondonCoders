@@ -23,23 +23,23 @@ module ApplicationHelper
   end
 
 # User permissions
-  def this_user_or_admin(user)
-    current_user || user.permission >= 50 if current_user
+  def user_is_owner_or_admin
+    current_user == @user || current_user.permission >= 50 if current_user
   end
 
-  def is_moderator(user)
-    user.permission >= 20 if current_user
+  def user_is_moderator
+    current_user.permission >= 20 if current_user
   end
 
-  def is_author(user)
-    user.permission >= 30 if current_user
+  def user_is_author
+    current_user.permission >= 30 if current_user
   end
 
-  def is_editor(user)
-    user.permission >= 40 if current_user
+  def user_is_editor
+    current_user.permission >= 40 if current_user
   end
 
-  def is_admin(user)
-    user.permission >= 50 if current_user
+  def user_is_admin
+    current_user.permission >= 50 if current_user
   end
 end

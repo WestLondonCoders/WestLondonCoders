@@ -24,8 +24,9 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if this_user_or_admin(current_user)
-      @comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:id])
+
+    if current_user == @comment.author
       @comment.public = false
       @comment.save
         respond_to do |format|

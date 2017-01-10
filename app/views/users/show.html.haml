@@ -49,7 +49,7 @@
       .a-content.black-link
         %h1
           Interests
-          - if this_user_or_admin(current_user)
+          - if user_is_owner_or_admin
             %a.m-profile__pencil{href: edit_interests_path(@user)}
               %i.a-icon-after-text.fa.fa-pencil
           - if @user.interests.any?
@@ -62,7 +62,7 @@
       .a-content.black-link
         %h1
           Skills
-          - if this_user_or_admin(current_user)
+          - if user_is_owner_or_admin
             %a.m-profile__pencil{href: edit_skills_path(@user)}
               %i.a-icon-after-text.fa.fa-pencil
 
@@ -70,7 +70,7 @@
             - @user.skills.each do |skill|
               %h2.a-tag.a-tag--skill= skill.name
 
-  - if this_user_or_admin(current_user)
+  - if user_is_owner_or_admin
     .u-center
       - if @user.interests.empty?
         .m-profile__add-interests
