@@ -1,37 +1,23 @@
-## Permission level
+## Database config
 
-:users, :permission, :integer
+Rename config/database.example.yml to config/database.yml and configure to your local details.
 
-10    User
-20    Moderator
-30    Author
-40    Editor
-50    Admin
+## Import Production Database
 
+Use the Heroku pg:pull to import the latest version of the database.
 
-1 Things current_user can do
+If a database called wlc already exists, you'll need to delete it first as it won't overwrite an existing database. Or rename the database your local app uses in database.yml to something else, then specify that new name in the pg:pull command:
 
-  Edit own profile
-  Edit own posts
+`heroku pg:pull DATABASE_URL wlc`
 
-2 Things current_user && admin can do
+## Visual Database Editor
 
-  Edit profile
+You can use Postico for a visual database editor.
 
-3 Things moderators can do
+To access the production database with it, install the Heroku Postico plugin:
 
-  Delete comments
+`heroku plugins:install heroku-postico`
 
-4 Things authors can do
+And open it while in your Watercooler directory (if it has the Heroku app remote):
 
-  Posts shown on home page
-
-5 Things editors can do
-
-  Edit all posts
-
-5 Things admin can do
-
-  Everything
-
-
+`heroku postico:open`
