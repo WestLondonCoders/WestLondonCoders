@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170109002559) do
+ActiveRecord::Schema.define(version: 20170111193929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 20170109002559) do
     t.integer  "created_by_id"
     t.string   "slug"
     t.boolean  "featured",      default: false
-    t.string   "description"
-    t.string   "twitter_image"
+    t.string   "description",   default: "I wrote a post on West London Coders"
+    t.string   "twitter_image", default: "http://westlondoncoders.com/assets/general/twitter-81cac2affbb3e01cae4dce459fbf82a25f465cc53da98bf9d742afa3320ffe71.jpg"
   end
 
   add_index "posts", ["slug"], name: "index_posts_on_slug", using: :btree
