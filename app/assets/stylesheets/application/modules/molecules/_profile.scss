@@ -42,6 +42,11 @@ $profile-avatar-size: 150px;
 .m-profile__logo {
   width: 120px;
   margin: 15px auto;
+
+  img {
+    max-height: 50px;
+    max-width: 150px;
+  }
 }
 
 .m-profile__bio {
