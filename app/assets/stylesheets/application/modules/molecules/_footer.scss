@@ -1,0 +1,14 @@
+footer {
+  background-color: lighten($color-light-blue, 30%);
+  text-align: center;
+  padding: 40px;
+  border-top: 5px solid $color-blue;
+
+  p {
+    margin: 0;
+  }
+
+  @media #{$to-medium} {
+    padding-bottom: 80px;
+  }
+}
