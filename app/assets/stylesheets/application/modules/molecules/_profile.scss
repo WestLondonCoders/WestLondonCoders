@@ -1,6 +1,8 @@
 $profile-avatar-size: 150px;
 
-// .m-profile {}
+.m-profile {
+  min-height: 70vh;
+}
 
 .m-profile__header {
   padding-top: 80px;
