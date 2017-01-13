@@ -54,7 +54,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    unless @user == current_user
+    unless user_is_owner_or_admin
       redirect_to post_path(@post)
       flash[:alert] = "You're not authorised to do that"
     end
