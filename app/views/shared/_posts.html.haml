@@ -17,4 +17,4 @@
         - post.tags.take(1).each do |tag|
           %h2.a-tag.a-tag--post-tag= tag.name
   .m-post__excerpt
-    = truncate(post.content, length: 400, escape: false, separator: '.')
+    = simple_format(truncate(post.content, length: 500, escape: false, omission: '...', separator: '.'))
