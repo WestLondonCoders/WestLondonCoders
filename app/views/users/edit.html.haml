@@ -4,7 +4,8 @@
   .m-profile.m-profile--edit
     %section.a-section
       .a-content.m-profile__header
-        = image_tag(avatar_url(@user), class: 'm-profile__image')
+        = link_to "http://en.gravatar.com/", target: "_blank" do
+          = image_tag(avatar_url(@user), class: 'm-profile__image')
         .m-profile__header-text
           %h1.m-profile__name
             = f.text_field :name, placeholder: "What's your name?", class: 'm-profile__text-input'
