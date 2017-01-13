@@ -1,15 +1,15 @@
 - set_page_title("Edit profile")
 
 = form_for @user do |f|
-  .m-profile
+  .m-profile.m-profile--edit
     %section.a-section
       .a-content.m-profile__header
         = image_tag(avatar_url(@user), class: 'm-profile__image')
         .m-profile__header-text
           %h1.m-profile__name
-            = f.text_field :name, placeholder: "What's your name?"
+            = f.text_field :name, placeholder: "What's your name?", class: 'm-profile__text-input'
           %h3.m-profile__title
-            = f.text_field :job_title, placeholder: "Tagline"
+            = f.text_field :job_title, placeholder: "Tagline", class: 'm-profile__text-input'
 
     %section.a-section
       .a-content.m-profile__bio
@@ -22,22 +22,22 @@
           .m-profile__links.m-profile__links--form
             .m-profile__links--field
               %i.fa.fa-twitter
-              = f.text_field :twitter, placeholder: '@westlondoncode'
+              = f.text_field :twitter, placeholder: '@username', class: 'm-profile__text-input'
             .m-profile__links--field
               %i.fa.fa-instagram
-              = f.text_field :instagram, placeholder: '@westlondoncode'
+              = f.text_field :instagram, placeholder: '@username', class: 'm-profile__text-input'
             .m-profile__links--field
               %i.fa.fa-github
-              = f.text_field :github, placeholder: 'westlondoncoders'
+              = f.text_field :github, placeholder: 'username', class: 'm-profile__text-input'
             .m-profile__links--field
               %i.fa.fa-facebook-official
-              = f.text_field :facebook, placeholder: 'westlondoncoders'
+              = f.text_field :facebook, placeholder: 'username', class: 'm-profile__text-input'
             .m-profile__links--field
               %i.fa.fa-linkedin
-              = f.text_field :linkedin, placeholder: 'westlondoncoders'
+              = f.text_field :linkedin, placeholder: 'username', class: 'm-profile__text-input'
             .m-profile__links--field
               %i.fa.fa-link
-              = f.text_field :website_url, placeholder: 'westlondoncoders.com'
+              = f.text_field :website_url, placeholder: 'website.com', class: 'm-profile__text-input'
 
     %section.a-section
       .a-content

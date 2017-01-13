@@ -106,6 +106,7 @@ $profile-avatar-size: 150px;
   justify-content: space-between;
   flex-direction: column;
   flex-wrap: wrap;
+  font-size: 1.5em;
 }
 
 .m-profile__links--field {
@@ -116,31 +117,6 @@ $profile-avatar-size: 150px;
   font-size: .7em;
   @media #{$from-small} {
     font-size: 1em;
-  }
-}
-
-.m-profile__title,
-.m-profile__team,
-.m-profile__discipline_team {
-  padding-left: 5px;
-}
-
-.m-profile__title select,
-.m-profile__team select,
-.m-profile__discipline_team select,
-.m-profile__desk {
-  margin: 5px 0;
-  color: black;
-  border: solid 2px $color-light-grey;
-  font-size: 0.8em;
-  max-width: 80%;
-
-  @media #{$from-small} {
-    font-size: 1.2em;
-  }
-
-  @media #{$from-large} {
-    font-size: 0.9em;
   }
 }
 
@@ -176,4 +152,11 @@ trix-editor {
 
 .js-profile-image-field {
   display: none;
+}
+
+.m-profile--edit {
+
+  img {
+    margin: 0 20px 0 0;
+  }
 }
