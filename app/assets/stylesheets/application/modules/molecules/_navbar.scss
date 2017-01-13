@@ -1,4 +1,6 @@
-// Bar itself, logo and nav items are its children
+header {
+  height: 67px;
+}
 
 .m-navbar--mobile {
   @media #{$from-medium} {
@@ -26,6 +28,14 @@
   align-items: center;
   justify-content: space-between;
   padding: 5px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+
+  @media #{$from-medium} {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    background-color: white;
+  }
 
   img {
     border-radius: 50%;
