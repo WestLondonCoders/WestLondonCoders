@@ -1,5 +1,5 @@
 header {
-  height: 67px;
+  height: 58px;
 }
 
 .m-navbar--mobile {
@@ -27,10 +27,12 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 0;
   border-bottom: 1px solid rgba(0,0,0,0.15);
+  padding: 0 10px;
 
   @media #{$from-medium} {
+    flex-direction: row;
+    justify-content: space-between;
     position: fixed;
     width: 100%;
     z-index: 1000;
@@ -39,7 +41,7 @@ header {
 
   img {
     border-radius: 50%;
-    width: 45px;
+    width: 36px;
     margin-top: 5px;
   }
 
@@ -51,15 +53,6 @@ header {
     @media #{$from-medium} {
       font-size: 0.8em;
     }
-
-    @media #{$from-large} {
-      font-size: 1em;
-    }
-  }
-
-  @media #{$from-medium} {
-    flex-direction: row;
-    justify-content: space-around;
   }
 }
 
@@ -72,6 +65,7 @@ header {
     a:hover {
       @include link-fade;
     }
+    margin-top: -9px;
   }
 }
 
