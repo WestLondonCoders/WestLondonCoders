@@ -17,9 +17,12 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.email = auth.info.email
       user.name = auth.info.name
+      user.username = auth.info.nickname
+      user.github = auth.info.nickname
       user.image = auth.info.image
       user.password = Devise.friendly_token[0,20]
       user.permission = 10
+      user.bio = auth.extra.raw_info.bio
     end
   end
 
