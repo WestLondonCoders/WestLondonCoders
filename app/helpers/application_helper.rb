@@ -17,9 +17,13 @@ module ApplicationHelper
   end
 
   def avatar_url(user)
-    default_url = "http://stevebrewer.uk/img/avatar.png"
-    gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
-    "http://gravatar.com/avatar/#{gravatar_id}.png?s=200&d=#{CGI.escape(default_url)}"
+    if user.image
+      user.image
+    else
+      default_url = "http://stevebrewer.uk/img/avatar.png"
+      gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
+      "http://gravatar.com/avatar/#{gravatar_id}.png?s=200&d=#{CGI.escape(default_url)}"
+    end
   end
 
 # User permissions
