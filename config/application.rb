@@ -1,8 +1,5 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'dotenv'
-Dotenv.load(File.expand_path('~/.env'), '.env')
-
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
