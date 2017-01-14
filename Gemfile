@@ -22,7 +22,7 @@ gem 'cocoon'
 gem "autoprefixer-rails"
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'thin'
-gem 'medium-editor-rails'
+gem 'trix'
 
 group :development, :test do
   gem 'dotenv', '~> 1.0.2'

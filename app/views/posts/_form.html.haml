@@ -13,7 +13,7 @@
     .m-post-editor__title
       %h1= f.text_field :title, placeholder: "Title"
     .m-post-editor__content
-      = f.text_area :content, class: 'medium-editor'
+      = f.trix_editor :content
 
     .m-post-editor__options
       %h2 Sharing options
@@ -64,43 +64,3 @@
           = link_to "Delete", @post, method: :delete, data: { confirm: 'Delete post?' }, class: 'a-button a-button--ghost'
           = link_to "Cancel", post_path(@post), class: 'a-button a-button--ghost'
           = f.submit 'Save changes', class: 'a-button'
-
-:javascript
-  var editor = new MediumEditor('.medium-editor', {
-    placeholder: {
-      text: 'Write your post...',
-      hideOnClick: true
-  },
-    paste: {
-        forcePlainText: true,
-        cleanPastedHTML: false
-    },
-    toolbar: {
-        buttons: [
-            'bold',
-            'italic',
-            'h2',
-            'h3',
-            {
-                name: 'justifyLeft',
-                contentDefault: '<i class="fa fa-align-left"></i>',
-            },
-            {
-                name: 'justifyCenter',
-                contentDefault: '<i class="fa fa-align-center"></i>',
-            },
-            {
-                name: 'justifyRight',
-                contentDefault: '<i class="fa fa-align-right"></i>',
-            },
-            {
-                name: 'quote',
-                contentDefault: '<i class="fa fa-code"></i>',
-            },
-            {
-                name: 'anchor',
-                contentDefault: '<i class="fa fa-link"></i>',
-            },
-        ]
-    }
-  });
