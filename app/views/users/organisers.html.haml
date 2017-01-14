@@ -1,6 +1,7 @@
 - set_page_title("Organisers")
 
-%section.a-section
+%section.a-section.a-section--foot
   .a-content
+    = render partial: 'shared/people_tabs'
     %h1.u-center Organisers
     = render partial: 'shared/user_list', locals: {source: @users}
