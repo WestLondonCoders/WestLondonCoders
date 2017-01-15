@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :get_post, only: [:show, :edit, :update, :destroy]
   before_action :require_sign_in, only: [:new, :update, :edit, :destroy]
   before_action :get_owner, only:[:edit, :update, :destroy]
+  after_action :slack, only: [:create]
 
   def index
     @search = Post.ransack(params[:q])
@@ -90,4 +91,8 @@ class PostsController < ApplicationController
     params.permit(:id)
   end
 
+  def slack
+    Slacked.post "#{@post.created_by.name} published a post: #{@post.title} - #{post_url(@post)}",
+                  {channel: 'general', username: 'Blogger Bot'}
+  end
 end

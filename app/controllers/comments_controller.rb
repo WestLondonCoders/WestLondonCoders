@@ -75,6 +75,7 @@ class CommentsController < ApplicationController
   end
 
   def slack
-    Slacked.post_async "#{@comment.author.name} commented: #{@comment.body} - #{comment_url}", {channel: 'general', username: 'Comment Bot'}
+    Slacked.post_async "#{@comment.author.name} commented: #{@comment.body} - #{comment_url}",
+                        {channel: 'general', username: 'Comment Bot'}
   end
 end
