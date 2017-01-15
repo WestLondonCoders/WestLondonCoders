@@ -25,17 +25,17 @@
 }
 
 .a-section--img-people {
-  background: image-url("heroes/small/members.jpg");
+  background: image-url("heroes/small/members2.jpg");
   background-size: cover;
 
   @media #{$from-small} {
-    background: image-url("heroes/medium/members.jpg");
+    background: image-url("heroes/medium/members2.jpg");
     background-size: cover;
     background-attachment: fixed;
   }
 
   @media #{$from-large} {
-    background: image-url("heroes/large/members.jpg");
+    background: image-url("heroes/large/members2.jpg");
     background-size: cover;
     background-attachment: fixed;
   }
@@ -48,13 +48,38 @@
 
   @media #{$from-small} {
     height: 300px;
-    background: image-url("heroes/medium/background.jpg");
+    background: image-url("heroes/medium/background2.jpg");
     background-size: cover;
     background-attachment: fixed;
   }
 
   @media #{$from-large} {
-    background: image-url("heroes/large/background.jpg");
+    background: image-url("heroes/large/background2.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+  }
+}
+
+.a-section--img-block2 {
+  background: image-url("heroes/small/background3.jpg");
+  background-size: cover;
+  height: 300px;
+  margin-top: 40px;
+  margin-bottom: -100px;
+
+  @media #{$from-small} {
+    height: 450px;
+    background: image-url("heroes/medium/background3.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  @media #{$from-medium} {
+    margin-bottom: -50px;
+  }
+
+  @media #{$from-large} {
+    background: image-url("heroes/large/background3.jpg");
     background-size: cover;
     background-attachment: fixed;
   }
