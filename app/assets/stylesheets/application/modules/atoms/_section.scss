@@ -47,7 +47,7 @@
   height: 200px;
 
   @media #{$from-small} {
-    height: 300px;
+    height: 500px;
     background: image-url("heroes/medium/background2.jpg");
     background-size: cover;
     background-attachment: fixed;
