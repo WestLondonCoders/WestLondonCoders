@@ -16,6 +16,47 @@
   }
 }
 
+.a-content--xwide {
+  width: 90%;
+  margin: 0 auto;
+  padding: 30px 0;
+  @media #{$from-medium} {
+    width: 85%;
+  }
+}
+
+.a-content--home {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+
+  .m-post {
+    width: 100%;
+  }
+
+  .m-comments {
+    margin-top: -10px;
+  }
+
+  .m-comment__content {
+    margin-top: 0;
+  }
+
+  @media #{$from-medium} {
+    flex-direction: row;
+    justify-content: space-between;
+
+    .m-blog {
+      width: 65%;
+    }
+
+    .m-comments {
+      margin-top: 40px;
+      width: 30%;
+    }
+  }
+}
+
 .a-content-top {
   margin-top: 15px;
 }
