@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170114074214) do
+ActiveRecord::Schema.define(version: 20170115152145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,21 @@ ActiveRecord::Schema.define(version: 20170114074214) do
     t.datetime "updated_at"
   end
 
+  create_table "maps", force: :cascade do |t|
+    t.integer  "meetup_id"
+    t.integer  "room_quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "meetups", force: :cascade do |t|
+    t.date     "date"
+    t.integer  "meetup_api_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "venue_id"
+  end
+
   create_table "post_tags", force: :cascade do |t|
     t.integer  "post_id"
     t.integer  "tag_id"
@@ -65,6 +80,19 @@ ActiveRecord::Schema.define(version: 20170114074214) do
   end
 
   add_index "posts", ["slug"], name: "index_posts_on_slug", using: :btree
+
+  create_table "room_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.integer  "map_id"
+    t.string   "theme",       default: "Unclaimed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "description", default: "Details to follow"
+  end
 
   create_table "skills", force: :cascade do |t|
     t.string   "name"
@@ -127,5 +155,12 @@ ActiveRecord::Schema.define(version: 20170114074214) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["slug"], name: "index_users_on_slug", using: :btree
+
+  create_table "venues", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image"
+  end
 
 end

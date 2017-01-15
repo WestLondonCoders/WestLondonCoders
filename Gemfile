@@ -23,6 +23,7 @@ gem "autoprefixer-rails"
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'thin'
 gem 'trix'
+gem 'slacked'
 
 group :development, :test do
   gem 'dotenv', '~> 1.0.2'
