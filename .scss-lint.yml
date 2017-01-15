@@ -1,0 +1,77 @@
+exclude: 'app/assets/stylesheets/email/**'
+exclude: 'app/assets/stylesheets/application/base/_syntax.scss'
+
+linters:
+  BangFormat:
+    enabled: true
+  BorderZero:
+    enabled: true
+  ColorKeyword:
+    enabled: true
+  Comment:
+    enabled: true
+  DeclarationOrder:
+    enabled: false
+  DuplicateProperty:
+    enabled: false
+  EmptyLineBetweenBlocks:
+    enabled: false
+  EmptyRule:
+    enabled: true
+  FinalNewline:
+    enabled: true
+  HexLength:
+    enabled: true
+    style: long  # See commit 1305da0
+  HexNotation:
+    enabled: true
+  IdSelector:
+    enabled: false
+  Indentation:
+    enabled: true
+  LeadingZero:
+    enabled: false
+  MergeableSelector:
+    enabled: false
+  NameFormat:
+    enabled: false
+  NestingDepth:
+    enabled: false
+  PlaceholderInExtend:
+    enabled: false
+  PropertySortOrder:
+    enabled: false
+  PropertySpelling:
+    enabled: false
+  QualifyingElement:
+    enabled: false
+  SelectorDepth:
+    enabled: false
+  SelectorFormat:
+    enabled: false
+  Shorthand:
+    enabled: false
+  SingleLinePerSelector:
+    enabled: false
+  SpaceAfterComma:
+    enabled: true
+  SpaceAfterPropertyColon:
+    enabled: true
+  SpaceAfterPropertyName:
+    enabled: true
+  SpaceBeforeBrace:
+    enabled: true
+  SpaceBetweenParens:
+    enabled: true
+  StringQuotes:
+    enabled: false
+  TrailingSemicolon:
+    enabled: true
+  UnnecessaryMantissa:
+    enabled: true
+  UnnecessaryParentReference:
+    enabled: false
+  VendorPrefixes:
+    enabled: false
+  ZeroUnit:
+    enabled: true

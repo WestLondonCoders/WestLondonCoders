@@ -3,11 +3,11 @@
 
   a {
     border: 0;
-    color: $color-blue;
   }
 
   a:hover {
     @include link-fade;
+    color: $color-white;
   }
 }
 
@@ -70,9 +70,9 @@
 }
 
 .m-dropdown-show {
-  visibility: visible !important;
-  opacity: 1 !important;
-  top: 50px !important;
+  visibility: visible;
+  opacity: 1;
+  top: 50px;
 }
 
 .m-dropdown__trigger {

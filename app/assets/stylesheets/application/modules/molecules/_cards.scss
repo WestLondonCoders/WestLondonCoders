@@ -17,7 +17,7 @@
 .m-cards__header-dark {
   text-align: center;
   background-color: $color-dark-grey;
-  color: white;
+  color: $color-white;
   padding: 10px;
   margin: 40px auto 20px;
   width: 60%;
@@ -29,7 +29,7 @@
 }
 
 .m-card {
-  background-color: white;
+  background-color: $color-white;
   width: 75%;
   border: solid 1px $color-light-grey;
   padding: 15px;

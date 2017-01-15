@@ -7,9 +7,10 @@
 }
 
 .u-no-border {
-  border: none;
+  border: 0;
+
   &:hover {
-    border: none;
+    border: 0;
   }
 }
 

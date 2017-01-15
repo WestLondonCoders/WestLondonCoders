@@ -36,7 +36,7 @@ $tag-avatar-size: 49px;
 
 .a-tag {
   background: $color-pink;
-  color: white;
+  color: $color-white;
   font-weight: normal;
   padding: 10px 15px;
   margin-right: 20px;
@@ -45,7 +45,7 @@ $tag-avatar-size: 49px;
 
   &:visited,
   &:active {
-    color: white;
+    color: $color-white;
   }
 }
 
@@ -70,7 +70,7 @@ $tag-avatar-size: 49px;
   text-transform: lowercase;
   top: -14px;
   right: -11px;
-  color: white;
+  color: $color-white;
   font-size: 17px;
   margin-left: -8px;
 }
