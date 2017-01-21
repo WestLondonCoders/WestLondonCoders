@@ -16,6 +16,8 @@ gem 'unicorn'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'dotenv', '~> 1.0.2'
+gem 'dotenv-rails', '~> 1.0.2', require: false
 gem 'friendly_id'
 gem 'jquery-turbolinks'
 gem 'cocoon'
@@ -26,8 +28,6 @@ gem 'trix'
 gem 'slacked'
 
 group :development, :test do
-  gem 'dotenv', '~> 1.0.2'
-  gem 'dotenv-rails', '~> 1.0.2', require: false
   gem 'byebug'
   gem 'pry'
   gem 'rspec-rails'
