@@ -26,6 +26,9 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'thin'
 gem 'trix'
 gem 'slacked'
+gem 'carrierwave', '~> 1.0'
+gem 'fog'
+gem "mini_magick"
 
 group :development, :test do
   gem 'byebug'

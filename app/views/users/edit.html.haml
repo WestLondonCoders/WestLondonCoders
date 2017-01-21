@@ -13,6 +13,10 @@
             = f.text_field :job_title, placeholder: "Tagline", class: 'm-profile__text-input'
 
     %section.a-section
+      .a-content
+        = f.file_field :image
+
+    %section.a-section
       .a-content.m-profile__bio
         = f.label :bio, 'Bio'
         = f.text_area :bio, class: 'm-profile__text-input', placeholder: "Try and think of something unique that others will remember you by."
