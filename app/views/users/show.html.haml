@@ -2,51 +2,28 @@
 
 .m-profile
   %section.a-section
-    .a-content.m-profile__header
-      = image_tag(avatar_url(@user), class: 'm-profile__image')
-      .m-profile__header-text
-        %h1.m-profile__name.black-link
-          = @user.name
+    .a-content
+      .m-profile__header
+        .m-profile__image
+          = image_tag(avatar_url(@user))
+        .m-profile__header-text
+          %h1
+            = @user.name
+          %h3
+            = @user.job_title
+          = render partial: 'social_links'
 
-        %h3.m-profile__title.black-link
-          = @user.job_title
+        - unless @user.logo.file.nil?
+          .m-profile__logo
+            = link_to @user.logo_link, target: "_blank" do
+              = image_tag(@user.logo)
 
-  - if @user.logo && @user.logo_link
-    .m-profile__logo
-      = link_to @user.logo_link, target: "_blank" do
-        = image_tag(@user.logo)
-  - elsif @user.logo
-    .m-profile__logo
-      = image_tag(@user.logo)
-
-  - if @user.bio
-    %section.a-section
-      .a-content.m-profile__bio
-        = @user.bio
-
-  - if @user.has_social_links?
-    %section.a-section
-      .a-content.m-profile__details
-        .m-profile__links.black-link
-          - if @user.twitter.present?
-            = social_url(@user.twitter, :twitter)
-          - if @user.instagram.present?
-            = social_url(@user.instagram, :instagram)
-          - if @user.github.present?
-            = social_url(@user.github, :github)
-          - if @user.facebook.present?
-            = link_to "https://facebook.com/#{@user.facebook}", target: '_blank' do
-              %i.fa.fa-facebook-official
-          - if @user.linkedin.present?
-            = link_to "https://linkedin.com/in/#{@user.linkedin}", target: '_blank' do
-              %i.fa.fa-linkedin
-          - if @user.website_url.present?
-            = link_to "http://#{@user.website_url}", target: '_blank' do
-              %i.fa.fa-link
+      .m-profile__bio
+        = sanitize @user.bio
 
   - if @user.interests.any?
     %section.a-section
-      .a-content.black-link
+      .a-content
         %h1
           Interests
           - if user_is_owner_or_admin

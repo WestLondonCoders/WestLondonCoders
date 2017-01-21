@@ -1,0 +1,16 @@
+.a-social-links
+  - if @user.website_url.present?
+    = link_to "http://#{@user.website_url}", target: '_blank' do
+      %i.fa.fa-link
+  - if @user.github.present?
+    = social_url(@user.github, :github)
+  - if @user.linkedin.present?
+    = link_to "https://linkedin.com/in/#{@user.linkedin}", target: '_blank' do
+      %i.fa.fa-linkedin
+  - if @user.twitter.present?
+    = social_url(@user.twitter, :twitter)
+  - if @user.facebook.present?
+    = link_to "https://facebook.com/#{@user.facebook}", target: '_blank' do
+      %i.fa.fa-facebook-official
+  - if @user.instagram.present?
+    = social_url(@user.instagram, :instagram)
