@@ -1,6 +1,7 @@
 - set_page_title("Learn, discuss and practice code")
 
-.m-hero--home
+.m-hero--video
+  = video_tag "video/gdg.mov", controls: false, autoplay: true, muted: true, loop: true, id: 'home-vid'
   %h1 Learn, discuss and practice code.
 
 %section.a-section
@@ -48,4 +49,4 @@
             .m-comment__content
               = simple_format(truncate(comment.body, length: 250, escape: false, omission: '...', separator: '.'))
 
-%section.a-section.a-section--img-block2
+.m-hero--home
