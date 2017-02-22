@@ -23,21 +23,19 @@
         = f.label :featured, "Show this post on the home page"
 
       %p
-        Below are the page description and image that appears on the link to your post when it's shared. You can preview this on
+        The text and image that appears on your post's link when it's shared. You can preview this on
+        %i.fa.fa-twitter
         = link_to "Twitter", "https://cards-dev.twitter.com/validator"
         and
-        = link_to "Facebook", "https://developers.facebook.com/tools/debug/"
-        after you've saved the post. You can edit it anytime.
-      %p
-        %i.fa.fa-twitter
         %i.fa.fa-facebook
+        = link_to "Facebook", "https://developers.facebook.com/tools/debug/"
+        after you've saved the post. You can change them anytime.
+      %p
         Description
       = f.text_field :description, placeholder: "I wrote a post on West London Coders"
       %p
-        %i.fa.fa-twitter
-        %i.fa.fa-facebook
-        Image URL
-      = f.text_field :twitter_image, value: asset_url("general/twitter.jpg")
+        Image
+      = f.text_field :twitter_image
 
       %h2.u-margin-top Tags
       %p
