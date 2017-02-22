@@ -73,3 +73,9 @@
 .m-post__excerpt {
   margin-top: 20px;
 }
+
+.m-post__images {
+  @media #{$from-medium} {
+    padding-left: 40px;
+  }
+}
