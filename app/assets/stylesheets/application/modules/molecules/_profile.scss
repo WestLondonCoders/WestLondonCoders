@@ -10,31 +10,35 @@ $profile-avatar-size: 150px;
 
   .m-profile__header-text {
     @include flex-col;
-    text-align: center;
 
     h1,
     h3 {
       margin: 0;
     }
+
+    @media #{$to-medium} {
+      text-align: center;
+    }
   }
 
   .a-social-links {
     margin-top: 10px;
-    a {
+
+    @media #{$from-medium} {
+      justify-content: flex-start;
+    }
+
+    a:not(:last-child) {
       margin-right: 10px;
     }
   }
 
-  @media #{$from-large} {
+  @media #{$from-medium} {
     flex-direction: row;
     text-align: left;
 
     .m-profile__image {
       margin-right: 20px;
-    }
-
-    .a-social-links {
-      justify-content: flex-start;
     }
   }
 }

@@ -1,0 +1,15 @@
+.m-profile__header
+  .m-profile__image
+    = image_tag(avatar_url(user))
+  .m-profile__header-text
+    %h1
+      = link_to user.name, user
+    %h3
+      = user.job_title
+    = render partial: 'social_links', locals: { user: user }
+
+  - if show_logo
+    - unless user.logo.file.nil?
+      .m-profile__logo
+        = link_to user.logo_link, target: "_blank" do
+          = image_tag(user.logo)

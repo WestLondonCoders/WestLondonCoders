@@ -1,10 +1,4 @@
 .m-user-list
   - source.each do |user|
     .m-user-list__person
-      = link_to user_path(user) do
-        = image_tag avatar_url(user), class: 'm-user-list__image'
-      .m-user-list__details.black-link
-        = link_to user_path(user) do
-          %h1= user.name
-        - if user.job_title
-          = user.job_title
+      = render partial: 'shared/user_strip', locals: { user: user, show_logo: false }

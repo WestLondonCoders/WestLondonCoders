@@ -5,7 +5,7 @@
   width: 100%;
 
   @media #{$from-medium} {
-    width: 60%;
+    width: 90%;
   }
 }
 
@@ -58,17 +58,13 @@
 
 .m-user-list__person {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  padding: 20px 0;
-  border-bottom: 1px solid $color-light-grey;
-  border-top: 1px solid $color-light-grey;
-
-  & + & {
-    border-top: 0;
-  }
+  padding: 20px 0 40px;
+  border-bottom: 2px solid $color-blue;
 
   @media #{$from-medium} {
+    justify-content: flex-start;
     padding-left: 20px;
   }
 }
