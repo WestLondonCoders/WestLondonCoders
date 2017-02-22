@@ -36,3 +36,25 @@
     border: solid 1px $color-pink;
   }
 }
+
+.a-button--pink {
+  border: solid 1px $color-pink;
+
+  &:hover {
+    @include button-fade;
+    color: $color-white;
+    background-color: $color-light-blue;
+    border: solid 1px $color-light-blue;
+  }
+}
+
+.a-button--light {
+  border: solid 1px $color-light-blue;
+
+    &:hover {
+    @include button-fade;
+    color: $color-white;
+    background-color: $color-pink;
+    border: solid 1px $color-pink;
+  }
+}
