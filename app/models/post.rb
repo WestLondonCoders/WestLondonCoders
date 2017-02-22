@@ -4,6 +4,8 @@ class Post < ActiveRecord::Base
   has_many :tags, through: :post_tags
   accepts_nested_attributes_for :tags, reject_if: :all_blank, allow_destroy: true
   has_many :comments, as: :commentable
+  has_many :post_attachments
+  accepts_nested_attributes_for :post_attachments, reject_if: :all_blank, allow_destroy: true
 
   validates_presence_of :slug
 
