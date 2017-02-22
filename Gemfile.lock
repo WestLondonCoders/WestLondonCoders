@@ -103,6 +103,9 @@ GEM
       railties (>= 3.0.0)
     faraday (0.10.1)
       multipart-post (>= 1.2, < 3)
+    file_validators (2.1.0)
+      activemodel (>= 3.0)
+      mime-types (>= 1.0)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
     fog (1.38.0)
@@ -448,6 +451,7 @@ DEPENDENCIES
   dotenv (~> 1.0.2)
   dotenv-rails (~> 1.0.2)
   factory_girl_rails (~> 4.0)
+  file_validators
   fog
   friendly_id
   haml

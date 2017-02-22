@@ -29,6 +29,7 @@ gem 'slacked'
 gem 'carrierwave', '~> 1.0'
 gem 'fog'
 gem "mini_magick"
+gem 'file_validators'
 
 group :development, :test do
   gem 'byebug'
