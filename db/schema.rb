@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170115152145) do
+ActiveRecord::Schema.define(version: 20170222195340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,18 +26,15 @@ ActiveRecord::Schema.define(version: 20170115152145) do
     t.boolean  "public",           default: true
   end
 
-  create_table "friendly_id_slugs", force: :cascade do |t|
-    t.string   "slug",                      null: false
-    t.integer  "sluggable_id",              null: false
-    t.string   "sluggable_type", limit: 50
-    t.string   "scope"
-    t.datetime "created_at"
+  create_table "conversations", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+  add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id", using: :btree
+  add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
 
   create_table "interests", force: :cascade do |t|
     t.string   "name"
@@ -45,19 +42,22 @@ ActiveRecord::Schema.define(version: 20170115152145) do
     t.datetime "updated_at"
   end
 
-  create_table "maps", force: :cascade do |t|
-    t.integer  "meetup_id"
-    t.integer  "room_quantity"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "messages", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "conversation_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
-  create_table "meetups", force: :cascade do |t|
-    t.date     "date"
-    t.integer  "meetup_api_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "venue_id"
+  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
+
+  create_table "post_attachments", force: :cascade do |t|
+    t.integer  "post_id"
+    t.string   "avatar"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "post_tags", force: :cascade do |t|
@@ -80,19 +80,6 @@ ActiveRecord::Schema.define(version: 20170115152145) do
   end
 
   add_index "posts", ["slug"], name: "index_posts_on_slug", using: :btree
-
-  create_table "room_users", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "room_id"
-  end
-
-  create_table "rooms", force: :cascade do |t|
-    t.integer  "map_id"
-    t.string   "theme",       default: "Unclaimed"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "description", default: "Details to follow"
-  end
 
   create_table "skills", force: :cascade do |t|
     t.string   "name"
@@ -146,7 +133,7 @@ ActiveRecord::Schema.define(version: 20170115152145) do
     t.string   "linkedin"
     t.string   "job_title"
     t.string   "slug"
-    t.integer  "permission",             default: 10
+    t.integer  "permission"
     t.string   "logo"
     t.string   "logo_link"
     t.string   "username"
@@ -156,11 +143,6 @@ ActiveRecord::Schema.define(version: 20170115152145) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["slug"], name: "index_users_on_slug", using: :btree
 
-  create_table "venues", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "image"
-  end
-
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
 end
