@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.u-left {
+  text-align: left;
+}
+
 .u-right {
   text-align: right;
 }
@@ -18,4 +22,12 @@
   @media #{$from-medium} {
     display: none;
   }
+}
+
+.u-float-right {
+  float: right;
+}
+
+.u-margin-top {
+  margin-top: 50px;
 }
