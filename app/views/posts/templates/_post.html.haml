@@ -3,13 +3,8 @@
     .m-post
       %h1= @post.title
 
-      .m-post__author
-        .m-post__author-photo
-          = link_to image_tag(avatar_url(@post.created_by)), user_path(@post.created_by), title: @post.created_by.name
-        .m-post__meta
-          = link_to @post.created_by.name, user_path(@post.created_by)
-          %br
-          = @post.created_at.to_formatted_s(:short)
+      = render partial: 'posts/author'
+
       .m-post__content
         = sanitize @post.content
 
