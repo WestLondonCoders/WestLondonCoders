@@ -1,0 +1,23 @@
+%h1 Listing post_attachments
+
+%table
+  %thead
+    %tr
+      %th Post
+      %th Avatar
+      %th
+      %th
+      %th
+
+  %tbody
+    - @post_attachments.each do |post_attachment|
+      %tr
+        %td= post_attachment.post_id
+        %td= post_attachment.avatar
+        %td= link_to 'Show', post_attachment
+        %td= link_to 'Edit', edit_post_attachment_path(post_attachment)
+        %td= link_to 'Destroy', post_attachment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Post attachment', new_post_attachment_path
