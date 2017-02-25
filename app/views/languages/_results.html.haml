@@ -1,0 +1,34 @@
+.m-languages
+  - @languages.each do |language|
+    .m-languages__language
+      %h1{class: "m-languages__language--#{language.id}"}= language.name
+
+      .m-languages__hackrooms
+        %h2
+          Hackrooms using
+          = language.name
+
+        %ul
+          - if language.hackrooms.any?
+            - language.hackrooms.each do |hackroom|
+              %li= link_to hackroom.name, hackroom
+          - else
+            None yet. Want to start one? Contact
+            = link_to "Steve", user_path(1)
+
+      .m-languages__people
+        %h2
+          People using
+          = language.name
+        %ul
+          - if language.users.any?
+            - language.users.each do |user|
+              %li= link_to user.name, user
+          - else
+            Nobody has added this language yet.
+            - if current_user
+              Add
+              = language.name
+              to your
+              = succeed '.' do
+                = link_to 'profile', edit_user_path(current_user)

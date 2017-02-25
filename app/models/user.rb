@@ -2,10 +2,21 @@ class User < ActiveRecord::Base
   has_many :user_interests
   has_many :interests, through: :user_interests
   accepts_nested_attributes_for :interests, reject_if: :all_blank, allow_destroy: true
+
   has_many :user_skills
   has_many :skills, through: :user_skills
   accepts_nested_attributes_for :skills, reject_if: :all_blank, allow_destroy: true
+
   has_many :comments, dependent: :destroy
+
+  has_many :user_hackrooms
+  has_many :hackrooms, through: :user_hackrooms
+
+  has_many :hackroom_owners
+  has_many :own_hackrooms, through: :hackroom_owners, source: :hackroom
+
+  has_many :user_languages
+  has_many :languages, through: :user_languages
 
   mount_uploader :image, AvatarUploader
   mount_uploader :logo, LogoUploader
@@ -36,5 +47,9 @@ class User < ActiveRecord::Base
                    instagram.present? ||
                    linkedin.present? ||
                    website_url.present?
+  end
+
+  def is_hackroom_admin?(hackroom)
+    own_hackrooms.include? hackroom
   end
 end

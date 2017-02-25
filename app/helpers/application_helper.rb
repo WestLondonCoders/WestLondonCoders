@@ -26,6 +26,18 @@ module ApplicationHelper
     end
   end
 
+  def user_in_hackroom?(hackroom, user)
+    UserHackroom.find_by(hackroom: hackroom, user: user)
+  end
+
+  def user_options_for_select(users, selected = nil)
+    options_for_select(users.map { |u| [u.name, u.id] }, selected)
+  end
+
+  def language_options_for_select(languages, selected = nil)
+    options_for_select(languages.map { |l| [l.name, l.id] }, selected)
+  end
+
 # User permissions
   def user_is_owner_or_admin
     current_user == @user || current_user.permission >= 50 if current_user

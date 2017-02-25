@@ -1,0 +1,17 @@
+- set_page_title("Languages")
+
+- if user_is_admin
+  .u-centered
+    = link_to "Add language", new_language_path, class: 'a-button  a-button--edit'
+
+%section.a-section
+  .a-content
+
+    = render partial: 'shared/people_tabs'
+
+    %h1.u-center
+      #language-search-heading
+        = render 'heading'
+
+    #language-search-results
+      = render 'results'

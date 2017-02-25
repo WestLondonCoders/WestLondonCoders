@@ -16,14 +16,10 @@
         .m-profile__image-upload
           = f.file_field :image
 
-        .m-profile__company
-          %h2 Logo
-          .m-profile__logo
-            = link_to @user.logo_link, target: "_blank" do
-              = image_tag(@user.logo)
-          = f.file_field :logo
-          %br
-          = f.text_field :logo_link, class: 'm-profile__wide-field', placeholder: "https://westlondoncoders.com"
+    %section.a-section
+      .a-content.m-hackroom__languages
+        %h2 Languages you'd like to participate in hackrooms with
+        = f.select :language_ids, language_options_for_select(Language.all, f.object.language_ids), { label: 'Languages', include_blank: true }, multiple: true
 
     %section.a-section
       .a-content
@@ -52,6 +48,18 @@
       .a-content
         %h2 Bio
         = f.trix_editor :bio, placeholder: "Try and think of something unique that others will remember you by."
+
+    %section.a-section
+      .a-content
+        .m-profile__company
+          %h2 Logo
+          .m-profile__logo
+            = link_to @user.logo_link, target: "_blank" do
+              = image_tag(@user.logo)
+          = f.file_field :logo
+          %br
+          %p Logo link
+          = f.text_field :logo_link, class: 'm-profile__wide-field', placeholder: "https://westlondoncoders.com"
 
     %section.a-section
       .a-content.u-center
