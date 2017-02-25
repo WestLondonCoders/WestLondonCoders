@@ -1,5 +1,9 @@
 class LanguagesController < ApplicationController
 
+  def show
+    @language = Language.find(params[:id])
+  end
+
   def index
     @search = Language.ransack(params[:q])
     @search.sorts = 'name asc' if @search.sorts.empty?
