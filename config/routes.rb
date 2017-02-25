@@ -42,4 +42,11 @@ Rails.application.routes.draw do
 
   get '/meetup-17-python-hackroom', to: redirect('/posts/python-hackroom-with-ali-hamdan', status: 302)
   get '/getting-a-job-in-software-development-shabbir-naqvi', to: redirect('http://westlondoncoders.com/posts/getting-a-job-in-software-development', status: 302)
+
+  resources :languages do
+    collection do
+      match 'search' => 'languages#search', via: [:get, :post], as: :search
+    end
+  end
+
 end

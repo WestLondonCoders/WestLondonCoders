@@ -1,0 +1,8 @@
+- @languages.each do |language|
+  %h2= language.name
+  %ul
+    - language.hackrooms.each do |hackroom|
+      %li= hackroom.name
+  %ul
+    - language.users.each do |user|
+      %li= user.name
