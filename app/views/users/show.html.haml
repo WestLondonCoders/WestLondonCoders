@@ -10,6 +10,19 @@
       .m-profile__bio
         = sanitize @user.bio
 
+  - if @user.languages.any?
+    %section.a-section
+      .a-content
+        %h1
+          Languages I'm using
+          - if user_is_owner_or_admin
+            %a.m-profile__pencil{href: edit_user_path(@user)}
+              %i.a-icon-after-text.fa.fa-pencil
+          - if @user.interests.any?
+            .a-tags
+              - @user.languages.each do |language|
+                %h2.a-tag.a-tag--post-tag= language.name
+
   - if @user.interests.any?
     %section.a-section
       .a-content

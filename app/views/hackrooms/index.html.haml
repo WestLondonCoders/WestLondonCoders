@@ -1,0 +1,19 @@
+- set_page_title("Languages")
+
+.m-hackroom
+
+  - if user_is_admin
+    .u-centered
+      = link_to "Add hackroom", new_hackroom_path, class: 'a-button  a-button--edit'
+
+  %section.a-section
+    .a-content
+
+      = render partial: 'shared/people_tabs'
+
+      %h1.u-center
+        #hackroom-search-heading
+          = render 'heading'
+
+      #hackroom-search-results
+        = render 'results'

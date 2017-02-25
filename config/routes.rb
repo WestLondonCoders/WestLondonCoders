@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get '/learn', to: 'pages#learn', as: 'learn'
   get '/jekyll', to: 'pages#jekyll', as: 'jekyll'
   get '/meetups', to: 'pages#meetups', as: 'meetups'
-  get '/hackrooms', to: 'pages#hackrooms', as: 'hackrooms'
   get '/organisers', to: 'users#organisers', as: 'organisers'
 
   resources :posts do
@@ -49,4 +48,15 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :hackrooms do
+    collection do
+      match 'search' => 'hackrooms#search', via: [:get, :post], as: :search
+    end
+    member do
+      get :join
+      post :join
+      get :leave
+      post :leave
+    end
+  end
 end

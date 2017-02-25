@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
   has_many :user_hackrooms
   has_many :hackrooms, through: :user_hackrooms
 
+  has_many :hackroom_owners
+  has_many :own_hackrooms, through: :hackroom_owners, source: :hackroom
+
   has_many :user_languages
   has_many :languages, through: :user_languages
 
@@ -44,5 +47,9 @@ class User < ActiveRecord::Base
                    instagram.present? ||
                    linkedin.present? ||
                    website_url.present?
+  end
+
+  def is_hackroom_admin?(hackroom)
+    own_hackrooms.include? hackroom
   end
 end

@@ -1,0 +1,58 @@
+.m-hackroom {
+  min-height: 70vh;
+}
+
+.m-hackroom-list__hackroom {
+}
+
+.m-hackroom-list__title--1 {
+  border-bottom: solid 2px $color-python;
+}
+
+.m-hackroom-list__title--2 {
+  border-bottom: solid 2px $color-ruby;
+}
+
+
+.m-hackroom__mission {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-family: $body-font;
+  font-size: 1.2em;
+}
+
+.m-hackroom__links {
+  font-size: 2.5em;
+  i:not(:last-child) {
+    padding-right: 10px;
+  }
+}
+
+.m-hackroom__avatar {
+  width: 50px;
+}
+
+.m-hackroom__members {
+  display: flex;
+  flex-direction: row;
+
+  .m-post__author:not(:last-child) {
+    margin-right: 2em;
+  }
+}
+
+.m-hackroom__languages {
+  select {
+    border-color: #cacacc;
+    width: 100%;
+    min-height: 100px;
+  }
+}
+
+.m-hackroom__admins {
+  select {
+    border-color: #cacacc;
+    width: 100%;
+    min-height: 200px;
+  }
+}

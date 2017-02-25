@@ -17,12 +17,9 @@
           = f.file_field :image
 
     %section.a-section
-      .a-content
+      .a-content.m-hackroom__languages
         %h2 Languages you'd like to participate in hackrooms with
-        - @languages.each do |language|
-          .m-profile__check-box
-            = check_box_tag :language_ids, language.id, @user.languages.include?(language), :name => language.id, id: language.id
-            = label_tag language.id, language.name
+        = f.select :language_ids, language_options_for_select(Language.all, f.object.language_ids), { label: 'Languages', include_blank: true }, multiple: true
 
     %section.a-section
       .a-content

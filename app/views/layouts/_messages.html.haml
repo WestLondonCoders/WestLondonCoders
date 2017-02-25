@@ -1,8 +1,9 @@
--# - if flash.any?
--#   .a-flash
--#     .a-flash__box
--#       .a-flash__message
--#         - flash.each do |name, msg|
--#           - if msg.is_a?(String)
--#             = content_tag :div, msg, :class => "a-flash--#{name}"
--#       = link_to 'X', '#'
+- if flash.any?
+  .a-flash
+    .a-flash__box
+      .a-flash__message
+        - flash.each do |name, msg|
+          - if msg.is_a?(String)
+            = content_tag :div, msg, :class => "a-flash--#{name}"
+      = link_to '#' do
+        %i.fa.fa-check

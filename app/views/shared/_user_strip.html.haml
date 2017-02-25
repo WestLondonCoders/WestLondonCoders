@@ -6,7 +6,7 @@
       = link_to user.name, user
     %h3
       = user.job_title
-    = render partial: 'social_links', locals: { user: user }
+    = render partial: 'users/social_links', locals: { user: user }
 
   - if show_logo
     - unless user.logo.file.nil?

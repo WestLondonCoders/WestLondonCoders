@@ -1,0 +1,8 @@
+.m-post__author
+  .m-post__author-photo
+    = link_to image_tag(avatar_url(user)), user_path(user), title: user.name
+  .m-post__meta
+    = link_to user.name, user_path(user)
+    %br
+    = user.job_title
+

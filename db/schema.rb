@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170225105921) do
+ActiveRecord::Schema.define(version: 20170225140954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,14 +43,24 @@ ActiveRecord::Schema.define(version: 20170225105921) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "hackroom_owners", force: :cascade do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "hackroom_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "hackrooms", force: :cascade do |t|
-    t.string   "name",       null: false
+    t.string   "name",        null: false
     t.text     "mission"
     t.string   "slack"
-    t.string   "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "project_url"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "slug"
   end
+
+  add_index "hackrooms", ["slug"], name: "index_hackrooms_on_slug", unique: true, using: :btree
 
   create_table "interests", force: :cascade do |t|
     t.string   "name"
@@ -121,6 +131,8 @@ ActiveRecord::Schema.define(version: 20170225105921) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  add_index "user_hackrooms", ["user_id", "hackroom_id"], name: "index_user_hackrooms_on_user_id_and_hackroom_id", unique: true, using: :btree
 
   create_table "user_interests", force: :cascade do |t|
     t.integer  "user_id"
