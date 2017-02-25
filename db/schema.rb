@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222195340) do
+ActiveRecord::Schema.define(version: 20170225105921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,10 +36,32 @@ ActiveRecord::Schema.define(version: 20170222195340) do
   add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id", using: :btree
   add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
 
+  create_table "hackroom_languages", force: :cascade do |t|
+    t.integer  "hackroom_id", null: false
+    t.integer  "language_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "hackrooms", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.text     "mission"
+    t.string   "slack"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "interests", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -93,11 +115,25 @@ ActiveRecord::Schema.define(version: 20170222195340) do
     t.datetime "updated_at"
   end
 
+  create_table "user_hackrooms", force: :cascade do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "hackroom_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "user_interests", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "interest_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "user_languages", force: :cascade do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "language_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "user_skills", force: :cascade do |t|
