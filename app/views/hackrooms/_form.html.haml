@@ -44,8 +44,13 @@
 
     %section.a-section
       .a-content.m-hackroom__admins
-        %h2 Admins
-        = f.select :owner_ids, user_options_for_select(User.all, f.object.owner_ids), { label: 'Admins' }, multiple: true
+        %h2 Maintainers
+        = f.select :owner_ids, user_options_for_select(User.all, f.object.owner_ids), { label: 'Maintainers' }, multiple: true
+
+    %section.a-section
+      .a-content.m-hackroom__admins
+        %h2 Members
+        = f.select :user_ids, user_options_for_select(User.all, f.object.user_ids), { label: 'Members' }, multiple: true
 
     .u-margin-top
       .m-post-editor__submit
