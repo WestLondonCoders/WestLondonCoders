@@ -5,7 +5,7 @@
     %h1
       = link_to user.name, user
     %h3
-      = user.job_title
+      = user.tagline
     = render partial: 'users/social_links', locals: { user: user }
 
   - if show_logo

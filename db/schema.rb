@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170226130125) do
+ActiveRecord::Schema.define(version: 20170226131339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -172,7 +172,7 @@ ActiveRecord::Schema.define(version: 20170226130125) do
     t.string   "instagram"
     t.string   "website_url"
     t.string   "linkedin"
-    t.string   "job_title"
+    t.string   "tagline"
     t.string   "slug"
     t.integer  "permission"
     t.string   "logo"

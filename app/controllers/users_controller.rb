@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params[:user].permit(:name, :bio, :image, :logo, :logo_link, :job_title, :twitter,
+      params[:user].permit(:name, :bio, :image, :logo, :logo_link, :tagline, :twitter,
                            :instagram, :github, :facebook, :linkedin,
                            :website_url, primary_language_ids: [], language_ids: [], interests_attributes:
                            [:id, :name, :_destroy],
