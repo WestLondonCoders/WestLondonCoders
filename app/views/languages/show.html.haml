@@ -4,6 +4,10 @@
 
 .m-hackroom
 
+  - if current_user && user_is_admin
+    .centered
+      = link_to "Edit language", edit_language_path(@language), class: "a-button a-button--edit"
+
   %section.a-section
     .a-content
       .m-languages
@@ -11,32 +15,39 @@
           %h1.u-center.m-languages__language--default{class: "m-languages__language--#{@language.id}"}= @language.name
 
           .m-languages__hackrooms
-            %h2
-              Hackrooms using
-              = @language.name
-
-            %ul
-              - if @language.hackrooms.any?
-                - @language.hackrooms.each do |hackroom|
-                  %li= link_to hackroom.name, hackroom
-              - else
-                None yet. Want to start one? Contact
-                = link_to "Steve", user_path(1)
+            = render partial: 'hackrooms', locals: { language: @language }
 
           .m-languages__people
             %h2
               People using
               = @language.name
-            %ul
-              - if @language.users.any?
-                .m-hackroom__members
-                  - @language.users.each do |user|
-                    = render partial: 'shared/user_tag', locals: { user: user }
-              - else
-                Nobody has added this language yet.
-                - if current_user
-                  Add
-                  = @language.name
-                  to your
-                  = succeed '.' do
-                    = link_to 'profile', edit_user_path(current_user)
+
+            %h3 Seriously
+            - if @language.primary_users.any?
+              .m-hackroom__members
+                - @language.primary_users.each do |user|
+                  = render partial: 'shared/user_tag', locals: { user: user }
+            - else
+              Nobody is serious about
+              = @language.name
+              yet.
+              - if current_user
+                Add
+                = @language.name
+                to your
+                = succeed '.' do
+                  = link_to 'profile', edit_user_path(current_user)
+            %h3
+              Less seriously...
+            - if @language.users.any?
+              .m-hackroom__members
+                - @language.users.each do |user|
+                  = render partial: 'shared/user_tag', locals: { user: user }
+            - else
+              Nobody is taking
+              = @language.name
+              less seriously yet.
+              - if current_user
+                Add it to your
+                = succeed '.' do
+                  = link_to 'profile', edit_user_path(current_user)

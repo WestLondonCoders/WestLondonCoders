@@ -1,0 +1,39 @@
+- if language.primary_hackrooms.any? || language.hackrooms.any?
+  %h2
+    Hackrooms primarily using
+    = language.name
+
+  %ul
+    - if language.primary_hackrooms.any?
+      - language.primary_hackrooms.each do |hackroom|
+        %li= link_to hackroom.name, hackroom
+    - else
+      There are no hackrooms primarily using
+      = language.name
+      yet.
+      Want to start one? Contact
+      = succeed '.' do
+        = link_to "Steve", user_path(1)
+
+  %h2
+    Hackrooms featuring
+    = language.name
+  %ul
+    - if language.hackrooms.any?
+      - language.hackrooms.each do |hackroom|
+        %li= link_to hackroom.name, hackroom
+    - else
+      There are no hackrooms using
+      = succeed '.' do
+        = language.name
+      Want to start one? Contact
+      = succeed '.' do
+        = link_to "Steve", user_path(1)
+- else
+  %p
+    There are no hackrooms using
+    = language.name
+    yet.
+    Want to start one? Contact
+    = succeed '.' do
+      = link_to "Steve", user_path(1)

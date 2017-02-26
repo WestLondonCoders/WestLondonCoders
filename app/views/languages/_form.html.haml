@@ -1,9 +1,10 @@
 - set_page_title("Editing language")
 
-.m-post-editor
-  = form_for @language do |f|
-    .m-post-editor__title
-      %h1= f.text_field :name, placeholder: "Ruby"
-    .u-float-right
-      = link_to "Cancel", languages_path, class: 'a-button a-button--ghost u-left'
-      = f.submit 'Save changes', class: 'a-button'
+.m-hackroom
+  .m-post-editor
+    = form_for @language do |f|
+      .m-post-editor__title
+        %h1= f.text_field :name, placeholder: "Ruby"
+      .u-float-right
+        = link_to "Cancel", languages_path, class: 'a-button a-button--ghost u-left'
+        = f.submit 'Save changes', class: 'a-button'

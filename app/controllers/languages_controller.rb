@@ -1,8 +1,5 @@
 class LanguagesController < ApplicationController
-
-  def show
-    @language = Language.find(params[:id])
-  end
+  before_action :find_language, only: [:show, :edit, :update]
 
   def index
     @search = Language.ransack(params[:q])
@@ -31,7 +28,21 @@ class LanguagesController < ApplicationController
     end
   end
 
+  def update
+    respond_to do |format|
+      if @language.update(language_params)
+        format.html { redirect_to @language, notice: 'Language was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
+  end
+
   private
+
+  def find_language
+    @language = Language.find(params[:id])
+  end
 
   def language_params
     params.require(:language).permit(:name)
