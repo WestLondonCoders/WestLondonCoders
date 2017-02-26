@@ -1,6 +1,6 @@
 class LanguagesController < ApplicationController
-  before_action :find_language, only: [:show, :edit, :update]
-  before_action :require_admin, only: [:new, :destroy, :create]
+  before_action :find_language, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:new, :destroy, :create, :update]
 
   def index
     @search = Language.ransack(params[:q])
@@ -36,6 +36,13 @@ class LanguagesController < ApplicationController
       else
         format.html { render :edit }
       end
+    end
+  end
+
+  def destroy
+    @language.destroy
+    respond_to do |format|
+      format.html { redirect_to languages_path, notice: 'Language deleted.' }
     end
   end
 
