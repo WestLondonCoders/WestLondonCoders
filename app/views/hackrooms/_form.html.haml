@@ -47,6 +47,9 @@
         %h2 Admins
         = f.select :owner_ids, user_options_for_select(User.all, f.object.owner_ids), { label: 'Admins' }, multiple: true
 
-    .u-float-right
-      = link_to "Cancel", hackrooms_path, class: 'a-button a-button--ghost u-left'
-      = f.submit 'Save changes', class: 'a-button'
+    .u-margin-top
+      .m-post-editor__submit
+        = link_to "Delete hackroom", @hackroom, method: :delete, data: { confirm: 'Delete hackroom?' }, class: 'a-button a-button--ghost' if user_is_admin
+        .u-float-right
+          = link_to "Cancel", hackroom_path(@hackroom), class: 'a-button a-button--ghost u-right'
+          = f.submit 'Save', class: 'a-button u-right'

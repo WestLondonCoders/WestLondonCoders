@@ -75,6 +75,13 @@ class HackroomsController < ApplicationController
     end
   end
 
+  def destroy
+    @hackroom.destroy
+    respond_to do |format|
+      format.html { redirect_to hackrooms_path }
+    end
+  end
+
   private
 
   def get_hackroom
