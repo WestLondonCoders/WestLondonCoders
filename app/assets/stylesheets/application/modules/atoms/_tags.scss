@@ -8,6 +8,10 @@ $tag-avatar-size: 49px;
   text-transform: capitalize;
 }
 
+.a-tags--center {
+  justify-content: center;
+}
+
 .a-tag--with-face {
   display: flex;
   flex-direction: row;
@@ -39,13 +43,15 @@ $tag-avatar-size: 49px;
   color: $color-white;
   font-weight: normal;
   padding: 10px 15px;
-  margin-right: 20px;
   transition: 1s;
   font-size: 20px;
 
   &:visited,
   &:active {
     color: $color-white;
+  }
+  &:not(:last-child) {
+    margin-right: 20px;
   }
 }
 

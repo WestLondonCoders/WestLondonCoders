@@ -2,10 +2,8 @@
   .m-profile__image
     = image_tag(avatar_url(user))
   .m-profile__header-text
-    %h1
-      = link_to user.name, user
-    %h3
-      = user.tagline
+    %h1= link_to user.name, user
+    %h3= user.tagline
     = render partial: 'users/social_links', locals: { user: user }
 
   - if show_logo

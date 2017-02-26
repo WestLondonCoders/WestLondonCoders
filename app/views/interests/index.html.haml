@@ -1,7 +1,7 @@
 - set_page_title("Interests")
 
 %section.a-section
-  .a-content
+  .a-content--xwide
     = render partial: 'shared/people_tabs'
     %h1.a-heading
       #interest-search-heading
@@ -10,5 +10,7 @@
     = render partial: 'filter_interests'
     = render partial: 'sort_interests'
 
+%section.a-section
+  .a-content
     #interest-search-results
       = render 'results'

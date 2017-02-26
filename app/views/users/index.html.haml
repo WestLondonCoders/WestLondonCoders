@@ -1,7 +1,7 @@
 - set_page_title("Members")
 
 %section.a-section
-  .a-content
+  .a-content--xwide
 
     = render partial: 'shared/people_tabs'
 
@@ -12,5 +12,7 @@
     = render partial: 'filter'
     = render partial: 'sort'
 
+%section.a-section
+  .a-content--xwide
     #user-search-results
       = render 'results'
