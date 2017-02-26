@@ -6,9 +6,9 @@
       - else
         %img{src: asset_path("avatar.png"), class: 'm-dropdown__trigger'}
       %ul.m-dropdown__submenu.m-dropdown__submenu--right-small.js-submenu
-        - if can? :manage, User
+        - if can? :manage, User.all
           %li
-            = link_to "Admin", admin_path
+            = link_to "Admin", admin_users_path
         %li
           = link_to "My profile", user_path(current_user)
         %li

@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get '/learn', to: 'pages#learn', as: 'learn'
   get '/jekyll', to: 'pages#jekyll', as: 'jekyll'
   get '/meetups', to: 'pages#meetups', as: 'meetups'
-  get '/admin', to: 'users#admin'
 
   resources :posts do
     collection do
@@ -61,4 +60,14 @@ Rails.application.routes.draw do
   end
 
   resources :roles
+
+  namespace :admin do
+    root to: 'users#index'
+
+    resources :users do
+      collection do
+        match 'search' => 'users#search', via: [:get, :post], as: :search
+      end
+    end
+  end
 end
