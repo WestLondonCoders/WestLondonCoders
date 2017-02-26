@@ -1,6 +1,7 @@
 class HackroomsController < ApplicationController
   before_action :get_hackroom, only: [:show, :edit, :update, :destroy, :join, :leave]
   before_action :get_user, only: [:join, :leave]
+  before_action :require_sign_in, only: [:new, :create, :update]
   before_action :require_hackroom_admin, only: [:edit, :update, :destroy]
 
   def index

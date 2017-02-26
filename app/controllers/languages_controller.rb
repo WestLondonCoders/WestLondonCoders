@@ -1,5 +1,6 @@
 class LanguagesController < ApplicationController
   before_action :find_language, only: [:show, :edit, :update]
+  before_action :require_admin, only: [:new, :destroy, :create]
 
   def index
     @search = Language.ransack(params[:q])
