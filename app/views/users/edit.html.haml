@@ -18,7 +18,10 @@
 
     %section.a-section
       .a-content.m-hackroom__languages
-        %h2 Languages you'd like to participate in hackrooms with
+        %h2 Primary languages you use
+        = f.select :primary_language_ids, language_options_for_select(Language.all, f.object.primary_language_ids), { label: 'Languages', include_blank: true }, multiple: true
+
+        %h2 Secondary languages you use
         = f.select :language_ids, language_options_for_select(Language.all, f.object.language_ids), { label: 'Languages', include_blank: true }, multiple: true
 
     %section.a-section

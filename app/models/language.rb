@@ -7,4 +7,7 @@ class Language < ActiveRecord::Base
 
   has_many :user_languages
   has_many :users, through: :user_languages
+
+  has_many :user_primaries
+  has_many :primary_users, through: :user_primaries, source: :user
 end

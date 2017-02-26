@@ -18,6 +18,9 @@ class User < ActiveRecord::Base
   has_many :user_languages
   has_many :languages, through: :user_languages
 
+  has_many :user_primaries
+  has_many :primary_languages, through: :user_primaries, source: :language
+
   mount_uploader :image, AvatarUploader
   mount_uploader :logo, LogoUploader
 
