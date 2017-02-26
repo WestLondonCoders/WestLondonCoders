@@ -17,6 +17,8 @@
 
   = render partial: 'language_list'
 
+  = render partial: 'hackrooms', locals: { user: @user }
+
   - if @user.interests.any?
     %section.a-section
       .a-content

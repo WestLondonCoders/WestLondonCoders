@@ -1,0 +1,14 @@
+%section.a-section
+  .a-content
+    - if user.hackrooms.any? || user.own_hackrooms.any?
+
+      - if user.own_hackrooms.any?
+        %h1
+          Hackrooms I help maintain
+        = render partial: 'shared/hackroom_list', locals: { source: user.own_hackrooms }
+
+      - if user.hackrooms.any?
+        %h1
+          Hackrooms I participate in
+        = render partial: 'shared/hackroom_list', locals: { source: user.hackrooms }
+
