@@ -60,4 +60,6 @@ Rails.application.routes.draw do
       post :leave
     end
   end
+
+  resources :roles
 end

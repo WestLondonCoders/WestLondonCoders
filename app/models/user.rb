@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :assignments
+  has_many :roles, through: :assignments
+
   has_many :user_interests
   has_many :interests, through: :user_interests
   accepts_nested_attributes_for :interests, reject_if: :all_blank, allow_destroy: true
