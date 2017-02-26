@@ -26,7 +26,7 @@
 
       .a-content
         - if @hackroom.owners.any?
-          %h2 Admins
+          %h2 Maintainers
           .m-hackroom__members
             - @hackroom.owners.each do |user|
               = render partial: 'shared/user_tag', locals: { user: user }
