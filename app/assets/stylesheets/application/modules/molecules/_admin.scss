@@ -1,0 +1,20 @@
+.m-admin__user {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid $color-border;
+}
+
+.m-admin__user-name {
+  width: 30%;
+}
+
+.m-admin__user-permission {
+  width: 20%;
+
+  input {
+    width: 50px;
+  }
+}

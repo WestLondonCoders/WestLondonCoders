@@ -30,6 +30,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'fog'
 gem "mini_magick"
 gem 'file_validators'
+gem 'cancancan', '~> 1.15.0'
 
 group :development, :test do
   gem 'byebug'

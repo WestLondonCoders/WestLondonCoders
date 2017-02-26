@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/jekyll', to: 'pages#jekyll', as: 'jekyll'
   get '/meetups', to: 'pages#meetups', as: 'meetups'
   get '/organisers', to: 'users#organisers', as: 'organisers'
+  get '/admin', to: 'users#admin'
 
   resources :posts do
     collection do

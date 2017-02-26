@@ -3,6 +3,9 @@ class UsersController < ApplicationController
                                                  :edit_interests, :edit_skills]
   before_action :require_admin_or_owner,  only: [:edit, :edit_interests,
                                                  :edit_skills, :update]
+  before_action :require_admin, only: [:admin]
+
+
 
   def show
     @posts = Post.all.where(created_by_id: @user).order("created_at desc")
@@ -41,24 +44,28 @@ class UsersController < ApplicationController
     @users = User.all.where("permission > ?", 29)
   end
 
+  def admin
+    @users = User.all
+  end
+
   private
 
-    def get_user
-      @user = User.find(params[:id])
-    end
+  def get_user
+    @user = User.find(params[:id])
+  end
 
-    def user_params
-      params[:user].permit(:name, :bio, :image, :logo, :logo_link, :tagline, :twitter,
-                           :instagram, :github, :facebook, :linkedin,
-                           :website_url, primary_language_ids: [], language_ids: [], interests_attributes:
-                           [:id, :name, :_destroy],
-                           skills_attributes: [:id, :name, :_destroy])
-    end
+  def user_params
+    params[:user].permit(:name, :bio, :image, :logo, :logo_link, :tagline, :twitter,
+                         :instagram, :github, :facebook, :linkedin, :permission,
+                         :website_url, primary_language_ids: [], language_ids: [], interests_attributes:
+                         [:id, :name, :_destroy],
+                         skills_attributes: [:id, :name, :_destroy])
+  end
 
-    def require_admin_or_owner
-      unless user_is_owner_or_admin
-        redirect_to user_path(@user)
-        flash[:alert] = "You're not authorised to do that"
-      end
+  def require_admin_or_owner
+    unless user_is_owner_or_admin
+      redirect_to user_path(@user)
+      flash[:alert] = "You're not authorised to do that"
     end
+  end
 end

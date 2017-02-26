@@ -1,0 +1,15 @@
+.a-page-holder
+  %section.a-section
+    .a-content
+      %h1.u-center
+        Admin
+      .m-admin
+        - @users.each do |user|
+          = form_for user do |f|
+            .m-admin__user
+              .m-admin__user-name
+                = user.name
+              .m-admin__user-permission
+                = f.number_field :permission
+              .m-admin__user-submit
+                = f.submit 'Update', class: 'a-button'
