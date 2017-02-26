@@ -23,9 +23,9 @@
       - language.hackrooms.each do |hackroom|
         %li= link_to hackroom.name, hackroom
     - else
-      There are no hackrooms using
-      = succeed '.' do
-        = language.name
+      There are no hackrooms featuring
+      = language.name
+      as a secondary language.
       Want to start one? Contact
       = succeed '.' do
         = link_to "Steve", user_path(1)
