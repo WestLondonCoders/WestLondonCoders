@@ -2,12 +2,14 @@
 
 .u-margin-top--desktop
 
-- if current_user
-  - if current_user.is_hackroom_admin?(@hackroom) || user_is_admin
-    .centered
-      = link_to "Edit hackroom", edit_hackroom_path(@hackroom), class: "a-button a-button--edit"
-
 .m-hackroom
+
+  - if current_user
+    - if user_is_admin || current_user.is_hackroom_admin?(@hackroom)
+      %section.a-section.u-margin-top--mobile
+        .a-content.u-center
+          = link_to "Edit hackroom", edit_hackroom_path(@hackroom), class: "a-button a-button--edit"
+
   %section.a-section
     .a-content
       .m-hackroom__links.u-float-right

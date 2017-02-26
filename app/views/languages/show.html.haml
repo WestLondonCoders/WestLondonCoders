@@ -4,9 +4,11 @@
 
 .m-hackroom
 
-  - if current_user && user_is_admin
-    .centered
-      = link_to "Edit language", edit_language_path(@language), class: "a-button a-button--edit"
+  - if current_user
+    - if user_is_admin || current_user.is_hackroom_admin?(@hackroom)
+      %section.a-section.u-margin-top--mobile
+        .a-content.u-center
+          = link_to "Edit language", edit_language_path(@language), class: "a-button a-button--edit"
 
   %section.a-section
     .a-content
