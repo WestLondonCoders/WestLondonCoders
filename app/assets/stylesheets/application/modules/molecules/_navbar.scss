@@ -3,13 +3,13 @@ header {
 }
 
 .m-navbar--mobile {
-  @media #{$from-medium} {
+  @media #{$from-large} {
     display: none;
   }
 }
 
 .m-navbar--desktop {
-  @media #{$to-medium} {
+  @media #{$to-large} {
     display: none;
   }
 }
