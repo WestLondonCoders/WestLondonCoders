@@ -106,7 +106,10 @@ class HackroomsController < ApplicationController
   end
 
   def slack
-    Slacked.post_async "#{current_user.name} created a hackroom: #{@hackroom.name} #{hackroom_url(@hackroom)}",
-                        {channel: 'general', username: 'Hackroom Bot'}
+    if Rails.env.production?
+      Slacked.post_async "#{current_user.name} created a hackroom: #{@hackroom.name} #{hackroom_url(@hackroom)}", {channel: 'general', username: 'Hackroom Bot'}
+    else
+      Slacked.post_async "#{current_user.name} created a hackroom: #{@hackroom.name} #{hackroom_url(@hackroom)}", {channel: 'testing', username: 'Hackroom Bot'}
+    end
   end
 end

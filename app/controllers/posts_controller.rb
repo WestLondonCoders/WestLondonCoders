@@ -81,7 +81,10 @@ class PostsController < ApplicationController
   end
 
   def slack
-    Slacked.post "#{@post.created_by.name} published a post: #{@post.title} - #{post_url(@post)}",
-                  {channel: 'general', username: 'Blogger Bot'}
+    if Rails.env.production?
+      Slacked.post "#{@post.created_by.name} published a post: #{@post.title} - #{post_url(@post)}", {channel: 'general', username: 'Blogger Bot'}
+    else
+      Slacked.post "#{@post.created_by.name} published a post: #{@post.title} - #{post_url(@post)}", {channel: 'testing', username: 'Blogger Bot'}
+    end
   end
 end
