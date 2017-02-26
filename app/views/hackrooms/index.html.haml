@@ -3,14 +3,14 @@
 .m-hackroom
 
   %section.a-section
-    .a-content--xwide
+    .a-content--xwide.a-content--tight
 
       %h1.u-center
         #hackroom-search-heading
           = render 'heading'
 
-      = render partial: 'filter'
       = render partial: 'sort'
+      = render partial: 'filter'
 
   - if current_user
     %section.a-section.u-margin-top--mobile

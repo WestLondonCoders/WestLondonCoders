@@ -1,16 +1,17 @@
 - set_page_title("Members")
 
-%section.a-section
-  .a-content--xwide
+.m-hackroom
+  %section.a-section
+    .a-content--xwide.a-content--tight
 
-    %h1.u-center
-      #user-search-heading
-        = render 'heading'
+      %h1.u-center
+        #user-search-heading
+          = render 'heading'
 
-    = render partial: 'filter'
-    = render partial: 'sort'
+      = render partial: 'filter'
+      = render partial: 'sort'
 
-%section.a-section
-  .a-content--xwide
-    #user-search-results
-      = render 'results'
+  %section.a-section
+    .a-content--xwide
+      #user-search-results
+        = render 'results'

@@ -1,22 +1,24 @@
 - set_page_title("Languages")
 
-%section.a-section
-  .a-content--xwide
+.m-hackroom
 
-    %h1.u-center
-      #language-search-heading
-        = render 'heading'
+  %section.a-section
+    .a-content--xwide.a-content--tight
 
-    = render partial: 'filter'
-    = render partial: 'sort'
+      %h1.u-center
+        #language-search-heading
+          = render 'heading'
 
-- if user_is_admin
-  %section.a-section.u-margin-top--mobile
-    .a-content.u-center
-      = link_to "Add language", new_language_path, class: 'a-button a-button--edit'
+      = render partial: 'filter'
+      = render partial: 'sort'
 
-%section.a-section
-  .a-content
+  - if user_is_admin
+    %section.a-section.u-margin-top--mobile
+      .a-content.u-center
+        = link_to "Add language", new_language_path, class: 'a-button a-button--edit'
 
-    #language-search-results
-      = render 'results'
+  %section.a-section
+    .a-content
+
+      #language-search-results
+        = render 'results'

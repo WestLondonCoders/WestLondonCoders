@@ -1,5 +1,5 @@
 .m-user-list__search.js-filter-form
   = search_form_for @search, url: search_hackrooms_path, method: :post, remote: true do |f|
     .m-user-list__search-item
-      = f.search_field :languages_name_cont, placeholder: 'Languages'
+      = f.search_field :languages_name_cont, placeholder: 'Search by language'
     = f.submit "Search", class: 'a-button u-hide-on-desktop'
