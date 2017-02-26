@@ -58,4 +58,8 @@ class User < ActiveRecord::Base
   def is_hackroom_admin?(hackroom)
     own_hackrooms.include? hackroom
   end
+
+  def has_role?(role_sym)
+    roles.any? { |r| r.name.underscore.to_sym == role_sym }
+  end
 end
