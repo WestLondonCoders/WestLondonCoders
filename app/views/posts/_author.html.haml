@@ -1,7 +1,7 @@
 .m-post__author
   .m-post__author-photo
-    = link_to image_tag(avatar_url(@post.created_by)), user_path(@post.created_by), title: @post.created_by.name
+    = link_to image_tag(avatar_url(user)), user_path(user), title: user.name
   .m-post__meta
-    = link_to @post.created_by.name, user_path(@post.created_by)
-    %br
-    = @post.created_at.to_formatted_s(:long)
+    .m-languages__language--default{class: ("m-languages__language--#{user.primary_languages.first.id}" if user.primary_languages.any?)}
+      = link_to user.name, user_path(user)
+    = post.created_at.to_formatted_s(:long)

@@ -3,7 +3,7 @@
     .m-post
       %h1= @post.title
 
-      = render partial: 'posts/author'
+      = render partial: 'posts/author', locals: { user: @post.created_by, post: @post }
 
       .m-post__content
         = sanitize @post.content
