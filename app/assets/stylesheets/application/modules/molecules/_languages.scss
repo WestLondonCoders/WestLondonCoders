@@ -11,8 +11,8 @@
   margin-bottom: 50px;
 }
 
-.m-languages__people {
-
+.m-languages__language--default {
+  border-bottom: solid 2px $color-black;
 }
 
 .m-languages__language--1 {
@@ -21,4 +21,24 @@
 
 .m-languages__language--2 {
   border-bottom: solid 2px $color-python;
+}
+
+.m-languages__language--3 {
+  border-bottom: solid 2px $color-java;
+}
+
+.m-languages__language--4 {
+  border-bottom: solid 2px $color-swift;
+}
+
+.m-languages__language--5 {
+  border-bottom: solid 2px $color-js;
+}
+
+.m-languages__language--6 {
+  border-bottom: solid 2px $color-react;
+}
+
+.m-languages__language--7 {
+  border-bottom: solid 2px $color-html;
 }
