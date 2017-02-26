@@ -4,19 +4,29 @@
       = link_to hackroom_path(hackroom) do
         %h2.m-languages__language--default{class: ("m-languages__language--#{hackroom.primary_languages.first.id}" if hackroom.primary_languages.any?)}
           = hackroom.name
+          %span.u-float-right= pluralize((hackroom.users.count + hackroom.owners.count), 'member')
+
+      .m-hackroom__mission
+        = simple_format(truncate(sanitize(hackroom.mission), length: 250, escape: false, omission: '...', separator: '.'))
+
       %p
-        - if hackroom.users.any?
-          = pluralize(hackroom.users.count, 'member')
-          - if hackroom.languages.any?
-            using
-            = hackroom.languages.map {|l| l.name }.to_sentence
-          - else
-            still deciding which programming languages to use.
+        - if hackroom.primary_languages.any?
+          .a-tags
+            - hackroom.primary_languages.each do |language|
+              = link_to language do
+                %h2.a-tag{class: "a-tag--#{language.id}"}= language.name
 
-        - else
-          This hackroom doesn't have any members yet. Would you like to
-          = link_to 'join', join_hackroom_path(hackroom)
-          it?
+      - if hackroom.owners.any?
+        %h3 Maintainers
+        .m-hackroom__members
+          - hackroom.owners.each do |user|
+            = render partial: 'shared/user_tag', locals: { user: user }
 
-      .u-right
-        = link_to "View", hackroom, class: 'a-button'
+      - if hackroom.users.any?
+        %h3 Members
+        .m-hackroom__members
+          - hackroom.users.each do |user|
+            = render partial: 'shared/user_tag', locals: { user: user }
+
+      .u-margin-top.u-right
+        = link_to "View", hackroom, class: 'a-button a-button--elastic'

@@ -10,10 +10,10 @@
   display: block;
   width: 100%;
   padding: 20px;
+  border-radius: 5px;
   border: 1px solid $color-border;
   box-sizing: border-box;
   margin: 5px;
-  border-radius: 5px;
 
   @media #{$from-medium} {
     width: 45%;

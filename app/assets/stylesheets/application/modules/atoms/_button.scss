@@ -58,3 +58,17 @@
     border: solid 1px $color-pink;
   }
 }
+
+.a-button--elastic {
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+
+  @media #{$from-medium} {
+    width: auto;
+
+    .a-content--form & {
+      width: 100%;
+    }
+  }
+}

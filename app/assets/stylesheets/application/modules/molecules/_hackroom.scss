@@ -3,6 +3,11 @@
 }
 
 .m-hackroom-list__hackroom {
+  margin-bottom: 50px;
+  padding: 25px 40px;
+  border-radius: 5px;
+  border: 1px solid $color-border;
+  box-sizing: border-box;
 }
 
 .m-hackroom-list__title--1 {
@@ -35,6 +40,12 @@
 .m-hackroom__members {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  padding: 10px;
+
+  .m-post__author {
+    margin: 10px;
+  }
 
   .m-post__author:not(:last-child) {
     margin-right: 2em;
