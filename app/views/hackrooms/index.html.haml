@@ -14,10 +14,10 @@
       = render partial: 'filter'
       = render partial: 'sort'
 
-  - if user_is_admin
+  - if current_user
     %section.a-section.u-margin-top--mobile
       .a-content.u-center
-        = link_to "Add hackroom", new_hackroom_path, class: 'a-button  a-button--edit'
+        = link_to "Create hackroom", new_hackroom_path, class: 'a-button  a-button--edit'
 
   %section.a-section
     .a-content

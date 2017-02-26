@@ -2,7 +2,7 @@ class HackroomsController < ApplicationController
   before_action :get_hackroom, only: [:show, :edit, :update, :destroy, :join, :leave]
   before_action :get_user, only: [:join, :leave]
   before_action :require_sign_in, only: [:new, :create, :update]
-  before_action :require_hackroom_admin, only: [:edit, :update, :destroy]
+  before_action :require_hackroom_admin, only: [:destroy, :edit, :update]
 
   def index
     @search = Hackroom.ransack(params[:q])
@@ -25,8 +25,9 @@ class HackroomsController < ApplicationController
 
     respond_to do |format|
       if @hackroom.save
+        HackroomOwner.create(hackroom: @hackroom, user: current_user)
         slack
-        format.html { redirect_to hackrooms_path, notice: 'Hackroom created successfully.' }
+        format.html { redirect_to @hackroom, notice: 'Hackroom created successfully.' }
       else
         flash[:alert] = 'Something went wrong.'
         format.html { render :new }
@@ -96,17 +97,15 @@ class HackroomsController < ApplicationController
     params.require(:hackroom).permit(:name, :mission, :slack, :project_url, :slug, owner_ids: [], primary_language_ids: [], language_ids: [])
   end
 
-  private
-
-    def require_hackroom_admin
-      unless current_user.is_hackroom_admin?(@hackroom) || user_is_admin
-        redirect_to hackroom_path(@hackroom)
-        flash[:alert] = "You're not authorised to do that"
-      end
+  def require_hackroom_admin
+    unless current_user.is_hackroom_admin?(@hackroom) || user_is_admin
+      redirect_to hackroom_path(@hackroom)
+      flash[:alert] = "You're not authorised to do that"
     end
+  end
 
-    def slack
-      Slacked.post_async "#{current_user.name} created a hackroom: #{@hackroom.name} #{hackroom_url(@hackroom)}",
-                          {channel: 'general', username: 'Hackroom Bot'}
-    end
+  def slack
+    Slacked.post_async "#{current_user.name} created a hackroom: #{@hackroom.name} #{hackroom_url(@hackroom)}",
+                        {channel: 'general', username: 'Hackroom Bot'}
+  end
 end
