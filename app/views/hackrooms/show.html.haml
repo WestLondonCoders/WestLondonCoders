@@ -13,8 +13,9 @@
   %section.a-section
     .a-content
       .m-hackroom__links.u-float-right
-        = link_to "https://westlondoncoders.slack.com/archives/#{@hackroom.slack}", target: "_blank" do
-          %i.fa.fa-slack
+        - if @hackroom.slack.present?
+          = link_to "https://westlondoncoders.slack.com/archives/#{@hackroom.slack}", target: "_blank" do
+            %i.fa.fa-slack
 
       %h1.a-heading.centered.m-languages__language--default{class: ("m-languages__language--#{@hackroom.primary_languages.first.id}" if @hackroom.primary_languages.any?)}
         = @hackroom.name
