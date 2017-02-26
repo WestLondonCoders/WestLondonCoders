@@ -27,15 +27,25 @@
         %h2 Languages you're using
         %h3 Primary languages
         %p Choose the languages and tools that are the main point of your hackroom.
-        = f.select :primary_language_ids, language_options_for_select(Language.all, f.object.primary_language_ids), { label: 'Languages', include_blank: true }, multiple: true
+
+        .m-form__checkboxes
+          = f.collection_check_boxes :primary_language_ids, Language.all, :id, :name do |b|
+            .m-form__checkbox
+              = b.check_box
+              = b.label
+
         %h3 Others used
         %p List any other languages also used.
-        = f.select :language_ids, language_options_for_select(Language.all, f.object.language_ids), { label: 'Languages', include_blank: true }, multiple: true
+        .m-form__checkboxes
+          = f.collection_check_boxes :language_ids, Language.all, :id, :name do |b|
+            .m-form__checkbox
+              = b.check_box
+              = b.label
 
     %section.a-section
       .a-content.m-hackroom__admins
         %h2 Admins
-        = f.select :owner_ids, user_options_for_select(User.all, f.object.owner_ids), { label: 'Admins', include_blank: true }, multiple: true
+        = f.select :owner_ids, user_options_for_select(User.all, f.object.owner_ids), { label: 'Admins' }, multiple: true
 
     .u-float-right
       = link_to "Cancel", hackrooms_path, class: 'a-button a-button--ghost u-left'
