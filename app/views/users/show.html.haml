@@ -32,19 +32,6 @@
               - @user.interests.each do |interest|
                 %h2.a-tag.a-tag--interest= interest.name
 
-  - if @user.skills.any?
-    %section.a-section
-      .a-content.black-link
-        %h1
-          Skills
-          - if user_is_owner_or_admin
-            %a.m-profile__pencil{href: edit_skills_path(@user)}
-              %i.a-icon-after-text.fa.fa-pencil
-
-          .a-tags
-            - @user.skills.each do |skill|
-              %h2.a-tag.a-tag--skill= skill.name
-
   - if user_is_owner_or_admin
     .u-center
       - if @user.interests.empty?
