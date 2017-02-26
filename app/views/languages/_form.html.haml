@@ -6,6 +6,11 @@
       .m-post-editor__title
         %h1= f.text_field :name, placeholder: "Ruby"
 
+      %section.a-section
+        .a-content
+          %h2 Description
+          = f.trix_editor :description
+
       .u-margin-top
         .m-post-editor__submit
           = link_to "Delete language", @language, method: :delete, data: { confirm: 'Delete language?' }, class: 'a-button a-button--ghost' if user_is_admin
