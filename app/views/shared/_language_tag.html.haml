@@ -1,3 +1,2 @@
-.m-post__author
-  .m-post__meta
-    = link_to language.name, language_path(language)
+= link_to language do
+  %h2.a-tag{class: "a-tag--#{language.id}"}= language.name
