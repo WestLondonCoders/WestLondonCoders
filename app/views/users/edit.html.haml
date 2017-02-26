@@ -72,7 +72,8 @@
           %p Logo link
           = f.text_field :logo_link, class: 'm-profile__wide-field', placeholder: "https://westlondoncoders.com"
 
-    %section.a-section
-      .a-content.u-center
-        %a.a-button.a-button--ghost{href: user_path} Cancel
-        = f.submit 'Save changes', class: 'a-button'
+        .u-margin-top
+          .m-post-editor__submit
+            .u-float-right
+              = link_to "Cancel", user_path(@user), class: 'a-button a-button--ghost u-right'
+              = f.submit 'Save', class: 'a-button u-right'
