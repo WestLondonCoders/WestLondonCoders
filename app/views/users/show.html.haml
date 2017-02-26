@@ -2,6 +2,11 @@
 
 .u-margin-top--desktop
 
+- if user_is_owner_or_admin
+  %section.a-section.u-margin-top
+    .a-content.u-center
+      = link_to "Edit profile", edit_user_path(@user), class: 'a-button  a-button--edit'
+
 .m-profile
   %section.a-section
     .a-content

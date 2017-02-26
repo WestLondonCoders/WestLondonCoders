@@ -1,8 +1,9 @@
 - set_page_title("Languages")
 
 - if user_is_admin
-  .u-centered
-    = link_to "Add language", new_language_path, class: 'a-button  a-button--edit'
+  %section.a-section.u-margin-top
+    .a-content.u-center
+      = link_to "Add language", new_language_path, class: 'a-button a-button--edit'
 
 %section.a-section
   .a-content
