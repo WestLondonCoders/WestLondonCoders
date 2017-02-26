@@ -5,8 +5,8 @@
 
   %ul
     - if language.primary_hackrooms.any?
-      - language.primary_hackrooms.each do |hackroom|
-        %li= link_to hackroom.name, hackroom
+      = render partial: 'shared/hackroom_list', locals: { source: language.primary_hackrooms }
+
     - else
       There are no hackrooms primarily using
       = language.name
@@ -20,8 +20,8 @@
     = language.name
   %ul
     - if language.hackrooms.any?
-      - language.hackrooms.each do |hackroom|
-        %li= link_to hackroom.name, hackroom
+      = render partial: 'shared/hackroom_list', locals: { source: language.hackrooms }
+
     - else
       There are no hackrooms featuring
       = language.name
