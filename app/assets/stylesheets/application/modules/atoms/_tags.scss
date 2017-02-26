@@ -6,6 +6,10 @@ $tag-avatar-size: 49px;
   flex-wrap: wrap;
   align-items: center;
   text-transform: capitalize;
+
+  a:not(:last-child) {
+    margin-right: 20px;
+  }
 }
 
 .a-tags--center {
@@ -50,9 +54,10 @@ $tag-avatar-size: 49px;
   &:active {
     color: $color-white;
   }
-  &:not(:last-child) {
-    margin-right: 20px;
-  }
+}
+
+.a-tag:not(:last-child) {
+  margin-right: 20px;
 }
 
 .a-tag--with-face {
