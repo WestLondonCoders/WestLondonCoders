@@ -4,31 +4,61 @@
       %h1.m-languages__language--default{class: "m-languages__language--#{language.id}"}= language.name
 
       .m-languages__hackrooms
-        %h2
-          Hackrooms using
-          = language.name
 
-        %ul
-          - if language.hackrooms.any?
-            - language.hackrooms.each do |hackroom|
-              %li= link_to hackroom.name, hackroom
-          - else
-            None yet. Want to start one? Contact
-            = link_to "Steve", user_path(1)
+
+        - if language.primary_hackrooms.any? || language.hackrooms.any?
+          %h2
+            Hackrooms primarily using
+            = language.name
+
+          %ul
+            - if language.primary_hackrooms.any?
+              - language.primary_hackrooms.each do |hackroom|
+                %li= link_to hackroom.name, hackroom
+            - else
+              There are no hackrooms primarily using
+              = succeed '.' do
+                = language.name
+              Want to start one? Contact
+              = succeed '.' do
+                = link_to "Steve", user_path(1)
+
+          %h2
+            Hackrooms featuring
+            = language.name
+          %ul
+            - if language.hackrooms.any?
+              - language.hackrooms.each do |hackroom|
+                %li= link_to hackroom.name, hackroom
+            - else
+              There are no hackrooms using
+              = succeed '.' do
+                = language.name
+              Want to start one? Contact
+              = succeed '.' do
+                = link_to "Steve", user_path(1)
+        - else
+          %p
+            There are no hackrooms using
+            = language.name
+            yet.
+            Want to start one? Contact
+            = succeed '.' do
+              = link_to "Steve", user_path(1)
 
       .m-languages__people
         %h2
           People using
           = language.name
-        %ul
-          - if language.users.any?
+        - if language.users.any?
+          .m-hackroom__members
             - language.users.each do |user|
-              %li= link_to user.name, user
-          - else
-            Nobody has added this language yet.
-            - if current_user
-              Add
-              = language.name
-              to your
-              = succeed '.' do
-                = link_to 'profile', edit_user_path(current_user)
+              = render partial: 'shared/user_tag', locals: { user: user }
+        - else
+          Nobody has added this language yet.
+          - if current_user
+            Add
+            = language.name
+            to your
+            = succeed '.' do
+              = link_to 'profile', edit_user_path(current_user)

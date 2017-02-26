@@ -1,0 +1,16 @@
+.a-content
+  %h2 Tools and languages
+  %h3 Primary
+  - if hackroom.primary_languages.any?
+    .m-hackroom__members
+      - hackroom.primary_languages.each do |language|
+        = render partial: 'shared/language_tag', locals: { language: language }
+  - else
+    None added yet.
+  - if hackroom.languages.any?
+    %h3 Secondary
+    .m-hackroom__members
+      - hackroom.languages.each do |language|
+        = render partial: 'shared/language_tag', locals: { language: language }
+  - else
+    None added yet.

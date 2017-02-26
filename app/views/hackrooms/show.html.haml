@@ -19,30 +19,21 @@
       .m-hackroom__mission
         = sanitize(@hackroom.mission)
 
-      .a-content
-        - if @hackroom.languages.any?
-          %h2 Primary tools and languages
-          .m-hackroom__members
-            - @hackroom.primary_languages.each do |language|
-              = render partial: 'shared/language_tag', locals: { language: language }
-          %h3 Others used
-          .m-hackroom__members
-            - @hackroom.languages.each do |language|
-              = render partial: 'shared/language_tag', locals: { language: language }
+      = render partial: 'language_list', locals: { hackroom: @hackroom }
 
       .a-content
         - if @hackroom.owners.any?
           %h2 Admins
           .m-hackroom__members
             - @hackroom.owners.each do |user|
-              = render partial: 'user_tag', locals: { user: user }
+              = render partial: 'shared/user_tag', locals: { user: user }
 
       .a-content
         - if @hackroom.users.any?
           %h2 Members
           .m-hackroom__members
             - @hackroom.users.each do |user|
-              = render partial: 'user_tag', locals: { user: user }
+              = render partial: 'shared/user_tag', locals: { user: user }
 
       - if current_user
         .u-margin-top.u-float-right
