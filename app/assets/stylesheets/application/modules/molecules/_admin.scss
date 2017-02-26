@@ -5,14 +5,22 @@
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid $color-border;
+  text-align: left;
 }
 
 .m-admin__user-name {
-  width: 30%;
+  width: 20%;
 }
 
+.m-admin__user-own-hackroom-count {
+  width: 20%;
+}
+
+.m-admin__user-hackroom-count {
+  width: 20%;
+}
 .m-admin__user-permission {
-  width: 40%;
+  width: 20%;
 
   input {
     width: 50px;

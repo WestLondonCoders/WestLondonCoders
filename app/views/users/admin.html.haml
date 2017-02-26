@@ -1,6 +1,6 @@
 .a-page-holder
   %section.a-section
-    .a-content
+    .a-content--xwide
       %h1.u-center
         Admin
       .m-admin
@@ -19,11 +19,25 @@
           = link_to 'New role', new_role_path, class: 'a-button'
 
         %h1 Members
+        .m-admin__user
+          .m-admin__user-name
+            %strong Name
+          .m-admin__user-own-hackroom-count
+            %strong Hackrooms maintained
+          .m-admin__user-hackroom-count
+            %strong Hackrooms participating in
+          .m-admin__user-permission
+            %strong Roles
+          .m-admin__user-submit
         - @users.each do |user|
           = form_for user do |f|
             .m-admin__user
               .m-admin__user-name
                 = f.text_field :name
+              .m-admin__user-own-hackroom-count
+                = pluralize(user.own_hackrooms.count, 'hackroom')
+              .m-admin__user-hackroom-count
+                = pluralize(user.hackrooms.count, 'hackroom')
               .m-admin__user-permission
                 = f.collection_check_boxes :role_ids, Role.all, :id, :name do |b|
                   .m-form__checkbox
