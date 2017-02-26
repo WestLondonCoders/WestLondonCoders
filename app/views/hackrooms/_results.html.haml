@@ -2,7 +2,7 @@
   - @hackrooms.each do |hackroom|
     .m-hackroom-list__hackroom
       = link_to hackroom_path(hackroom) do
-        %h2{class: ("m-hackroom-list__title--#{hackroom.languages.first.id}" if hackroom.languages.any?) }
+        %h2.m-languages__language--default{class: ("m-languages__language--#{hackroom.primary_languages.first.id}" if hackroom.primary_languages.any?)}
           = hackroom.name
       %p
         - if hackroom.users.any?
@@ -17,7 +17,6 @@
           This hackroom doesn't have any members yet. Would you like to
           = link_to 'join', join_hackroom_path(hackroom)
           it?
-
 
       .u-right
         = link_to "View", hackroom, class: 'a-button'

@@ -83,7 +83,7 @@ class HackroomsController < ApplicationController
   end
 
   def hackroom_params
-    params.require(:hackroom).permit(:name, :mission, :slack, :project_url, :slug, owner_ids: [], language_ids: [])
+    params.require(:hackroom).permit(:name, :mission, :slack, :project_url, :slug, owner_ids: [], primary_language_ids: [], language_ids: [])
   end
 
   private

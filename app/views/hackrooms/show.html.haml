@@ -13,7 +13,7 @@
         = link_to "https://westlondoncoders.slack.com/archives/#{@hackroom.slack}", target: "_blank" do
           %i.fa.fa-slack
 
-      %h1.a-heading.centered
+      %h1.a-heading.centered.m-languages__language--default{class: ("m-languages__language--#{@hackroom.primary_languages.first.id}" if @hackroom.primary_languages.any?)}
         = @hackroom.name
 
       .m-hackroom__mission
@@ -21,7 +21,11 @@
 
       .a-content
         - if @hackroom.languages.any?
-          %h2 Languages
+          %h2 Primary tools and languages
+          .m-hackroom__members
+            - @hackroom.primary_languages.each do |language|
+              = render partial: 'shared/language_tag', locals: { language: language }
+          %h3 Others used
           .m-hackroom__members
             - @hackroom.languages.each do |language|
               = render partial: 'shared/language_tag', locals: { language: language }

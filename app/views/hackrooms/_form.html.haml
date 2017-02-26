@@ -25,6 +25,11 @@
     %section.a-section
       .a-content.m-hackroom__languages
         %h2 Languages you're using
+        %h3 Primary languages
+        %p Choose the languages and tools that are the main point of your hackroom.
+        = f.select :primary_language_ids, language_options_for_select(Language.all, f.object.primary_language_ids), { label: 'Languages', include_blank: true }, multiple: true
+        %h3 Others used
+        %p List any other languages also used.
         = f.select :language_ids, language_options_for_select(Language.all, f.object.language_ids), { label: 'Languages', include_blank: true }, multiple: true
 
     %section.a-section

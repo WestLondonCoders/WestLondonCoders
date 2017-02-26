@@ -1,7 +1,7 @@
 .m-languages
   - @languages.each do |language|
     .m-languages__language
-      %h1{class: "m-languages__language--#{language.id}"}= language.name
+      %h1.m-languages__language--default{class: "m-languages__language--#{language.id}"}= language.name
 
       .m-languages__hackrooms
         %h2
