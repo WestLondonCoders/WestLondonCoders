@@ -11,7 +11,7 @@
   - else
     = tag("meta", property: "twitter:creator", content: "@westlondoncode")
 
-- if user_is_author || @post.created_by == current_user
+- if can? :update, @post
   %section.a-section.u-margin-top--mobile
     .a-content.u-center
       = link_to "Edit post", edit_post_path(@post), class: 'a-button a-button--edit'

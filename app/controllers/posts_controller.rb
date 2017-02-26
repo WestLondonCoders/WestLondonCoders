@@ -1,7 +1,5 @@
 class PostsController < ApplicationController
   before_action :get_post, only: [:show, :edit, :update, :destroy]
-  before_action :require_sign_in, only: [:new, :update, :edit, :destroy]
-  before_action :get_owner, only:[:edit, :update, :destroy]
   after_action :slack, only: [:create]
 
   def index
@@ -57,21 +55,14 @@ class PostsController < ApplicationController
   end
 
   def edit
-    unless user_is_owner_or_admin
-      redirect_to post_path(@post)
-      flash[:alert] = "You're not authorised to do that"
-    end
+    authorize! :edit, @user
   end
 
   def destroy
-    if @user == current_user
+    authorize! :destroy, @hackroom
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to user_path(@user)}
-    end
-    else
-      redirect_to :back
-      flash[:alert] = "You're not authorised to do that"
+      format.html { redirect_to user_path(@post.created_by)}
     end
   end
 
@@ -79,10 +70,6 @@ class PostsController < ApplicationController
 
   def get_post
     @post = Post.find_by_slug(params[:id])
-  end
-
-  def get_owner
-    @user = @post.created_by if @post
   end
 
   def post_params

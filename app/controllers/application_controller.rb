@@ -22,25 +22,4 @@ class ApplicationController < ActionController::Base
       flash[:alert] = "You're not authorised to do that"
     end
   end
-
-# User permissions
-  def user_is_owner_or_admin
-    current_user == @user || current_user.permission >= 50 if current_user
-  end
-
-  def user_is_moderator
-    current_user.permission >= 20 if current_user
-  end
-
-  def user_is_author
-    current_user.permission >= 30 if current_user
-  end
-
-  def user_is_editor
-    current_user.permission >= 40 if current_user
-  end
-
-  def user_is_admin
-    current_user.permission >= 50 if current_user
-  end
 end

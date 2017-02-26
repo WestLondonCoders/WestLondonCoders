@@ -1,7 +1,7 @@
 .m-post
   %h1
     = link_to post.title, post_path(post)
-    - if user_is_admin || post.created_by == current_user
+    - if can? :manage, post
       %a.m-profile__pencil{href: edit_post_path(post)}
         %i.a-icon-after-text.fa.fa-pencil
   .m-post__meta-strip

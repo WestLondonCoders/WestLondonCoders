@@ -54,7 +54,7 @@
 
     .u-margin-top
       .m-post-editor__submit
-        = link_to "Delete hackroom", @hackroom, method: :delete, data: { confirm: 'Delete hackroom?' }, class: 'a-button a-button--ghost' if user_is_admin
+        = link_to "Delete hackroom", @hackroom, method: :delete, data: { confirm: 'Delete hackroom?' }, class: 'a-button a-button--ghost' if can? :destroy, @hackroom
         .u-float-right
           - if current_page?('/hackrooms/new')
             = link_to "Cancel", hackrooms_path, class: 'a-button a-button--ghost u-right'

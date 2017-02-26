@@ -18,7 +18,7 @@
     .m-post-editor__options
       %h2 Sharing options
 
-      - if user_is_author
+      - if can? :publish, Post
         = f.check_box :featured
         = f.label :featured, "Show this post on the home page"
 
@@ -45,7 +45,7 @@
           .nested-fields
             .field.a-tags--form
               - if tag.object.persisted?
-                %h1.a-tag.a-tag--page-tag
+                %h1.a-tag.a-tag--post-tag
                   = tag.object.name
                   = link_to_remove_association "x", tag, class: 'a-tag--remove'
               - else

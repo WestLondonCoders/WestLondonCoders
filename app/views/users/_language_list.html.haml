@@ -4,7 +4,7 @@
       - if @user.primary_languages.any?
         %h1
           Primary languages I'm using
-          - if user_is_owner_or_admin
+          - if can? :edit, @user
             %a.m-profile__pencil{href: edit_user_path(@user)}
               %i.a-icon-after-text.fa.fa-pencil
           - if @user.primary_languages.any?
@@ -16,7 +16,7 @@
       - if @user.languages.any?
         %h1
           Secondary languages I'm using
-          - if user_is_owner_or_admin
+          - if can? :edit, @user
             %a.m-profile__pencil{href: edit_user_path(@user)}
               %i.a-icon-after-text.fa.fa-pencil
           - if @user.languages.any?

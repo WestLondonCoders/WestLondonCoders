@@ -13,7 +13,7 @@
 
       .u-margin-top
         .m-post-editor__submit
-          = link_to "Delete language", @language, method: :delete, data: { confirm: 'Delete language?' }, class: 'a-button a-button--ghost' if user_is_admin
+          = link_to "Delete language", @language, method: :delete, data: { confirm: 'Delete language?' }, class: 'a-button a-button--ghost' if can? :destroy, @language
           .u-float-right
             - if current_page?('/languages/new')
               = link_to "Cancel", languages_path, class: 'a-button a-button--ghost u-right'

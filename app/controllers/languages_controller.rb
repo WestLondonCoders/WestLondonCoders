@@ -1,6 +1,5 @@
 class LanguagesController < ApplicationController
   before_action :find_language, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin, only: [:new, :destroy, :create, :update]
 
   def index
     @search = Language.ransack(params[:q])
@@ -14,10 +13,12 @@ class LanguagesController < ApplicationController
   end
 
   def new
+    authorize! :create, Language
     @language = Language.new
   end
 
   def create
+    authorize! :create, Language
     @language = Language.new(language_params)
 
     respond_to do |format|
@@ -30,6 +31,7 @@ class LanguagesController < ApplicationController
   end
 
   def update
+    authorize! :update, @language
     respond_to do |format|
       if @language.update(language_params)
         format.html { redirect_to @language, notice: 'Language was successfully updated.' }
@@ -40,6 +42,7 @@ class LanguagesController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, @language
     @language.destroy
     respond_to do |format|
       format.html { redirect_to languages_path, notice: 'Language deleted.' }

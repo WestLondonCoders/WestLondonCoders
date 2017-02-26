@@ -1,8 +1,6 @@
 class HackroomsController < ApplicationController
   before_action :get_hackroom, only: [:show, :edit, :update, :destroy, :join, :leave]
   before_action :get_user, only: [:join, :leave]
-  before_action :require_sign_in, only: [:new, :create, :update]
-  before_action :require_hackroom_admin, only: [:destroy, :edit, :update]
 
   def index
     @search = Hackroom.ransack(params[:q])
@@ -36,10 +34,12 @@ class HackroomsController < ApplicationController
   end
 
   def edit
+    authorize! :edit, @hackroom
     @languages = Language.all
   end
 
   def update
+    authorize! :update, @hackroom
     respond_to do |format|
       if @hackroom.update(hackroom_params)
         format.html { redirect_to @hackroom, notice: 'Hackroom was successfully updated.' }
@@ -77,6 +77,7 @@ class HackroomsController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, @hackroom
     @hackroom.destroy
     respond_to do |format|
       format.html { redirect_to hackrooms_path }

@@ -2,7 +2,7 @@
 
 .u-margin-top--desktop
 
-- if user_is_owner_or_admin
+- if can? :manage, @user
   %section.a-section.u-margin-top--mobile
     .a-content.u-center
       = link_to "Edit profile", edit_user_path(@user), class: 'a-button  a-button--edit'
@@ -24,7 +24,7 @@
       .a-content
         %h1
           Interests
-          - if user_is_owner_or_admin
+          - if can? :edit, @user
             %a.m-profile__pencil{href: edit_interests_path(@user)}
               %i.a-icon-after-text.fa.fa-pencil
           - if @user.interests.any?
@@ -32,7 +32,7 @@
               - @user.interests.each do |interest|
                 %h2.a-tag.a-tag--interest= interest.name
 
-  - if user_is_owner_or_admin
+  - if can? :edit, @user
     .u-center
       - if @user.interests.empty?
         .m-profile__add-interests

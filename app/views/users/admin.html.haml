@@ -12,7 +12,8 @@
                 = role.name
               .m-admin__user-permission
               .m-admin__user-submit
-                = link_to 'Edit', edit_role_path(role), class: 'a-button'
+                - if can? :update, role
+                  = link_to 'Edit', edit_role_path(role), class: 'a-button'
 
         .u-margin-top.u-right
           = link_to 'New role', new_role_path, class: 'a-button'
