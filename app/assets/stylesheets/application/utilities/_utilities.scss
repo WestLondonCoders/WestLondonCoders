@@ -32,6 +32,10 @@
   margin-top: 50px;
 }
 
+.u-margin-bottom {
+  margin-bottom: 50px;
+}
+
 .u-margin-top--desktop {
   @media #{$from-medium} {
     margin-top: 50px;
