@@ -24,6 +24,7 @@ class HackroomsController < ApplicationController
 
     respond_to do |format|
       if @hackroom.save
+        slack
         format.html { redirect_to hackrooms_path, notice: 'Hackroom created successfully.' }
       else
         flash[:alert] = 'Something went wrong.'
@@ -94,5 +95,10 @@ class HackroomsController < ApplicationController
         redirect_to hackroom_path(@hackroom)
         flash[:alert] = "You're not authorised to do that"
       end
+    end
+
+    def slack
+      Slacked.post_async "#{current_user.name} created a hackroom: #{@hackroom.name} #{hackroom_url(@hackroom)}",
+                          {channel: 'general', username: 'Hackroom Bot'}
     end
 end
