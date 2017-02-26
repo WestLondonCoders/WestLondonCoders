@@ -26,6 +26,7 @@ class HackroomsController < ApplicationController
       if @hackroom.save
         format.html { redirect_to hackrooms_path, notice: 'Hackroom created successfully.' }
       else
+        flash[:alert] = 'Something went wrong.'
         format.html { render :new }
       end
     end

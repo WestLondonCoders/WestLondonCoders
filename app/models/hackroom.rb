@@ -10,4 +10,6 @@ class Hackroom < ActiveRecord::Base
 
   has_many :hackroom_owners
   has_many :owners, through: :hackroom_owners, source: :user
+
+  validates :name, presence: true, uniqueness: true
 end
