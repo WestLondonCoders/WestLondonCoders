@@ -1,13 +1,8 @@
 class UsersController < ApplicationController
-  before_action :get_user,                only: [:show, :edit, :update,
-                                                 :edit_interests, :edit_skills]
-  before_action :require_admin_or_owner,  only: [:edit, :edit_interests,
-                                                 :edit_skills, :update]
-  before_action :require_admin, only: [:admin]
-
-
+  before_action :get_user, only: [:show, :edit, :update, :edit_interests, :edit_skills]
 
   def show
+    authorize! :read, @user
     @posts = Post.all.where(created_by_id: @user).order("created_at desc")
   end
 
@@ -23,16 +18,20 @@ class UsersController < ApplicationController
   end
 
   def edit
+    authorize! :edit, @user
     @languages = Language.all
   end
 
   def edit_interests
+    authorize! :edit, @user
   end
 
   def edit_skills
+    authorize! :edit, @user
   end
 
   def update
+    authorize! :update, @user
     if @user.update(user_params)
       redirect_to user_path(user_params)
     else
@@ -45,6 +44,7 @@ class UsersController < ApplicationController
   end
 
   def admin
+    authorize! :manage, @users
     @users = User.all
     @roles = Role.all
   end
