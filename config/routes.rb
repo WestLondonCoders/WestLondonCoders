@@ -69,5 +69,7 @@ Rails.application.routes.draw do
         match 'search' => 'users#search', via: [:get, :post], as: :search
       end
     end
+
+    resources :roles
   end
 end

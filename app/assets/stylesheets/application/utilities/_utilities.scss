@@ -46,6 +46,10 @@
   margin-bottom: 50px;
 }
 
+.u-margin-bottom--small {
+  margin-bottom: 25px;
+}
+
 .u-margin-top--desktop {
   @media #{$from-medium} {
     margin-top: 50px;

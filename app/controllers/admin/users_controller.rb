@@ -1,6 +1,8 @@
 class Admin::UsersController < Admin::BaseController
   before_action :get_user, only: [:update]
 
+  layout 'admin'
+
   def index
     authorize! :manage, @users
     @search = User.ransack(params[:q])

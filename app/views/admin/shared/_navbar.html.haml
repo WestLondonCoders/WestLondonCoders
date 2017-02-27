@@ -1,0 +1,8 @@
+.m-admin_bar
+  %i.fa.fa-cog
+  %h3.m-admin_bar__item{class: ('m-admin_bar__item--is-selected' if current_page?(admin_users_path))}
+    = link_to 'Users', admin_users_path
+  %h3.m-admin_bar__item{class: ('m-admin_bar__item--is-selected' if current_page?(admin_roles_path))}
+    = link_to 'Roles', admin_roles_path
+
+.u-margin-bottom--small
