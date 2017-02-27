@@ -4,4 +4,4 @@
   .m-post__meta
     .a-paint-border-bottom{class: ("a-paint-border-bottom--#{user.primary_languages&.first&.id}")}
       = link_to user.name, user_path(user)
-    = post.created_at.to_formatted_s(:long)
+    = current_page?(post) ? post.created_at.to_formatted_s(:long) : post.created_at.to_formatted_s(:short)
