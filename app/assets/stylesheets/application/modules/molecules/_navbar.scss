@@ -81,41 +81,23 @@ header {
     padding-bottom: 2px;
   }
 
-  a:hover {
-    @include link-underline;
-    transition: none;
+  .m-navbar__item {
+    border-bottom: solid 3px transparent;
   }
 
-// Reset h2 margins to padding so the border wraps around space, not just h2
-// content
+  .m-navbar__item:hover {
+    border-bottom: solid 3px $color-pink;
+  }
+
+  .m-navbar__item--is-selected {
+    border-bottom: solid 3px $color-pink;
+  }
 
   h2 {
     margin: 0;
     padding-top: 15px;
     padding-bottom: 15px;
     font-size: 1.2em;
-  }
-
-  @media #{$to-medium} {
-
-    a:hover {
-      border: 0;
-      color: $color-pink;
-    }
-
-    h2:hover {
-      color: $color-pink;
-    }
-    h2 {
-      border-top: 1px solid $color-light-grey;
-      width: 100vw;
-      font-size: inherit;
-      padding-top: 7px;
-      padding-bottom: 7px;
-    }
-    h2:last-child {
-      border-bottom: 1px solid $color-light-grey;
-    }
   }
 
   @media #{$from-medium} {
