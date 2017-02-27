@@ -2,7 +2,7 @@
   - @languages.each do |language|
     .m-languages__language
       = link_to language do
-        %h1.m-languages__language--default{class: "m-languages__language--#{language.id}"}= language.name
+        %h1.a-paint-border-bottom{class: ("a-paint-border-bottom--#{language.id}")}= language.name
 
       .m-languages__hackrooms
         = render partial: 'hackrooms', locals: { language: language }

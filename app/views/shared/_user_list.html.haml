@@ -3,7 +3,8 @@
     .m-user-card
       .m-user-card__avatar
         = link_to image_tag(avatar_url(user)), user
-      %h2.m-languages__language--default{class: ("m-languages__language--#{user.primary_languages.first.id}" if user.primary_languages.any?)}= link_to user.name, user
+
+      %h2.a-paint-border-bottom{class: ("a-paint-border-bottom--#{user.primary_languages&.first&.id}")}= link_to user.name, user
       %h3= user.tagline
       = render partial: 'users/social_links', locals: { user: user }
 
@@ -13,4 +14,4 @@
             .a-tags.a-tags--center
               - user.primary_languages.each do |language|
                 = link_to language do
-                  %h2.a-tag{class: "a-tag--#{language.id}"}= language.name
+                  %h2.a-tag{class: "a-paint-background--#{language.id}"}= language.name

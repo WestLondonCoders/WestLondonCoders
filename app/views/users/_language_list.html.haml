@@ -11,7 +11,7 @@
             .a-tags
               - @user.primary_languages.each do |language|
                 = link_to language do
-                  %h2.a-tag{class: "a-tag--#{language.id}"}= language.name
+                  %h2.a-tag{class: "a-paint-background--#{language.id}"}= language.name
 
       - if @user.languages.any?
         %h1
@@ -23,4 +23,4 @@
             .a-tags
               - @user.languages.each do |language|
                 = link_to language do
-                  %h2.a-tag{class: "a-tag--#{language.id}"}= language.name
+                  %h2.a-tag{class: "a-paint-background--#{language.id}"}= language.name

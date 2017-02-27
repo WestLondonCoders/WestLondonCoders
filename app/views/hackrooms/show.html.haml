@@ -16,7 +16,7 @@
           = link_to "https://westlondoncoders.slack.com/archives/#{@hackroom.slack}", target: "_blank" do
             %i.fa.fa-slack
 
-      %h1.a-heading.centered.m-languages__language--default{class: ("m-languages__language--#{@hackroom.primary_languages.first.id}" if @hackroom.primary_languages.any?)}
+      %h1.a-heading.centered.a-paint-border-bottom{class: ("a-paint-border-bottom--#{@hackroom.primary_languages&.first&.id}")}
         = @hackroom.name
 
       .m-hackroom__mission

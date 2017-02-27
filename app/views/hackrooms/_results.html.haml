@@ -2,7 +2,7 @@
   - @hackrooms.each do |hackroom|
     .m-hackroom-list__hackroom
       = link_to hackroom_path(hackroom) do
-        %h2.m-languages__language--default{class: ("m-languages__language--#{hackroom.primary_languages.first.id}" if hackroom.primary_languages.any?)}
+        %h2.a-paint-border-bottom{class: ("a-paint-border-bottom--#{hackroom.primary_languages&.first&.id}")}
           = hackroom.name
           %span.u-float-right.u-hide-on-mobile= pluralize((hackroom.users.count + hackroom.owners.count), 'member')
 
@@ -14,7 +14,7 @@
           .a-tags
             - hackroom.primary_languages.each do |language|
               = link_to language do
-                %h2.a-tag{class: "a-tag--#{language.id}"}= language.name
+                %h2.a-tag{class: "a-paint-background--#{language.id}"}= language.name
 
       - if hackroom.owners.any?
         %h3 Maintainers

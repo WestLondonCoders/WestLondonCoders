@@ -14,7 +14,7 @@
     .a-content
       .m-languages
         .m-languages__language
-          %h1.u-center.m-languages__language--default{class: "m-languages__language--#{@language.id}"}= @language.name
+          %h1.u-center.a-paint-border-bottom{class: ("a-paint-border-bottom--#{@language.id}")}= @language.name
 
           - if @language.description
             .m-languages__description
