@@ -57,8 +57,5 @@
       .m-post-editor__submit
         = link_to "Delete hackroom", @hackroom, method: :delete, data: { confirm: 'Delete hackroom?' }, class: 'a-button a-button--ghost' if can? :destroy, @hackroom
         .u-float-right
-          - if current_page?('/hackrooms/new')
-            = link_to "Cancel", hackrooms_path, class: 'a-button a-button--ghost u-right'
-          - else
-            = link_to "Cancel", hackroom_path(@hackroom), class: 'a-button a-button--ghost u-right'
+          = link_to "Cancel", hackrooms_path, class: 'a-button a-button--ghost u-right'
           = f.submit 'Save', class: 'a-button u-right'

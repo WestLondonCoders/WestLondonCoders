@@ -23,7 +23,7 @@ class HackroomsController < ApplicationController
 
     respond_to do |format|
       if @hackroom.save
-        HackroomOwner.create(hackroom: @hackroom, user: current_user)
+        HackroomOwner.create(hackroom: @hackroom, user: current_user) unless @hackroom.any?
         slack_announce_new_hackroom
         format.html { redirect_to @hackroom, notice: 'Hackroom created successfully.' }
       else
