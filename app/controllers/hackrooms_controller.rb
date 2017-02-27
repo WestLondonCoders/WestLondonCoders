@@ -4,7 +4,7 @@ class HackroomsController < ApplicationController
 
   def index
     @search = Hackroom.ransack(params[:q])
-    @search.sorts = 'name asc' if @search.sorts.empty?
+    @search.sorts = 'created_at desc' if @search.sorts.empty?
     @hackrooms = @search.result.includes(:primary_languages, :languages)
   end
 
