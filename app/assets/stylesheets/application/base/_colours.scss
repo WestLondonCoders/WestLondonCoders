@@ -11,10 +11,60 @@ $color-white: #ffffff;
 $color-black: #000000;
 $color-border: #e1e8ed;
 
-$color-ruby: #D52941;
-$color-python: #68D89B;
-$color-java: #4056F4;
-$color-swift: #FCD581;
-$color-js: #E7E247;
-$color-react: #1B065E;
-$color-html: #8D5A97;
+// Dynamic color assignment by ID
+
+$color-palette-red: #AF1401;
+$color-palette-green: #68D89B;
+$color-palette-java: #501912;
+$color-palette-gold: #FCD581;
+$color-palette-yellow: #F2D50A;
+$color-palette-purple: #1B065E;
+$color-palette-orange: #EF5138;
+$color-palette-un-blue: #6184D8;
+$color-palette-teal: #50C5B7;
+$color-palette-light-green: #9CEC5B;
+$color-palette-indigo: #16425B;
+$color-palette-cadbury: #2708A0;
+$color-palette-turqoise: #61DAFB;
+$color-palette-mauve: #8892BF;
+$color-palette-licorice: #210F04;
+
+$color-palette: (
+  1: $color-palette-red,
+  2: $color-palette-green,
+  3: $color-palette-java,
+  4: $color-palette-orange,
+  5: $color-palette-yellow,
+  6: $color-palette-turqoise,
+  7: $color-blue,
+  8: $color-palette-un-blue,
+  9: $color-palette-mauve,
+  10: $color-palette-light-green,
+  11: $color-palette-indigo,
+  12: $color-palette-teal,
+  13: $color-palette-red,
+  14: $color-palette-cadbury,
+  15: $color-palette-licorice,
+);
+
+@function paint($id) {
+  @return map-get($color-palette, $id);
+}
+
+.a-paint-background {
+  background-color: $color-black;
+}
+
+.a-paint-border-bottom {
+  border-bottom: solid 2px $color-black;
+}
+
+@for $i from 1 through 15 {
+  .a-paint-background--#{$i} {
+    background-color: paint($i);
+  }
+
+  .a-paint-border-bottom--#{$i} {
+    border-bottom: solid 2px paint($i);
+  }
+}
