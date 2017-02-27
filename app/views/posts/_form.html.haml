@@ -18,7 +18,7 @@
     .m-post-editor__options
       %h2 Sharing options
 
-      - if can? :publish, Post
+      - if can? :manage, Post.all
         = f.check_box :featured
         = f.label :featured, "Show this post on the home page"
 

@@ -15,7 +15,6 @@ class Ability
 
     if user.has_role? :editor
       can :manage, Post
-      can :publish, Post
     else
       can :read, Post
     end
