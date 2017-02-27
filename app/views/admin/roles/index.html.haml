@@ -5,9 +5,10 @@
       .m-admin__roles
         - @roles.each do |role|
           .m-admin__user
-            .m-admin__user-name
+            .m-admin__20
               = role.name
-            .m-admin__user-permission
+            .m-admin__80
+              = sanitize role.description
             .m-admin__user-submit
               - if can? :update, role
                 = link_to 'Edit', edit_role_path(role), class: 'a-button'

@@ -3,11 +3,12 @@
 
   = form_for @role do |f|
     .m-post-editor
-      = f.text_field :name, placeholder: 'Role name'
-      .u-center
+      %h1= f.text_field :name, placeholder: 'Role name'
+      %h2 Description
+      = f.trix_editor :description
 
     .u-margin-top
       .m-post-editor__submit
         .u-float-right
-          = link_to "Cancel", admin_path, class: 'a-button a-button--ghost u-right'
+          = link_to "Cancel", admin_roles_path, class: 'a-button a-button--ghost u-right'
           = f.submit 'Save', class: 'a-button u-right'

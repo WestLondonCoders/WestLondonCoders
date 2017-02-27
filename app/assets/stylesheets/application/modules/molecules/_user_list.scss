@@ -58,6 +58,20 @@
   }
 }
 
+.m-user-list__search--with-options {
+  form {
+    @media #{$from-medium} {
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+    .m-form__checkboxes,
+    .a-button {
+      margin-top: -10px;
+    }
+  }
+}
+
 .m-user-list__search--fixed {
   position: static;
 }

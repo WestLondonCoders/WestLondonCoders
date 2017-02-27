@@ -12,7 +12,7 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       if @role.save
-        format.html { redirect_to admin_path, notice: 'Role created successfully.' }
+        format.html { redirect_to admin_roles_path, notice: 'Role created successfully.' }
       else
         format.html { render :new }
       end
@@ -23,7 +23,7 @@ class RolesController < ApplicationController
     authorize! :update, @role
     respond_to do |format|
       if @role.update(role_params)
-        format.html { redirect_to admin_path, notice: 'Role was successfully updated.' }
+        format.html { redirect_to admin_roles_path, notice: 'Role was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -34,7 +34,7 @@ class RolesController < ApplicationController
     authorize! :destroy, @role
     @role.destroy
     respond_to do |format|
-      format.html { redirect_to admin_path, notice: 'Role deleted.' }
+      format.html { redirect_to admin_roles_path, notice: 'Role deleted.' }
     end
   end
 
@@ -45,6 +45,6 @@ class RolesController < ApplicationController
   end
 
   def role_params
-    params.require(:role).permit(:name)
+    params.require(:role).permit(:name, :description)
   end
 end
