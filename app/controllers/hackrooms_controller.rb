@@ -24,7 +24,7 @@ class HackroomsController < ApplicationController
     respond_to do |format|
       if @hackroom.save
         HackroomOwner.create(hackroom: @hackroom, user: current_user)
-        slack
+        slack_announce_new_hackroom
         format.html { redirect_to @hackroom, notice: 'Hackroom created successfully.' }
       else
         flash[:alert] = 'Something went wrong.'
@@ -58,6 +58,7 @@ class HackroomsController < ApplicationController
     else
       UserHackroom.create(hackroom: @hackroom, user: @user)
       flash[:alert] = 'You joined this hackroom!'
+      slack_announce_new_joiner if @hackroom.slack.present?
       redirect_to @hackroom
     end
   end
@@ -69,6 +70,7 @@ class HackroomsController < ApplicationController
       enrolment.destroy
       enrolment.save
       flash[:alert] = "You've left this hackroom."
+      slack_announce_new_leaver if @hackroom.slack.present?
       redirect_to @hackroom
     else
       flash[:alert] = "You weren't in this hackroom."
@@ -105,11 +107,27 @@ class HackroomsController < ApplicationController
     end
   end
 
-  def slack
+  def slack_announce_new_hackroom
     if Rails.env.production?
       Slacked.post_async "#{current_user.name} created a hackroom: #{@hackroom.name} #{hackroom_url(@hackroom)}", {channel: 'general', username: 'Hackroom Bot'}
     else
       Slacked.post_async "#{current_user.name} created a hackroom: #{@hackroom.name} #{hackroom_url(@hackroom)}", {channel: 'testing', username: 'Hackroom Bot'}
+    end
+  end
+
+  def slack_announce_new_joiner
+    if Rails.env.production?
+      Slacked.post_async "#{current_user.name} joined the hackroom! #{user_url(current_user)}", {channel: "#{@hackroom.slack}", username: 'Hackroom Bot'}
+    else
+      Slacked.post_async "#{current_user.name} joined the hackroom! #{user_url(current_user)}", {channel: 'testing', username: 'Hackroom Bot'}
+    end
+  end
+
+  def slack_announce_new_leaver
+    if Rails.env.production?
+      Slacked.post_async "#{current_user.name} left the hackroom! #{user_url(current_user)}", {channel: "#{@hackroom.slack}", username: 'Hackroom Bot'}
+    else
+      Slacked.post_async "#{current_user.name} left the hackroom! #{user_url(current_user)}", {channel: "testing", username: 'Hackroom Bot'}
     end
   end
 end
