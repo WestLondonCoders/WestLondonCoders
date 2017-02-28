@@ -1,0 +1,19 @@
+- set_page_title(@event.name)
+
+.u-margin-top--desktop
+
+.a-page-holder
+
+  - if can? :manage, @event
+    %section.a-section.u-margin-top--mobile
+      .a-content.u-center
+        = link_to "Edit event", edit_admin_event_path(@event), class: "a-button a-button--edit"
+
+  %section.a-section.u-margin-top--mobile
+    .a-content
+      %h1.a-heading
+        = @event.name
+      %h3= @event.date.to_formatted_s(:long)
+
+      .m-hackroom__mission
+        = sanitize(@event.description)
