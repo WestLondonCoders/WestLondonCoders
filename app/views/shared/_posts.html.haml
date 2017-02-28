@@ -1,4 +1,4 @@
-.m-post
+.m-hackroom-list__hackroom
   %h1
     = link_to post.title, post_path(post)
     - if can? :manage, post
@@ -12,3 +12,5 @@
           %h2.a-tag.a-tag--post-tag= tag.name
   .m-post__excerpt
     = simple_format(truncate(post.content, length: 500, escape: false, omission: '...', separator: '.'))
+  .u-margin-top.u-right
+    = link_to "Read", post, class: 'a-button a-button--elastic'
