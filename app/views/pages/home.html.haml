@@ -24,11 +24,9 @@
 %section.a-section
   .a-content--xwide
     .a-content--home
-      .m-blog
+      .m-hackroom-list.m-hackroom-list--home
         - @posts.take(4).each do |post|
           = render partial: 'shared/posts', locals: {post: post}
-        .u-center
-          %a.a-button{href: posts_path} More posts
 
       .m-comments
         %h2
