@@ -11,11 +11,11 @@
       = render partial: 'filter_posts'
       = render partial: 'sort'
 
-  - if can? :create, Post
+  - if current_user
     %section.a-section.u-margin-top--mobile
       .a-content.u-center
         = link_to "Write a post", new_post_path, class: 'a-button  a-button--edit'
 
-    .a-content--xwide
-      #post-search-results
-        = render 'results'
+  .a-content--xwide
+    #post-search-results
+      = render 'results'
