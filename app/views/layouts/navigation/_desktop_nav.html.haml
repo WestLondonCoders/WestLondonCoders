@@ -5,24 +5,24 @@
         %img{src: asset_path("logo.svg")}
         West London Coders
     .m-navbar__nav
-      %h2.m-navbar__item{class: ('m-navbar__item--is-selected' if current_page?(users_path))}
-        %a{href: users_path}
+      %a.m-navbar__item{class: ('m-navbar__item--is-selected' if current_page?(users_path)), href: users_path}
+        %h2
           %i.fa.fa-user-circle-o{"aria-hidden" => "true"}
           People
-      %h2.m-navbar__item{class: ('m-navbar__item--is-selected' if current_page?(languages_path))}
-        %a{href: languages_path}
+      %a.m-navbar__item{class: ('m-navbar__item--is-selected' if current_page?(languages_path)), href: languages_path}
+        %h2
           %i.fa.fa-laptop{"aria-hidden" => "true"}
           Languages
-      %h2.m-navbar__item{class: ('m-navbar__item--is-selected' if current_page?(hackrooms_path))}
-        %a{href: hackrooms_path}
+      %a.m-navbar__item{class: ('m-navbar__item--is-selected' if current_page?(hackrooms_path)), href: hackrooms_path}
+        %h2
           %i.fa.fa-wrench{"aria-hidden" => "true"}
           Hackrooms
-      %h2.m-navbar__item{class: ('m-navbar__item--is-selected' if current_page?(posts_path))}
-        %a{href: posts_path}
+      %a.m-navbar__item{class: ('m-navbar__item--is-selected' if current_page?(posts_path)), href: posts_path}
+        %h2
           %i.fa.fa-commenting-o{"aria-hidden" => "true"}
           Posts
-      %h2.m-navbar__item{class: ('m-navbar__item--is-selected' if current_page?(meetups_path))}
-        %a{href: meetups_path}
+      %a.m-navbar__item{class: ('m-navbar__item--is-selected' if current_page?(meetups_path)), href: meetups_path}
+        %h2
           %i.fa.fa-meetup{"aria-hidden" => "true"}
           Meetups
 
