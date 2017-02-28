@@ -3,14 +3,13 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 15px;
 }
 
 .m-hackroom-list--home {
 
   .m-hackroom-list__hackroom {
     @media #{$from-xlarge} {
-      width: 45%;
+      width: 100%;
     }
   }
 }
