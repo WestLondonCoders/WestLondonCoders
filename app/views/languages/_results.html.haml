@@ -1,6 +1,6 @@
-.m-languages
+.m-hackroom-list
   - @languages.each do |language|
-    .m-languages__language
+    .m-hackroom-list__hackroom
       = link_to language do
         %h1.a-paint-border-bottom{class: ("a-paint-border-bottom--#{language.id}")}= language.name
 
