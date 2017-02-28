@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  before_action :get_event, only: [:show]
+  before_action :get_event, only: [:show, :rsvp, :unrsvp]
+  before_action :get_user, only: [:rsvp, :unrsvp]
 
   def index
     @search = Event.ransack(params[:q])
@@ -12,9 +13,40 @@ class EventsController < ApplicationController
     render :index
   end
 
+  def rsvp
+    rsvp = EventRsvp.find_by(event: @event, user: @user)
+
+    if rsvp.present?
+      flash[:alert] = "You're already coming to this meetup."
+      redirect_to @event
+    else
+      EventRsvp.create(event: @event, user: @user)
+      flash[:alert] = "You're coming to this meetup!"
+      redirect_to @event
+    end
+  end
+
+  def unrsvp
+    rsvp = EventRsvp.find_by(event: @event, user: @user)
+
+    if rsvp
+      rsvp.destroy
+      rsvp.save
+      flash[:alert] = "Thanks for updating your RSVP."
+      redirect_to @event
+    else
+      flash[:alert] = "Something went wrong."
+      redirect_to @event
+    end
+  end
+
   private
 
   def get_event
     @event = Event.find(params[:id])
+  end
+
+  def get_user
+    @user = current_user
   end
 end

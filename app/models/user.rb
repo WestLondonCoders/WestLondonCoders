@@ -25,6 +25,9 @@ class User < ActiveRecord::Base
   has_many :user_primaries
   has_many :primary_languages, through: :user_primaries, source: :language
 
+  has_many :event_rsvps
+  has_many :events, through: :event_rsvps
+
   mount_uploader :image, AvatarUploader
   mount_uploader :logo, LogoUploader
 

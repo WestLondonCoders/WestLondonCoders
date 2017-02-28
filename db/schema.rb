@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228195459) do
+ActiveRecord::Schema.define(version: 20170228213527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 20170228195459) do
     t.integer  "author_id"
     t.boolean  "public",           default: true
   end
+
+  create_table "event_rsvps", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "event_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "event_rsvps", ["user_id", "event_id"], name: "index_event_rsvps_on_user_id_and_event_id", unique: true, using: :btree
+  add_index "event_rsvps", ["user_id"], name: "index_event_rsvps_on_user_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.string   "name",        null: false
@@ -210,4 +220,6 @@ ActiveRecord::Schema.define(version: 20170228195459) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["slug"], name: "index_users_on_slug", using: :btree
 
+  add_foreign_key "event_rsvps", "events", on_delete: :cascade
+  add_foreign_key "event_rsvps", "users", on_delete: :cascade
 end

@@ -65,6 +65,12 @@ Rails.application.routes.draw do
     collection do
       match 'search' => 'events#search', via: [:get, :post], as: :search
     end
+    member do
+      get :rsvp
+      post :rsvp
+      get :unrsvp
+      post :unrsvp
+    end
   end
 
   namespace :admin do

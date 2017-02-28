@@ -30,6 +30,10 @@ module ApplicationHelper
     UserHackroom.find_by(hackroom: hackroom, user: user)
   end
 
+  def user_attending_event?(event, user)
+    EventRsvp.find_by(event: event, user: user)
+  end
+
   def user_options_for_select(users, selected = nil)
     options_for_select(users.map { |u| [u.name, u.id] }, selected)
   end
