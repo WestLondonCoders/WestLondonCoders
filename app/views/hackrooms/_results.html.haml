@@ -4,7 +4,6 @@
       = link_to hackroom_path(hackroom) do
         %h2.a-paint-border-bottom{class: ("a-paint-border-bottom--#{hackroom.primary_languages&.first&.id}")}
           = hackroom.name
-          %span.u-float-right.u-hide-on-mobile= pluralize((hackroom.users.count + hackroom.owners.count), 'member')
 
       .m-hackroom__mission
         = simple_format(truncate(sanitize(hackroom.mission), length: 250, escape: false, omission: '...', separator: '.'))

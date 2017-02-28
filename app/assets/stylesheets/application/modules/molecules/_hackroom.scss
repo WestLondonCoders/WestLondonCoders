@@ -1,9 +1,25 @@
+.m-hackroom-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 15px;
+}
+
 .m-hackroom-list__hackroom {
-  margin-bottom: 50px;
-  padding: 25px 40px;
+  display: block;
+  width: 100%;
+  padding: 20px;
   border-radius: 5px;
   border: 1px solid $color-border;
   box-sizing: border-box;
+  margin: 5px;
+
+  @media #{$from-xlarge} {
+    width: 45%;
+    margin: 15px;
+    padding: 25px;
+  }
 }
 
 .m-hackroom__mission {
