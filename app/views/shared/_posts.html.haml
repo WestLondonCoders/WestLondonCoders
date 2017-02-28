@@ -6,11 +6,13 @@
         %i.a-icon-after-text.fa.fa-pencil
   .m-post__meta-strip
     = render partial: 'posts/author', locals: { user: post.created_by, post: post }
-    .m-post__tags
-      .a-tags
-        - post.tags.take(1).each do |tag|
-          %h2.a-tag.a-tag--post-tag= tag.name
   .m-post__excerpt
     = simple_format(truncate(post.content, length: 500, escape: false, omission: '...', separator: '.'))
-  .u-margin-top.u-right
+
+  .m-post__tags.u-left
+    .a-tags
+      - post.tags.take(1).each do |tag|
+        %h2.a-tag.a-tag--post-tag= tag.name
+
+  .u-right
     = link_to "Read", post, class: 'a-button a-button--elastic'

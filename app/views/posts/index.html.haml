@@ -1,13 +1,21 @@
-- set_page_title("Blog")
+- set_page_title("Posts")
 
-%section.a-section
-  .a-content--wide.a-content--tight
-    %h1.a-heading
-      #post-search-heading
-        = render 'heading'
+.a-page-holder
 
-    = render partial: 'filter_posts'
+  %section.a-section
+    .a-content--wide.a-content--tight
+      %h1.a-heading
+        #post-search-heading
+          = render 'heading'
 
-  .a-content--xwide
-    #post-search-results
-      = render 'results'
+      = render partial: 'filter_posts'
+      = render partial: 'sort'
+
+  - if can? :create, Post
+    %section.a-section.u-margin-top--mobile
+      .a-content.u-center
+        = link_to "Write a post", new_post_path, class: 'a-button  a-button--edit'
+
+    .a-content--xwide
+      #post-search-results
+        = render 'results'

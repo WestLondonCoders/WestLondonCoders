@@ -43,8 +43,8 @@
 
   - if @posts.any?
     %section.a-section
-      .a-content
-        .m-blog
-          %h1 Posts
+      .a-content--xwide
+        %h1 Posts
+        .m-hackroom-list
           - @posts.each do |post|
             = render partial: 'shared/posts', locals: {post: post}
