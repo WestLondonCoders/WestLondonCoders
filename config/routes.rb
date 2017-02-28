@@ -71,5 +71,11 @@ Rails.application.routes.draw do
     end
 
     resources :roles
+
+    resources :events do
+      collection do
+        match 'search' => 'events#search', via: [:get, :post], as: :search
+      end
+    end
   end
 end

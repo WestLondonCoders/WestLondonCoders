@@ -22,6 +22,14 @@
   }
 }
 
+.a-button--admin-edit {
+  @media #{$from-large} {
+    position: absolute;
+    right: 70px;
+    top: 120px;
+  }
+}
+
 .a-button--small {
   padding: 7px;
 }
