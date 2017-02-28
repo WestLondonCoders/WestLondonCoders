@@ -89,5 +89,7 @@ Rails.application.routes.draw do
         match 'search' => 'events#search', via: [:get, :post], as: :search
       end
     end
+
+    resources :sponsors
   end
 end

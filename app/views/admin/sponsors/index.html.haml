@@ -1,0 +1,28 @@
+.a-page-holder
+  %section.a-section
+    .a-content--xwide
+      .m-admin__user.u-margin-top
+        .m-admin__20
+          %strong Name
+        .m-admin__20
+          %strong
+        .m-admin__20
+          %strong
+        .m-admin__user-permission
+          %strong
+        .m-admin__user-submit
+
+      - @sponsors.each do |sponsor|
+        .m-admin__user
+          .m-admin__20
+            = image_tag(sponsor.logo_url)
+          .m-admin__20
+            = sponsor.name
+          .m-admin__20
+          .m-admin__20
+          .m-admin__user-submit
+            = link_to 'Edit', edit_admin_sponsor_path(sponsor), class: 'a-button'
+
+  %section.a-section.u-margin-top--mobile
+    .a-content
+      = link_to "Add sponsor", new_admin_sponsor_path, class: 'a-button  a-button--admin-edit'

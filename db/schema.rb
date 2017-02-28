@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228213527) do
+ActiveRecord::Schema.define(version: 20170228215838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,16 @@ ActiveRecord::Schema.define(version: 20170228213527) do
 
   add_index "event_rsvps", ["user_id", "event_id"], name: "index_event_rsvps_on_user_id_and_event_id", unique: true, using: :btree
   add_index "event_rsvps", ["user_id"], name: "index_event_rsvps_on_user_id", using: :btree
+
+  create_table "event_sponsors", force: :cascade do |t|
+    t.integer  "event_id",   null: false
+    t.integer  "sponsor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "event_sponsors", ["event_id", "sponsor_id"], name: "index_event_sponsors_on_event_id_and_sponsor_id", unique: true, using: :btree
+  add_index "event_sponsors", ["event_id"], name: "index_event_sponsors_on_event_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.string   "name",        null: false
@@ -141,6 +151,15 @@ ActiveRecord::Schema.define(version: 20170228213527) do
     t.datetime "updated_at"
   end
 
+  create_table "sponsors", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.text     "description"
+    t.string   "logo"
+    t.text     "address"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -222,4 +241,6 @@ ActiveRecord::Schema.define(version: 20170228213527) do
 
   add_foreign_key "event_rsvps", "events", on_delete: :cascade
   add_foreign_key "event_rsvps", "users", on_delete: :cascade
+  add_foreign_key "event_sponsors", "events", on_delete: :cascade
+  add_foreign_key "event_sponsors", "sponsors", on_delete: :cascade
 end
