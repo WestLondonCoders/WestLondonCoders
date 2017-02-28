@@ -1,10 +1,13 @@
 .m-admin_bar
   %i.fa.fa-cog
-  %h3.m-admin_bar__item{class: ('m-admin_bar__item--is-selected' if current_page?(admin_users_path))}
-    = link_to 'Users', admin_users_path
-  %h3.m-admin_bar__item{class: ('m-admin_bar__item--is-selected' if current_page?(admin_events_path))}
-    = link_to 'Events', admin_events_path
-  %h3.m-admin_bar__item{class: ('m-admin_bar__item--is-selected' if current_page?(admin_roles_path))}
-    = link_to 'Roles', admin_roles_path
+  = link_to admin_users_path do
+    %h3.m-admin_bar__item{class: ('m-admin_bar__item--is-selected' if current_page?(admin_users_path))}
+      Members
+  = link_to admin_events_path do
+    %h3.m-admin_bar__item{class: ('m-admin_bar__item--is-selected' if current_page?(admin_events_path))}
+      Events
+  = link_to admin_roles_path do
+    %h3.m-admin_bar__item{class: ('m-admin_bar__item--is-selected' if current_page?(admin_roles_path))}
+      Roles
 
 .u-margin-bottom--small
