@@ -1,5 +1,5 @@
 class Admin::EventsController < Admin::BaseController
-  before_action :get_event, only: [:show]
+  before_action :get_event, only: [:show, :edit, :update, :destroy]
 
   layout 'admin'
 
@@ -37,6 +37,14 @@ class Admin::EventsController < Admin::BaseController
       redirect_to admin_events_path
     else
       render :edit
+    end
+  end
+
+  def destroy
+    authorize! :destroy, @event
+    @event.destroy
+    respond_to do |format|
+      format.html { redirect_to admin_events_path }
     end
   end
 

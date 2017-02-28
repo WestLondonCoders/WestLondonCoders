@@ -17,8 +17,8 @@
       .u-margin-top
         .m-post-editor__submit
           - if @event.persisted?
-            = link_to "Delete event", @event, method: :delete, data: { confirm: 'Delete event?' }, class: 'a-button a-button--ghost u-left'
-            = link_to "Cancel", admin_event_path(@event), class: 'a-button a-button--ghost u-left'
+            = link_to "Delete event", [:admin, @event], method: :delete, data: { confirm: 'Delete event?' }, class: 'a-button a-button--ghost u-left'
+            = link_to "Cancel", admin_events_path, class: 'a-button a-button--ghost u-left'
             = f.submit 'Save changes', class: 'a-button u-float-right'
 
           - else
