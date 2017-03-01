@@ -32,6 +32,9 @@ gem 'fog'
 gem "mini_magick"
 gem 'file_validators'
 gem 'cancancan', '~> 1.15.0'
+gem 'sendgrid-ruby'
+gem 'premailer-rails'
+gem 'nokogiri'
 
 group :development, :test do
   gem 'byebug'

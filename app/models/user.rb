@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  after_create :send_welcome_mail
   has_many :assignments
   has_many :roles, through: :assignments
 
@@ -31,6 +32,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
 
+  validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :update }
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
@@ -61,5 +64,9 @@ class User < ActiveRecord::Base
 
   def has_role?(role_sym)
     roles.any? { |r| r.name.underscore.to_sym == role_sym }
+  end
+
+  def send_welcome_mail
+    UserMailer.welcome_email(self).deliver
   end
 end
