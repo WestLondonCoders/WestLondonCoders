@@ -10,4 +10,5 @@
         .m-form__checkbox
           = check_box_tag 'q[primary_languages_id_eq_any][]', language.id
           = language.name
-    = f.submit "Search", class: 'a-button'
+    .u-margin-top--small
+      = f.submit "Search", class: 'a-button'
