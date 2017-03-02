@@ -88,3 +88,11 @@
 .a-section--foot {
   min-height: 70vh;
 }
+
+.a-section--separated {
+  border-bottom: solid 1px $color-border;
+}
+
+.a-section--separated-top {
+  border-top: solid 1px $color-border;
+}
