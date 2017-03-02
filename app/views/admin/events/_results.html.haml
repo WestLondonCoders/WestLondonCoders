@@ -1,0 +1,24 @@
+.m-admin__user.u-margin-top
+  .m-admin__20
+    %strong Name
+  .m-admin__20
+    %strong RSVPs
+  .m-admin__20
+    %strong Date
+  .m-admin__user-permission
+    %strong
+  .m-admin__user-submit
+
+- @events.each do |event|
+  .m-admin__user
+    .m-admin__20
+      = link_to event do
+        = event.name
+    .m-admin__20
+      = event.rsvps.count
+    .m-admin__20
+      = event.date.to_formatted_s(:long)
+    .m-admin__20
+      = event.venues&.first&.name
+    .m-admin__user-submit
+      = link_to 'Edit', edit_admin_event_path(event), class: 'a-button'

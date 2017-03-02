@@ -1,0 +1,23 @@
+- set_page_title("Meetups")
+
+.a-page-holder
+
+  %section.a-section
+    .a-content--xwide.a-content--tight
+
+      %h1.u-center
+        #event-search-heading
+          = render 'heading'
+
+      = render partial: 'sort'
+      = render partial: 'filter'
+
+  - if can? :create, Event
+    %section.a-section.u-margin-top--mobile
+      .a-content.u-center
+        = link_to "Schedule meetup", new_admin_event_path, class: 'a-button  a-button--edit'
+
+  %section.a-section
+    .a-content--xwide
+      #event-search-results
+        = render 'results'

@@ -1,0 +1,33 @@
+- set_page_title("New sponsor")
+
+.a-page-holder
+
+  .m-post-editor
+    %h1 New sponsor
+
+    = form_for [:admin, @sponsor] do |f|
+      .m-post-editor__title
+        %h1= f.text_field :name, placeholder: "Yoox NET-A-PORTER"
+      .m-post-editor__content
+        %h2 Description
+        = f.trix_editor :description
+
+      .m-post-editor__content
+        %h2 Address
+        = f.trix_editor :address
+
+      .m-profile__image-upload
+        = f.file_field :logo
+
+      .m-post-editor__content
+
+      .u-margin-top
+        .m-post-editor__submit
+          - if @sponsor.persisted?
+            = link_to "Delete sponsor", [:admin, @sponsor], method: :delete, data: { confirm: 'Delete sponsor?' }, class: 'a-button a-button--ghost u-left'
+            = link_to "Cancel", admin_sponsors_path, class: 'a-button a-button--ghost u-left'
+            = f.submit 'Save changes', class: 'a-button u-float-right'
+
+          - else
+            = link_to "Cancel", admin_sponsors_path, class: 'a-button a-button--ghost'
+            = f.submit 'Add', class: 'a-button'
