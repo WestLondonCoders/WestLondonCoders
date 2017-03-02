@@ -2,20 +2,18 @@
 
 .a-page-holder
 
-  %section.a-section
+  %section.a-section.a-section--alt
     .a-content--xwide.a-content--tight
 
       %h1.u-center
         #hackroom-search-heading
           = render 'heading'
 
-      = render partial: 'sort'
-      = render partial: 'filter'
+      .a-content
+        %p
+          Hackrooms are a way to bring together people with shared interests or goals. It could be a group of beginners learning HTML, or some Pythonists building an app, or both of those things.
 
-  - if current_user
-    %section.a-section.u-margin-top--mobile
-      .a-content.u-center
-        = link_to "Create hackroom", new_hackroom_path, class: 'a-button  a-button--edit'
+        = render partial: 'filter'
 
   %section.a-section
     .a-content--xwide

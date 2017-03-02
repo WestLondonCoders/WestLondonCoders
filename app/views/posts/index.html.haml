@@ -2,19 +2,18 @@
 
 .a-page-holder
 
-  %section.a-section
+  %section.a-section.a-section--alt
     .a-content--wide.a-content--tight
       %h1.a-heading
         #post-search-heading
           = render 'heading'
 
-      = render partial: 'filter_posts'
-      = render partial: 'sort'
+      .a-content
+        %p
+          Anyone can write posts at West London Coders. Writing about development or your experience at West London Coders is a great way to express yourself, provoke discussion and get involved in the developer community.
 
-  - if current_user
-    %section.a-section.u-margin-top--mobile
-      .a-content.u-center
-        = link_to "Write a post", new_post_path, class: 'a-button  a-button--edit'
+
+      = render partial: 'filter_posts'
 
   .a-content--xwide
     #post-search-results

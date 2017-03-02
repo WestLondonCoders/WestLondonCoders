@@ -1,15 +1,25 @@
 - set_page_title("Members")
 
 .a-page-holder
-  %section.a-section
+  %section.a-section.a-section--alt
     .a-content--xwide.a-content--tight
 
       %h1.u-center
         #user-search-heading
           = render 'heading'
 
-      = render partial: 'filter'
-      = render partial: 'sort'
+      .a-content
+
+        %p
+          Profiles help us find people with shared interests, and sort ourselves by
+          = link_to 'languages', languages_path
+          we're into,
+          = link_to 'hackrooms', hackrooms_path
+          we're part of and
+          = link_to 'events', meetups_path
+          we're attending.
+
+        = render partial: 'filter'
 
   %section.a-section
     .a-content--xwide

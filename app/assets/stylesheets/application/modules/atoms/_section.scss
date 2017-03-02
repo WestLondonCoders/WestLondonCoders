@@ -7,6 +7,10 @@
   padding-right: $page-padding;
 }
 
+.a-section--alt {
+  background-color: $color-pale-blue;
+}
+
 .a-section--img {
   background: image-url("heroes/small/background.jpg");
   background-size: cover;

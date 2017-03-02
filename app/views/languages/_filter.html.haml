@@ -1,4 +1,4 @@
-.m-user-list__search.js-filter-form
+.m-user-list__search.js-filter-form.m-user-list__search--fixed
   = search_form_for @search, url: search_languages_path, method: :post, remote: true do |f|
     .m-user-list__search-item
       = f.search_field :name_cont, placeholder: 'Search'
