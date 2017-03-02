@@ -1,7 +1,8 @@
 .a-flash {
   width: 100%;
-  position: absolute;
+  position: fixed;
   top: 80px;
+  transition: 1s;
 }
 
 .a-flash__box {
