@@ -19,6 +19,5 @@
 - else
   %ul#m-dropdown
     %li.m-dropdown.m-dropdown--hover.js-menu
-      = link_to user_github_omniauth_authorize_path, class: 'a-button a-button--small' do
-        %i.fa.fa-github
+      = link_to new_user_session_path, class: 'a-button a-button--small' do
         Sign in
