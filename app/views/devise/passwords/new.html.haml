@@ -1,0 +1,18 @@
+.a-page-holder
+
+  %section.a-section
+    .a-content.a-content-narrow.u-center
+      %h1 Forgotten your password?
+      %p Let's fix that.
+
+  %section.a-section
+    .a-content.a-content-narrow.u-center
+      = form_for resource, as: resource_name, url: password_path(resource_name), method: :post do |f|
+        .m-sign-in
+          = devise_error_messages!
+          %p.u-left Email
+          = f.email_field :email, autofocus: true
+          = f.submit "Reset my password", class: 'a-button'
+          = flash[:recaptcha_error]
+          .u-center.u-margin-top--small.u-margin-bottom--small
+            = recaptcha_tags
