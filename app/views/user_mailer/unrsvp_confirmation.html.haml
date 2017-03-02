@@ -1462,6 +1462,18 @@
                                     %a.text-center{:align => "center", :href => "http://www.westlondoncoders.com"}
                                       %img.swu-logo{:src => "https://s3.eu-west-2.amazonaws.com/wlcimages/logo-long.png"}/
                                 %th.expander
+                    %table.row
+                      %tbody
+                        %tr
+                          / main Email content
+                          %th.small-12.large-12.columns.first.last
+                            %table
+                              %tr
+                                %th
+                                  %b
+                                    %br
+                                    %h4.text-center= @event.name
+                                    %h5.text-center= @event.date.to_formatted_s(:long_ordinal)
                     %table.row.masthead
                       %tbody
                         %tr
@@ -1491,37 +1503,30 @@
                               %tr
                                 %th
                                   %b
-                                    %h5= @event.date
                                     %p
                                       Hi
                                       = succeed ',' do
                                         = @user.name
                                   %p
-                                    Your spot's confirmed at West London Coders:
+                                    We've updated your RSVP and you're no longer on the list for the meetup.
+                                    If you change your mind, you can always
                                     = succeed '.' do
-                                    = @event.name
-                                    It's a good idea to bring a laptop, but it's not essential if you can't.
+                                      = link_to 'RSVP again', event_url(@event)
                                   %br/
-                                  %h5 How do you like to code?
+                                  %h5 Want to come to other meetups?
                                   %p
-                                    Add some languages to your profile, and you'll appear on the
-                                    = succeed ',' do
-                                      = link_to 'language pages', languages_url
-                                    making it easier for others to spot you and find people with common interests.
-                                  %br/
-                                  %h5 Ready to get involved?
-                                  %p
-                                    Why not join a
-                                    = link_to 'hackroom', hackrooms_url
-                                    and start learning, discussing and practicing code with like-mind folk?
-                                  %br/
+                                    Don't forget to check the
+                                    = link_to meetups_url do
+                                      meetups page
+                                    for new events.
+                                  %br
                                   %table.button.swu-button
                                     %tr
                                       %td
                                         %table
                                           %tr
                                             %td
-                                              = link_to 'Join a hackroom', hackrooms_url
+                                              = link_to 'Meetups', events_url
                                 %th.expander
                     %table.row
                       %tbody

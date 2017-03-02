@@ -21,6 +21,7 @@ class EventsController < ApplicationController
       redirect_to @event
     else
       EventRsvp.create(event: @event, user: @user)
+      UserMailer.rsvp_confirmation(@user, @event).deliver
       flash[:alert] = "You're coming to this meetup!"
       redirect_to @event
     end
@@ -32,6 +33,7 @@ class EventsController < ApplicationController
     if rsvp
       rsvp.destroy
       rsvp.save
+      UserMailer.unrsvp_confirmation(@user, @event).deliver
       flash[:alert] = "Thanks for updating your RSVP."
       redirect_to @event
     else

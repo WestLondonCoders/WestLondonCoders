@@ -9,7 +9,12 @@
       .m-post-editor__title
         %h1= f.text_field :name, placeholder: "Yoox NET-A-PORTER"
       .m-post-editor__content
+        %h2 Description
         = f.trix_editor :description
+
+      .m-post-editor__content
+        %h2 Address
+        = f.trix_editor :address
 
       .m-profile__image-upload
         = f.file_field :logo
