@@ -1,0 +1,5 @@
+- if current_user && !@event.date.past?
+  - if user_attending_event?(@event, current_user)
+    = link_to 'Cancel your RSVP', unrsvp_event_path, class: 'a-button'
+  - else
+    = link_to 'RSVP', rsvp_event_path, class: 'a-button'

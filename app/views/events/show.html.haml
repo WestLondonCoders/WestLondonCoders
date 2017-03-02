@@ -13,12 +13,22 @@
         West London Coders meetup:
         %br
         = @event.name
+
+      .u-float-right= render partial: 'rsvp_button'
+
       %h3
-        = @event.date.to_formatted_s(:long_ordinal)
+        = @event.date.to_date.to_formatted_s(:long_ordinal)
+        = default_times
         %br
         = render partial: 'shared/describe_date', locals: { date: @event.date }
 
+      - if @event.rsvps.with_role("Organiser").any?
+        %h3 Organisers
+        - @event.rsvps.with_role("Organiser").each do |user|
+          = render partial: 'shared/user_tag', locals: { user: user }
+
       - if @event.rsvps.any?
+        %h3.u-margin-bottom--none= @event.date.past? ? "Members who came like:" : "Members attending like:"
         .a-tags
           - @event.rsvps.each do |user|
             - user.primary_languages.each do |language|
@@ -34,9 +44,4 @@
             - @event.rsvps.each do |rsvp|
               = render partial: 'shared/user_tag', locals: { user: rsvp }
 
-      - if current_user
-        .a-content.u-margin-top.u-right
-          - if user_attending_event?(@event, current_user)
-            = link_to 'Cancel your RSVP', unrsvp_event_path, class: 'a-button'
-          - else
-            = link_to 'RSVP', rsvp_event_path, class: 'a-button'
+      .u-center.u-margin-top= render partial: 'rsvp_button'

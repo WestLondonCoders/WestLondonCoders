@@ -12,14 +12,15 @@ class UserMailer < ApplicationMailer
     headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"<%Unsubscribe%>","text/plain":"<% %>"}}}}'
     @user = user
     @event = event
-    mail to: user.email, subject: "RSVP confirmed!"
+    mail to: user.email, subject: "You're attending on #{@event.date.to_formatted_s(:long_ordinal)}!"
   end
 
   def unrsvp_confirmation(user, event)
     headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"<%Unsubscribe%>","text/plain":"<% %>"}}}}'
     @user = user
     @event = event
-    mail to: user.email, subject: "RSVP updated"
+    mail to: user.email, subject: "You're no longer attending on #{@event.date.to_formatted_s(:long_ordinal)}"
   end
+
 end
 

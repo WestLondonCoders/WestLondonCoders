@@ -2,13 +2,18 @@
   - @events.each do |event|
     .m-hackroom-list__hackroom
       = link_to event_path(event) do
-        %h2
-          = event.name
+        %h3.u-float-left
+          = render partial: 'shared/describe_date', locals: { date: event.date }
+        %h3.u-right
+          =event.date.to_date.to_formatted_s(:long)
           %br
-          %span.m-hackroom__date=event.date.to_formatted_s(:long)
+          = default_times
+
+        %h1
+          = event.name
 
       .m-hackroom__mission
-        = simple_format(truncate(sanitize(event.description), length: 250, escape: false, omission: '...', separator: '.'))
+        = simple_format(truncate(sanitize(event.description), length: 200, escape: false, omission: '...'))
 
       - if event.rsvps.any?
         .a-tags

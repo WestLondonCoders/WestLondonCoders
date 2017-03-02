@@ -46,4 +46,8 @@ module ApplicationHelper
     sentence = time_ago_in_words(date)
     sentence.slice(0,1).capitalize + sentence.slice(1..-1)
   end
+
+  def default_times
+    "12:00 - 5:30pm"
+  end
 end
