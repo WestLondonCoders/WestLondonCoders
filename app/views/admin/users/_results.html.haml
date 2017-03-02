@@ -4,8 +4,8 @@
   .m-admin__20
     %strong Hackrooms maintained
   .m-admin__20
-    %strong Hackrooms participating in
-  .m-admin__user-permission
+    %strong Hackrooms in
+  .m-admin__40
     %strong Roles
   .m-admin__user-submit
 
@@ -14,14 +14,15 @@
     .m-admin__user
       .m-admin__20
         = f.text_field :name
-      .m-admin__20
+      .m-admin__20.u-center
         = pluralize(user.own_hackrooms.count, 'hackroom')
-      .m-admin__20
+      .m-admin__20.u-center
         = pluralize(user.hackrooms.count, 'hackroom')
-      .m-admin__20
-        = f.collection_check_boxes :role_ids, Role.all, :id, :name do |b|
-          .m-form__checkbox
-            = b.check_box
-            = b.label
+      .m-admin__40
+        .m-form__checkboxes
+          = f.collection_check_boxes :role_ids, Role.all, :id, :name do |b|
+            .m-form__checkbox
+              = b.check_box
+              = b.label
       .m-admin__user-submit
         = f.submit 'Update', class: 'a-button'

@@ -22,5 +22,10 @@ class UserMailer < ApplicationMailer
     mail to: user.email, subject: "You're no longer attending on #{@event.date.to_formatted_s(:long_ordinal)}"
   end
 
+  def organiser_promotion(user)
+    headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"<%Unsubscribe%>","text/plain":"<% %>"}}}}'
+    @user = user
+    mail to: user.email, subject: "You're a WLC organiser!", from: 'Steve Brewer <steve@westlondoncoders.com>'
+  end
 end
 

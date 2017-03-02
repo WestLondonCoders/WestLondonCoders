@@ -25,6 +25,10 @@ class Ability
       can :read, Comment
     end
 
+    if user.has_role? :organiser
+      can :manage, Event
+    end
+
     # Custom abilities
 
     # Users can manage their own accounts but not other people's

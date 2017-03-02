@@ -37,6 +37,9 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :update }
 
+  scope :with_role, lambda{ |role| joins(:roles).where(roles: {name: role}) }
+
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider

@@ -36,6 +36,7 @@ gem 'sendgrid-ruby'
 gem 'premailer-rails'
 gem 'nokogiri'
 gem "recaptcha", require: "recaptcha/rails"
+gem "rolify"
 
 group :development, :test do
   gem 'byebug'

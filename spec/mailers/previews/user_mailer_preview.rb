@@ -11,4 +11,8 @@ class UserMailerPreview < ActionMailer::Preview
   def unrsvp_confirmation
     UserMailer.unrsvp_confirmation(User.first, Event.first)
   end
+
+  def organiser_promotion
+    UserMailer.organiser_promotion(User.first)
+  end
 end
