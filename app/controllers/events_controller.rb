@@ -2,7 +2,12 @@ class EventsController < ApplicationController
   before_action :get_event, only: [:show, :rsvp, :unrsvp]
   before_action :get_user, only: [:rsvp, :unrsvp]
 
+  def show
+    authorize! :manage, @event
+  end
+
   def index
+    authorize! :manage, @events
     @search = Event.ransack(params[:q])
     @search.sorts = 'date asc' if @search.sorts.empty?
     @events = @search.result
