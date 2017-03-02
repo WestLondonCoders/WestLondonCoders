@@ -15,6 +15,8 @@
       .m-profile__bio
         = sanitize @user.bio
 
+  = render partial: 'meetups', locals: { user: @user }
+
   = render partial: 'language_list'
 
   = render partial: 'hackrooms', locals: { user: @user }
@@ -22,7 +24,7 @@
   - if @user.interests.any?
     %section.a-section
       .a-content
-        %h1
+        %h2
           Interests
           - if can? :edit, @user
             %a.m-profile__pencil{href: edit_interests_path(@user)}
@@ -44,7 +46,7 @@
   - if @posts.any?
     %section.a-section
       .a-content--xwide
-        %h1 Posts
+        %h2 My posts
         .m-hackroom-list
-          - @posts.each do |post|
+          - @posts.take(6).each do |post|
             = render partial: 'shared/posts', locals: {post: post}

@@ -2,8 +2,8 @@
   %section.a-section
     .a-content
       - if @user.primary_languages.any?
-        %h1
-          Primary languages I'm using
+        %h2
+          Main languages I'm using
           - if can? :edit, @user
             %a.m-profile__pencil{href: edit_user_path(@user)}
               %i.a-icon-after-text.fa.fa-pencil
@@ -14,8 +14,8 @@
                   %h2.a-tag{class: "a-paint-background--#{language.id}"}= language.name
 
       - if @user.languages.any?
-        %h1
-          Secondary languages I'm using
+        %h2
+          Other languages I'm using
           - if can? :edit, @user
             %a.m-profile__pencil{href: edit_user_path(@user)}
               %i.a-icon-after-text.fa.fa-pencil
