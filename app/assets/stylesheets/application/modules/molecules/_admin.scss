@@ -8,6 +8,10 @@
   text-align: left;
 }
 
+.m-admin__10 {
+  width: 10%;
+}
+
 .m-admin__20 {
   width: 20%;
 }
@@ -22,4 +26,13 @@
 
 .m-admin__80 {
   width: 80%;
+}
+
+.m-admin__logo {
+  width: 150px;
+
+  img {
+    max-height: 100px;
+    max-width: 150px;
+  }
 }

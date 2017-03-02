@@ -5,6 +5,8 @@
     %strong RSVPs
   .m-admin__20
     %strong Date
+  .m-admin__20
+    %strong Venue
   .m-admin__user-permission
     %strong
   .m-admin__user-submit
@@ -14,10 +16,12 @@
     .m-admin__20
       = link_to event do
         = event.name
-    .m-admin__20
+    .m-admin__10
       = event.rsvps.count
     .m-admin__20
       = event.date.to_formatted_s(:long)
+      %br
+      = render partial: 'shared/describe_date', locals: { date: event.date }
     .m-admin__20
       = event.venues&.first&.name
     .m-admin__user-submit

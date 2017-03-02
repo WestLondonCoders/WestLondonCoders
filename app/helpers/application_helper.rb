@@ -41,4 +41,9 @@ module ApplicationHelper
   def language_options_for_select(languages, selected = nil)
     options_for_select(languages.map { |l| [l.name, l.id] }, selected)
   end
+
+  def relative_time(date)
+    sentence = time_ago_in_words(date)
+    sentence.slice(0,1).capitalize + sentence.slice(1..-1)
+  end
 end

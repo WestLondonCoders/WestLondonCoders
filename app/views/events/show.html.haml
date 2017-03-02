@@ -13,7 +13,10 @@
         West London Coders meetup:
         %br
         = @event.name
-      %h3= @event.date.to_formatted_s(:long_ordinal)
+      %h3
+        = @event.date.to_formatted_s(:long_ordinal)
+        %br
+        = render partial: 'shared/describe_date', locals: { date: @event.date }
 
       - if @event.rsvps.any?
         .a-tags
