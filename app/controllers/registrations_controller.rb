@@ -8,4 +8,12 @@ class RegistrationsController < Devise::RegistrationsController
         respond_with_navigational(resource) { render :new }
       end
     end
+
+  def sign_up_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, primary_language_ids: [])
+  end
+
+  def account_update_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :current_password)
+  end
 end
