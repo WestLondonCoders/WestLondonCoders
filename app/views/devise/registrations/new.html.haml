@@ -10,3 +10,5 @@
           = f.password_field :password, autocomplete: "off", placeholder: "Password"
           = f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm password"
           = f.submit "Sign up", class: 'a-button'
+          = flash[:recaptcha_error]
+          = recaptcha_tags

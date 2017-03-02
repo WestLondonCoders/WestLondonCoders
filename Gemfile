@@ -35,6 +35,7 @@ gem 'cancancan', '~> 1.15.0'
 gem 'sendgrid-ruby'
 gem 'premailer-rails'
 gem 'nokogiri'
+gem "recaptcha", require: "recaptcha/rails"
 
 group :development, :test do
   gem 'byebug'

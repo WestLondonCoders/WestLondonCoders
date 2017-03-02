@@ -6,6 +6,8 @@
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
+    <%= flash[:recaptcha_error] %>
+    <%= recaptcha_tags %>
   </div>
 
   <div class="actions">

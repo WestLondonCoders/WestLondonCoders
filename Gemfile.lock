@@ -362,6 +362,8 @@ GEM
       nokogiri (~> 1.5)
       trollop (~> 2.1)
     rdoc (4.3.0)
+    recaptcha (4.1.0)
+      json
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
     rspec-core (3.5.4)
@@ -483,6 +485,7 @@ DEPENDENCIES
   rails (= 4.2.7.1)
   rails_12factor
   ransack!
+  recaptcha
   rspec-rails
   sass-rails (~> 5.0)
   scss-lint
