@@ -15,7 +15,8 @@
       - @sponsors.each do |sponsor|
         .m-admin__user
           .m-admin__20
-            = image_tag(sponsor.logo_url)
+            .m-profile__logo
+              = image_tag(sponsor.logo_url)
           .m-admin__20
             = sponsor.name
           .m-admin__20

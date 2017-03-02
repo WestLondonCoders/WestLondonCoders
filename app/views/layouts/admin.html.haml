@@ -4,6 +4,7 @@
   %body
     = render partial: 'layouts/header'
     = render partial: 'admin/shared/navbar'
-    = render partial: 'layouts/messages'
+    .u-margin-top
+      = render partial: 'layouts/messages'
     = yield
     = render partial: 'layouts/footer'
