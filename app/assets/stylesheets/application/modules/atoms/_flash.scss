@@ -2,7 +2,6 @@
   width: 100%;
   position: absolute;
   top: 80px;
-
 }
 
 .a-flash__box {
@@ -12,8 +11,9 @@
   justify-content: center;
   text-align: center;
   border: solid 2px $color-blue;
+  background-color: $color-white;
   padding: 10px;
-  margin: 10px auto;
+  margin: 0 auto;
   width: 50%;
 }
 
