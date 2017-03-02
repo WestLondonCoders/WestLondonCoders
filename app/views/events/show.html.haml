@@ -1,7 +1,5 @@
 - set_page_title(@event.name)
 
-.u-margin-top--desktop
-
 .a-page-holder
 
   - if can? :manage, @event
@@ -12,22 +10,30 @@
   %section.a-section.u-margin-top--mobile
     .a-content
       %h1.a-heading
+        West London Coders meetup:
+        %br
         = @event.name
-      %h3= @event.date.to_formatted_s(:long)
+      %h3= @event.date.to_formatted_s(:long_ordinal)
+
+      - if @event.rsvps.any?
+        .a-tags
+          - @event.rsvps.each do |user|
+            - user.primary_languages.each do |language|
+              = render partial: 'shared/language_tag', locals: { language: language }
 
       .m-hackroom__mission
         = sanitize(@event.description)
 
-    .a-content
       - if @event.rsvps.any?
-        %h2 Who's coming?
-        .m-hackroom__members
-          - @event.rsvps.each do |rsvp|
-            = render partial: 'shared/user_tag', locals: { user: rsvp }
+        .a-content
+          %h2 Who's coming?
+          .m-hackroom__members
+            - @event.rsvps.each do |rsvp|
+              = render partial: 'shared/user_tag', locals: { user: rsvp }
 
-    - if current_user
-      .a-content.u-margin-top.u-right
-        - if user_attending_event?(@event, current_user)
-          = link_to 'Cancel your RSVP', unrsvp_event_path, class: 'a-button'
-        - else
-          = link_to 'RSVP', rsvp_event_path, class: 'a-button'
+      - if current_user
+        .a-content.u-margin-top.u-right
+          - if user_attending_event?(@event, current_user)
+            = link_to 'Cancel your RSVP', unrsvp_event_path, class: 'a-button'
+          - else
+            = link_to 'RSVP', rsvp_event_path, class: 'a-button'

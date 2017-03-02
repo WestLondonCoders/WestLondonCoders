@@ -22,6 +22,5 @@ module Wlcrails
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-    Time::DATE_FORMATS[:default] = "%m/%d/%Y %I:%M %p"
   end
 end

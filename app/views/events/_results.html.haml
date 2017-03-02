@@ -4,10 +4,17 @@
       = link_to event_path(event) do
         %h2
           = event.name
-        =event.date.to_formatted_s(:long)
+          %br
+          %span.m-hackroom__date=event.date.to_formatted_s(:long)
 
       .m-hackroom__mission
         = simple_format(truncate(sanitize(event.description), length: 250, escape: false, omission: '...', separator: '.'))
+
+      - if event.rsvps.any?
+        .a-tags
+          - event.rsvps.each do |user|
+            - user.primary_languages.each do |language|
+              = render partial: 'shared/language_tag', locals: { language: language }
 
       .u-margin-top.u-right
         = link_to "View", event, class: 'a-button a-button--elastic'
