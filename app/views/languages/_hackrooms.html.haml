@@ -1,34 +1,18 @@
 - if language.primary_hackrooms.any? || language.hackrooms.any?
-  %h2
-    Hackrooms primarily using
-    = language.name
-
-  %ul
-    - if language.primary_hackrooms.any?
+  - if language.primary_hackrooms.any?
+    %h2
+      Hackrooms focused on
+      = language.name
+    %ul
       = render partial: 'shared/hackroom_list', locals: { source: language.primary_hackrooms }
 
-    - else
-      There are no hackrooms primarily using
+  - if language.hackrooms.any?
+    %h2
+      Hackrooms involving some
       = language.name
-      yet.
-      Want to start one? Contact
-      = succeed '.' do
-        = link_to "Steve", user_path(1)
-
-  %h2
-    Hackrooms featuring
-    = language.name
-  %ul
-    - if language.hackrooms.any?
-      = render partial: 'shared/hackroom_list', locals: { source: language.hackrooms }
-
-    - else
-      There are no hackrooms featuring
-      = language.name
-      as a secondary language.
-      Want to start one? Contact
-      = succeed '.' do
-        = link_to "Steve", user_path(1)
+    %ul
+      - if language.hackrooms.any?
+        = render partial: 'shared/hackroom_list', locals: { source: language.hackrooms }
 - else
   %p
     There are no hackrooms using
