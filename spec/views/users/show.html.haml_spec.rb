@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'users/show.html.haml' do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryGirl.create(:user, name: 'Jake Shears') }
   let(:post) { FactoryGirl.create(:post) }
   let(:posts) { [post] }
   let(:interest) { FactoryGirl.create(:interest) }
@@ -20,7 +20,7 @@ describe 'users/show.html.haml' do
   end
 
   it 'sets page title' do
-    expect(view).to receive(:set_page_title).with('Jake 1')
+    expect(view).to receive(:set_page_title).with('Jake Shears')
     render
   end
 
