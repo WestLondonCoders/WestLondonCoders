@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :get_user, only: [:show, :edit, :update, :edit_interests, :edit_skills]
+  before_action :get_user, only: [:show, :edit, :update, :edit_interests]
 
   def show
     @posts = Post.all.where(created_by_id: @user).order("created_at desc")
@@ -22,10 +22,6 @@ class UsersController < ApplicationController
   end
 
   def edit_interests
-    authorize! :edit, @user
-  end
-
-  def edit_skills
     authorize! :edit, @user
   end
 
