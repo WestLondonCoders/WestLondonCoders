@@ -45,14 +45,21 @@ group :development, :test do
   gem 'capybara'
   gem "factory_girl_rails", "~> 4.0"
   gem 'scss-lint'
+  gem 'railroady'
+  gem 'launchy'
+  gem 'jasmine-rails', '~> 0.12.0'
+  gem 'jasmine-core', '~> 2.3.4'
+  gem 'rubocop', '~> 0.47.1', require: false
 end
 
 group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers', '~> 2.8.0'
+  gem 'poltergeist', '~> 1.11.0'
 end
 
 group :development do
   gem 'web-console', '~> 2.0'
-  gem 'spring'
+  gem 'spring', '2.0.1'
+  gem 'spring-commands-rspec'
 end
