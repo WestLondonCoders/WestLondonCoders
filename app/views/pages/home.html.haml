@@ -32,19 +32,6 @@
         %h2
           Latest comments
           %i.fa.fa-comment-o
-        %ul.m-comments__feed
-          - @comments.published.take(14).each do |comment|
-            %li.m-comment.m-comment--delete
-              .m-post__author
-                .m-post__author-photo
-                  = link_to image_tag(avatar_url(comment.author)), post_path(comment.commentable, anchor: "comment-#{comment.id}"), title: comment.author.name
-                .m-post__meta
-                  = link_to comment.author.name, post_path(comment.commentable, anchor: "comment-#{comment.id}")
-                  %br
-                  = time_ago_in_words(comment.created_at)
-                  ago
-
-            .m-comment__content
-              = simple_format(truncate(comment.body, length: 250, escape: false, omission: '...', separator: '.'))
+        = render partial: 'comments_feed'
 
 .m-hero--home
