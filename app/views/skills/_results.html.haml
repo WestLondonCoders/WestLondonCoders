@@ -1,8 +1,0 @@
-.a-tags
-  - @skills.each do |skill|
-    .a-tag--with-face
-      - if skill.users && skill.users.first
-        .m-faces--team__face
-          = link_to image_tag(avatar_url(skill.users.first)), user_path(skill.users.first), title: skill.users.first.name
-      %h2.a-tag.a-tag--skill
-        = skill.name
