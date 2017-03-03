@@ -39,9 +39,6 @@
       - if @user.interests.empty?
         .m-profile__add-interests
           %a.a-button--pink.a-tag.a-tag--interest{href: edit_interests_path(@user)} Add some interests
-      - if @user.skills.empty?
-        .m-profile__add-skills
-          %a.a-button--light.a-tag.a-tag--skill{href: edit_skills_path(@user)} Add some skills
 
   - if @posts.any?
     %section.a-section
