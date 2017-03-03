@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def index
     @search = User.ransack(params[:q])
-    @search.sorts = 'last_sign_in_at desc' if @search.sorts.empty?
+    @search.sorts = 'updated_at desc' if @search.sorts.empty?
     @users = @search.result.includes(:languages, :hackrooms)
   end
 
