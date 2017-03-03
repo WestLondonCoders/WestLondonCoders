@@ -7,24 +7,24 @@
       .m-languages__hackrooms
         = render partial: 'hackrooms', locals: { language: language }
 
-      - if language.users.any?
+      - if language.primary_users.any?
         .m-languages__people
           %h2
-            = pluralize(language.users.count, "person")
+            = pluralize(language.primary_users.count, "person")
             using
             = language.name
-          - if language.users.any?
+          - if language.primary_users.any?
             .m-hackroom__members
-              - language.users.take(10).each do |user|
+              - language.primary_users.take(10).each do |user|
                 = render partial: 'shared/user_tag', locals: { user: user }
-          - else
-            %p
-              Nobody has added this language yet.
-              - if current_user
-                Add
-                = language.name
-                to your
-                = succeed '.' do
-                  = link_to 'profile', edit_user_path(current_user)
+      - else
+        %p
+          Nobody is focusing on
+          = language.name
+          at the moment.
+          - if current_user
+            Add it to your
+            = succeed '.' do
+              = link_to 'profile', edit_user_path(current_user)
       .u-right
         = link_to "View", language, class: 'a-button'

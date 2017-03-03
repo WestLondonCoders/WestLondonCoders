@@ -25,35 +25,33 @@
 
           .m-languages__people
             %h2
-              People using
+              = pluralize(@language.primary_users.count, "person")
+              focusing on
               = @language.name
-
-            %h3 Seriously
             - if @language.primary_users.any?
               .m-hackroom__members
                 - @language.primary_users.each do |user|
                   = render partial: 'shared/user_tag', locals: { user: user }
             - else
-              Nobody is serious about
-              = @language.name
-              yet.
               - if current_user
-                Add
-                = @language.name
-                to your
-                = succeed '.' do
-                  = link_to 'profile', edit_user_path(current_user)
-            %h3
-              Less seriously...
+                %p
+                  Add
+                  = @language.name
+                  to your
+                  = succeed '.' do
+                    = link_to 'profile', edit_user_path(current_user)
+            %h2
+              = pluralize(@language.users.count, "person")
+              using
+              = @language.name
+              with less focus
             - if @language.users.any?
               .m-hackroom__members
                 - @language.users.each do |user|
                   = render partial: 'shared/user_tag', locals: { user: user }
             - else
-              Nobody is taking
-              = @language.name
-              less seriously yet.
               - if current_user
-                Add it to your
-                = succeed '.' do
-                  = link_to 'profile', edit_user_path(current_user)
+                %p
+                  Add it to your
+                  = succeed '.' do
+                    = link_to 'profile', edit_user_path(current_user)

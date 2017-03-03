@@ -1,14 +1,16 @@
 - if language.primary_hackrooms.any? || language.hackrooms.any?
   - if language.primary_hackrooms.any?
     %h2
-      Hackrooms focused on
+      = pluralize(language.primary_hackrooms.count, 'hackroom')
+      focused on
       = language.name
     %ul
       = render partial: 'shared/hackroom_list', locals: { source: language.primary_hackrooms }
 
   - if language.hackrooms.any?
     %h2
-      Hackrooms involving some
+      = pluralize(language.hackrooms.count, 'hackroom')
+      involving some
       = language.name
     %ul
       - if language.hackrooms.any?
@@ -18,6 +20,6 @@
     There are no hackrooms using
     = language.name
     yet.
-    Want to start one? Contact
-    = succeed '.' do
-      = link_to "Steve", user_path(1)
+    Want to
+    = succeed '?' do
+      = link_to "start one", new_hackroom_path

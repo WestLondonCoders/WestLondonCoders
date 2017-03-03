@@ -1,3 +1,3 @@
 %ul
-  - source.each do |hackroom|
+  - source.take(10).each do |hackroom|
     %li= link_to hackroom.name, hackroom
