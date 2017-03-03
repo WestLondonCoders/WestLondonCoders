@@ -33,7 +33,7 @@
           Latest comments
           %i.fa.fa-comment-o
         %ul.m-comments__feed
-          - @comments.where(public: true).take(14).each do |comment|
+          - @comments.published.take(14).each do |comment|
             %li.m-comment.m-comment--delete
               .m-post__author
                 .m-post__author-photo
