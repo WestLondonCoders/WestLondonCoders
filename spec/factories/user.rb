@@ -4,6 +4,8 @@ FactoryGirl.define do
       "Jake #{n}"
     end
 
+    email 'jake.shears@scissorsisters.com'
+    password 'wtf123'
     image { Rack::Test::UploadedFile.new(Rails.root.join('spec', 'support', 'example-image.jpg')) }
   end
 end
