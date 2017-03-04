@@ -1,8 +1,8 @@
 class RolesController < ApplicationController
-  before_action :find_role, only: [:show, :edit, :update, :destroy]
+  before_action :find_role, only: [:edit, :update, :destroy]
 
   def new
-    authorize! :create, Role
+    authorize! :new, Role
     @role = Role.new
   end
 
