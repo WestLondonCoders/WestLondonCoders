@@ -50,4 +50,8 @@ module ApplicationHelper
   def default_times
     "12:00 - 5:30pm"
   end
+
+  def time_as_sentence(date)
+    date.past? ? "#{relative_time(date)} ago" : "In #{relative_time(date)}"
+  end
 end

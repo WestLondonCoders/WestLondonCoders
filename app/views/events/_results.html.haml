@@ -3,7 +3,7 @@
     .m-hackroom-list__hackroom
       = link_to event_path(event) do
         %h3.u-float-left
-          = render partial: 'shared/describe_date', locals: { date: event.date }
+          = time_as_sentence(event.date) 
         %h3.u-right
           =event.date.to_date.to_formatted_s(:long)
           %br

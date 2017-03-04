@@ -21,7 +21,7 @@
     .m-admin__20
       = event.date.to_formatted_s(:long)
       %br
-      = render partial: 'shared/describe_date', locals: { date: event.date }
+      = time_as_sentence(event.date) 
     .m-admin__20
       = event.venues&.first&.name
     .m-admin__user-submit

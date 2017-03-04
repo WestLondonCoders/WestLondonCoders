@@ -20,7 +20,7 @@
         = @event.date.to_date.to_formatted_s(:long_ordinal)
         = default_times
         %br
-        = render partial: 'shared/describe_date', locals: { date: @event.date }
+        = time_as_sentence(@event.date)
 
       - if @event.rsvps.with_role("Organiser").any?
         %h3 Organisers
