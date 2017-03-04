@@ -18,7 +18,7 @@ describe 'languages/_results.html.haml' do
 
   it 'displays a link to each language' do
     render
-    expect(rendered).to have_link('Ruby', href: language_path(language))
+    expect(rendered).to have_link('Ruby', language_path(language))
   end
 
   it 'adds an underline with the language colour' do
@@ -60,6 +60,6 @@ describe 'languages/_results.html.haml' do
 
   it 'displays a view button for each language' do
     render
-    expect(rendered).to have_link('View', href: language_path(language))
+    expect(rendered).to have_link('View', language_path(language))
   end
 end

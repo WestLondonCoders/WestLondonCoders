@@ -18,7 +18,7 @@ describe 'users/_results.html.haml' do
 
   it 'displays a link to each user' do
     render
-    expect(rendered).to have_link('Jake Shears', href: user_path(user))
+    expect(rendered).to have_link('Jake Shears', user_path(user))
   end
 
   it 'displays social links for each user' do
@@ -28,7 +28,7 @@ describe 'users/_results.html.haml' do
 
   it 'displays a link to each user\'slanguage' do
     render
-    expect(rendered).to have_link('Ruby', href: language_path(language))
+    expect(rendered).to have_link('Ruby', language_path(language))
     expect(rendered).to have_css('h2', 'a-paint-background--26')
   end
 
