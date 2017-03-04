@@ -47,14 +47,14 @@ GITHUB_SECRET=YOUR_SECRET
 Make a new branch prefixed with your initials:
 `$ git checkout -b sb-my-branch`
 
-Make your changes, then push the branch:
-`$ git push -u origin sb-my-branch`
-
-Run the tests and make sure your changes didn't cause any to fail:
+Make your changes, then run the tests and make sure your changes didn't cause any to fail and you don't have any lint/rubocop issues:
 `$ bundle exec rake`
 
-You can run tests individually using spring to make it faster:
+You can run tests individually using spring:
 `$ spring rspec path/to/spec/file`
+
+Then push the branch:
+`$ git push -u origin sb-my-branch`
 
 Send Steve a link or make a pull request.
 
