@@ -14,25 +14,24 @@
         %br
         = @event.name
 
-      .u-float-right= render partial: 'rsvp_button'
-
       %h3
         = @event.date.to_date.to_formatted_s(:long_ordinal)
         = default_times
         %br
         = time_as_sentence(@event.date)
 
-      - if @event.rsvps.with_role("Organiser").any?
+      .u-float-right= render partial: 'rsvp_button'
+
+      - if @event.organisers.any?
         %h3 Organisers
-        - @event.rsvps.with_role("Organiser").each do |user|
+        - @event.organisers.each do |user|
           = render partial: 'shared/user_tag', locals: { user: user }
 
       - if @event.rsvps.any?
         %h3.u-margin-bottom--none= @event.date.past? ? "Members who came like:" : "Members attending like:"
         .a-tags
-          - @event.rsvps.each do |user|
-            - user.primary_languages.each do |language|
-              = render partial: 'shared/language_tag', locals: { language: language }
+          - @event.languages.each do |language|
+            = render partial: 'shared/language_tag', locals: { language: language }
 
       .m-hackroom__mission
         = sanitize(@event.description)

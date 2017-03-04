@@ -17,7 +17,7 @@ class EventsController < ApplicationController
     render :index
   end
 
-  def rsvp
+  def rsvp # rubocop:disable Metrics/MethodLength
     rsvp = EventRsvp.find_by(event: @event, user: current_user)
 
     if rsvp.present?

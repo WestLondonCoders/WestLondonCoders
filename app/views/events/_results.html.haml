@@ -3,7 +3,7 @@
     .m-hackroom-list__hackroom
       = link_to event_path(event) do
         %h3.u-float-left
-          = time_as_sentence(event.date) 
+          = time_as_sentence(event.date)
         %h3.u-right
           =event.date.to_date.to_formatted_s(:long)
           %br
@@ -17,9 +17,8 @@
 
       - if event.rsvps.any?
         .a-tags
-          - event.rsvps.each do |user|
-            - user.primary_languages.each do |language|
-              = render partial: 'shared/language_tag', locals: { language: language }
+          - event.languages.take(4).each do |language|
+            = render partial: 'shared/language_tag', locals: { language: language }
 
       .u-margin-top.u-right
         = link_to "View", event, class: 'a-button a-button--elastic'
