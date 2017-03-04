@@ -24,4 +24,6 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
   ActionMailer::Base.delivery_method = :smtp
+  config.action_mailer.show_previews = true
+  config.action_mailer.preview_path = "#{Rails.root}/spec/mailer/previews"
 end
