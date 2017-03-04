@@ -21,10 +21,16 @@
         %h2
           %i.fa.fa-commenting-o{"aria-hidden" => "true"}
           Blog
-      %a.m-navbar__item{class: ('m-navbar__item--is-selected' if current_page?(meetups_path)), href: meetups_path}
-        %h2
-          %i.fa.fa-meetup{"aria-hidden" => "true"}
-          Meetups
+      - if current_user.has_role?(:organiser)
+        %a.m-navbar__item{class: ('m-navbar__item--is-selected' if current_page?(events_path)), href: events_path}
+          %h2
+            %i.fa.fa-meetup{"aria-hidden" => "true"}
+            Meetups
+      - else
+        %a.m-navbar__item{class: ('m-navbar__item--is-selected' if current_page?(meetups_path)), href: meetups_path}
+          %h2
+            %i.fa.fa-meetup{"aria-hidden" => "true"}
+            Meetups
 
     - if current_user
       = render partial: 'layouts/navigation/user_nav', locals: {logged_in: true}

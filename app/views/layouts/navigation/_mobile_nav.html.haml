@@ -25,10 +25,16 @@
               %a{href: posts_path}
                 %i.fa.fa-commenting-o{"aria-hidden" => "true"}
                 Blog
-            %li
-              %a{href: meetups_path}
-                %i.fa.fa-meetup{"aria-hidden" => "true"}
-                Meetups
+            - if current_user.has_role?(:organiser)
+              %li
+                %a{href: events_path}
+                  %i.fa.fa-meetup{"aria-hidden" => "true"}
+                  Meetups
+            - else
+              %li
+                %a{href: meetups_path}
+                  %i.fa.fa-meetup{"aria-hidden" => "true"}
+                  Meetups
 
     .m-navbar--mobile-right
       - if current_user
