@@ -48,7 +48,10 @@ Make your changes, then push the branch:
 `$ git push -u origin sb-my-branch`
 
 Run the tests and make sure your changes didn't cause any to fail:
-`$ spring rspec`
+`$ bundle exec rake`
+
+You can run tests individually using spring to make it faster:
+`$ spring rspec path/to/spec/file`
 
 Send Steve a link or make a pull request.
 
