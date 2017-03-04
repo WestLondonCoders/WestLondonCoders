@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
   before_action :find_commentable
   before_action :set_post_and_comments, only: [:create, :destroy, :update]
-  after_action :slack, only: [:create]
 
   def show
   end
@@ -68,14 +67,5 @@ class CommentsController < ApplicationController
   def find_commentable
     @commentable = Comment.find(params[:comment_id]) if params[:comment_id]
     @commentable = Post.find_by_slug(params[:post_id]) if params[:post_id]
-  end
-
-  def comment_url
-    post_url(@commentable, anchor: "comment-#{@comment.id}")
-  end
-
-  def slack
-    Slacked.post_async "#{@comment.author.name} commented: #{@comment.body} - #{comment_url}",
-                        {channel: 'general', username: 'Comment Bot'}
   end
 end
