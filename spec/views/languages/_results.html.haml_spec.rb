@@ -7,7 +7,7 @@ describe 'languages/_results.html.haml' do
   let(:user) { FactoryGirl.create(:user) }
   let(:users) { [user] }
 
-  let(:current_user) { double{:user} }
+  let(:current_user) { double { :user } }
 
   before do
     allow(language).to receive(:primary_users).and_return(users)

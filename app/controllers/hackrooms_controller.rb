@@ -18,9 +18,9 @@ class HackroomsController < ApplicationController
     @hackroom = Hackroom.new
   end
 
-  def create
+  def create # rubocop:disable Metrics/MethodLength
     @hackroom = Hackroom.new(hackroom_params)
-    @hackroom.slug = @hackroom.name.downcase.gsub(" ", "-")
+    @hackroom.slug = @hackroom.name.downcase.tr(" ", "-")
 
     respond_to do |format|
       if @hackroom.save
@@ -52,31 +52,14 @@ class HackroomsController < ApplicationController
 
   def join
     enrolment = UserHackroom.find_by(hackroom: @hackroom, user: @user)
-
     if enrolment.present?
-      flash[:alert] = "You're already in this hackroom."
-      redirect_to @hackroom
+      enrolment.destroy
+      flash[:alert] = "You've left this hackroom."
     else
       UserHackroom.create(hackroom: @hackroom, user: @user)
       flash[:alert] = 'You joined this hackroom!'
-      slack_announce_new_joiner if @hackroom.slack.present?
-      redirect_to @hackroom
     end
-  end
-
-  def leave
-    enrolment = UserHackroom.find_by(hackroom: @hackroom, user: @user)
-
-    if enrolment
-      enrolment.destroy
-      enrolment.save
-      flash[:alert] = "You've left this hackroom."
-      slack_announce_new_leaver if @hackroom.slack.present?
-      redirect_to @hackroom
-    else
-      flash[:alert] = "You weren't in this hackroom."
-      redirect_to @hackroom
-    end
+    redirect_to @hackroom
   end
 
   def destroy
@@ -110,25 +93,9 @@ class HackroomsController < ApplicationController
 
   def slack_announce_new_hackroom
     if Rails.env.production?
-      Slacked.post_async "#{current_user.name} created a hackroom: #{@hackroom.name} #{hackroom_url(@hackroom)}", {channel: 'general', username: 'Hackroom Bot'}
+      Slacked.post_async "#{current_user.name} created a hackroom: #{@hackroom.name} #{hackroom_url(@hackroom)}", channel: 'general', username: 'Hackroom Bot'
     else
-      Slacked.post_async "#{current_user.name} created a hackroom: #{@hackroom.name} #{hackroom_url(@hackroom)}", {channel: 'testing', username: 'Hackroom Bot'}
-    end
-  end
-
-  def slack_announce_new_joiner
-    if Rails.env.production?
-      Slacked.post_async "#{current_user.name} joined the hackroom! #{user_url(current_user)}", {channel: "#{@hackroom.slack}", username: 'Hackroom Bot'}
-    else
-      Slacked.post_async "#{current_user.name} joined the hackroom! #{user_url(current_user)}", {channel: 'testing', username: 'Hackroom Bot'}
-    end
-  end
-
-  def slack_announce_new_leaver
-    if Rails.env.production?
-      Slacked.post_async "#{current_user.name} left the hackroom! #{user_url(current_user)}", {channel: "#{@hackroom.slack}", username: 'Hackroom Bot'}
-    else
-      Slacked.post_async "#{current_user.name} left the hackroom! #{user_url(current_user)}", {channel: "testing", username: 'Hackroom Bot'}
+      Slacked.post_async "#{current_user.name} created a hackroom: #{@hackroom.name} #{hackroom_url(@hackroom)}", channel: 'testing', username: 'Hackroom Bot'
     end
   end
 end

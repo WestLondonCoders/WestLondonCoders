@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.created_by = current_user
-    @post.slug = @post.title.downcase.gsub(" ", "-")
+    @post.slug = @post.title.downcase.tr(" ", "-")
 
     respond_to do |format|
       if @post.save
@@ -61,7 +61,7 @@ class PostsController < ApplicationController
     authorize! :destroy, @hackroom
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to user_path(@post.created_by)}
+      format.html { redirect_to user_path(@post.created_by) }
     end
   end
 
@@ -72,7 +72,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :description, :twitter_image, :featured, :slug, tags_attributes: [:id, :name, :_destroy], post_attachments_attributes: [:id, :post_id, :avatar, :_destroy] )
+    params.require(:post).permit(:title, :content, :description, :twitter_image, :featured, :slug, tags_attributes: [:id, :name, :_destroy], post_attachments_attributes: [:id, :post_id, :avatar, :_destroy])
   end
 
   def tag_params
@@ -81,9 +81,9 @@ class PostsController < ApplicationController
 
   def slack
     if Rails.env.production?
-      Slacked.post "#{@post.created_by.name} published a post: #{@post.title} - #{post_url(@post)}", {channel: 'general', username: 'Blogger Bot'}
+      Slacked.post "#{@post.created_by.name} published a post: #{@post.title} - #{post_url(@post)}", channel: 'general', username: 'Blogger Bot'
     else
-      Slacked.post "#{@post.created_by.name} published a post: #{@post.title} - #{post_url(@post)}", {channel: 'testing', username: 'Blogger Bot'}
+      Slacked.post "#{@post.created_by.name} published a post: #{@post.title} - #{post_url(@post)}", channel: 'testing', username: 'Blogger Bot'
     end
   end
 end

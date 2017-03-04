@@ -44,7 +44,7 @@ module ApplicationHelper
 
   def relative_time(date)
     sentence = time_ago_in_words(date)
-    sentence.slice(0,1).capitalize + sentence.slice(1..-1)
+    sentence.slice(0, 1).capitalize + sentence.slice(1..-1)
   end
 
   def default_times

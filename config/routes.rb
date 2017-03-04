@@ -47,8 +47,6 @@ Rails.application.routes.draw do
     member do
       get :join
       post :join
-      get :leave
-      post :leave
     end
   end
 

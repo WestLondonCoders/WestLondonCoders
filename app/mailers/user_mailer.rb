@@ -28,4 +28,3 @@ class UserMailer < ApplicationMailer
     mail to: user.email, subject: "You're a WLC organiser!", from: 'Steve Brewer <steve@westlondoncoders.com>'
   end
 end
-

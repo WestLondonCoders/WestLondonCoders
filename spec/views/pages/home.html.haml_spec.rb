@@ -20,7 +20,7 @@ describe 'pages/home.html.haml' do
 
   it 'displays featured posts' do
     render
-    expect(rendered).to render_template(partial: 'shared/_posts', locals: {post: post})
+    expect(rendered).to render_template(partial: 'shared/_posts', locals: { post: post })
   end
 
   it 'displays latest comments' do

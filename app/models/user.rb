@@ -33,8 +33,7 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :update }
 
-  scope :with_role, lambda{ |role| joins(:roles).where(roles: {name: role}) }
-
+  scope :with_role, lambda { |role| joins(:roles).where(roles: { name: role }) }
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -42,22 +41,15 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.email = auth.info.email
       user.name = auth.info.name
-      user.username = auth.info.nickname
       user.github = auth.info.nickname
-      user.image = auth.info.image
-      user.password = Devise.friendly_token[0,20]
-      user.permission = 10
+      user.password = Devise.friendly_token[0, 20]
       user.bio = auth.extra.raw_info.bio
     end
   end
 
   def has_social_links?
-    return true if twitter.present? ||
-                   facebook.present? ||
-                   github.present? ||
-                   instagram.present? ||
-                   linkedin.present? ||
-                   website_url.present?
+    social_link = twitter || facebook || github || instagram || linkedin || website_url
+    social_link.present?
   end
 
   def is_hackroom_admin?(hackroom)
