@@ -19,6 +19,9 @@ Rename config/database.example.yml to config/database.yml and configure to your 
 Setup the database locally:
 `$ bundle exec rake db:setup`
 
+Download a copy of production database:
+`$ bundle exec rake db:pull`
+
 If you have any issues connecting to the database, [this](http://stackoverflow.com/questions/26447736/unable-to-connect-to-postgresql-database-after-upgrading-to-yosemite-10-10/26458194#26458194) might help.
 
 ## Setup GitHub omniauth so you can login to the site locally
@@ -54,14 +57,6 @@ You can run tests individually using spring to make it faster:
 `$ spring rspec path/to/spec/file`
 
 Send Steve a link or make a pull request.
-
-## Import Production Database
-
-If you're on the Heroku app, you can use Heroku pg:pull to import the latest version of the database.
-
-If a database called wlc already exists, you'll need to delete it first as it won't overwrite an existing database. Or rename the database your local app uses in database.yml to something else, then specify that new name in the pg:pull command:
-
-`heroku pg:pull DATABASE_URL wlc`
 
 ## Visual Database Editor
 
