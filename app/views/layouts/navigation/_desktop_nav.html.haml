@@ -21,7 +21,7 @@
         %h2
           %i.fa.fa-commenting-o{"aria-hidden" => "true"}
           Blog
-      - if current_user.has_role?(:organiser)
+      - if current_user&.has_role?(:organiser)
         %a.m-navbar__item{class: ('m-navbar__item--is-selected' if current_page?(events_path)), href: events_path}
           %h2
             %i.fa.fa-meetup{"aria-hidden" => "true"}
