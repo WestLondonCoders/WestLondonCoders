@@ -4,7 +4,10 @@ FactoryGirl.define do
       "Jake #{n}"
     end
 
-    email 'jake.shears@scissorsisters.com'
+    sequence :email do |n|
+      "jake.shears#{n}@scissorsisters.com"
+    end
+
     password 'wtf123'
     image { Rack::Test::UploadedFile.new(Rails.root.join('spec', 'support', 'example-image.jpg')) }
     bio 'I make cool songs'
