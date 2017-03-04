@@ -2,15 +2,17 @@
 
 .a-page-holder
 
-  %section.a-section
-    .a-content--xwide.a-content--tight
-
-      %h1.u-center
-        #event-search-heading
+  %section.a-section.a-section--alt
+    .a-content--wide.a-content--tight
+      %h1.a-heading.u-center
+        #post-search-heading
           = render 'heading'
 
-      = render partial: 'sort'
+      .a-content
+        %p= I18n.t('index_introductions.events')
+
       = render partial: 'filter'
+      = render partial: 'sort'
 
   - if can? :create, Event
     %section.a-section.u-margin-top--mobile

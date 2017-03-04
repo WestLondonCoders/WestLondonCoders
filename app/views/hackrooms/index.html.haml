@@ -10,8 +10,7 @@
           = render 'heading'
 
       .a-content
-        %p
-          Hackrooms are a way to bring together people with shared interests or goals. It could be a group of beginners learning HTML, or some Pythonists building an app, or both of those things.
+        %p= I18n.t('index_introductions.hackrooms')
 
         = render partial: 'filter'
 

@@ -11,12 +11,7 @@
           = render 'heading'
 
       .a-content
-        %p
-          We've used the word languages here, but these can be any tools or frameworks. Each person and hackroom can have
-          %strong primary
-          and
-          %strong secondary
-          languages, which helps us understand what our main focus is.
+        %p= I18n.t('index_introductions.languages')
 
         = render partial: 'filter'
 
