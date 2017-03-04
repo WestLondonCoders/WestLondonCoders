@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
-  before_action :get_event, only: [:show, :rsvp, :unrsvp]
-  before_action :get_user, only: [:rsvp, :unrsvp]
+  before_action :get_event, only: [:show, :rsvp]
 
   def show
     authorize! :manage, @event
@@ -19,28 +18,16 @@ class EventsController < ApplicationController
   end
 
   def rsvp
-    rsvp = EventRsvp.find_by(event: @event, user: @user)
+    rsvp = EventRsvp.find_by(event: @event, user: current_user)
 
     if rsvp.present?
-      flash[:alert] = "You're already coming to this meetup."
-    else
-      EventRsvp.create(event: @event, user: @user)
-      UserMailer.rsvp_confirmation(@user, @event).deliver
-      flash[:alert] = "You're coming to this meetup!"
-    end
-    redirect_to @event
-  end
-
-  def unrsvp
-    rsvp = EventRsvp.find_by(event: @event, user: @user)
-
-    if rsvp
       rsvp.destroy
-      rsvp.save
-      UserMailer.unrsvp_confirmation(@user, @event).deliver
+      UserMailer.unrsvp_confirmation(current_user, @event).deliver
       flash[:alert] = "Thanks for updating your RSVP."
     else
-      flash[:alert] = "Something went wrong."
+      EventRsvp.create(event: @event, user: current_user)
+      UserMailer.rsvp_confirmation(current_user, @event).deliver
+      flash[:alert] = "You're coming to this meetup!"
     end
     redirect_to @event
   end
@@ -49,9 +36,5 @@ class EventsController < ApplicationController
 
   def get_event
     @event = Event.find(params[:id])
-  end
-
-  def get_user
-    @user = current_user
   end
 end

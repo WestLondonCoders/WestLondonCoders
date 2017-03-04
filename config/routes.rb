@@ -59,8 +59,6 @@ Rails.application.routes.draw do
     member do
       get :rsvp
       post :rsvp
-      get :unrsvp
-      post :unrsvp
     end
   end
 
