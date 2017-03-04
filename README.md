@@ -47,6 +47,9 @@ Make a new branch prefixed with your initials:
 Make your changes, then push the branch:
 `$ git push -u origin sb-my-branch`
 
+Run the tests and make sure your changes didn't cause any to fail:
+`$ spring rspec`
+
 Send Steve a link or make a pull request.
 
 ## Import Production Database
