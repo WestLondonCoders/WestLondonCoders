@@ -65,7 +65,7 @@
 
 .m-hackroom__languages {
   select {
-    border-color: #cacacc;
+    border-color: $color-soft-grey;
     width: 100%;
     min-height: 100px;
   }
@@ -73,7 +73,7 @@
 
 .m-hackroom__admins {
   select {
-    border-color: #cacacc;
+    border-color: $color-soft-grey;
     width: 100%;
     min-height: 200px;
   }

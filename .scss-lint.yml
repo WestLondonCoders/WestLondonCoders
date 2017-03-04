@@ -1,5 +1,4 @@
 exclude: 'app/assets/stylesheets/email/**'
-exclude: 'app/assets/stylesheets/application/base/_syntax.scss'
 
 linters:
   BangFormat:

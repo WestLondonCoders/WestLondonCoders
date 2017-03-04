@@ -1,0 +1,26 @@
+{
+  "name": "WestLondonCoders",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/svpersteve/wlcrails"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.7",
+    "gulp": "^3.9.1",
+    "jscs": "^1.10.0",
+    "jshint": "^2.6.0",
+    "localtunnel": "^1.8.1"
+  },
+  "config": {
+    "path": {
+      "javascript": "app/assets/javascripts"
+    }
+  },
+  "scripts": {
+    "lint": "jshint --config .jshintrc -e .js,.erb $npm_package_config_path_javascript",
+    "jscs": "jscs --config .jscsrc $npm_package_config_path_javascript",
+    "build": "npm run lint && npm run jscs"
+  },
+  "dependencies": {}
+}

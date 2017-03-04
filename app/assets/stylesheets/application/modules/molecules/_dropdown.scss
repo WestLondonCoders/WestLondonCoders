@@ -19,7 +19,7 @@
   z-index: 200;
   background: $color-white;
   border: 1px solid $color-light-grey;
-  box-shadow: 0 1px 5px 1px rgba(0, 0, 0, .05);
+  box-shadow: 0 1px 5px 1px $color-box-shadow;
   list-style: none;
   margin: 0;
   opacity: 0;

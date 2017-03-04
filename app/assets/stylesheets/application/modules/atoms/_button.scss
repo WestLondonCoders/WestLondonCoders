@@ -59,7 +59,7 @@
 .a-button--light {
   border: solid 1px $color-light-blue;
 
-    &:hover {
+  &:hover {
     @include button-fade;
     color: $color-white;
     background-color: $color-pink;

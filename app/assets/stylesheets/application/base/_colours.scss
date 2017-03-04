@@ -10,24 +10,27 @@ $color-light-grey: #a2a2a0;
 $color-white: #ffffff;
 $color-black: #000000;
 $color-border: #e1e8ed;
+$color-border-light: rgba(0, 0, 0, 0.15);
+$color-soft-grey: #cacacc;
+$color-box-shadow: rgba(0, 0, 0, .05);
 
 // Dynamic color assignment by ID
 
-$color-palette-red: #AF1401;
-$color-palette-green: #68D89B;
+$color-palette-red: #af1401;
+$color-palette-green: #68d89b;
 $color-palette-java: #501912;
-$color-palette-gold: #FCD581;
-$color-palette-yellow: #F2D50A;
-$color-palette-purple: #1B065E;
-$color-palette-orange: #EF5138;
-$color-palette-un-blue: #6184D8;
-$color-palette-teal: #50C5B7;
-$color-palette-light-green: #9CEC5B;
-$color-palette-indigo: #16425B;
-$color-palette-cadbury: #2708A0;
-$color-palette-turqoise: #61DAFB;
-$color-palette-mauve: #8892BF;
-$color-palette-licorice: #210F04;
+$color-palette-gold: #fcd581;
+$color-palette-yellow: #f2d50a;
+$color-palette-purple: #1b065e;
+$color-palette-orange: #ef5138;
+$color-palette-un-blue: #6184d8;
+$color-palette-teal: #50c5b7;
+$color-palette-light-green: #9cec5b;
+$color-palette-indigo: #16425b;
+$color-palette-cadbury: #2708a0;
+$color-palette-turqoise: #61dafb;
+$color-palette-mauve: #8892bf;
+$color-palette-licorice: #210f04;
 
 $color-palette: (
   1: $color-palette-red,
