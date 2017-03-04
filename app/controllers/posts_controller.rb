@@ -17,7 +17,6 @@ class PostsController < ApplicationController
     @tag = Tag.find_by(id: tag_params[:id])
     @comments = @post.comments.where(public: true).order("created_at asc")
     @new_comment = @post.comments.new
-    @post_attachments = @post.post_attachments.all
   end
 
   def new_comment

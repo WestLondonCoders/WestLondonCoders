@@ -14,5 +14,5 @@
             %h2.a-tag.a-tag--post-tag= tag.name
 
       .m-post__images
-        - @post_attachments.each do |p|
+        - @post.post_attachments.each do |p|
           = image_tag p.avatar_url

@@ -29,7 +29,7 @@ describe 'posts/show.html.haml' do
   end
 
   it 'uses gallery template if it has post attachments' do
-    assign(:post_attachments, [post_attachment])
+    allow(post).to receive(:post_attachments).and_return([post_attachment])
     render
     expect(rendered).to render_template(partial: 'posts/templates/_gallery')
   end

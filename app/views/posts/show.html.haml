@@ -3,7 +3,7 @@
 
 .u-margin-top--desktop
 
-- if @post_attachments.any?
+- if @post.post_attachments.any?
   = render partial: 'posts/templates/gallery'
 
 - else
