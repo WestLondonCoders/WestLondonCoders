@@ -1,15 +1,21 @@
 source 'https://rubygems.org'
-ruby '2.3.0'
+ruby '2.3.3'
+
+# Rails, and deps of Rails that we have locked at specific versions
 
 gem 'rails', '4.2.7.1'
+gem 'jquery-rails', '>= 4.0.4'
+gem 'sassc-rails'
+gem 'sprockets',    '~> 3.6.0'
+gem 'uglifier',     '>= 1.0.3'
+
+# Gems we have added beyond those installed by Rails
+
 gem 'pg'
-gem 'sass-rails', '~> 5.0'
 gem 'rails_12factor', group: :production
 gem 'haml'
 gem 'haml-rails'
-gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -17,6 +23,8 @@ gem 'unicorn'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
+gem "recaptcha", require: "recaptcha/rails"
+gem 'cancancan', '~> 1.15.0'
 gem 'dotenv', '~> 1.0.2'
 gem 'dotenv-rails', '~> 1.0.2', require: false
 gem 'friendly_id'
@@ -31,11 +39,9 @@ gem 'carrierwave', '~> 1.0'
 gem 'fog'
 gem "mini_magick"
 gem 'file_validators'
-gem 'cancancan', '~> 1.15.0'
 gem 'sendgrid-ruby'
 gem 'premailer-rails'
 gem 'nokogiri'
-gem "recaptcha", require: "recaptcha/rails"
 gem "rolify"
 
 group :development, :test do
@@ -44,7 +50,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem "factory_girl_rails", "~> 4.0"
-  gem 'scss-lint'
+  gem 'scss_lint'
   gem 'railroady'
   gem 'launchy'
   gem 'jasmine-rails', '~> 0.12.0'

@@ -81,7 +81,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.0.4)
+    concurrent-ruby (1.0.5)
     css_parser (1.4.7)
       addressable
     daemons (1.2.4)
@@ -108,6 +108,7 @@ GEM
       railties (>= 3.0.0)
     faraday (0.10.1)
       multipart-post (>= 1.2, < 3)
+    ffi (1.9.18)
     file_validators (2.1.0)
       activemodel (>= 3.0)
       mime-types (>= 1.0)
@@ -414,15 +415,20 @@ GEM
     ruby_parser (3.1.3)
       sexp_processor (~> 4.1)
     sass (3.4.23)
-    sass-rails (5.0.6)
-      railties (>= 4.0.0, < 6)
-      sass (~> 3.1)
-      sprockets (>= 2.8, < 4.0)
-      sprockets-rails (>= 2.0, < 4.0)
-      tilt (>= 1.1, < 3)
-    scss-lint (0.38.0)
-      rainbow (~> 2.0)
-      sass (~> 3.4.1)
+    sassc (1.11.2)
+      bundler
+      ffi (~> 1.9.6)
+      sass (>= 3.3.0)
+    sassc-rails (1.3.0)
+      railties (>= 4.0.0)
+      sass
+      sassc (~> 1.9)
+      sprockets (> 2.11)
+      sprockets-rails
+      tilt
+    scss_lint (0.52.0)
+      rake (>= 0.9, < 13)
+      sass (~> 3.4.20)
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -442,7 +448,7 @@ GEM
       activesupport (>= 4.2)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
-    sprockets (3.7.1)
+    sprockets (3.6.3)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.0)
@@ -508,7 +514,7 @@ DEPENDENCIES
   jasmine-core (~> 2.3.4)
   jasmine-rails (~> 0.12.0)
   jbuilder (~> 2.0)
-  jquery-rails
+  jquery-rails (>= 4.0.4)
   jquery-turbolinks
   launchy
   mini_magick
@@ -527,23 +533,24 @@ DEPENDENCIES
   rolify
   rspec-rails
   rubocop (~> 0.47.1)
-  sass-rails (~> 5.0)
-  scss-lint
+  sassc-rails
+  scss_lint
   sdoc (~> 0.4.0)
   sendgrid-ruby
   shoulda-matchers (~> 2.8.0)
   slacked
   spring (= 2.0.1)
   spring-commands-rspec
+  sprockets (~> 3.6.0)
   thin
   trix
   turbolinks
-  uglifier (>= 1.3.0)
+  uglifier (>= 1.0.3)
   unicorn
   web-console (~> 2.0)
 
 RUBY VERSION
-   ruby 2.3.0p0
+   ruby 2.3.3p222
 
 BUNDLED WITH
    1.13.7
