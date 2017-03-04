@@ -1,13 +1,13 @@
 class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to users_path, :alert => exception.message
+    redirect_to users_path, alert: exception.message
   end
 
   protect_from_forgery with: :exception
   after_filter :store_location
 
   def store_location
-    session[:previous_url] = request.fullpath unless request.fullpath =~ /\/users/
+    session[:previous_url] = request.fullpath unless request.fullpath =~ %r{/\/users/}
   end
 
   def after_sign_in_path_for(resource)

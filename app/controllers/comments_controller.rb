@@ -23,25 +23,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  def update
-    @comment = Comment.find(params[:id])
-
-    if current_user == @comment.author
-      @comment.public = false
-      @comment.save
-        respond_to do |format|
-          format.html do
-            redirect_to @commentable
-          end
-          format.js
-        end
-    else
-      redirect_to root_path
-    end
-  end
-
   def destroy
-
     @comment = Comment.find(params[:id])
     @comment.destroy
 

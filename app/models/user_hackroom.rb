@@ -15,7 +15,7 @@ class UserHackroom < ActiveRecord::Base
 
   def announce_leaving
     if hackroom.slack.present?
-        Slacked.post_async message(user, 'left'), channel: slack_channel, username: 'Hackroom Bot'
+      Slacked.post_async message(user, 'left'), channel: slack_channel, username: 'Hackroom Bot'
     end
   end
 

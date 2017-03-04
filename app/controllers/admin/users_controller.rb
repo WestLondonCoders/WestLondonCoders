@@ -6,7 +6,7 @@ class Admin::UsersController < Admin::BaseController
   def index
     authorize! :manage, @users
     @search = User.ransack(params[:q])
-    @search.sorts =  'last_sign_in_at desc' if @search.sorts.empty?
+    @search.sorts = 'last_sign_in_at desc' if @search.sorts.empty?
     @users = @search.result.includes(:roles, :hackrooms, :own_hackrooms)
     @roles = Role.all
   end
@@ -40,9 +40,6 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def user_params
-    params[:user].permit(:name, :bio, :image, :logo, :logo_link, :tagline, :twitter,
-                         :instagram, :github, :facebook, :linkedin, :permission,
-                         :website_url, role_ids: [], primary_language_ids: [],
-                         language_ids: [], interests_attributes: [:id, :name, :_destroy])
+    params[:user].permit(:name, :bio, :image, :logo, :logo_link, :tagline, :twitter, :instagram, :github, :facebook, :linkedin, :permission, :website_url, role_ids: [], primary_language_ids: [], language_ids: [], interests_attributes: [:id, :name, :_destroy])
   end
 end

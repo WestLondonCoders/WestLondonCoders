@@ -6,7 +6,7 @@ class Admin::EventsController < Admin::BaseController
   def index
     authorize! :manage, @events
     @search = Event.ransack(params[:q])
-    @search.sorts =  'date asc' if @search.sorts.empty?
+    @search.sorts = 'date asc' if @search.sorts.empty?
     @events = @search.result
   end
 
