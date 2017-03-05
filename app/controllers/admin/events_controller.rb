@@ -18,11 +18,13 @@ class Admin::EventsController < Admin::BaseController
   end
 
   def your_events
+    authorize! :manage, @upcoming_events
     @upcoming_events = current_user.managed_events.upcoming
     @past_events = current_user.managed_events.past
   end
 
   def new
+    authorize! :manage, Event
     @event = Event.new
   end
 
@@ -36,6 +38,10 @@ class Admin::EventsController < Admin::BaseController
       flash[:alert] = "Error"
       render :new
     end
+  end
+
+  def edit
+    authorize! :manage, @event
   end
 
   def update

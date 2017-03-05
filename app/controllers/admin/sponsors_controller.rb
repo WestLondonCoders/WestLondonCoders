@@ -9,11 +9,12 @@ class Admin::SponsorsController < Admin::BaseController
   end
 
   def new
+    authorize! :create, Sponsor
     @sponsor = Sponsor.new
   end
 
   def create
-    authorize! :create, @sponsors
+    authorize! :create, Sponsor
     @sponsor = Sponsor.new(sponsor_params)
 
     if @sponsor.save
@@ -24,8 +25,12 @@ class Admin::SponsorsController < Admin::BaseController
     end
   end
 
+  def edit
+    authorize! :manage, @sponsor
+  end
+
   def update
-    authorize! :update, @sponsors
+    authorize! :manage, @sponsor
     if @sponsor.update(sponsor_params)
       redirect_to admin_sponsors_path
     else
