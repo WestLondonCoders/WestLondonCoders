@@ -12,7 +12,7 @@
         = f.trix_editor :description
 
       .m-post-editor__content
-        = f.datetime_local_field :date
+        = f.date_field :date
 
       - if current_user.has_role?(:admin)
         .a-content
