@@ -1,8 +1,12 @@
 .a-flash {
-  width: 100%;
   position: fixed;
-  top: 80px;
-  transition: 1s;
+  bottom: 20px;
+  right: 20px;
+  @media #{$to-medium} {
+    width: 100%;
+    bottom: 60px;
+    right: 0;
+  }
 }
 
 .a-flash__box {
@@ -14,8 +18,12 @@
   border: solid 2px $color-blue;
   background-color: $color-white;
   padding: 10px;
-  margin: 0 auto;
-  width: 50%;
+  width: 300px;
+  min-height: 100px;
+  @media #{$to-medium} {
+    margin: 0 auto;
+    min-height: 100px;
+  }
 }
 
 .a-flash__message {
