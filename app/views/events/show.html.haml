@@ -54,6 +54,6 @@
           %h2 Who's coming?
           .m-hackroom__members
             - @event.rsvps.each do |rsvp|
-              = render partial: 'shared/user_tag', locals: { user: rsvp }
+              = render partial: 'shared/user_tag', locals: { user: rsvp } unless rsvp.has_role?(:organiser)
 
       .u-center.u-margin-top= render partial: 'rsvp_button'
