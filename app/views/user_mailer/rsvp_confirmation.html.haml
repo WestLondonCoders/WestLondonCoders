@@ -1482,7 +1482,7 @@
                                     %br
                                     %h4.text-center= @event.name
                                     %h5.text-center= @event.date.to_formatted_s(:long_ordinal)
-                                    .text-center.event-logo= image_tag @event.venues.first.logo
+                                    .text-center.event-logo= image_tag @event.sponsor.logo
                     %table.row.masthead
                       %tbody
                         %tr
@@ -1524,8 +1524,8 @@
                                   %br/
                                   %h5 Where is the meetup?
                                   %p
-                                    = link_to "http://maps.google.com/?q=#{strip_tags @event.venues&.first&.address}" do
-                                      = sanitize @event.venues&.first&.address
+                                    = link_to "http://maps.google.com/?q=#{strip_tags @event.sponsor.address}" do
+                                      = sanitize @event.sponsor.address
 
                                   %br
                                   %h5 What shall I do now?

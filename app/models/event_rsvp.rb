@@ -8,12 +8,12 @@ class EventRsvp < ActiveRecord::Base
   delegate :url_helpers, to: 'Rails.application.routes'
 
   def announce_rsvp
-    message = "#{user.name} is now attending the meetup on #{event.date.to_date.to_formatted_s(:long_ordinal)} at #{event.venues.first.name} #{event_path}"
+    message = "#{user.name} is now attending the meetup on #{event.date.to_date.to_formatted_s(:long_ordinal)} at #{event.sponsor.name} #{event_path}"
     Slacked.post_async message, channel: slack_channel, username: 'Hackroom Bot'
   end
 
   def announce_rsvp_cancelled
-    message = "#{user.name} can no longer attend the meetup on #{event.date.to_date.to_formatted_s(:long_ordinal)} at #{event.venues.first.name} #{event_path}"
+    message = "#{user.name} can no longer attend the meetup on #{event.date.to_date.to_formatted_s(:long_ordinal)} at #{event.sponsor.name} #{event_path}"
     Slacked.post_async message, channel: slack_channel, username: 'Hackroom Bot'
   end
 
