@@ -1,1 +1,3 @@
-= pluralize(@events.size, "Event")
+= pluralize(@upcoming_events.size, "upcoming event")
+%br
+= pluralize(@past_events.size, "past event")

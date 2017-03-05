@@ -14,7 +14,8 @@
         .m-admin__user
           .m-admin__20
             .m-admin__logo
-              = image_tag(sponsor.logo_url)
+              = link_to sponsor_path(sponsor) do
+                = image_tag(sponsor.logo_url)
           .m-admin__20
             = link_to sponsor.name, sponsor_path(sponsor)
           .m-admin__20.u-center
