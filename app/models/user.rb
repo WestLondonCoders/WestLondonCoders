@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   after_create :send_welcome_mail
+  after_create :notify_slack_of_new_user
   has_many :assignments
   has_many :roles, through: :assignments
 
@@ -71,7 +72,23 @@ class User < ActiveRecord::Base
     roles.any? { |r| r.name.underscore.to_sym == role_sym }
   end
 
+  private
+
   def send_welcome_mail
     UserMailer.welcome_email(self).deliver_now
+  end
+
+  def notify_slack_of_new_user
+    Slacked.post_async slack_message, channel: 'new-signups', username: 'New User Bot'
+  end
+
+  def slack_message
+    profile_url = Rails.application.routes.url_helpers.user_path(self)
+    "#{name} signed up to the site! #{link_host}#{profile_url}"
+  end
+
+  def link_host
+    "http://westlondoncoders.com" if Rails.env.production?
+    "http://localhost:3000" if Rails.env.development?
   end
 end

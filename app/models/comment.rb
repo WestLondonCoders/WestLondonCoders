@@ -9,6 +9,8 @@ class Comment < ActiveRecord::Base
     where(public: true)
   end
 
+  private
+
   def announce_comment
     Slacked.post_async slack_message, channel: slack_channel, username: 'Comment Bot'
   end
