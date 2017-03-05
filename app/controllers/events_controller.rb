@@ -2,7 +2,6 @@ class EventsController < ApplicationController
   before_action :get_event, only: [:show, :rsvp]
 
   def show
-    authorize! :manage, @event
   end
 
   def index
