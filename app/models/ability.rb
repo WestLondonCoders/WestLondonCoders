@@ -39,5 +39,10 @@ class Ability
 
     # Users can manage hackrooms if they are an owner
     can :manage, Hackroom, owners: { id: user.id }
+
+    # Sponsors can manage their own events and pages
+
+    can :manage, Sponsor, users: { id: user.id }
+    can :manage, Event, managers: { id: user.id }
   end
 end
