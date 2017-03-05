@@ -6,4 +6,7 @@ class Event < ActiveRecord::Base
 
   has_many :organisers, -> { with_role(:organiser) }, through: :event_rsvps, source: :user
   has_many :languages, -> { distinct }, through: :rsvps, source: :primary_languages
+
+  scope :upcoming, lambda { where("date >= ?", Date.today) }
+  scope :past, lambda { where("date <= ?", Date.today) }
 end
