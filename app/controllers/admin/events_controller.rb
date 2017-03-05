@@ -55,6 +55,6 @@ class Admin::EventsController < Admin::BaseController
   end
 
   def event_params
-    params.require(:event).permit(:name, :description, :address, :date, venue_ids: [])
+    params.require(:event).permit(:name, :description, :address, :date, :sponsor_id)
   end
 end

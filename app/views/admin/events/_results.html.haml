@@ -21,8 +21,8 @@
     .m-admin__20
       = event.date.to_formatted_s(:long)
       %br
-      = time_as_sentence(event.date) 
+      = time_as_sentence(event.date)
     .m-admin__20
-      = event.venues&.first&.name
+      = event.sponsor.name
     .m-admin__user-submit
       = link_to 'Edit', edit_admin_event_path(event), class: 'a-button'
