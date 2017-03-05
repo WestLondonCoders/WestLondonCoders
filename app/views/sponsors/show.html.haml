@@ -24,17 +24,18 @@
         - @sponsor.users.each do |user|
           = render partial: 'shared/user_tag', locals: { user: user }
 
-  %section.a-section
-    .a-content
-      %h2.u-margin-top
-        = @sponsor.description_heading.present? ? @sponsor.description_heading : "What's it like at #{@sponsor.name}?"
+  - if @sponsor.description.present?
+    %section.a-section
+      .a-content
+        %h2.u-margin-top
+          = @sponsor.description_heading.present? ? @sponsor.description_heading : "What's it like at #{@sponsor.name}?"
 
-      .m-hackroom__mission
-        = sanitize(@sponsor.description)
+        .m-hackroom__mission
+          = sanitize(@sponsor.description)
 
-      - if @sponsor.link.present?
-        .u-center.u-margin-bottom
-          = link_to 'Find out more', @sponsor.link, target: '_blank', class: 'a-button'
+        - if @sponsor.link.present?
+          .u-center.u-margin-bottom
+            = link_to 'Find out more', @sponsor.link, target: '_blank', class: 'a-button'
 
   - if @sponsor.events.upcoming.any?
     %section.a-section

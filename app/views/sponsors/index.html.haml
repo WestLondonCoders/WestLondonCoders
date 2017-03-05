@@ -49,8 +49,14 @@
               %h3
                 = sponsor.name
                 have hosted
-                = pluralize(sponsor.events.upcoming.count, "meetup")
+                = pluralize(sponsor.events.past.count, "meetup")
                 with us in the past.
+
+            - if sponsor.users.any?
+              %h3 Contacts
+              .m-hackroom__members
+                - sponsor.users.take(3).each do |user|
+                  = render partial: 'shared/user_tag', locals: { user: user }
 
             .u-margin-top.u-right
               = link_to "View", sponsor, class: 'a-button a-button--elastic'
