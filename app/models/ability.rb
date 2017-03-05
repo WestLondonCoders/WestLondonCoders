@@ -43,6 +43,6 @@ class Ability
     # Sponsors can manage their own events and pages
 
     can :manage, Sponsor, users: { id: user.id }
-    can :manage, Event, sponsor: { user_ids: user.id }
+    can :manage, Event, sponsor_admins: { id: user.id }
   end
 end

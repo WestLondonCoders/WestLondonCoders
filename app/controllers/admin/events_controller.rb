@@ -18,7 +18,8 @@ class Admin::EventsController < Admin::BaseController
   end
 
   def your_events
-    authorize! :manage, @upcoming_events
+    authorize! :manage, current_user.managed_events.first
+    @sponsor = current_user.sponsors.first
     @upcoming_events = current_user.managed_events.upcoming
     @past_events = current_user.managed_events.past
   end
@@ -45,9 +46,13 @@ class Admin::EventsController < Admin::BaseController
   end
 
   def update
-    authorize! :update, @events
+    authorize! :manage, @event
     if @event.update(event_params)
-      redirect_to admin_events_path
+      if current_user.has_role?(:admin)
+        redirect_to admin_events_path
+      else
+        redirect_to admin_your_events_path
+      end
     else
       render :edit
     end

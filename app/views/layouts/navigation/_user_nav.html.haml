@@ -9,7 +9,7 @@
         - if current_user.has_role?(:admin)
           %li
             = link_to "Admin", admin_root_path
-        - elsif current_user.has_role?(:sponsor)
+        - elsif current_user.has_role?(:sponsor) && current_user.sponsors.any?
           %li
             = link_to "Admin", edit_admin_sponsor_path(current_user.sponsors.first)
         %li
