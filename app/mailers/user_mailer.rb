@@ -25,6 +25,6 @@ class UserMailer < ApplicationMailer
   def organiser_promotion(user)
     headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"<%Unsubscribe%>","text/plain":"<% %>"}}}}'
     @user = user
-    mail to: user.email, subject: "You're a WLC organiser!", from: 'Steve Brewer <steve@westlondoncoders.com>'
+    mail to: user.email, subject: "Thanks for your support!", from: 'Steve Brewer <steve@westlondoncoders.com>'
   end
 end

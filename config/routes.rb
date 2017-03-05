@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/learn', to: 'pages#learn', as: 'learn'
   get '/jekyll', to: 'pages#jekyll', as: 'jekyll'
   get '/meetups', to: 'pages#meetups', as: 'meetups'
+  get '/organisers', to: 'users#organisers', as: 'organisers'
 
   resources :posts do
     collection do
@@ -61,6 +62,8 @@ Rails.application.routes.draw do
       post :rsvp
     end
   end
+
+  resources :organiser_interests, only: [:create]
 
   namespace :admin do
     root to: 'users#index'

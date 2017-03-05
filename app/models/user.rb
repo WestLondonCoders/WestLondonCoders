@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
   has_many :event_rsvps
   has_many :events, through: :event_rsvps
 
+  has_many :organiser_interests
+
   mount_uploader :image, AvatarUploader
   mount_uploader :logo, LogoUploader
 
@@ -34,6 +36,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :update }
 
   scope :with_role, lambda { |role| joins(:roles).where(roles: { name: role }) }
+
+  scope :organiser, -> { with_role("Organiser") }
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

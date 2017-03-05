@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303213639) do
+ActiveRecord::Schema.define(version: 20170304235238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,6 +109,14 @@ ActiveRecord::Schema.define(version: 20170303213639) do
     t.datetime "updated_at",  null: false
     t.text     "description"
   end
+
+  create_table "organiser_interests", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "organiser_interests", ["user_id"], name: "index_organiser_interests_on_user_id", unique: true, using: :btree
 
   create_table "post_attachments", force: :cascade do |t|
     t.integer  "post_id"
@@ -215,6 +223,7 @@ ActiveRecord::Schema.define(version: 20170303213639) do
     t.string   "website_url"
     t.string   "linkedin"
     t.string   "tagline"
+    t.string   "slug"
     t.integer  "permission"
     t.string   "logo"
     t.string   "logo_link"
@@ -223,6 +232,7 @@ ActiveRecord::Schema.define(version: 20170303213639) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["slug"], name: "index_users_on_slug", using: :btree
 
   add_foreign_key "event_rsvps", "events", on_delete: :cascade
   add_foreign_key "event_rsvps", "users", on_delete: :cascade
