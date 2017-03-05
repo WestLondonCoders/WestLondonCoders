@@ -30,7 +30,7 @@
         = render partial: 'rsvp_button'
       %h3.u-float-right--desktop.u-center--mobile.u-margin-bottom
         = pluralize(@event.rsvps.count, "member")
-        attending
+        = @event.date.past? ? "attended" : "attending"
 
   %section.a-section.u-margin-top--desktop
     .a-content

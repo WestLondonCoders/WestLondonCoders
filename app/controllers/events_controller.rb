@@ -17,6 +17,10 @@ class EventsController < ApplicationController
     render :index
   end
 
+  def past_events
+    @past_events = Event.past.all
+  end
+
   def rsvp # rubocop:disable Metrics/MethodLength
     rsvp = EventRsvp.find_by(event: @event, user: current_user)
 
