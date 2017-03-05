@@ -1,0 +1,17 @@
+.m-user-card
+  = link_to organisers_path do
+    = image_tag asset_path("logo.svg"), class: 'a-organiser' if user.has_role?(:organiser)
+  .m-user-card__avatar
+    = link_to image_tag(avatar_url(user)), user
+
+  %h2.a-paint-border-bottom{class: ("a-paint-border-bottom--#{user.primary_languages&.first&.id}")}= link_to user.name, user
+  %h3= user.tagline
+  = render partial: 'users/social_links', locals: { user: user }
+
+  %section.a-section
+    .a-content
+      - if user.primary_languages.any?
+        .a-tags.a-tags--center
+          - user.primary_languages.each do |language|
+            = link_to language do
+              %h2.a-tag{class: "a-paint-background--#{language.id}"}= language.name
