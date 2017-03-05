@@ -16,6 +16,10 @@ class UsersController < ApplicationController
     render :index
   end
 
+  def organisers
+    @organisers = User.organiser
+  end
+
   def edit
     authorize! :edit, @user
     @languages = Language.all

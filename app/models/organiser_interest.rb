@@ -4,7 +4,6 @@ class OrganiserInterest < ActiveRecord::Base
 
   validates :user, uniqueness: true
 
-
   def notify
     Slacked.post_async slack_message, channel: 'organiser-interest', username: 'Organiser Bot'
     UserMailer.organiser_promotion(user).deliver_now
