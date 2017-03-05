@@ -20,22 +20,22 @@
         %br
         = time_as_sentence(@event.date)
 
-      .u-float-right
+      .u-float-right--desktop.u-margin-bottom
         = link_to sponsor_path(@event.sponsor) do
           = image_tag(@event.sponsor.logo, class: 'a-logo')
 
       = link_to sanitize(@event.sponsor.address), "http://maps.google.com/?q=#{strip_tags @event.sponsor.address}", target: "_blank"
 
-      .u-margin-top.u-margin-bottom
+      .u-margin-top.u-center--mobile
         = render partial: 'rsvp_button'
-        %h3.u-float-right.u-right
-          = pluralize(@event.rsvps.count, "member")
-          attending
+      %h3.u-float-right--desktop.u-center--mobile.u-margin-bottom
+        = pluralize(@event.rsvps.count, "member")
+        attending
 
-  %section.a-section.u-margin-top
+  %section.a-section.u-margin-top--desktop
     .a-content
       - if @event.rsvps.any?
-        .u-float-right.u-right.u-padding
+        .u-float-right--desktop.u-left.u-padding
           %h3.u-margin-bottom--none= @event.date.past? ? "Members who came like:" : "Members attending who like:"
           .a-tags
             - @event.languages.each do |language|
