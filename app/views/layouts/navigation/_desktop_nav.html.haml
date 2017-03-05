@@ -24,7 +24,7 @@
       - if current_user&.has_role?(:organiser)
         %a.m-navbar__item{class: ('m-navbar__item--is-selected' if current_page?(events_path)), href: events_path}
           %h2
-            %i.fa.fa-meetup{"aria-hidden" => "true"}
+            %i.fa.fa-group{"aria-hidden" => "true"}
             Meetups
       - else
         %a.m-navbar__item{class: ('m-navbar__item--is-selected' if current_page?(meetups_path)), href: meetups_path}
