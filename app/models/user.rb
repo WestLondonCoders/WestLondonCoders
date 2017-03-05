@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
 
   scope :with_role, lambda { |role| joins(:roles).where(roles: { name: role }) }
 
-  scope :organiser, -> { with_role(:organiser) }
+  scope :organiser, -> { with_role("Organiser") }
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
