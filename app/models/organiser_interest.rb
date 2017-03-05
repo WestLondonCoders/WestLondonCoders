@@ -6,7 +6,7 @@ class OrganiserInterest < ActiveRecord::Base
 
   def notify
     Slacked.post_async slack_message, channel: 'organiser-interest', username: 'Organiser Bot'
-    UserMailer.organiser_promotion(self).deliver_now
+    UserMailer.organiser_promotion(self.user).deliver_now
     update(notified_at: Time.now)
   end
 
