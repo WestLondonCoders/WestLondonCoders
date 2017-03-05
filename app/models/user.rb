@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   has_many :event_rsvps
   has_many :events, through: :event_rsvps
 
-  has_many :organiser_interests
+  has_one :organiser_interest
 
   mount_uploader :image, AvatarUploader
   mount_uploader :logo, LogoUploader

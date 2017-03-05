@@ -8,10 +8,11 @@
       %p= I18n.t('index_introductions.organisers')
 
       .u-center.u-margin-bottom.u-margin-top--small
-        - if current_user && current_user.organiser_interests.empty?
-          = button_to organiser_interests_path(current_user), { method: :post, class: 'a-button' } do
-            I'm interested!
-
+        - if current_user
+          = button_to "I'm interested!", organiser_interests_path(current_user), { method: :post, class: 'a-button' } unless current_user.organiser_interest
+          %p= "We've noted your interest in helping us organise. Thanks!" if current_user.organiser_interest
+        - else
+          = button_to "Sign in to register interest", new_user_session_path, class: 'a-button'
 
   %section.a-section
     .a-content--xwide
