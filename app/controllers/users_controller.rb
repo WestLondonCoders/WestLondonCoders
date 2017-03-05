@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @search = User.ransack(params[:q])
+    @search = User.listed.ransack(params[:q])
     @search.sorts = 'updated_at desc' if @search.sorts.empty?
     @users = @search.result.includes(:languages, :hackrooms)
   end
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params[:user].permit(:name, :bio, :image, :logo, :logo_link, :tagline, :twitter, :instagram, :github, :facebook, :linkedin, :permission, :website_url, :email, primary_language_ids: [], language_ids: [], interests_attributes: [:id, :name, :_destroy])
+    params[:user].permit(:name, :listed, :bio, :image, :logo, :logo_link, :tagline, :twitter, :instagram, :github, :facebook, :linkedin, :permission, :website_url, :email, primary_language_ids: [], language_ids: [], interests_attributes: [:id, :name, :_destroy])
   end
 
   def require_admin_or_owner
