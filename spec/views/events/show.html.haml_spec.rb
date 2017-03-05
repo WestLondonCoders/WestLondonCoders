@@ -1,11 +1,12 @@
 require 'rails_helper'
 
 describe 'events/show.html.haml' do
-  let(:event) { FactoryGirl.create(:event) }
+  let(:event) { FactoryGirl.create(:event, sponsor: sponsor) }
 
   let(:attending_user) { FactoryGirl.create(:user, name: 'Beth') }
   let(:attending_organiser) { FactoryGirl.create(:user, name: 'Jerome') }
   let(:event_rsvp) { double(:event_rsvp) }
+  let(:sponsor) { FactoryGirl.create(:sponsor) }
 
   let(:primary_language) { FactoryGirl.create(:language) }
 
