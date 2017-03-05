@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   after_create :send_welcome_mail
-  after_create :notify_slack_of_new_user
+  after_create :notify_slack_of_new_user if Rails.env.production?
   has_many :assignments
   has_many :roles, through: :assignments
 
@@ -84,11 +84,6 @@ class User < ActiveRecord::Base
 
   def slack_message
     profile_url = Rails.application.routes.url_helpers.user_path(self)
-    "#{name} signed up to the site! #{link_host}#{profile_url}"
-  end
-
-  def link_host
-    "http://westlondoncoders.com" if Rails.env.production?
-    "http://localhost:3000" if Rails.env.development?
+    "#{name} signed up to the site! http://westlondoncoders.com#{profile_url}"
   end
 end
