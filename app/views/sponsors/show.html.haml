@@ -7,34 +7,45 @@
       .a-content.u-center
         = link_to "Edit sponsor", edit_admin_sponsor_path(@sponsor), class: "a-button a-button--edit"
 
+  %section.a-section.u-margin-top--mobile
+    .a-content
+      .u-center= image_tag(@sponsor.logo, class: 'a-logo a-logo--wide')
+
+      .m-hackroom__mission.u-float-right.u-right
+        = link_to sanitize(@sponsor.address), "http://maps.google.com/?q=#{strip_tags @sponsor.address}", target: "_blank"
+
+      - if @sponsor.users.any?
+        %h3 Contacts
+        - @sponsor.users.each do |user|
+          = render partial: 'shared/user_tag', locals: { user: user }
 
   %section.a-section.u-margin-top--mobile
     .a-content
-      .u-float-right= image_tag(@sponsor.logo, class: 'a-logo')
-      %h1.a-heading
-        = @sponsor.name
-
-  %section.a-section.u-margin-top--mobile
-    .a-content
-      %h3
-        Something
-
-      .u-float-right Interest
-
-      -# - if @sponsor.events.any?
-      -#   %h3 Members
-      -#   - @sponsor.users.each do |user|
-      -#     = render partial: 'shared/user_tag', locals: { user: user }
-
-      -# - if @sponsor.meetups.any?
-      -#   %h3.u-margin-bottom--none= @sponsor.date.past? ? "Members who came like:" : "Members attending like:"
-      -#   .a-tags
-      -#     - @sponsor.languages.each do |language|
-      -#       = render partial: 'shared/language_tag', locals: { language: language }
-
       .m-hackroom__mission
         = sanitize(@sponsor.description)
 
-      .m-hackroom__mission
-        = link_to sanitize(@sponsor.address), "http://maps.google.com/?q=#{strip_tags @sponsor.address}", target: "_blank"
+  - if @sponsor.events.upcoming.any?
+    %section.a-section
+      .a-content
+        %h3 Upcoming events
+        - @sponsor.events.upcoming.take(3).each do |event|
+          %p
+            = link_to event_path(event) do
+              = event.name
+              %br
+              = time_as_sentence(event.date)
+              on
+              = event.date.to_date.to_formatted_s(:long_ordinal)
 
+  - if @sponsor.events.past.any?
+    %section.a-section
+      .a-content
+        %h3 Past events
+        - @sponsor.events.past.take(3).each do |event|
+          %p
+            = link_to event_path(event) do
+              = event.name
+              %br
+              = time_as_sentence(event.date)
+              on
+              = event.date.to_date.to_formatted_s(:long_ordinal)

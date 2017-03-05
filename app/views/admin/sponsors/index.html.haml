@@ -16,7 +16,7 @@
             .m-admin__logo
               = image_tag(sponsor.logo_url)
           .m-admin__20
-            = sponsor.name
+            = link_to sponsor.name, sponsor_path(sponsor)
           .m-admin__20.u-center
             = sponsor.events.count
           .m-admin__user-submit
