@@ -20,7 +20,8 @@ Setup the database locally:
 `$ bundle exec rake db:setup`
 
 Download a copy of production database:
-`$ bundle exec rake db:pull`
+`$ bundle exec rake get_database`
+(you can run this any time to reset your local database, but make sure you don't have a server running or it will fail)
 
 If you have any issues connecting to the database, [this](http://stackoverflow.com/questions/26447736/unable-to-connect-to-postgresql-database-after-upgrading-to-yosemite-10-10/26458194#26458194) might help.
 
