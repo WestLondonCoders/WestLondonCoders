@@ -26,6 +26,11 @@ class User < ActiveRecord::Base
 
   has_one :organiser_interest
 
+  has_many :sponsorship_admins
+  has_many :sponsors, through: :sponsorship_admins
+
+  has_many :managed_events, through: :sponsors, source: :events
+
   mount_uploader :image, AvatarUploader
   mount_uploader :logo, LogoUploader
 

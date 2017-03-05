@@ -7,12 +7,19 @@ class Admin::EventsController < Admin::BaseController
     authorize! :manage, @events
     @search = Event.ransack(params[:q])
     @search.sorts = 'date asc' if @search.sorts.empty?
+    @upcoming_events = @search.result.upcoming
+    @past_events = @search.result.past
     @events = @search.result
   end
 
   def search
     index
     render :index
+  end
+
+  def your_events
+    @upcoming_events = current_user.managed_events.upcoming
+    @past_events = current_user.managed_events.past
   end
 
   def new

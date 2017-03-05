@@ -1,0 +1,40 @@
+- set_page_title(@sponsor.name)
+
+.a-page-holder
+
+  - if can? :manage, @sponsor
+    %section.a-section.u-margin-top--mobile
+      .a-content.u-center
+        = link_to "Edit sponsor", edit_admin_sponsor_path(@sponsor), class: "a-button a-button--edit"
+
+
+  %section.a-section.u-margin-top--mobile
+    .a-content
+      .u-float-right= image_tag(@sponsor.logo, class: 'a-logo')
+      %h1.a-heading
+        = @sponsor.name
+
+  %section.a-section.u-margin-top--mobile
+    .a-content
+      %h3
+        Something
+
+      .u-float-right Interest
+
+      -# - if @sponsor.events.any?
+      -#   %h3 Members
+      -#   - @sponsor.users.each do |user|
+      -#     = render partial: 'shared/user_tag', locals: { user: user }
+
+      -# - if @sponsor.meetups.any?
+      -#   %h3.u-margin-bottom--none= @sponsor.date.past? ? "Members who came like:" : "Members attending like:"
+      -#   .a-tags
+      -#     - @sponsor.languages.each do |language|
+      -#       = render partial: 'shared/language_tag', locals: { language: language }
+
+      .m-hackroom__mission
+        = sanitize(@sponsor.description)
+
+      .m-hackroom__mission
+        = link_to sanitize(@sponsor.address), "http://maps.google.com/?q=#{strip_tags @sponsor.address}", target: "_blank"
+

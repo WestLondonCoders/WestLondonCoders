@@ -1,0 +1,13 @@
+.m-admin__20
+  = link_to event do
+    = event.name
+.m-admin__10
+  = event.rsvps.count
+.m-admin__20
+  = event.date.to_formatted_s(:long)
+  %br
+  = time_as_sentence(event.date)
+.m-admin__20
+  = event.sponsor.name
+.m-admin__user-submit
+  = link_to 'Edit', edit_admin_event_path(event), class: 'a-button'

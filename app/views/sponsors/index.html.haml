@@ -1,0 +1,56 @@
+- set_page_title("Sponsors")
+
+.a-page-holder
+
+  %section.a-section.a-section--alt
+    .a-content--wide.a-content--tight
+      %h1.a-heading.u-center Sponsors
+
+      .a-content.u-margin-bottom
+        %p
+          Our sponsors kindly provide us with food and a comfortable space for us to
+          meet, and in return they enjoy engaging with developers and the local
+          community.
+        %p
+          We're always happy to hear from members and organisations who have connected
+          as a result of our meetup, either through employment or other interesting
+          opportunities.
+        %p
+          If you'd like to sponsor an event with us, please contact
+          = succeed '.' do
+            = link_to "Steve", "https://linkedin.com/in/svpersteve"
+
+  - if current_user.has_role?(:admin)
+    %section.a-section.u-margin-top--mobile
+      .a-content.u-center
+        = link_to "Add sponsor", new_admin_sponsor_path, class: 'a-button a-button--edit'
+
+  %section.a-section
+    .a-content--xwide
+      .m-hackroom-list
+        - @sponsors.each do |sponsor|
+          .m-hackroom-list__hackroom
+            .u-float-right
+              .m-admin__logo
+                = image_tag(sponsor.logo_url)
+
+            = link_to sponsor_path(sponsor) do
+              %h1
+                %span.a-paint-border-bottom= sponsor.name
+
+            .m-hackroom__mission
+              = simple_format(truncate(sanitize(sponsor.description), length: 200, escape: false, omission: '...'))
+
+            - if sponsor.events.upcoming.any?
+              %h3
+                = pluralize(sponsor.events.upcoming.count, "meetup")
+                scheduled.
+            - if sponsor.events.past.any?
+              %h3
+                = sponsor.name
+                have hosted
+                = pluralize(sponsor.events.upcoming.count, "meetup")
+                with us in the past.
+
+            .u-margin-top.u-right
+              = link_to "View", sponsor, class: 'a-button a-button--elastic'

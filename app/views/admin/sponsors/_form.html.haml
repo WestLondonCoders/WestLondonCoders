@@ -3,31 +3,61 @@
 .a-page-holder
 
   .m-post-editor
-    %h1 New sponsor
+    %h1 Sponsor
+
+    = link_to "View public page", sponsor_path(@sponsor), class: 'a-button a-button--admin-edit'
 
     = form_for [:admin, @sponsor] do |f|
       .m-post-editor__title
         %h1= f.text_field :name, placeholder: "Yoox NET-A-PORTER"
+
+      .a-content
+        %h2 Referral link
+        %p This is where we link to from the site and in emails for people wanting to find out more about your organisation.
+        = f.text_field :link, class: 'm-profile__wide-field'
+
       .m-post-editor__content
         %h2 Description
+        %p
+          This is shown at the top of your
+          = succeed '.' do
+            = link_to 'sponsor page', sponsor_path(@sponsor)
         = f.trix_editor :description
 
       .m-post-editor__content
         %h2 Address
+        %p This will be linked to on Google Maps in emails, on event pages and on your sponsor page.
         = f.trix_editor :address
 
       .m-profile__image-upload
+        %h2 Logo
+        %p
+          This appears in emails and on sponsor and meetup pages.
+          %br
+          SVGs are ideal for best quality.
+        = image_tag(@sponsor.logo, class: 'a-logo')
+        %br
         = f.file_field :logo
 
-      .m-post-editor__content
+      - if current_user.has_role?(:admin)
+        .a-content.m-hackroom__admins
+          %h1 WLC admins only
+          %h2 Sponsorship admins
+          %p This provides access to a sponsor's representative to manage their page and meetup events.
+          = f.select :user_ids, user_options_for_select(User.all, f.object.user_ids), { label: 'Managers' }, multiple: true
 
       .u-margin-top
         .m-post-editor__submit
-          - if @sponsor.persisted?
-            = link_to "Delete sponsor", [:admin, @sponsor], method: :delete, data: { confirm: 'Delete sponsor?' }, class: 'a-button a-button--ghost u-left'
-            = link_to "Cancel", admin_sponsors_path, class: 'a-button a-button--ghost u-left'
-            = f.submit 'Save changes', class: 'a-button u-float-right'
+          - if current_user.has_role?(:admin)
+            - if @sponsor.persisted?
+              = link_to "Delete sponsor", [:admin, @sponsor], method: :delete, data: { confirm: 'Delete sponsor?' }, class: 'a-button a-button--ghost u-left'
+              = link_to "Cancel", admin_sponsors_path, class: 'a-button a-button--ghost u-left'
+              = f.submit 'Save changes', class: 'a-button u-float-right'
+
+            - else
+              = link_to "Cancel", admin_sponsors_path, class: 'a-button a-button--ghost'
+              = f.submit 'Add', class: 'a-button'
 
           - else
-            = link_to "Cancel", admin_sponsors_path, class: 'a-button a-button--ghost'
-            = f.submit 'Add', class: 'a-button'
+            = link_to "Cancel", sponsor_path(@sponsor), class: 'a-button a-button--ghost u-left'
+            = f.submit 'Save changes', class: 'a-button u-float-right'
