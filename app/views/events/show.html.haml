@@ -7,7 +7,7 @@
       .a-content.u-center
         = link_to "Edit event", edit_admin_event_path(@event), class: "a-button a-button--edit"
 
-  %section.a-section.u-margin-top--mobile
+  %section.a-section.a-section--separated.u-margin-top--mobile
     .a-content
       %h1.a-heading
         West London Coders meetup:
@@ -20,21 +20,36 @@
         %br
         = time_as_sentence(@event.date)
 
-      .u-float-right= render partial: 'rsvp_button'
+      .u-float-right
+        = link_to sponsor_path(@event.sponsor) do
+          = image_tag(@event.sponsor.logo, class: 'a-logo')
 
-      - if @event.organisers.any?
-        %h3 Organisers
-        - @event.organisers.each do |user|
-          = render partial: 'shared/user_tag', locals: { user: user }
+      = link_to sanitize(@event.sponsor.address), "http://maps.google.com/?q=#{strip_tags @event.sponsor.address}", target: "_blank"
 
+
+
+      .u-margin-top.u-margin-bottom
+        = render partial: 'rsvp_button'
+        %h3.u-float-right.u-right
+          = pluralize(@event.rsvps.count, "member")
+          attending
+
+  %section.a-section.u-margin-top
+    .a-content
       - if @event.rsvps.any?
-        %h3.u-margin-bottom--none= @event.date.past? ? "Members who came like:" : "Members attending like:"
-        .a-tags
-          - @event.languages.each do |language|
-            = render partial: 'shared/language_tag', locals: { language: language }
-
+        .u-float-right.u-right.u-padding
+          %h3.u-margin-bottom--none= @event.date.past? ? "Members who came like:" : "Members attending who like:"
+          .a-tags
+            - @event.languages.each do |language|
+              = render partial: 'shared/language_tag', locals: { language: language }
+      %h2 What's this meetup about?
       .m-hackroom__mission
         = sanitize(@event.description)
+
+      - if @event.organisers.any?
+        %h2 Organisers
+        - @event.organisers.each do |user|
+          = render partial: 'shared/user_tag', locals: { user: user }
 
       - if @event.rsvps.any?
         .a-content

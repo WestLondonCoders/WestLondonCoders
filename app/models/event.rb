@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
 
   belongs_to :sponsor
 
-  has_many :organisers, -> { with_role(:organiser) }, through: :event_rsvps, source: :user
+  has_many :organisers, -> { with_role("Organiser") }, through: :event_rsvps, source: :user
   has_many :languages, -> { distinct }, through: :rsvps, source: :primary_languages
 
   scope :upcoming, lambda { where("date >= ?", Date.today) }
