@@ -32,7 +32,11 @@ class Admin::SponsorsController < Admin::BaseController
   def update
     authorize! :manage, @sponsor
     if @sponsor.update(sponsor_params)
-      redirect_to admin_sponsors_path
+      if current_user.has_role?(:admin)
+        redirect_to admin_sponsors_path
+      else
+        redirect_to sponsor_path (@sponsor), notice: 'Page updated.'
+      end
     else
       render :edit
     end
