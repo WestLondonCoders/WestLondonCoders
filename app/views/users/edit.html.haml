@@ -16,6 +16,10 @@
         .m-profile__image-upload
           = f.file_field :image
 
+        = f.check_box :listed
+        Show my profile on the
+        = link_to 'people page', users_path
+
     %section.a-section
       .a-content.m-hackroom__languages
         %h2 Primary languages you use
