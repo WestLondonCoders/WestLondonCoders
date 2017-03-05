@@ -20,5 +20,9 @@
           - event.languages.take(4).each do |language|
             = render partial: 'shared/language_tag', locals: { language: language }
 
-      .u-margin-top.u-right
-        = link_to "View", event, class: 'a-button a-button--elastic'
+      .u-margin-top
+        %h3.u-float-left
+          = pluralize(event.rsvps.count, "member")
+          attending
+        .u-float-right
+          = link_to "View", event, class: 'a-button a-button--elastic'

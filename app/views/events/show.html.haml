@@ -26,8 +26,6 @@
 
       = link_to sanitize(@event.sponsor.address), "http://maps.google.com/?q=#{strip_tags @event.sponsor.address}", target: "_blank"
 
-
-
       .u-margin-top.u-margin-bottom
         = render partial: 'rsvp_button'
         %h3.u-float-right.u-right
