@@ -1,4 +1,4 @@
-- if user.events.any?
+- if user.events.any? && current_user.has_role?(:organiser)
   %section.a-section
     .a-content
       %h2 Meetups I'm attending
