@@ -53,6 +53,8 @@ Rails.application.routes.draw do
 
   resources :roles
 
+  resources :sponsors
+
   resources :events do
     collection do
       match 'search' => 'events#search', via: [:get, :post], as: :search
