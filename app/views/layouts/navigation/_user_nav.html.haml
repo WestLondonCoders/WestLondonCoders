@@ -6,8 +6,12 @@
       - else
         %img{src: asset_path("avatar.png"), class: 'm-dropdown__trigger'}
       %ul.m-dropdown__submenu.m-dropdown__submenu--right-small.js-submenu
-        %li
-          = link_to "Admin", admin_root_path if can? :manage, User.all
+        - if current_user.has_role?(:admin)
+          %li
+            = link_to "Admin", admin_root_path
+        - elsif current_user.has_role?(:sponsor)
+          %li
+            = link_to "Admin", edit_admin_sponsor_path(current_user.sponsors.first)
         %li
           = link_to "Your profile", user_path(current_user)
         %li

@@ -82,6 +82,8 @@ Rails.application.routes.draw do
       end
     end
 
+    get 'your-events', to: 'events#your_events'
+
     resources :sponsors
   end
 end
