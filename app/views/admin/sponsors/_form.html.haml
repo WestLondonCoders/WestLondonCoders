@@ -14,14 +14,20 @@
       .a-content
         %h2 Referral link
         %p This is where we link to from the site and in emails for people wanting to find out more about your organisation.
-        = f.text_field :link, class: 'm-profile__wide-field'
+        .m-post-editor__title
+          = f.text_field :link
+
+      .m-post-editor__title
+        %h2 Description title
+        %p
+          The description is shown at the top of your
+          = succeed '.' do
+            = link_to 'sponsor page', sponsor_path(@sponsor)
+          You can set a title or the default will be what's shown here:
+        %h2= f.text_field :description_heading, placeholder: "What's it like to work at #{@sponsor.name}?"
 
       .m-post-editor__content
         %h2 Description
-        %p
-          This is shown at the top of your
-          = succeed '.' do
-            = link_to 'sponsor page', sponsor_path(@sponsor)
         = f.trix_editor :description
 
       .m-post-editor__content
@@ -50,7 +56,6 @@
         .m-post-editor__submit
           - if current_user.has_role?(:admin)
             - if @sponsor.persisted?
-              = link_to "Delete sponsor", [:admin, @sponsor], method: :delete, data: { confirm: 'Delete sponsor?' }, class: 'a-button a-button--ghost u-left'
               = link_to "Cancel", admin_sponsors_path, class: 'a-button a-button--ghost u-left'
               = f.submit 'Save changes', class: 'a-button u-float-right'
 

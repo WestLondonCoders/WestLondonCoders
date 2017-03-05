@@ -1,27 +1,40 @@
-.m-admin__user.u-margin-top
-  .m-admin__20
-    %strong Name
-  .m-admin__20
-    %strong RSVPs
-  .m-admin__20
-    %strong Date
-  .m-admin__20
-    %strong Venue
-  .m-admin__user-permission
-    %strong
-  .m-admin__user-submit
 .m-admin__user
-  %h3 Upcoming
+  %h2 Upcoming
 - if upcoming_events.any?
+  .m-admin__user.u-margin-top
+    .m-admin__20
+      %strong Name
+    .m-admin__20
+      %strong RSVPs
+    .m-admin__20
+      %strong Date
+    .m-admin__20
+      %strong Venue
+    .m-admin__user-permission
+      %strong
+    .m-admin__user-submit
   - upcoming_events.each do |event|
     .m-admin__user
       = render partial: 'event_row', locals: { event: event }
 - else
   .m-admin__user
     %p No events scheduled
+%br
 .m-admin__user
-  %h3 Past
+  %h2 Past
 - if past_events.any?
+  .m-admin__user.u-margin-top
+    .m-admin__20
+      %strong Name
+    .m-admin__20
+      %strong RSVPs
+    .m-admin__20
+      %strong Date
+    .m-admin__20
+      %strong Venue
+    .m-admin__user-permission
+      %strong
+    .m-admin__user-submit
   - past_events.each do |event|
     .m-admin__user
       = render partial: 'event_row', locals: { event: event }

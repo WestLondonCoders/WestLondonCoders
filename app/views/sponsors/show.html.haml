@@ -9,9 +9,14 @@
 
   %section.a-section.u-margin-top--mobile
     .a-content
-      .u-center= image_tag(@sponsor.logo, class: 'a-logo a-logo--wide')
+      %h1
+        West London Coders Partner:
+        %br
+        = @sponsor.name
 
-      .m-hackroom__mission.u-float-right.u-right
+      .u-float-right= image_tag(@sponsor.logo, class: 'a-logo')
+
+      .m-hackroom__mission.u-left
         = link_to sanitize(@sponsor.address), "http://maps.google.com/?q=#{strip_tags @sponsor.address}", target: "_blank"
 
       - if @sponsor.users.any?
@@ -19,10 +24,17 @@
         - @sponsor.users.each do |user|
           = render partial: 'shared/user_tag', locals: { user: user }
 
-  %section.a-section.u-margin-top--mobile
+  %section.a-section
     .a-content
+      %h2.u-margin-top
+        = @sponsor.description_heading.present? ? @sponsor.description_heading : "What's it like at #{@sponsor.name}?"
+
       .m-hackroom__mission
         = sanitize(@sponsor.description)
+
+      - if @sponsor.link.present?
+        .u-center.u-margin-bottom
+          = link_to 'Find out more', @sponsor.link, target: '_blank', class: 'a-button'
 
   - if @sponsor.events.upcoming.any?
     %section.a-section
