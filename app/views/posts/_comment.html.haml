@@ -1,12 +1,5 @@
 %li{class: "m-comment m-comment--delete", id: "comment-#{comment.id}"}
-  .m-post__author
-    .m-post__author-photo
-      = link_to image_tag(avatar_url(comment.author)), user_path(comment.author), title: comment.author.name
-    .m-post__meta
-      = link_to comment.author.name, user_path(comment.author)
-      %br
-      = time_ago_in_words(comment.created_at)
-      ago
+  = render partial: 'shared/user_tag', locals: { user: comment.author, with_date: true, date: @post.created_at }
   - if can? :update, comment
     = link_to "Delete", post_comment_path(@post, comment, "comment[:public]" => false), method: :put, remote: true
 
