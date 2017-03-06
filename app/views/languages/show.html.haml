@@ -1,57 +1,43 @@
 - set_page_title(@language.name)
 
-.u-margin-top--desktop
-
 .a-page-holder
 
-  - if current_user
-    - if can? :manage, @language
-      %section.a-section.u-margin-top--mobile
-        .a-content.u-center
-          = link_to "Edit language", edit_language_path(@language), class: "a-button a-button--edit"
+  - if current_user.has_role?(:admin)
+    %section.a-section.u-margin-top--mobile
+      .a-content.u-center
+        = link_to "Edit language", edit_language_path(@language), class: "a-button a-button--edit"
 
   %section.a-section
     .a-content
-      .m-languages
-        .m-languages__language
-          %h1.u-center.a-paint-border-bottom{class: ("a-paint-border-bottom--#{@language.id}")}= @language.name
+      %h1.a-paint-border-bottom{class: ("a-paint-border-bottom--#{@language.id}")}= @language.name
 
-          - if @language.description
-            .m-languages__description
-              = sanitize @language.description
+      = sanitize @language.description
 
-          .m-languages__hackrooms
-            = render partial: 'hackrooms', locals: { language: @language }
+      = render partial: 'hackrooms', locals: { language: @language }
 
-          .m-languages__people
-            %h2
-              = pluralize(@language.primary_users.count, "person")
-              focusing on
-              = @language.name
-            - if @language.primary_users.any?
-              .m-hackroom__members
-                - @language.primary_users.each do |user|
-                  = render partial: 'shared/user_tag', locals: { user: user }
-            - else
-              - if current_user
-                %p
-                  Add
-                  = @language.name
-                  to your
-                  = succeed '.' do
-                    = link_to 'profile', edit_user_path(current_user)
-            %h2
-              = pluralize(@language.users.count, "person")
-              using
-              = @language.name
-              with less focus
-            - if @language.users.any?
-              .m-hackroom__members
-                - @language.users.each do |user|
-                  = render partial: 'shared/user_tag', locals: { user: user }
-            - else
-              - if current_user
-                %p
-                  Add it to your
-                  = succeed '.' do
-                    = link_to 'profile', edit_user_path(current_user)
+      %h2
+        = pluralize(@language.primary_users.count, "person")
+        primarily using
+        = @language.name
+
+      - if @language.primary_users.any?
+        .a-identities
+          - @language.primary_users.each do |user|
+            = render partial: 'shared/user_tag', locals: { user: user }
+
+      - else
+        = render partial: 'shared/add_to_your_profile', locals: { this: @language.name }
+
+        %h2
+          = pluralize(@language.users.count, "person")
+          using
+          = @language.name
+          a little
+
+        - if @language.users.any?
+          .a-identities
+            - @language.users.each do |user|
+              = render partial: 'shared/user_tag', locals: { user: user }
+
+        - else
+          = render partial: 'shared/add_to_your_profile', locals: { this: @language.name }

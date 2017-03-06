@@ -1,20 +1,21 @@
 - if language.primary_hackrooms.any? || language.hackrooms.any?
+
   - if language.primary_hackrooms.any?
     %h2
       = pluralize(language.primary_hackrooms.count, 'hackroom')
-      focused on
+      primarily using
       = language.name
-    %ul
-      = render partial: 'shared/hackroom_list', locals: { source: language.primary_hackrooms }
+
+    = render partial: 'shared/hackroom_list', locals: { source: language.primary_hackrooms }
 
   - if language.hackrooms.any?
     %h2
       = pluralize(language.hackrooms.count, 'hackroom')
       involving some
       = language.name
-    %ul
-      - if language.hackrooms.any?
-        = render partial: 'shared/hackroom_list', locals: { source: language.hackrooms }
+
+    = render partial: 'shared/hackroom_list', locals: { source: language.hackrooms }
+
 - else
   %p
     There are no hackrooms using

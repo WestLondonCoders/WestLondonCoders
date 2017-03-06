@@ -1,0 +1,7 @@
+- if current_user
+  %p
+    Would you like to add
+    = this
+    to your
+    = succeed '?' do
+      = link_to 'profile', edit_user_path(current_user)
