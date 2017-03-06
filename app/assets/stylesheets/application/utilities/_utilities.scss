@@ -89,3 +89,11 @@
 .u-padding {
   padding: 20px;
 }
+
+.no-js .hide-if-no-js {
+  display: none;
+}
+
+.js .hide-if-js {
+  display: none;
+}

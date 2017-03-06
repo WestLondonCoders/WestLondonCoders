@@ -1,3 +1,59 @@
+input, button, select, textarea {
+  font-family: inherit;
+}
+
+.m-form {
+  button,
+  textarea,
+  select,
+  input[type="color"],
+  input[type="date"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="email"],
+  input[type="month"],
+  input[type="number"],
+  input[type="number"],
+  input[type="password"],
+  input[type="range"],
+  input[type="reset"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="text"],
+  input[type="time"],
+  input[type="url"],
+  input[type="url"],
+  input[type="week"],
+  .a-input--uneditable {
+    display: block;
+    padding: 0.5em 1em;
+    height: auto;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0;
+    -webkit-appearance: none;
+    width: 100%;
+  }
+
+  button,
+  input[type="button"],
+  input[type="reset"],
+  input[type="submit"] {
+    box-sizing: none;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+  }
+
+  fieldset {
+    border: 0;
+  }
+
+  textarea[readonly] {
+    cursor: not-allowed;
+    background-color: colour('light-grey');
+  }
+}
+
 .m-form__checkboxes {
   display: flex;
   flex-direction: row;
@@ -16,4 +72,8 @@
   div {
     margin: 0 auto;
   }
+}
+
+.m-form--narrow {
+  width: 50%;
 }
