@@ -1,0 +1,19 @@
+.m-gallery {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+
+  @media #{$from-medium} {
+    flex-direction: row;
+    justify-content: space-between;
+
+    .m-gallery__post {
+      width: 55%;
+    }
+
+    .m-gallery__images {
+      margin-top: 100px;
+      width: 40%;
+    }
+  }
+}

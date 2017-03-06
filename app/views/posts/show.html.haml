@@ -1,8 +1,6 @@
 - set_page_title(@post.title)
 = render partial: 'og_header'
 
-.u-margin-top--desktop
-
 - if @post.post_attachments.any?
   = render partial: 'posts/templates/gallery'
 

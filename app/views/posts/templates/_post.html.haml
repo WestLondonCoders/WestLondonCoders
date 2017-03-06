@@ -1,13 +1,11 @@
 %section.a-section
   .a-content
-    .m-post
-      %h1= @post.title
+    %h1= @post.title
 
-      = render partial: 'shared/user_tag', locals: { user: @post.created_by, with_date: true, date: @post.created_at }
+    = render partial: 'shared/user_tag', locals: { user: @post.created_by, with_date: true, date: @post.created_at }
 
-      .m-post__content
-        = sanitize @post.content
+    .u-margin-top--small= sanitize @post.content
 
-      .a-tags
-        - @post.tags.each do |tag|
-          %h2.a-tag.a-tag--post-tag= tag.name
+    .a-tags
+      - @post.tags.each do |tag|
+        %h2.a-tag.a-tag--light-blue= tag.name

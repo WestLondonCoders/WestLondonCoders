@@ -26,7 +26,7 @@
     .a-content--home
       .m-grid
         - @posts.take(4).each do |post|
-          = render partial: 'shared/posts', locals: {post: post}
+          = render partial: 'shared/posts', locals: { post: post }
 
       .m-comments
         %h2
