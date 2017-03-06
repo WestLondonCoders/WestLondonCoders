@@ -14,6 +14,6 @@ FactoryGirl.define do
   end
 
   factory :admin, parent: :user do
-    roles { FactoryGirl.create(:role, id: 1, name: 'Admin') }
+    roles { [FactoryGirl.create(:role, name: 'Admin')] }
   end
 end
