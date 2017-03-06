@@ -15,6 +15,6 @@ describe 'sponsors/index.html.haml' do
 
   it 'displays a link to each sponsor' do
     render
-    expect(rendered).to have_link('Sky', sponsor_path(sponsor))
+    expect(rendered).to have_link('Sky', href: sponsor_path(sponsor))
   end
 end

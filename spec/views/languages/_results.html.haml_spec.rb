@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'languages/_results.html.haml' do
-  let(:language) { FactoryGirl.create(:language) }
+  let(:language) { FactoryGirl.create(:language, id: 26) }
   let(:languages) { [language] }
 
   let(:user) { FactoryGirl.create(:user) }
@@ -18,12 +18,12 @@ describe 'languages/_results.html.haml' do
 
   it 'displays a link to each language' do
     render
-    expect(rendered).to have_link('Ruby', language_path(language))
+    expect(rendered).to have_link('Ruby', href: language_path(language))
   end
 
   it 'adds an underline with the language colour' do
     render
-    expect(rendered).to have_css('h1', 'a-paint-border-bottom--26')
+    expect(rendered).to have_css('.a-paint-border-bottom--26')
   end
 
   it 'lists the hackrooms using each language' do
@@ -60,6 +60,6 @@ describe 'languages/_results.html.haml' do
 
   it 'displays a view button for each language' do
     render
-    expect(rendered).to have_link('View', language_path(language))
+    expect(rendered).to have_link('View', href: language_path(language))
   end
 end

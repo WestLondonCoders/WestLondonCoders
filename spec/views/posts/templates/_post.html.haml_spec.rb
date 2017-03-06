@@ -17,7 +17,7 @@ describe 'posts/templates/_post.html.haml' do
 
   it 'displays a link to the author' do
     render
-    expect(rendered).to have_link('Jake', user_path(user))
+    expect(rendered).to have_link('Jake', href: user_path(user))
   end
 
   it 'displays the post content' do

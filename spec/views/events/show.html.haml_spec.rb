@@ -31,7 +31,7 @@ describe 'events/show.html.haml' do
   it 'displays edit event button if user can edit' do
     allow(view).to receive(:can?).with(:manage, event).and_return(true)
     render
-    expect(rendered).to have_link('Edit event', edit_event_path(event))
+    expect(rendered).to have_link('Edit event')
   end
 
   it 'displays an organiser list' do

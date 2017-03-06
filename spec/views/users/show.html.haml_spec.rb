@@ -27,7 +27,7 @@ describe 'users/show.html.haml' do
   it 'displays edit profile button if user can edit' do
     allow(view).to receive(:can?).with(:manage, user).and_return(true)
     render
-    expect(rendered).to have_link('Edit profile', edit_user_path(user))
+    expect(rendered).to have_link('Edit profile', href: edit_user_path(user))
   end
 
   it 'displays user bio' do
@@ -44,7 +44,7 @@ describe 'users/show.html.haml' do
   it 'displays add interests button if none added' do
     allow(view).to receive(:can?).with(:edit, user).and_return(true)
     render
-    expect(rendered).to have_link('Add some interests', edit_interests_path(user))
+    expect(rendered).to have_link('Add some interests', href: edit_interests_path(user))
   end
 
   it 'displays a list of posts by the user' do
