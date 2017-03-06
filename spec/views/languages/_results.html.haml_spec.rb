@@ -33,7 +33,7 @@ describe 'languages/_results.html.haml' do
 
   it 'displays the primary user count' do
     render
-    expect(rendered).to have_content('1 person using Ruby')
+    expect(rendered).to have_content('1 person primarily using Ruby')
   end
 
   it 'lists the users with this language' do
@@ -54,7 +54,7 @@ describe 'languages/_results.html.haml' do
     it 'suggests adding language to profile if user signed in' do
       allow(view).to receive(:current_user).and_return(current_user)
       render
-      expect(rendered).to have_content('Add it to your profile.')
+      expect(rendered).to have_content('Would you like to add Ruby to your profile?')
     end
   end
 

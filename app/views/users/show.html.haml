@@ -1,7 +1,5 @@
 - set_page_title(@user.name || "Profile")
 
-.u-margin-top--desktop
-
 - if can? :manage, @user
   %section.a-section.u-margin-top--mobile
     .a-content.u-center
@@ -15,11 +13,7 @@
       .m-profile__bio
         = sanitize @user.bio
 
-  = render partial: 'meetups', locals: { user: @user }
-
   = render partial: 'language_list'
-
-  = render partial: 'hackrooms', locals: { user: @user }
 
   - if @user.interests.any?
     %section.a-section
@@ -33,6 +27,10 @@
             .a-tags
               - @user.interests.each do |interest|
                 %h2.a-tag.a-tag--interest= interest.name
+
+  = render partial: 'hackrooms', locals: { user: @user }
+
+  = render partial: 'meetups', locals: { user: @user } if current_user&.has_role?(:organiser)
 
   - if can? :edit, @user
     .u-center

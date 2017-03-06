@@ -1,7 +1,5 @@
 - set_page_title(@hackroom.name + " hackroom")
 
-.u-margin-top--desktop
-
 .a-page-holder
 
   - if can? :manage, @hackroom
@@ -11,13 +9,8 @@
 
   %section.a-section
     .a-content
-      .m-hackroom__links.u-float-right
-        - if @hackroom.slack.present?
-          = link_to "https://westlondoncoders.slack.com/archives/#{@hackroom.slack}", target: "_blank" do
-            %i.fa.fa-slack
 
-      %h1.a-heading.centered.a-paint-border-bottom{class: ("a-paint-border-bottom--#{@hackroom.primary_languages&.first&.id}")}
-        = @hackroom.name
+      %h1= link_to @hackroom.name, @hackroom, class: ("a-paint-border-bottom a-paint-border-bottom--#{@hackroom.primary_languages&.first&.id}")
 
       .m-hackroom__mission
         = sanitize(@hackroom.mission)

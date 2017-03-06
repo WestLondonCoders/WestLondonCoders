@@ -35,7 +35,7 @@ class Admin::SponsorsController < Admin::BaseController
       if current_user.has_role?(:admin)
         redirect_to admin_sponsors_path
       else
-        redirect_to sponsor_path (@sponsor), notice: 'Page updated.'
+        redirect_to @sponsor, notice: 'Page updated.'
       end
     else
       render :edit

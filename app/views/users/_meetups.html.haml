@@ -3,7 +3,8 @@
     .a-content
       %h2 Meetups I'm attending
       - user.events.each do |event|
-        = link_to event do
-          = event.name
-          %br
-          = event.date.to_formatted_s(:long_ordinal)
+        %p
+          = link_to event do
+            = event.name
+            %br
+            = event.date.to_formatted_s(:long_ordinal)
