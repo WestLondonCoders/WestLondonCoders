@@ -12,7 +12,7 @@ if Rails.env.development? || Rails.env.test?
   task('spec:features').clear
   desc "Run 'feature' specs"
   RSpec::Core::RakeTask.new('spec:features' => spec_task.prerequisites) do |t|
-    t.rspec_opts = "--tag type:feature"
+    t.pattern = './spec/features/*'
     t.verbose = false
   end
 
