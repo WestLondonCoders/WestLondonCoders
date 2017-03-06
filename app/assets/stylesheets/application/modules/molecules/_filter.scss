@@ -1,0 +1,57 @@
+.m-filter {
+  @media #{$from-large} {
+    position: absolute;
+    left: 70px;
+    top: 80px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    width: 80%;
+
+    input[type="search"] {
+      padding: 9px;
+    }
+
+    @media #{$from-medium} {
+      flex-direction: row;
+      align-items: flex-start;
+      flex-wrap: wrap;
+
+      .a-button {
+        margin: 0 10px;
+      }
+
+      input[type="search"] {
+        margin-right: 10px;
+      }
+    }
+
+  }
+}
+
+.m-filter--fixed {
+  position: static;
+}
+
+.m-filter--with-options {
+  form {
+    @media #{$from-medium} {
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+    .m-form__checkboxes,
+    .a-button {
+      margin-top: -10px;
+    }
+  }
+}
+
+.m-filter-item {
+  margin-bottom: 10px;
+}

@@ -1,0 +1,12 @@
+.a-sort {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 20px auto 0;
+  flex-wrap: wrap;
+
+  a {
+    margin-right: 10px;
+    padding: 10px;
+  }
+}
