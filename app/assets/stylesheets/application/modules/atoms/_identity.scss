@@ -1,0 +1,31 @@
+.a-identities {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+
+  .a-identity {
+    padding-bottom: 10px;
+  }
+
+  .a-identity:not(:last-child) {
+    padding-right: 25px;
+  }
+}
+
+.a-identity {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.a-identity__photo {
+  width: 44px;
+  margin-right: 10px;
+
+  img {
+    border-radius: 50%;
+    display: block;
+  }
+}

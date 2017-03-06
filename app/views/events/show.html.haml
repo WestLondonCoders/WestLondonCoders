@@ -46,13 +46,14 @@
 
       - if @event.organisers.any?
         %h2 Organisers
-        - @event.organisers.each do |user|
-          = render partial: 'shared/user_tag', locals: { user: user }
+        .a-identities
+          - @event.organisers.each do |user|
+            = render partial: 'shared/user_tag', locals: { user: user }
 
       - if @event.rsvps.any?
         .a-content
           %h2 Who's coming?
-          .m-hackroom__members
+          .a-identities
             - @event.rsvps.each do |rsvp|
               = render partial: 'shared/user_tag', locals: { user: rsvp } unless rsvp.has_role?(:organiser)
 

@@ -24,19 +24,17 @@
 
       = render partial: 'language_list', locals: { hackroom: @hackroom }
 
-      .a-content
-        - if @hackroom.owners.any?
-          %h2 Maintainers
-          .m-hackroom__members
-            - @hackroom.owners.each do |user|
-              = render partial: 'shared/user_tag', locals: { user: user }
+      - if @hackroom.owners.any?
+        %h2 Maintainers
+        .a-identities
+          - @hackroom.owners.each do |user|
+            = render partial: 'shared/user_tag', locals: { user: user }
 
-      .a-content
-        - if @hackroom.users.any?
-          %h2 Members
-          .m-hackroom__members
-            - @hackroom.users.each do |user|
-              = render partial: 'shared/user_tag', locals: { user: user }
+      - if @hackroom.users.any?
+        %h2 Members
+        .a-identities
+          - @hackroom.users.each do |user|
+            = render partial: 'shared/user_tag', locals: { user: user }
 
       - if current_user
         .u-margin-top.u-float-right
