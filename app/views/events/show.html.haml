@@ -41,8 +41,7 @@
             - @event.languages.each do |language|
               = render partial: 'shared/language_tag', locals: { language: language }
       %h2 What's this meetup about?
-      .m-hackroom__mission
-        = sanitize(@event.description)
+      = sanitize(@event.description)
 
       - if @event.organisers.any?
         %h2 Organisers

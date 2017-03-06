@@ -12,8 +12,7 @@
         %h1
           = event.name
 
-      .m-hackroom__mission
-        = simple_format(truncate(sanitize(event.description), length: 200, escape: false, omission: '...'))
+      = simple_format(truncate(sanitize(event.description), length: 200, escape: false, omission: '...'))
 
       - if event.rsvps.any?
         .a-tags

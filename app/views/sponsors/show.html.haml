@@ -16,8 +16,7 @@
 
       .u-float-right= image_tag(@sponsor.logo, class: 'a-logo')
 
-      .m-hackroom__mission.u-left
-        = link_to sanitize(@sponsor.address), "http://maps.google.com/?q=#{strip_tags @sponsor.address}", target: "_blank"
+      = link_to sanitize(@sponsor.address), "http://maps.google.com/?q=#{strip_tags @sponsor.address}", target: "_blank"
 
       - if @sponsor.users.any?
         %h3 Contacts
@@ -30,8 +29,7 @@
         %h2.u-margin-top
           = @sponsor.description_heading.present? ? @sponsor.description_heading : "What's it like at #{@sponsor.name}?"
 
-        .m-hackroom__mission
-          = sanitize(@sponsor.description)
+        = sanitize(@sponsor.description)
 
         - if @sponsor.link.present?
           .u-center.u-margin-bottom

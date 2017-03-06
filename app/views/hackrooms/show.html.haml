@@ -12,8 +12,7 @@
 
       %h1= link_to @hackroom.name, @hackroom, class: ("a-paint-border-bottom a-paint-border-bottom--#{@hackroom.primary_languages&.first&.id}")
 
-      .m-hackroom__mission
-        = sanitize(@hackroom.mission)
+      = sanitize(@hackroom.mission)
 
       = render partial: 'language_list', locals: { hackroom: @hackroom }
 
