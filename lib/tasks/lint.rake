@@ -49,6 +49,40 @@ namespace :lint do
     YAMLint.new(en_locale).lint!
   end
 
+  desc "Lint JavaScript with JSHint"
+  task :javascript do
+    puts "Running JSHint:"
+    succeeded = system("npm run lint --loglevel silent")
+
+    if succeeded.nil?
+      warn "Command failed: #{$?}."
+      warn "Maybe Node.js and npm aren't installed? Try running `brew install node && npm install`."
+      exit 1
+    elsif succeeded == false
+      warn "JSHint failed."
+      exit 1
+    else
+      puts "JSHint succeeded."
+    end
+  end
+
+  desc "Check JavaScript code style with JSCS"
+  task :jscs do
+    puts "Running JSCS:"
+    succeeded = system("npm run jscs --loglevel silent")
+
+    if succeeded.nil?
+      warn "Command failed: #{$?}."
+      warn "Maybe Node.js and npm aren't installed? Try running `brew install node && npm install`."
+      exit 1
+    elsif succeeded == false
+      warn "JSCS failed."
+      exit 1
+    else
+      puts "JSCS succeeded."
+    end
+  end
+
   desc "Lint SCSS with scss-lint"
   task "scss" do
     puts "Running scss-lint:"
@@ -65,4 +99,5 @@ namespace :lint do
   end
 end
 
+# task lint: ['lint:locale', 'lint:javascript', 'lint:jscs', 'lint:scss']
 task lint: ['lint:locale', 'lint:scss']
