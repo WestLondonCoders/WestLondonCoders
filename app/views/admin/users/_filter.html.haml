@@ -1,4 +1,4 @@
-.m-filter.js-filter-form.m-filter--with-options
+.m-filter.m-filter--fixed.js-filter-form.m-filter--with-options
   = search_form_for @search, url: search_admin_users_path, method: :post, remote: true do |f|
     .m-filter-item
       = f.search_field :name_cont, placeholder: 'Search by name'
