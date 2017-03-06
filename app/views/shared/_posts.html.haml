@@ -1,13 +1,5 @@
-.m-hackroom-list__hackroom
-  %h1
-    = link_to post.title, post_path(post)
-    - if can? :manage, post
-      %a.m-profile__pencil{href: edit_post_path(post)}
-        %i.a-icon-after-text.fa.fa-pencil
-  .m-post__meta-strip
-    = render partial: 'shared/user_tag', locals: { user: post.created_by, with_date: true, date: post.created_at }
-  .m-post__excerpt
-    = simple_format(truncate(post.content, length: 500, escape: false, omission: '...'))
+.m-grid__box
+  %h1= link_to post.title, post_path(post)
 
   .m-post__tags.u-left
     .a-tags
@@ -15,4 +7,5 @@
         %h2.a-tag.a-tag--post-tag= tag.name
 
   .u-right
+  .m-grid__bottom
     = link_to "Read", post, class: 'a-button a-button--elastic'

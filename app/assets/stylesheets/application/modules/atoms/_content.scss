@@ -34,7 +34,7 @@
   flex-direction: column;
   margin-top: 20px;
 
-  .m-post {
+  .m-grid__box {
     width: 100%;
   }
 
@@ -50,7 +50,7 @@
     flex-direction: row;
     justify-content: space-between;
 
-    .m-hackroom-list {
+    .m-grid {
       width: 66%;
     }
 

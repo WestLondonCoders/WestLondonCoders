@@ -43,7 +43,7 @@
   - if @posts.any?
     %section.a-section
       .a-content--xwide
-        %h2 My posts
-        .m-hackroom-list
+        %h2.u-center My posts
+        .m-grid
           - @posts.take(6).each do |post|
             = render partial: 'shared/posts', locals: {post: post}

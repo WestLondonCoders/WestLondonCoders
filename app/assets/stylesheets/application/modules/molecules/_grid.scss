@@ -1,0 +1,28 @@
+.m-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: -50px;
+  font-family: $body-font;
+  font-size: 1em;
+}
+
+.m-grid__box {
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  padding: 15px 30px 30px;
+  border-radius: 5px;
+  border: 1px solid $color-border;
+  margin-right: 5%;
+  margin-top: 50px;
+
+  @media #{$from-large} {
+    width: 45%;
+  }
+}
+
+.m-grid__bottom {
+  margin-top: auto;
+  text-align: right;
+}

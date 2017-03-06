@@ -27,9 +27,9 @@
 
   %section.a-section
     .a-content--xwide
-      .m-hackroom-list
+      .m-grid
         - @sponsors.each do |sponsor|
-          .m-hackroom-list__hackroom
+          .m-grid__box
             .u-float-right
               .m-admin__logo
                 = image_tag(sponsor.logo_url)
@@ -54,7 +54,7 @@
 
             - if sponsor.users.any?
               %h3 Contacts
-              .m-hackroom__members
+              .a-identities
                 - sponsor.users.take(3).each do |user|
                   = render partial: 'shared/user_tag', locals: { user: user }
 

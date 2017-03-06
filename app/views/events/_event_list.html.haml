@@ -1,6 +1,6 @@
-.m-hackroom-list
+.m-grid
   - events.each do |event|
-    .m-hackroom-list__hackroom
+    .m-grid__box
       = link_to event_path(event) do
         %h3.u-float-left
           = time_as_sentence(event.date)
