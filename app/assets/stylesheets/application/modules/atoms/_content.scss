@@ -34,7 +34,7 @@
   flex-direction: column;
   margin-top: 20px;
 
-  .m-post {
+  .m-grid__box {
     width: 100%;
   }
 
@@ -50,33 +50,13 @@
     flex-direction: row;
     justify-content: space-between;
 
-    .m-hackroom-list {
+    .m-grid {
       width: 66%;
     }
 
     .m-comments {
       margin-top: 40px;
       width: 30%;
-    }
-  }
-}
-
-.a-content--post {
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-
-  @media #{$from-medium} {
-    flex-direction: row;
-    justify-content: space-between;
-
-    .m-post {
-      width: 55%;
-    }
-
-    .m-post__images {
-      margin-top: 100px;
-      width: 40%;
     }
   }
 }

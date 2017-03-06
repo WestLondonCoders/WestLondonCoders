@@ -54,4 +54,12 @@ module ApplicationHelper
   def time_as_sentence(date)
     date.past? ? "#{relative_time(date)} ago" : "In #{relative_time(date)}"
   end
+
+  def date_and_time_as_sentence(date)
+    "#{time_as_sentence(date)}, #{date.to_date.to_formatted_s(:short)}"
+  end
+
+  def excerpt(text, length = 250)
+    simple_format(truncate(sanitize(text), length: 250, escape: false, omission: '...'))
+  end
 end

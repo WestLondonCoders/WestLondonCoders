@@ -1,5 +1,5 @@
-.m-user-list__search.js-filter-form.m-user-list__search--fixed
+.m-filter.js-filter-form
   = search_form_for @search, url: search_admin_events_path, method: :post, remote: true do |f|
-    .m-user-list__search-item
+    .m-filter-item
       = f.search_field :name_cont, placeholder: 'Search by name'
     = f.submit "Search", class: 'a-button'

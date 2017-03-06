@@ -24,9 +24,9 @@
 %section.a-section
   .a-content--xwide
     .a-content--home
-      .m-hackroom-list.m-hackroom-list--home
+      .m-grid
         - @posts.take(4).each do |post|
-          = render partial: 'shared/posts', locals: {post: post}
+          = render partial: 'shared/posts', locals: { post: post }
 
       .m-comments
         %h2

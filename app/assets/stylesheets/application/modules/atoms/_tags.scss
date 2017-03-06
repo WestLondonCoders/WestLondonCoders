@@ -1,5 +1,3 @@
-$tag-avatar-size: 49px;
-
 .a-tags {
   display: flex;
   flex-direction: row;
@@ -14,32 +12,6 @@ $tag-avatar-size: 49px;
 
 .a-tags--center {
   justify-content: center;
-}
-
-.a-tag--with-face {
-  display: flex;
-  flex-direction: row;
-  margin: 20px;
-  align-items: flex-start;
-  justify-content: flex-start;
-
-  .a-tag {
-    margin: 0;
-  }
-
-  .m-faces--team__face {
-    border: 0;
-  }
-}
-
-.m-faces--team__face {
-  width: $tag-avatar-size;
-  height: $tag-avatar-size;
-  border: 2px solid transparent;
-  img {
-    width: $tag-avatar-size;
-    height: $tag-avatar-size;
-  }
 }
 
 .a-tag {
@@ -59,15 +31,11 @@ $tag-avatar-size: 49px;
   margin-right: 20px;
 }
 
-.a-tag--with-face {
-  flex-direction: row;
-}
-
 .a-tag--interest {
   background: $color-pink;
 }
 
-.a-tag--post-tag {
+.a-tag--light-blue {
   background: $color-light-blue;
   margin-right: 20px;
 }

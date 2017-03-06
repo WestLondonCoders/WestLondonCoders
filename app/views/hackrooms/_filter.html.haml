@@ -1,9 +1,9 @@
-.m-user-list__search.js-filter-form.m-user-list__search--fixed
+.m-filter.m-filter--fixed.js-filter-form
   = search_form_for @search, url: search_hackrooms_path, method: :post, remote: true do |f|
-    .m-user-list__search-item
+    .m-filter-item
       = f.search_field :name_cont, placeholder: 'Search by name'
 
-.m-user-list__search.js-filter-form.m-user-list__search--fixed
+.m-filter.m-filter--fixed.js-filter-form
   = search_form_for @search, url: search_hackrooms_path, method: :post, remote: true do |f|
     .m-form__checkboxes
       - @languages.each do |language|

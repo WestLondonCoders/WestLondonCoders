@@ -1,6 +1,6 @@
-.m-hackroom-list
+.m-grid
   - events.each do |event|
-    .m-hackroom-list__hackroom
+    .m-grid__box
       = link_to event_path(event) do
         %h3.u-float-left
           = time_as_sentence(event.date)
@@ -12,8 +12,7 @@
         %h1
           = event.name
 
-      .m-hackroom__mission
-        = simple_format(truncate(sanitize(event.description), length: 200, escape: false, omission: '...'))
+      = simple_format(truncate(sanitize(event.description), length: 200, escape: false, omission: '...'))
 
       - if event.rsvps.any?
         .a-tags

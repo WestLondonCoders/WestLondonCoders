@@ -1,31 +1,25 @@
-.m-hackroom-list
+.m-grid
   - @hackrooms.each do |hackroom|
-    .m-hackroom-list__hackroom
-      = link_to hackroom_path(hackroom) do
-        %h2.a-paint-border-bottom{class: ("a-paint-border-bottom--#{hackroom.primary_languages&.first&.id}")}
-          = hackroom.name
+    .m-grid__box
+      %h1= link_to hackroom.name, hackroom_path(hackroom), class: ("a-paint-border-bottom a-paint-border-bottom--#{hackroom.primary_languages&.first&.id}")
 
-      .m-hackroom__mission
-        = simple_format(truncate(sanitize(hackroom.mission), length: 250, escape: false, omission: '...', separator: '.'))
+      = excerpt(hackroom.mission)
 
-      %p
-        - if hackroom.primary_languages.any?
-          .a-tags
-            - hackroom.primary_languages.each do |language|
-              = link_to language do
-                %h2.a-tag{class: "a-paint-background--#{language.id}"}= language.name
+      - if hackroom.primary_languages.any?
+        .a-tags
+          - hackroom.primary_languages.each do |language|
+            = link_to language.name, language, class: "a-tag a-paint-background--#{language.id}"
 
       - if hackroom.owners.any?
         %h3= pluralize(hackroom.owners.count, "Maintainer")
-        .m-hackroom__members
+        .a-identities
           - hackroom.owners.take(4).each do |user|
             = render partial: 'shared/user_tag', locals: { user: user }
 
       - if hackroom.users.any?
         %h3= pluralize(hackroom.users.count, "Member")
-        .m-hackroom__members
+        .a-identities
           - hackroom.users.take(10).each do |user|
             = render partial: 'shared/user_tag', locals: { user: user }
-
-      .u-margin-top.u-right
+      .m-grid__bottom
         = link_to "View", hackroom, class: 'a-button a-button--elastic'
