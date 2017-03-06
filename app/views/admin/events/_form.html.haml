@@ -8,9 +8,7 @@
     = form_for [:admin, @event] do |f|
       .m-form
         .u-margin-bottom--small= f.text_field :name, placeholder: "Learn, discuss and practice code"
-      .u-margin-bottom--small= f.trix_editor :description, class: 'hide-if-no-js'
-      .m-form
-        .u-margin-bottom--small= f.text_area :description, class: 'hide-if-js'
+        .u-margin-bottom--small= f.text_area :description
         .u-margin-bottom--small.m-form--narrow= f.date_field :date
 
         - if current_user.has_role?(:admin)
