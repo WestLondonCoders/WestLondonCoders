@@ -61,26 +61,6 @@
   }
 }
 
-.a-content--post {
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-
-  @media #{$from-medium} {
-    flex-direction: row;
-    justify-content: space-between;
-
-    .m-post {
-      width: 55%;
-    }
-
-    .m-post__images {
-      margin-top: 100px;
-      width: 40%;
-    }
-  }
-}
-
 .a-content-top {
   margin-top: 15px;
 }
