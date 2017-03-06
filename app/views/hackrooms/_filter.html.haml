@@ -1,14 +1,12 @@
 .m-filter.m-filter--fixed.js-filter-form
   = search_form_for @search, url: search_hackrooms_path, method: :post, remote: true do |f|
-    .m-filter-item
-      = f.search_field :name_cont, placeholder: 'Search by name'
-
-.m-filter.m-filter--fixed.js-filter-form
-  = search_form_for @search, url: search_hackrooms_path, method: :post, remote: true do |f|
     .m-form__checkboxes
       - @languages.each do |language|
         .m-form__checkbox
           = check_box_tag 'q[primary_languages_id_eq_any][]', language.id
           = language.name
+
     .u-margin-top--small
+      = f.search_field :name_cont, id: 'search', placeholder: 'Search by name'
+
       = f.submit "Search", class: 'a-button'

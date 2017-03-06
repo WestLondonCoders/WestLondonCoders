@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :get_post, only: [:show, :edit, :update, :destroy]
   after_action :slack, only: [:create]
+  skip_before_action :verify_authenticity_token, only: [:search]
 
   def index
     @search = Post.ransack(params[:q])

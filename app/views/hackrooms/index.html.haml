@@ -9,10 +9,11 @@
         #hackroom-search-heading
           = render 'heading'
 
-      .a-content
-        %p= I18n.t('index_introductions.hackrooms')
+    .a-content.a-content--tight-bottom
+      %p= I18n.t('index_introductions.hackrooms')
 
-        = render partial: 'filter'
+    .a-content--wide.a-content--tight-top
+      = render partial: 'filter'
 
   %section.a-section
     .a-content--xwide

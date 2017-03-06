@@ -2,4 +2,4 @@
   = search_form_for @search, url: search_events_path, method: :post, remote: true do |f|
     .m-filter-item
       = f.search_field :name_cont, placeholder: 'Search'
-    = f.submit "Search", class: 'a-button u-hide-on-desktop'
+    = f.submit "Search", class: 'a-button u-hide-on-desktop m-filter__button'

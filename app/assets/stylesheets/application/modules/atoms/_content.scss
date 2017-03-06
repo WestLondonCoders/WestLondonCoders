@@ -29,6 +29,15 @@
   padding: 0;
 }
 
+.a-content--tight-bottom {
+  padding-bottom: 0;
+}
+
+.a-content--tight-top {
+  padding-top: 0;
+}
+
+
 .a-content--home {
   display: flex;
   flex-direction: column;

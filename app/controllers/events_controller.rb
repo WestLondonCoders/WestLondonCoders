@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :get_event, only: [:show, :rsvp]
+  skip_before_action :verify_authenticity_token, only: [:search]
 
   def show
   end

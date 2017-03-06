@@ -43,6 +43,7 @@ gem 'sendgrid-ruby'
 gem 'premailer-rails'
 gem 'nokogiri'
 gem "rolify"
+gem 'modernizr-rails'
 
 group :development, :test do
   gem 'byebug'

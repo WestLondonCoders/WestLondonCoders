@@ -297,6 +297,7 @@ GEM
     mini_magick (4.6.0)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
+    modernizr-rails (2.7.1)
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
@@ -518,6 +519,7 @@ DEPENDENCIES
   jquery-turbolinks
   launchy
   mini_magick
+  modernizr-rails
   nokogiri
   omniauth
   omniauth-github
@@ -553,4 +555,4 @@ RUBY VERSION
    ruby 2.3.3p222
 
 BUNDLED WITH
-   1.13.7
+   1.14.6

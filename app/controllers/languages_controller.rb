@@ -1,5 +1,6 @@
 class LanguagesController < ApplicationController
   before_action :find_language, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token, only: [:search]
 
   def index
     @search = Language.ransack(params[:q])

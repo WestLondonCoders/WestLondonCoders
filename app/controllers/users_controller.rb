@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :get_user, only: [:show, :edit, :update, :edit_interests]
+  skip_before_action :verify_authenticity_token, only: [:search]
 
   def show
     @posts = Post.all.where(created_by_id: @user).order("created_at desc")
