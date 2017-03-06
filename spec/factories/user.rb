@@ -12,4 +12,8 @@ FactoryGirl.define do
     image { Rack::Test::UploadedFile.new(Rails.root.join('spec', 'support', 'example-image.jpg')) }
     bio 'I make cool songs'
   end
+
+  factory :admin, parent: :user do
+    roles { FactoryGirl.create(:role, id: 1, name: 'Admin') }
+  end
 end

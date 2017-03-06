@@ -6,7 +6,6 @@ class EventsController < ApplicationController
   end
 
   def index
-    authorize! :manage, @events
     @search = Event.upcoming.ransack(params[:q])
     @search.sorts = 'date asc' if @search.sorts.empty?
     @events = @search.result
