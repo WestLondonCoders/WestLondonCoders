@@ -20,11 +20,6 @@ feature 'searching for things' do
 
   private
 
-  def when_there_are_languages
-    @ruby = FactoryGirl.create(:language, name: 'Ruby')
-    @python = FactoryGirl.create(:language, name: 'Python')
-  end
-
   def then_i_should_see_the_languages
     expect(page).to have_content('Ruby')
     expect(page).to have_content('Python')

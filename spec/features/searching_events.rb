@@ -20,12 +20,6 @@ feature 'searching for things' do
 
   private
 
-  def when_there_are_meetups
-    @sponsor = FactoryGirl.create(:sponsor, name: 'Sky')
-    @ruby_meetup = FactoryGirl.create(:event, name: 'Ruby meetup', sponsor: @sponsor)
-    @python_meetup = FactoryGirl.create(:event, name: 'Python meetup', sponsor: @sponsor)
-  end
-
   def then_i_should_see_the_meetups
     expect(page).to have_content('Ruby meetup')
     expect(page).to have_content('Python meetup')

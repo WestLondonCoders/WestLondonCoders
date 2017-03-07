@@ -21,11 +21,6 @@ feature 'searching for things' do
 
   private
 
-  def when_there_are_users
-    @christina = FactoryGirl.create(:user, name: 'Christina', email: 'dirrty@aguilera.com')
-    @tom = FactoryGirl.create(:user, name: 'Tom', email: 'tom@person.com')
-  end
-
   def then_i_should_see_my_name
     expect(page).to have_content('My name')
   end

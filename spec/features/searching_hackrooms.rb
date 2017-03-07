@@ -20,11 +20,6 @@ feature 'searching for things' do
 
   private
 
-  def when_there_are_hackrooms
-    @ruby_room = FactoryGirl.create(:hackroom, name: 'Ruby room')
-    @python_room = FactoryGirl.create(:hackroom, name: 'Python room')
-  end
-
   def then_i_should_see_the_hackrooms
     expect(page).to have_content('Ruby room')
     expect(page).to have_content('Python room')
