@@ -31,6 +31,10 @@ class LanguagesController < ApplicationController
     end
   end
 
+  def edit
+    authorize! :manage, @language
+  end
+
   def update
     authorize! :update, @language
     respond_to do |format|
