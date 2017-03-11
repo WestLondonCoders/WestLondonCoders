@@ -41,12 +41,6 @@ describe 'users/show.html.haml' do
     expect(rendered).to have_content('Singing')
   end
 
-  it 'displays add interests button if none added' do
-    allow(view).to receive(:can?).with(:edit, user).and_return(true)
-    render
-    expect(rendered).to have_link('Add some interests', href: edit_interests_path(user))
-  end
-
   it 'displays a list of posts by the user' do
     render
     expect(rendered).to render_template(partial: 'shared/_posts', locals: { post: post })

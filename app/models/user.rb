@@ -5,8 +5,7 @@ class User < ActiveRecord::Base
   has_many :roles, through: :assignments
 
   has_many :user_interests
-  has_many :interests, through: :user_interests
-  accepts_nested_attributes_for :interests, reject_if: :all_blank, allow_destroy: true
+  has_many :interests, through: :user_interests, source: :tag
 
   has_many :comments, dependent: :destroy
 

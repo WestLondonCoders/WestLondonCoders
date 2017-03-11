@@ -20,23 +20,13 @@
       .a-content
         %h2
           Interests
-          - if can? :edit, @user
-            %a.m-profile__pencil{href: edit_interests_path(@user)}
-              %i.a-icon-after-text.fa.fa-pencil
-          - if @user.interests.any?
-            .a-tags
-              - @user.interests.each do |interest|
-                %h2.a-tag.a-tag--interest= interest.name
+          .a-tags
+            - @user.interests.each do |interest|
+              %h2.a-tag.a-tag--interest= interest.name
 
   = render partial: 'hackrooms', locals: { user: @user }
 
   = render partial: 'meetups', locals: { user: @user } if current_user&.has_role?(:organiser)
-
-  - if can? :edit, @user
-    .u-center
-      - if @user.interests.empty?
-        .m-profile__add-interests
-          %a.a-button--pink.a-tag.a-tag--interest{href: edit_interests_path(@user)} Add some interests
 
   - if @posts.any?
     %section.a-section
