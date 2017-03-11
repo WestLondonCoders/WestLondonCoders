@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to users_path, alert: exception.message
+    redirect_to users_path, notice: exception.message
   end
 
   protect_from_forgery with: :exception

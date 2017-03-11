@@ -3,7 +3,7 @@ ruby '2.3.3'
 
 # Rails, and deps of Rails that we have locked at specific versions
 
-gem 'rails', '4.2.7.1'
+gem 'rails',        '4.2.7.1'
 gem 'jquery-rails', '>= 4.0.4'
 gem 'sassc-rails'
 gem 'sprockets',    '~> 3.6.0'
