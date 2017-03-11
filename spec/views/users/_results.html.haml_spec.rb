@@ -29,11 +29,5 @@ describe 'users/_results.html.haml' do
   it 'displays a link to each user\'slanguage' do
     render
     expect(rendered).to have_link('Ruby', href: language_path(language))
-    expect(rendered).to have_css('.a-paint-background--26')
-  end
-
-  it 'adds an underline with the language colour' do
-    render
-    expect(rendered).to have_css('.a-paint-border-bottom--26')
   end
 end

@@ -14,6 +14,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
+//= require application/main.js
 //= require cocoon
 //= require trix
 //= require application/dropdown.js
@@ -21,4 +22,4 @@
 //= require application/filter.js
 //= require application/meetup.js
 //= require application/code_highlighting.js
-
+//= require jquery.minicolors

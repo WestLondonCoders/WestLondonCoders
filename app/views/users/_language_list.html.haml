@@ -9,7 +9,7 @@
             .a-tags
               - @user.primary_languages.each do |language|
                 = link_to language do
-                  %h2.a-tag{class: "a-paint-background--#{language.id}"}= language.name
+                  %h2.a-tag{style: "background-color: #{language.colour}"}= language.name
 
       - if @user.languages.any?
         %h2
@@ -19,4 +19,4 @@
             .a-tags
               - @user.languages.each do |language|
                 = link_to language do
-                  %h2.a-tag{class: "a-paint-background--#{language.id}"}= language.name
+                  %h2.a-tag{style: "background-color: #{language.colour}"}= language.name

@@ -11,6 +11,11 @@
           %h2 Description
           = f.trix_editor :description
 
+      %section.a-section.a-section--overflow
+        .a-content.a-content--tight-bottom
+          %h2 Language colour
+          = f.text_field :colour, class: 'colour-select'
+
       .u-margin-top
         .m-post-editor__submit
           = link_to "Delete language", @language, method: :delete, data: { confirm: 'Delete language?' }, class: 'a-button a-button--ghost' if can? :destroy, @language

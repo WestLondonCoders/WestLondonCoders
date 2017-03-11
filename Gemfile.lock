@@ -274,6 +274,9 @@ GEM
     jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
+    jquery-minicolors-rails (2.2.3.0)
+      jquery-rails
+      rails (>= 3.2.8)
     jquery-rails (4.2.2)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -515,6 +518,7 @@ DEPENDENCIES
   jasmine-core (~> 2.3.4)
   jasmine-rails (~> 0.12.0)
   jbuilder (~> 2.0)
+  jquery-minicolors-rails
   jquery-rails (>= 4.0.4)
   jquery-turbolinks
   launchy

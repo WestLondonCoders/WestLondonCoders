@@ -7,6 +7,11 @@
   padding-right: $page-padding;
 }
 
+.a-section--overflow {
+  @include clearfix;
+  overflow: visible;
+}
+
 .a-section--alt {
   background-color: $color-pale-blue;
 }

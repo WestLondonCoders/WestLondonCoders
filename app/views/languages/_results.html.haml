@@ -1,7 +1,7 @@
 .m-grid
   - @languages.each do |language|
     .m-grid__box
-      %h1= link_to language.name, language, class: ("a-paint-border-bottom a-paint-border-bottom--#{language.id}")
+      %h1= link_to language.name, language, style: "border-bottom: solid 2px #{language.colour}"
 
       = render partial: 'hackrooms', locals: { language: language }
 

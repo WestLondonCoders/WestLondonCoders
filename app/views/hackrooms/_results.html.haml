@@ -1,14 +1,14 @@
 .m-grid
   - @hackrooms.each do |hackroom|
     .m-grid__box
-      %h1= link_to hackroom.name, hackroom_path(hackroom), class: ("a-paint-border-bottom a-paint-border-bottom--#{hackroom.primary_languages&.first&.id}")
+      %h1= link_to hackroom.name, hackroom_path(hackroom), style: "border-bottom: solid 2px #{hackroom.primary_languages&.first&.colour}"
 
       = excerpt(hackroom.mission)
 
       - if hackroom.primary_languages.any?
         .a-tags
           - hackroom.primary_languages.each do |language|
-            = link_to language.name, language, class: "a-tag a-paint-background--#{language.id}"
+            = link_to language.name, language, class: "a-tag", style: "background-color: #{language.colour}"
 
       - if hackroom.owners.any?
         %h3= pluralize(hackroom.owners.count, "Maintainer")

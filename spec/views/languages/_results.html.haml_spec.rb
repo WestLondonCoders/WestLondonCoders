@@ -21,11 +21,6 @@ describe 'languages/_results.html.haml' do
     expect(rendered).to have_link('Ruby', href: language_path(language))
   end
 
-  it 'adds an underline with the language colour' do
-    render
-    expect(rendered).to have_css('.a-paint-border-bottom--26')
-  end
-
   it 'lists the hackrooms using each language' do
     render
     expect(rendered).to render_template(partial: '_hackrooms', locals: { language: language })

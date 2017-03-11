@@ -35,8 +35,7 @@
                 = image_tag(sponsor.logo_url)
 
             = link_to sponsor_path(sponsor) do
-              %h1
-                %span.a-paint-border-bottom= sponsor.name
+              %h1= sponsor.name
 
             .m-hackroom__mission
               = simple_format(truncate(sanitize(sponsor.description), length: 200, escape: false, omission: '...'))

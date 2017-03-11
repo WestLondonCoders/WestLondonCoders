@@ -10,7 +10,7 @@
   %section.a-section
     .a-content
 
-      %h1= link_to @hackroom.name, @hackroom, class: ("a-paint-border-bottom a-paint-border-bottom--#{@hackroom.primary_languages&.first&.id}")
+      %h1= link_to @hackroom.name, @hackroom, style: "border-bottom: solid 2px #{@hackroom.primary_languages&.first&.colour}"
 
       = sanitize(@hackroom.mission)
 

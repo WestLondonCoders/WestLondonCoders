@@ -9,7 +9,7 @@
 
   %section.a-section
     .a-content
-      %h1.a-paint-border-bottom{class: ("a-paint-border-bottom--#{@language.id}")}= @language.name
+      %h1.a-paint-border-bottom{ style: "border-bottom: solid 2px #{@language.colour}"}= @language.name
 
       = sanitize @language.description
 
