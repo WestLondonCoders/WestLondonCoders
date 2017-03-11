@@ -45,6 +45,7 @@ gem 'nokogiri'
 gem "rolify"
 gem 'modernizr-rails'
 gem 'jquery-minicolors-rails'
+gem 'chosen-rails'
 
 group :development, :test do
   gem 'byebug'

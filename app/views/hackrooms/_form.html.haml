@@ -43,15 +43,15 @@
               = b.check_box
               = b.label
 
-    %section.a-section
+    %section.a-section.a-section--overflow
       .a-content.m-hackroom__admins
         %h2 Maintainers
-        = f.select :owner_ids, user_options_for_select(User.all, f.object.owner_ids), { label: 'Maintainers' }, multiple: true
+        = f.select :owner_ids, user_options_for_select(User.all, f.object.owner_ids), { label: 'Maintainers' }, multiple: true, class: 'chosen-select'
 
-    %section.a-section
+    %section.a-section.a-section--overflow
       .a-content.m-hackroom__admins
         %h2 Members
-        = f.select :user_ids, user_options_for_select(User.all, f.object.user_ids), { label: 'Members' }, multiple: true
+        = f.select :user_ids, user_options_for_select(User.all, f.object.user_ids), { label: 'Members' }, multiple: true, class: 'chosen-select'
 
     .u-margin-top
       .m-post-editor__submit
