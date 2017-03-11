@@ -5,7 +5,7 @@
   .m-post-editor
     %h1 Sponsor
 
-    = link_to "View public page", sponsor_path(@sponsor), class: 'a-button a-button--admin-edit'
+    = link_to "View public page", sponsor_path(@sponsor), class: 'a-button a-button--admin-edit' if @sponsor.persisted?
 
     = form_for [:admin, @sponsor] do |f|
       .m-post-editor__title
@@ -22,7 +22,7 @@
         %p
           The description is shown at the top of your
           = succeed '.' do
-            = link_to 'sponsor page', sponsor_path(@sponsor)
+            = @sponsor.persisted? ? (link_to 'sponsor page', sponsor_path(@sponsor)) : 'sponsor page'
           You can set a title or the default will be what's shown here:
         %h2= f.text_field :description_heading, placeholder: "What's it like to work at #{@sponsor.name}?"
 
