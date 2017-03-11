@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, controllers: { omniauth_callbacks: "callbacks", registrations: "registrations", passwords: "passwords", sessions: "sessions" }
-  resources :users do
+  resources :users, path: 'members' do
     collection do
       match 'search' => 'users#search', via: [:get, :post], as: :search
     end
