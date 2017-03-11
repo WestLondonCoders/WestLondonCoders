@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170311215356) do
+ActiveRecord::Schema.define(version: 20170311224631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -169,7 +169,10 @@ ActiveRecord::Schema.define(version: 20170311215356) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "creator_id"
   end
+
+  add_index "tags", ["creator_id"], name: "index_tags_on_creator_id", using: :btree
 
   create_table "user_hackrooms", force: :cascade do |t|
     t.integer  "user_id",     null: false
@@ -185,7 +188,10 @@ ActiveRecord::Schema.define(version: 20170311215356) do
     t.integer  "interest_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tag_id"
   end
+
+  add_index "user_interests", ["tag_id"], name: "index_user_interests_on_tag_id", using: :btree
 
   create_table "user_languages", force: :cascade do |t|
     t.integer  "user_id",     null: false
