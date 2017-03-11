@@ -24,10 +24,6 @@ feature 'administering events' do
 
   private
 
-  def then_i_should_see_the_admin_navbar
-    expect(page).to have_css('.m-admin_bar')
-  end
-
   def given_there_is_a_sponsor
     @sponsor = FactoryGirl.create(:sponsor, id: 1, name: 'Sky')
   end

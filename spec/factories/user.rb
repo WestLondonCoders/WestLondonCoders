@@ -16,4 +16,9 @@ FactoryGirl.define do
   factory :admin, parent: :user do
     roles { [FactoryGirl.create(:role, name: 'Admin')] }
   end
+
+  factory :sponsorship_admin, parent: :user do
+    roles { [FactoryGirl.create(:role, name: 'sponsor')] }
+    sponsors { [FactoryGirl.create(:sponsor, name: 'Sky')] }
+  end
 end

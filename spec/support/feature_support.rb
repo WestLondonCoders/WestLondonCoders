@@ -23,6 +23,18 @@ module FeatureSupport
         instance_eval(&block)
       end
     end
+
+    def as_a_sponsor(&block)
+      context 'as an admin' do
+        let(:sponsorship_admin) { FactoryGirl.create(:sponsorship_admin, email: 'admin@example.com', name: 'Steve') }
+
+        before do
+          login_as sponsorship_admin
+        end
+
+        instance_eval(&block)
+      end
+    end
   end
 
   RSpec.configure do |config|

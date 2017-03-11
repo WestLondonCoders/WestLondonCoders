@@ -33,6 +33,10 @@ module FeatureHelpers
   def then_i_should_be_redirected_to_people_page
     expect(current_path).to eq(users_path)
   end
+
+  def then_i_should_see_the_admin_navbar
+    expect(page).to have_css('.m-admin_bar')
+  end
 end
 
 RSpec.configure do |config|
