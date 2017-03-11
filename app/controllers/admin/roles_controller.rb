@@ -12,7 +12,7 @@ class Admin::RolesController < Admin::BaseController
     authorize! :update, @roles
     if @role.update(role_params)
       redirect_to admin_roles_path
-      UserMailer.welcome_email(User.first).deliver
+      UserMailer.welcome_email(User.first).deliver_now
     else
       render :edit
     end
