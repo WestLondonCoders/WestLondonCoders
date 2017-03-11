@@ -2,7 +2,7 @@ class SponsorsController < ApplicationController
   before_action :get_sponsor, only: [:show]
 
   def index
-    @sponsors = Sponsor.all
+    @sponsors = Sponsor.listed
   end
 
   private

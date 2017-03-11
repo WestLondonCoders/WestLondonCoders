@@ -7,4 +7,6 @@ class Sponsor < ActiveRecord::Base
   mount_uploader :logo, LogoUploader
 
   validates :link, presence: true
+
+  scope :listed, -> { where(listed: true) }
 end

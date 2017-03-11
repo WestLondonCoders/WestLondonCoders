@@ -20,7 +20,7 @@
           = succeed '.' do
             = link_to "Steve", "https://linkedin.com/in/svpersteve"
 
-  - if current_user.has_role?(:admin)
+  - if can? :create, Sponsor
     %section.a-section.u-margin-top--mobile
       .a-content.u-center
         = link_to "Add sponsor", new_admin_sponsor_path, class: 'a-button a-button--edit'

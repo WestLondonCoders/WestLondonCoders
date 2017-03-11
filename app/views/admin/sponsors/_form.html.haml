@@ -45,6 +45,13 @@
         %br
         = f.file_field :logo
 
+      .m-post-editor__title
+        %h2 Publish page?
+        .m-form__checkboxes
+          .m-form__checkbox
+            = f.check_box :listed
+            = f.label 'Display this page on the sponsors listing page'
+
       - if current_user.has_role?(:admin)
         .a-content.m-hackroom__admins
           %h1 WLC admins only
