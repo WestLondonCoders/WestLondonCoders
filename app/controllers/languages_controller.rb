@@ -21,6 +21,7 @@ class LanguagesController < ApplicationController
   def create
     authorize! :create, Language
     @language = Language.new(language_params)
+    @language.slug = @language.name.strip.downcase.tr(" ", "-")
 
     respond_to do |format|
       if @language.save
