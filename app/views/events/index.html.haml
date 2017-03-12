@@ -4,9 +4,7 @@
 
   %section.a-section.a-section--alt
     .a-content--wide.a-content--tight
-      %h1.a-heading.u-center
-        #post-search-heading
-          = render 'heading'
+      %h1.a-heading.u-center#post-search-heading= render 'heading'
 
       .a-content
         %p= I18n.t('index_introductions.events')
@@ -19,9 +17,7 @@
       .a-content.u-center
         = link_to "Schedule meetup", new_admin_event_path, class: 'a-button a-button--edit'
 
-  %section.a-section
-    #event-search-results
-      = render 'results'
+  %section.a-section#event-search-results= render 'results'
 
-      .u-center.u-margin-top
-        = link_to "Past meetups", past_events_path, class: 'a-button'
+  .u-center.u-margin-top
+    = link_to "Past meetups", past_events_path, class: 'a-button'

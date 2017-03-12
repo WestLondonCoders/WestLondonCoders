@@ -1,3 +1,3 @@
 $('.is-selected').removeClass('is-selected')
 $('#hackroom-nav').addClass('is-selected')
-$("#profile-content").html("<%= escape_javascript(render partial: 'shared/hackroom_cards', locals: { hackrooms: @user.all_hackrooms } ) %>");
+$("#profile-content").html("<%= escape_javascript(render partial: 'shared/hackrooms', locals: { hackrooms: @user.all_hackrooms } ) %>");

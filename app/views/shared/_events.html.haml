@@ -9,16 +9,11 @@
             =event.date.to_date.to_formatted_s(:long)
             %br
             = default_times
+          %h1= event.name
 
-          %h1
-            = event.name
+        = simple_format(truncate(sanitize(event.description), length: 440, escape: false, omission: '...'))
 
-        = simple_format(truncate(sanitize(event.description), length: 200, escape: false, omission: '...'))
-
-        - if event.rsvps.any?
-          .a-tags
-            - event.languages.take(4).each do |language|
-              = render partial: 'shared/language_tag', locals: { language: language }
+        = render partial: 'shared/tags', locals: { tags: event.languages.take(4) } if event.rsvps.any?
 
         .u-margin-top
           %h3.u-float-left
