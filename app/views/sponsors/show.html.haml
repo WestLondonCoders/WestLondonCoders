@@ -33,7 +33,7 @@
         = sanitize(@sponsor.description)
 
         - if @sponsor.link.present?
-          .u-center.u-margin-bottom
+          .u-center.u-margin-bottom.u-margin-top
             = link_to 'Find out more', @sponsor.link, target: '_blank', class: 'a-button'
 
   - if @sponsor.events.upcoming.any?
