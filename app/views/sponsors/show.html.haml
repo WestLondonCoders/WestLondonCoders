@@ -14,7 +14,7 @@
         %br
         = @sponsor.name
 
-      .u-float-right= image_tag(@sponsor.logo, class: 'a-logo')
+      .u-float-right= link_to image_tag(@sponsor.logo, class: 'a-logo'), @sponsor.link, target: '_blank'
 
       = link_to sanitize(@sponsor.address), "http://maps.google.com/?q=#{strip_tags @sponsor.address}", target: "_blank"
 
