@@ -17,11 +17,11 @@
         %h2
           %i.fa.fa-wrench{"aria-hidden" => "true"}
           Hackrooms
-      %a.m-navbar__item{class: ('m-navbar__item--is-selected' if current_page?(posts_path)), href: posts_path}
+      %a.m-navbar__item{class: ('m-navbar__item--is-selected' if current_page?('/blog')), href: posts_path}
         %h2
           %i.fa.fa-commenting-o{"aria-hidden" => "true"}
           Blog
-      %a.m-navbar__item{class: ('m-navbar__item--is-selected' if current_page?(events_path)), href: events_path}
+      %a.m-navbar__item{class: ('m-navbar__item--is-selected' if current_page?('/meetups')), href: events_path}
         %h2
           %i.fa.fa-group{"aria-hidden" => "true"}
           Meetups
