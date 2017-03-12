@@ -8,6 +8,6 @@ class SponsorsController < ApplicationController
   private
 
   def get_sponsor
-    @sponsor = Sponsor.find(params[:id])
+    @sponsor = Sponsor.friendly.find(params[:id])
   end
 end

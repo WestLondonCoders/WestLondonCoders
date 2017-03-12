@@ -9,4 +9,7 @@ class Sponsor < ActiveRecord::Base
   validates :link, presence: true
 
   scope :listed, -> { where(listed: true) }
+
+  extend FriendlyId
+  friendly_id :slug, use: :slugged
 end

@@ -16,6 +16,7 @@ class Admin::SponsorsController < Admin::BaseController
   def create
     authorize! :create, Sponsor
     @sponsor = Sponsor.new(sponsor_params)
+    @sponsor.slug = @sponsor.name.strip.downcase.tr(" ", "-")
 
     if @sponsor.save
       redirect_to admin_sponsors_path, notice: 'Sponsor successfully created.'
@@ -53,7 +54,7 @@ class Admin::SponsorsController < Admin::BaseController
   private
 
   def get_sponsor
-    @sponsor = Sponsor.find(params[:id])
+    @sponsor = Sponsor.friendly.find(params[:id])
   end
 
   def sponsor_params
