@@ -4,8 +4,8 @@ class LanguagesController < ApplicationController
 
   def index
     @search = Language.ransack(params[:q])
-    @search.sorts = 'name asc' if @search.sorts.empty?
-    @languages = @search.result
+    @search.sorts = 'updated_at desc' if @search.sorts.empty?
+    @languages = @search.result.includes(:primary_users, :users, :primary_hackrooms, :hackrooms)
   end
 
   def search
