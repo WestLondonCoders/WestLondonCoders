@@ -1,0 +1,13 @@
+- if @user.primary_languages.any?
+  %section.a-section
+    .a-content
+      %h2
+        Primarily using:
+        = render partial: 'shared/tags', locals: { tags: @user.primary_languages } if @user.primary_languages.any?
+
+- if @user.languages.any?
+  %section.a-section
+    .a-content
+      %h2
+        Also using:
+        = render partial: 'shared/tags', locals: { tags: @user.languages } if @user.languages.any?

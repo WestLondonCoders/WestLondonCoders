@@ -1,12 +1,9 @@
-.m-filter.m-filter--fixed.js-filter-form
+.a-filter
   = search_form_for @search, url: search_hackrooms_path, method: :post, remote: true do |f|
-    .m-form__checkboxes
+    .m-form__checkboxes.a-content
       - @languages.each do |language|
         .m-form__checkbox
           = check_box_tag 'q[primary_languages_id_eq_any][]', language.id
           = language.name
-
-    .u-margin-top--small
-      = f.search_field :name_cont, id: 'search', placeholder: 'Search'
-
-      = f.submit "Search", class: 'a-button'
+    = f.search_field :name_cont, id: 'search', placeholder: 'Search'
+    = f.submit "Search", class: 'a-button'

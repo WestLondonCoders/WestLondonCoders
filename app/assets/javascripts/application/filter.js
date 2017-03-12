@@ -1,4 +1,4 @@
-$(document).on('keyup', '.js-filter-form input', function() {
+$(document).on('keyup', '.a-filter input', function() {
   var $input = $(this).val();
   var $form = $(this).parents('form');
 

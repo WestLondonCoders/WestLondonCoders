@@ -1,2 +1,1 @@
-= @users.size
-= @users.size > 1 ? "Members" : "Member"
+= pluralize(@users.size, "Member")
