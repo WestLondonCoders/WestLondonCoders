@@ -10,4 +10,7 @@ class Language < ActiveRecord::Base
 
   has_many :user_primaries
   has_many :primary_users, through: :user_primaries, source: :user
+
+  extend FriendlyId
+  friendly_id :slug, use: :slugged
 end

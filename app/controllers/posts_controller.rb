@@ -33,7 +33,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.created_by = current_user
-    @post.slug = @post.title.downcase.tr(" ", "-")
+    @post.slug = @post.title.strip.downcase.tr(" ", "-")
 
     respond_to do |format|
       if @post.save
