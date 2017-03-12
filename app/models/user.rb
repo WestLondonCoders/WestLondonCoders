@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
 
   scope :organiser, -> { with_role("Organiser") }
 
-  def self.from_omniauth(auth)
+  def self.from_omniauth(auth) # rubocop:disable Metrics/MethodLength
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
@@ -79,11 +79,11 @@ class User < ActiveRecord::Base
     roles.any? { |r| r.name.underscore.to_sym == role_sym }
   end
 
-  private
-
   def self.split_name(user_full_name)
     user_full_name.split
   end
+
+  private
 
   def send_welcome_mail
     UserMailer.welcome_email(self).deliver_now
