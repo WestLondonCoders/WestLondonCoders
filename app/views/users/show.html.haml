@@ -19,19 +19,19 @@
     %section.a-section
       .a-content
         %h2
-          Interests
+          Interests:
           .a-tags
             - @user.interests.each do |interest|
               %h2.a-tag.a-tag--interest= interest.name
 
   = render partial: 'hackrooms', locals: { user: @user }
 
-  = render partial: 'meetups', locals: { user: @user } if current_user&.has_role?(:organiser)
+  = render partial: 'meetups', locals: { user: @user }
 
   - if @posts.any?
     %section.a-section
       .a-content--xwide
-        %h2.u-center My posts
+        %h2.u-center Posts:
         .m-grid
           - @posts.take(6).each do |post|
             = render partial: 'shared/posts', locals: {post: post}

@@ -3,8 +3,7 @@
     .a-content
       - if @user.primary_languages.any?
         %h2
-          Focused on
-          = pluralize(@user.primary_languages.count, "language")
+          Primarily using:
           - if @user.primary_languages.any?
             .a-tags
               - @user.primary_languages.each do |language|
@@ -13,8 +12,7 @@
 
       - if @user.languages.any?
         %h2
-          Also using
-          = pluralize(@user.languages.count, "language")
+          Also using:
           - if @user.languages.any?
             .a-tags
               - @user.languages.each do |language|

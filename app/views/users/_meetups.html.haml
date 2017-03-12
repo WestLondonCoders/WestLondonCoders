@@ -1,10 +1,15 @@
-- if user.events.any? && current_user.has_role?(:organiser)
+- if user.events.upcoming.any?
   %section.a-section
     .a-content
-      %h2 Meetups I'm attending
+      %h2
+        Attending
+        = succeed ':' do
+          = pluralize(user.events.size, 'upcoming meetup')
       - user.events.each do |event|
         %p
           = link_to event do
             = event.name
             %br
-            = event.date.to_formatted_s(:long_ordinal)
+            = "At #{event.sponsor.name}"
+            %br
+            = "On #{event.date.to_date.to_formatted_s(:long_ordinal)}"
