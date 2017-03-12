@@ -10,4 +10,7 @@ class Event < ActiveRecord::Base
 
   scope :upcoming, lambda { where("date >= ?", Date.today) }
   scope :past, lambda { where("date <= ?", Date.today) }
+
+  extend FriendlyId
+  friendly_id :slug, use: :slugged
 end

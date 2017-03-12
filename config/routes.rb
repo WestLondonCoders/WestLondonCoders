@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/learn', to: 'pages#learn', as: 'learn'
   get '/jekyll', to: 'pages#jekyll', as: 'jekyll'
-  get '/meetups', to: 'pages#meetups', as: 'meetups'
   get '/organisers', to: 'users#organisers', as: 'organisers'
   get '/past-events', to: 'events#past_events', as: 'past_events'
+  get '/events', to: redirect('meetups')
 
   resources :posts do
     collection do
@@ -56,7 +56,7 @@ Rails.application.routes.draw do
 
   resources :sponsors
 
-  resources :events do
+  resources :events, path: 'meetups' do
     collection do
       match 'search' => 'events#search', via: [:get, :post], as: :search
     end

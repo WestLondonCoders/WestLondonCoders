@@ -32,6 +32,7 @@ class Admin::EventsController < Admin::BaseController
   def create
     authorize! :create, @events
     @event = Event.new(event_params)
+    @event.slug = create_slug(@event)
 
     if @event.save
       redirect_to admin_events_path, notice: 'Event successfully created.'
@@ -69,10 +70,16 @@ class Admin::EventsController < Admin::BaseController
   private
 
   def get_event
-    @event = Event.find(params[:id])
+    @event = Event.friendly.find(params[:id])
   end
 
   def event_params
-    params.require(:event).permit(:name, :description, :address, :date, :sponsor_id)
+    params.require(:event).permit(:name, :description, :address, :date, :sponsor_id, :slug)
+  end
+
+  def create_slug(event)
+    slug_date = event.date.to_date.to_s.strip.downcase.tr(" ", "-").tr(",", "")
+    slug_name = event.name.strip.downcase.tr(" ", "-").tr(",", "")
+    "#{slug_date}-#{slug_name}"
   end
 end
