@@ -4,7 +4,7 @@
   = video_tag "video/gdg.mov", controls: false, autoplay: true, muted: true, loop: true, id: 'home-vid'
   %h1 Learn, discuss and practice code.
 
-%section.a-section
+%section.a-section.a-section--separated
   .a-content--wide
     .m-intro
       %h1.a-heading--large
@@ -18,6 +18,14 @@
         %span#next-meetup-venue
       #next-meetup-link
         %a.a-button{href: "https://www.meetup.com/West-London-Coders/"} RSVP
+
+- if @sponsors.any?
+  %section.a-section.m-intro
+    .a-content
+      %h3 Our sponsors
+      .m-intro__logos
+        - @sponsors.each do |sponsor|
+          .m-intro__logo[sponsor]= link_to image_tag(sponsor.logo_url), sponsor
 
 %section.a-section.a-section--img-block
 
