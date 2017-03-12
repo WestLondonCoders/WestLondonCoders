@@ -15,7 +15,4 @@
           = button_to "Sign in to register interest", new_user_session_path, class: 'a-button'
 
   %section.a-section
-    .a-content--xwide
-      .m-user-cards
-        - @organisers.each do |user|
-          = render partial: 'user_card', locals: { user: user }
+    = render partial: 'shared/people', locals: { users: @organisers }

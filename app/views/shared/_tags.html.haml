@@ -1,0 +1,4 @@
+.a-tags
+  - tags.each do |tag|
+    = link_to tag do
+      %h2.a-tag{style: "background-color: #{tag.colour}"}= tag.name

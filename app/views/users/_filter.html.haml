@@ -1,5 +1,4 @@
-.m-filter.m-filter--fixed.js-filter-form
+.a-filter
   = search_form_for @search, url: search_users_path, method: :post, remote: true do |f|
-    .m-filter-item
-      = f.search_field :name_cont, id: 'search', placeholder: 'Search by name'
+    = f.search_field :name_cont, id: 'search', placeholder: 'Search by name'
     = f.submit "Search", class: 'a-button m-filter__button'
