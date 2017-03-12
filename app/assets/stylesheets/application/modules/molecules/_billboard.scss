@@ -1,0 +1,60 @@
+.m-billboard {
+  box-shadow: 0 4px 2px -2px rgba(0,0,0,.05);
+}
+
+.m-billboard__container {
+  max-width: 740px;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  box-sizing: border-box;
+  padding-top: 20px;
+
+  .a-avatar {
+    margin-top: 10px;
+  }
+
+  .a-button {
+    margin-top: 20px;
+    margin-bottom: -20px;
+  }
+
+  textarea {
+    width: 70%;
+  }
+}
+
+.m-billboard__title {
+  font-size: 32px;
+  margin-left: -2px;
+  margin-bottom: 0;
+}
+
+.m-billboard__bio {
+  color: $color-dark-grey;
+  line-height: 1.4;
+  margin-top: 4px;
+  margin-bottom: 0;
+  width: 100%;
+
+  @media #{$from-medium} {
+    width: 75%;
+  }
+}
+
+.m-billboard__description {
+  color: $color-dark-grey;
+
+  a {
+    color: $color-dark-grey;
+
+    &:hover {
+      color: $color-blue;
+    }
+  }
+}
+
+.m-billboard__nav {
+  margin-top: 60px;
+}

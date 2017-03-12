@@ -1,0 +1,29 @@
+.a-subnav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-top: 1px solid $color-border;
+
+  .is-selected {
+    border-bottom: solid 2px $color-blue;
+  }
+}
+
+.a-subnav__item {
+  margin: 0 25px 0 0;
+  padding: 1em 0;
+
+  h3 {
+    margin: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:hover {
+    border-bottom: solid 2px $color-blue;
+    color: $color-blue;
+  }
+}
+

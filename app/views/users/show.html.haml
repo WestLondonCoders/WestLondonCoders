@@ -1,37 +1,18 @@
-- set_page_title(@user.name || "Profile")
+- set_page_title(@user.name)
 
-- if can? :manage, @user
-  %section.a-section.u-margin-top--mobile
-    .a-content.u-center
-      = link_to "Edit profile", edit_user_path(@user), class: 'a-button  a-button--edit'
+.m-billboard
+  .m-billboard__container
+    .a-avatar.u-float-right
+      = image_tag(avatar_url(@user), class: 'a-avatar')
+    %h1.m-billboard__title= @user.name
+    .m-billboard__description= sanitize @user.bio
+    = render partial: 'highlights', locals: { user: @user }
 
-.m-profile
-  %section.a-section
-    .a-content
-      = render partial: 'shared/user_strip', locals: { user: @user, show_logo: true }
+    = link_to 'Edit', edit_user_path(@user), class: 'a-button' if can? :manage, @user
 
-      .m-profile__bio
-        = sanitize @user.bio
+    .m-billboard__nav= render partial: 'profile_nav', locals: { user: @user }
 
-  = render partial: 'language_list'
+%section.a-section
+  .u-margin-top#profile-content= render partial: 'language_list', locals: { user: @user }
 
-  - if @user.interests.any?
-    %section.a-section
-      .a-content
-        %h2
-          Interests:
-          .a-tags
-            - @user.interests.each do |interest|
-              %h2.a-tag.a-tag--interest= interest.name
-
-  = render partial: 'hackrooms', locals: { user: @user }
-
-  = render partial: 'meetups', locals: { user: @user }
-
-  - if @posts.any?
-    %section.a-section
-      .a-content--xwide
-        %h2.u-center Posts:
-        .m-grid
-          - @posts.take(6).each do |post|
-            = render partial: 'shared/posts', locals: {post: post}
+.u-margin-bottom

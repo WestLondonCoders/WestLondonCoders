@@ -20,9 +20,8 @@
         = link_to "Schedule meetup", new_admin_event_path, class: 'a-button a-button--edit'
 
   %section.a-section
-    .a-content--xwide
-      #event-search-results
-        = render 'results'
+    #event-search-results
+      = render 'results'
 
       .u-center.u-margin-top
         = link_to "Past meetups", past_events_path, class: 'a-button'
