@@ -9,35 +9,31 @@
 
   %section.a-section
     .a-content
-      %h1.a-paint-border-bottom{ style: "border-bottom: solid 2px #{@language.colour}"}= @language.name
+      %h1.u-center{ style: "border-bottom: solid 2px #{@language.colour}"}= @language.name
 
+      = render partial: 'highlights', locals: { language: @language }
+
+  %section.a-section
+    .a-content
       = sanitize @language.description
 
-      = render partial: 'hackrooms', locals: { language: @language }
-
-      %h2
-        = pluralize(@language.primary_users.count, "person")
-        primarily using
-        = @language.name
-
+  %section.a-section
+    .a-content
       - if @language.primary_users.any?
+        %h2
+          = @language.name
+          fans
         .a-identities
           - @language.primary_users.each do |user|
             = render partial: 'shared/user_tag', locals: { user: user }
 
-      - else
-        = render partial: 'shared/add_to_your_profile', locals: { this: @language.name }
+      - if @language.users.any?
+        %h2 Casual users
+        .a-identities
+          - @language.users.each do |user|
+            = render partial: 'shared/user_tag', locals: { user: user }
 
-        %h2
-          = pluralize(@language.users.count, "person")
-          using
-          = @language.name
-          a little
-
-        - if @language.users.any?
-          .a-identities
-            - @language.users.each do |user|
-              = render partial: 'shared/user_tag', locals: { user: user }
-
-        - else
-          = render partial: 'shared/add_to_your_profile', locals: { this: @language.name }
+  %section.a-section
+    .a-content--wide
+      %h2.u-center Hackrooms
+      = render partial: 'shared/hackroom_cards', locals: { hackrooms: @language.primary_hackrooms }
