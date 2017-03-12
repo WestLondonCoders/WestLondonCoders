@@ -1,26 +1,14 @@
 .m-grid
   - @languages.each do |language|
     .m-grid__box
-      %h1= link_to language.name, language, style: "border-bottom: solid 2px #{language.colour}"
+      %h1.u-center= link_to language.name, language, style: "border-bottom: solid 2px #{language.colour}"
+      = render partial: 'highlights', locals: { language: language }
 
-      = render partial: 'hackrooms', locals: { language: language }
+      = excerpt(language.description)
 
-      - if language.primary_users.any?
-        %h2
-          = pluralize(language.primary_users.count, "person")
-          primarily using
-          = language.name
+      %p.u-center
+        See the people and projects using
+        = language.name
 
-        .a-identities
-          - language.primary_users.take(4).each do |user|
-            = render partial: 'shared/user_tag', locals: { user: user }
-
-      - else
-        %p
-          Nobody is focusing on
-          = language.name
-          at the moment.
-          = render partial: 'shared/add_to_your_profile', locals: { this: language.name }
-
-      .m-grid__bottom
-        = link_to "View", language, class: 'a-button'
+      .m-grid__bottom.u-center
+        = link_to "See more", language, class: 'a-button'

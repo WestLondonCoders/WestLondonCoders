@@ -1,0 +1,13 @@
+.a-highlights {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  .a-highlight:last-child {
+    border-right: 0 !important;
+  }
+}
+
+.a-highlight {
+  padding: 0 10px;
+}
