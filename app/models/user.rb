@@ -55,6 +55,9 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.email = auth.info.email
       user.name = auth.info.name
+      first_name, last_name = split_name(auth.info.name)
+      user.first_name = first_name
+      user.last_name = last_name
       user.github = auth.info.nickname
       user.password = Devise.friendly_token[0, 20]
       user.bio = auth.extra.raw_info.bio
@@ -77,6 +80,10 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def self.split_name(user_full_name)
+    user_full_name.split
+  end
 
   def send_welcome_mail
     UserMailer.welcome_email(self).deliver_now
