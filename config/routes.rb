@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/users', to: redirect('members')
+
   resources :interests do
     collection do
       match 'search' => 'interests#search', via: [:get, :post], as: :search

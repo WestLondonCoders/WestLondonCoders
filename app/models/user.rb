@@ -34,6 +34,9 @@ class User < ActiveRecord::Base
   mount_uploader :image, AvatarUploader
   mount_uploader :logo, LogoUploader
 
+  extend FriendlyId
+  friendly_id :slug, use: :slugged
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
@@ -55,6 +58,8 @@ class User < ActiveRecord::Base
       user.github = auth.info.nickname
       user.password = Devise.friendly_token[0, 20]
       user.bio = auth.extra.raw_info.bio
+      user.username = auth.info.nickname
+      user.slug = auth.info.nickname
     end
   end
 
