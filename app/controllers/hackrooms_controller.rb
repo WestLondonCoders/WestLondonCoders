@@ -21,7 +21,7 @@ class HackroomsController < ApplicationController
 
   def create # rubocop:disable Metrics/MethodLength
     @hackroom = Hackroom.new(hackroom_params)
-    @hackroom.slug = @hackroom.name.downcase.tr(" ", "-")
+    @hackroom.slug = @hackroom.name.strip.downcase.tr(" ", "-")
 
     respond_to do |format|
       if @hackroom.save
@@ -74,7 +74,7 @@ class HackroomsController < ApplicationController
   private
 
   def get_hackroom
-    @hackroom = Hackroom.find(params[:id])
+    @hackroom = Hackroom.friendly.find(params[:id])
   end
 
   def get_user

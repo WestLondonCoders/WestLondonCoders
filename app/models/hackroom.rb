@@ -12,4 +12,7 @@ class Hackroom < ActiveRecord::Base
   has_many :owners, through: :hackroom_owners, source: :user
 
   validates :name, presence: true, uniqueness: true
+
+  extend FriendlyId
+  friendly_id :slug, use: :slugged
 end
