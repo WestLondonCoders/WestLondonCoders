@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   get '/jekyll', to: 'pages#jekyll', as: 'jekyll'
   get '/organisers', to: 'users#organisers', as: 'organisers'
   get '/past-events', to: 'events#past_events', as: 'past_events'
-  get '/events', to: redirect('meetups')
+  get 'events', to: redirect('meetups')
+  get 'posts', to: redirect('blog')
 
-  resources :posts do
+  resources :posts, path: 'blog' do
     collection do
       match 'search' => 'posts#search', via: [:get, :post], as: :search
     end
