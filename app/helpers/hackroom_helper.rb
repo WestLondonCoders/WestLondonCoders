@@ -6,4 +6,17 @@ module HackroomHelper
   def secondary_count(hackrooms)
     pluralize(hackrooms.count, 'secondary')
   end
+
+  def admin_count(hackroom)
+    pluralize(hackroom.owners.count, 'admin')
+  end
+
+  def member_count(hackroom)
+    pluralize(hackroom.users.count, 'member')
+  end
+
+  def language_count(hackroom)
+    languages = hackroom.primary_languages.count + hackroom.languages.count
+    pluralize(languages, 'language')
+  end
 end

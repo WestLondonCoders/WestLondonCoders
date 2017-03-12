@@ -13,4 +13,8 @@ class Language < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :slug, use: :slugged
+
+  def all_users
+    (primary_users.all + users.all).uniq
+  end
 end

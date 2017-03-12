@@ -15,4 +15,8 @@ class Hackroom < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :slug, use: :slugged
+
+  def all_members
+    (owners.all + users.all).uniq
+  end
 end
