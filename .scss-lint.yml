@@ -1,4 +1,4 @@
-exclude: 'app/assets/stylesheets/email/**'
+exclude: ['app/assets/stylesheets/email/**', 'app/assets/stylesheets/application/modules/atoms/_highlights.scss', 'app/assets/stylesheets/email/zurb_ink_base.scss']
 
 linters:
   BangFormat:

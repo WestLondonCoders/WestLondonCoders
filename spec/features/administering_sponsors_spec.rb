@@ -20,7 +20,7 @@ feature 'administering events' do
 
   as_a_sponsor do
 
-    scenario 'adding new sponsors', js: true do
+    scenario 'adding new sponsors' do
       visit root_path
       first(:link, "Admin").click
       then_i_should_see_the_admin_navbar
@@ -59,7 +59,7 @@ feature 'administering events' do
 
   def then_i_should_see_the_sponsor_on_public_pages
     visit sponsors_path
-    expect(page).to have_content('Sky')
+    expect(page).to have_content('Christina')
   end
 
   def when_i_edit_my_page
@@ -70,6 +70,6 @@ feature 'administering events' do
 
   def then_i_should_see_the_changes
     visit sponsors_path
-    expect(page).to have_content('New name')
+    expect(page).to have_css("img[src*='example-sponsor-logo.jpg']")
   end
 end

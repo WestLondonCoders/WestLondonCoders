@@ -19,25 +19,25 @@ class UsersController < ApplicationController
 
   def languages
     respond_to do |format|
-        format.js
+      format.js
     end
   end
 
   def hackrooms
     respond_to do |format|
-        format.js
+      format.js
     end
   end
 
   def posts
     respond_to do |format|
-        format.js
+      format.js
     end
   end
 
   def events
     respond_to do |format|
-        format.js
+      format.js
     end
   end
 
