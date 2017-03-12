@@ -66,10 +66,10 @@
 
       .u-margin-top
         .m-post-editor__submit
-          - if current_page?('/posts/new')
-            = link_to "Cancel", posts_path, class: 'a-button a-button--ghost'
-            = f.submit 'Publish', class: 'a-button'
-          - else
+          - if @post.persisted?
             = link_to "Delete post", @post, method: :delete, data: { confirm: 'Delete post?' }, class: 'a-button a-button--ghost u-left'
             = link_to "Cancel", post_path(@post), class: 'a-button a-button--ghost u-left'
             = f.submit 'Save changes', class: 'a-button u-float-right'
+          - else
+            = link_to "Cancel", posts_path, class: 'a-button a-button--ghost'
+            = f.submit 'Publish', class: 'a-button'

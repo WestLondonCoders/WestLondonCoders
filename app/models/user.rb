@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
 
   has_many :managed_events, through: :sponsors, source: :events
 
+  has_many :posts, foreign_key: :created_by_id
+
   mount_uploader :image, AvatarUploader
   mount_uploader :logo, LogoUploader
 
@@ -48,6 +50,10 @@ class User < ActiveRecord::Base
   scope :with_role, lambda { |role| joins(:roles).where(roles: { name: role }) }
 
   scope :organiser, -> { with_role("Organiser") }
+
+  def all_hackrooms
+    (own_hackrooms.all + hackrooms.all).uniq
+  end
 
   def self.from_omniauth(auth) # rubocop:disable Metrics/MethodLength
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

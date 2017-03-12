@@ -14,6 +14,7 @@
 @import "application/base/syntax";
 
 // Atoms
+@import "application/modules/atoms/avatar";
 @import "application/modules/atoms/section";
 @import "application/modules/atoms/button";
 @import "application/modules/atoms/content";
@@ -33,6 +34,7 @@
 // Modules
 @import "application/modules/molecules/admin";
 @import "application/modules/molecules/navbar";
+@import "application/modules/molecules/billboard";
 @import "application/modules/molecules/intro";
 @import "application/modules/molecules/cards";
 @import "application/modules/molecules/comments";
@@ -46,6 +48,7 @@
 @import "application/modules/molecules/profile";
 @import "application/modules/molecules/social_links";
 @import "application/modules/molecules/sign_in";
+@import "application/modules/molecules/subnav";
 @import "application/modules/molecules/user_cards";
 
 // Utilities

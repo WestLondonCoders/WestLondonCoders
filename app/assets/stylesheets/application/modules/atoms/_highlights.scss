@@ -1,4 +1,4 @@
-.a-highlights {
+.a-highlights--center {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -8,6 +8,29 @@
   }
 }
 
+.a-highlights {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  width: 125px;
+
+  @media #{$from-medium} {
+    flex-direction: row;
+    width: 70%;
+
+    .a-highlight:last-child {
+      border-right: 0 !important;
+    }
+
+    .a-highlight:first-child {
+      padding-left: 0;
+    }
+  }
+}
+
 .a-highlight {
-  padding: 0 10px;
+  padding: 5px 0;
+  @media #{$from-medium} {
+    padding: 0 7px;
+  }
 }

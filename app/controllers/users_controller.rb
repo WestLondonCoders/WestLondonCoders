@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :get_user, only: [:show, :edit, :update, :edit_interests]
+  before_action :get_user, except: [:index, :search, :organisers]
   skip_before_action :verify_authenticity_token, only: [:search]
 
   def show
@@ -15,6 +15,30 @@ class UsersController < ApplicationController
   def search
     index
     render :index
+  end
+
+  def languages
+    respond_to do |format|
+        format.js
+    end
+  end
+
+  def hackrooms
+    respond_to do |format|
+        format.js
+    end
+  end
+
+  def posts
+    respond_to do |format|
+        format.js
+    end
+  end
+
+  def events
+    respond_to do |format|
+        format.js
+    end
   end
 
   def organisers

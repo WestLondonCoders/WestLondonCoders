@@ -19,12 +19,19 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :tags
+
   devise_for :users, controllers: { omniauth_callbacks: "callbacks", registrations: "registrations", passwords: "passwords", sessions: "sessions" }
   resources :users, path: 'members' do
     collection do
       match 'search' => 'users#search', via: [:get, :post], as: :search
     end
   end
+
+  get "/users/:id/user-languages" => 'users#languages', as: 'user_languages'
+  get "/users/:id/user-hackrooms" => 'users#hackrooms', as: 'user_hackrooms'
+  get "/users/:id/user-events" => 'users#events', as: 'user_events'
+  get "/users/:id/user-pages" => 'users#posts', as: 'user_posts'
 
   get '/users', to: redirect('members')
 
