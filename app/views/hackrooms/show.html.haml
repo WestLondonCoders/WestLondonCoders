@@ -9,7 +9,7 @@
 
   %section.a-section
     .a-content
-      %h1.u-center= link_to @hackroom.name, @hackroom, style: "border-bottom: solid 2px #{@hackroom.primary_languages&.first&.colour}"
+      %h1.u-center= link_to @hackroom.name, @hackroom, style: "border-bottom: solid 2px #{@hackroom.colour}"
 
       = render partial: 'hackrooms/highlights', locals: { hackroom: @hackroom }
 

@@ -19,4 +19,8 @@ class Hackroom < ActiveRecord::Base
   def all_members
     (owners.all + users.all).uniq
   end
+
+  def colour
+    primary_languages&.first&.colour || '#000000'
+  end
 end

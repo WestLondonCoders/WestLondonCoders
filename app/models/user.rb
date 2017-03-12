@@ -89,6 +89,10 @@ class User < ActiveRecord::Base
     user_full_name.split
   end
 
+  def colour
+    primary_languages&.first&.colour || languages&.first&.colour || '#000000'
+  end
+
   private
 
   def send_welcome_mail

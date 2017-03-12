@@ -1,13 +1,13 @@
 .a-highlights
-  .a-highlight{style: "border-right: solid 2px #{user.primary_languages&.first&.colour}"}
+  .a-highlight{style: "border-right: solid 2px #{user.colour}"}
     %i.fa.fa-keyboard-o
     = language_count(user)
-  .a-highlight{style: "border-right: solid 2px #{user.primary_languages&.first&.colour}"}
+  .a-highlight{style: "border-right: solid 2px #{user.colour}"}
     %i.fa.fa-wrench
     = hackroom_count(user)
-  .a-highlight{style: "border-right: solid 2px #{user.primary_languages&.first&.colour}"}
+  .a-highlight{style: "border-right: solid 2px #{user.colour}"}
     %i.fa.fa-pencil
     = post_count(user)
-  .a-highlight{style: "border-right: solid 2px #{user.primary_languages&.first&.colour}"}
+  .a-highlight{style: "border-right: solid 2px #{user.colour}"}
     %i.fa.fa-group
     = meetup_count(user)
