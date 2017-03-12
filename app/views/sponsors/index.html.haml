@@ -8,8 +8,8 @@
 
       .a-content.u-margin-bottom
         %p
-          Our sponsors kindly provide us with food and a comfortable space for us to
-          meet, and in return they enjoy engaging with developers and the local
+          Our sponsors provide us with food and a comfortable space for us to
+          meet, and they enjoy engaging with developers and the local
           community.
         %p
           We're always happy to hear from members and organisations who have connected
@@ -30,29 +30,24 @@
       .m-grid
         - @sponsors.each do |sponsor|
           .m-grid__box
-            .u-float-right
-              .m-admin__logo
-                = image_tag(sponsor.logo_url)
-
-            = link_to sponsor_path(sponsor) do
-              %h1= sponsor.name
+            .m-intro__logo[sponsor]= link_to image_tag(sponsor.logo_url, alt: sponsor.name, title: sponsor.name), sponsor
 
             .m-hackroom__mission
-              = simple_format(truncate(sanitize(sponsor.description), length: 200, escape: false, omission: '...'))
+              = excerpt(sponsor.description, 240)
 
             - if sponsor.events.upcoming.any?
-              %h3
+              %h2
                 = pluralize(sponsor.events.upcoming.count, "meetup")
                 scheduled.
             - if sponsor.events.past.any?
-              %h3
+              %h2
                 = sponsor.name
                 have hosted
                 = pluralize(sponsor.events.past.count, "meetup")
                 with us in the past.
 
             - if sponsor.users.any?
-              %h3 Contacts
+              %h2 Contacts
               .a-identities
                 - sponsor.users.take(3).each do |user|
                   = render partial: 'shared/user_tag', locals: { user: user }
