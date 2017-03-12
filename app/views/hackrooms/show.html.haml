@@ -9,28 +9,26 @@
 
   %section.a-section
     .a-content
+      %h1.u-center= link_to @hackroom.name, @hackroom, style: "border-bottom: solid 2px #{@hackroom.primary_languages&.first&.colour}"
 
-      %h1= link_to @hackroom.name, @hackroom, style: "border-bottom: solid 2px #{@hackroom.primary_languages&.first&.colour}"
+      = render partial: 'hackrooms/highlights', locals: { hackroom: @hackroom }
 
-      = sanitize(@hackroom.mission)
+      - if @hackroom.mission
+        .u-margin-top= sanitize(@hackroom.mission)
 
       = render partial: 'language_list', locals: { hackroom: @hackroom }
 
-      - if @hackroom.owners.any?
-        %h2 Maintainers
-        .a-identities
-          - @hackroom.owners.each do |user|
-            = render partial: 'shared/user_tag', locals: { user: user }
-
-      - if @hackroom.users.any?
+      - if @hackroom.all_members.any?
         %h2 Members
         .a-identities
-          - @hackroom.users.each do |user|
+          - @hackroom.all_members.each do |user|
             = render partial: 'shared/user_tag', locals: { user: user }
 
-      - if current_user
-        .u-margin-top.u-float-right
+      .u-margin-top.u-float-right
+        - if current_user
           - if user_in_hackroom?(@hackroom, current_user)
             = link_to 'Leave hackroom', join_hackroom_path, class: 'a-button'
           - else
             = link_to 'Join hackroom', join_hackroom_path, class: 'a-button'
+        - else
+          = link_to 'Join hackroom', new_user_session_path, class: 'a-button'

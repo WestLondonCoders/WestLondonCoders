@@ -9,13 +9,12 @@
 
   %section.a-section
     .a-content
-      %h1.u-center{ style: "border-bottom: solid 2px #{@language.colour}"}= @language.name
+      %h1.u-center= link_to @language.name, @language, style: "border-bottom: solid 2px #{@language.colour}"
 
       = render partial: 'highlights', locals: { language: @language }
 
-  %section.a-section
-    .a-content
-      = sanitize @language.description
+      - if @language.description
+        .u-margin-top= sanitize @language.description
 
   %section.a-section
     .a-content
