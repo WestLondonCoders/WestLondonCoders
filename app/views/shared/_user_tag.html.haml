@@ -5,6 +5,6 @@
   .a-identity__photo
     = link_to image_tag(avatar_url(user)), user_path(user), title: user.name
   .a-identity__tagline
-    %div{ style: "border-bottom: solid 2px #{user.primary_languages&.first&.colour}" }
-      = link_to user.name, user_path(user)
+    = link_to user.name, user_path(user), style: "border-bottom: solid 2px #{user.primary_languages&.first&.colour}"
+    %br
     = with_date ? date_and_time_as_sentence(date) : user.tagline

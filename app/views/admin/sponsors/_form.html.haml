@@ -53,11 +53,12 @@
             = f.label 'Display this page on the sponsors listing page'
 
       - if current_user.has_role?(:admin)
-        .a-content.m-hackroom__admins
-          %h1 WLC admins only
-          %h2 Sponsorship admins
-          %p This provides access to a sponsor's representative to manage their page and meetup events.
-          = f.select :user_ids, user_options_for_select(User.all, f.object.user_ids), { label: 'Managers' }, multiple: true
+        %section.a-section.a-section--overflow
+          .a-content.m-hackroom__admins
+            %h1 WLC admins only
+            %h2 Sponsorship admins
+            %p This provides access to a sponsor's representative to manage their page and meetup events.
+            = f.select :user_ids, user_options_for_select(User.all, f.object.user_ids), { label: 'Sponsorship admins' }, multiple: true, class: 'chosen-select'
 
       .u-margin-top
         .m-post-editor__submit

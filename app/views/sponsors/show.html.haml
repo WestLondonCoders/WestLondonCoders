@@ -20,8 +20,9 @@
 
       - if @sponsor.users.any?
         %h3 Contacts
-        - @sponsor.users.each do |user|
-          = render partial: 'shared/user_tag', locals: { user: user }
+        .a-identities
+          - @sponsor.users.each do |user|
+            = render partial: 'shared/user_tag', locals: { user: user }
 
   - if @sponsor.description.present?
     %section.a-section
