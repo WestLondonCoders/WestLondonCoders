@@ -1,0 +1,3 @@
+$('.is-selected').removeClass('is-selected')
+$('#post-nav').addClass('is-selected')
+$("#profile-content").html("<%= escape_javascript(render partial: 'shared/posts', locals: { posts: @user.posts } ) %>");
