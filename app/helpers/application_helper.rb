@@ -18,7 +18,7 @@ module ApplicationHelper
 
   def avatar_url(user)
     if user.image.file.nil?
-      default_url = "http://stevebrewer.uk/img/avatar.png"
+      default_url = "https://s3.eu-west-2.amazonaws.com/wlcimages/avatar.png"
       gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
       "https://gravatar.com/avatar/#{gravatar_id}.png?s=200&d=#{CGI.escape(default_url)}"
     else
