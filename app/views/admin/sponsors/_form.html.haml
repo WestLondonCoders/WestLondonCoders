@@ -45,20 +45,19 @@
         %br
         = f.file_field :logo
 
-      .m-post-editor__title
-        %h2 Publish page?
-        .m-form__checkboxes
-          .m-form__checkbox
-            = f.check_box :listed
-            = f.label 'Display this page on the sponsors listing page'
-
       - if current_user.has_role?(:admin)
-        %section.a-section.a-section--overflow
-          .a-content.m-hackroom__admins
+        .a-section--overflow
+          .m-hackroom__admins
             %h1 WLC admins only
             %h2 Sponsorship admins
             %p This provides access to a sponsor's representative to manage their page and meetup events.
             = f.select :user_ids, user_options_for_select(User.all, f.object.user_ids), { label: 'Sponsorship admins' }, multiple: true, class: 'chosen-select'
+
+        .m-post-editor__title
+          %h2 Publish page?
+          .m-form__checkbox
+            = f.check_box :listed
+            = f.label 'Display this page on the sponsors listing page'
 
       .u-margin-top
         .m-post-editor__submit
