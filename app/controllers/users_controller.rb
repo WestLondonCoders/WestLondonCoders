@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:search]
 
   def show
-    @posts = Post.all.where(created_by_id: @user).order("created_at desc")
+    @posts = Post.all.where(created_by_id: @user).order("created_at asc")
   end
 
   def index
