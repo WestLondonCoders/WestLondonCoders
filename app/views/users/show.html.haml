@@ -1,18 +1,18 @@
 - set_page_title(@user.name)
+.a-page-holder
+  .m-billboard
+    .m-billboard__container
+      .a-avatar.u-float-right
+        = image_tag(avatar_url(@user), class: 'a-avatar')
+      %h1.m-billboard__title= @user.name
+      .m-billboard__description= sanitize @user.bio
+      = render partial: 'highlights', locals: { user: @user }
 
-.m-billboard
-  .m-billboard__container
-    .a-avatar.u-float-right
-      = image_tag(avatar_url(@user), class: 'a-avatar')
-    %h1.m-billboard__title= @user.name
-    .m-billboard__description= sanitize @user.bio
-    = render partial: 'highlights', locals: { user: @user }
+      = link_to 'Edit', edit_user_path(@user), class: 'a-button' if can? :manage, @user
 
-    = link_to 'Edit', edit_user_path(@user), class: 'a-button' if can? :manage, @user
+      .m-billboard__nav= render partial: 'profile_nav', locals: { user: @user }
 
-    .m-billboard__nav= render partial: 'profile_nav', locals: { user: @user }
+  %section.a-section
+    .u-margin-top#profile-content= render partial: 'languages', locals: { user: @user }
 
-%section.a-section
-  .u-margin-top#profile-content= render partial: 'languages', locals: { user: @user }
-
-.u-margin-bottom
+  .u-margin-bottom
