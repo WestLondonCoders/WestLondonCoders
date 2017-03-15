@@ -31,7 +31,7 @@ gem 'friendly_id'
 gem 'jquery-turbolinks'
 gem 'cocoon'
 gem "autoprefixer-rails"
-gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'ransack', git: "https://github.com/activerecord-hackery/ransack.git"
 gem 'thin'
 gem 'trix'
 gem 'slacked'
