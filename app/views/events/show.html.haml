@@ -35,11 +35,9 @@
   %section.a-section.u-margin-top--desktop
     .a-content
       - if @event.rsvps.any?
-        .u-float-right--desktop.u-left.u-padding
-          %h3.u-margin-bottom--none= @event.date.past? ? "Members who came like:" : "Members attending who like:"
-          .a-tags
-            - @event.languages.each do |language|
-              = render partial: 'shared/language_tag', locals: { language: language }
+        .a-tags
+          - @event.languages.each do |language|
+            = render partial: 'shared/language_tag', locals: { language: language }
       %h2 What's this meetup about?
       = sanitize(@event.description)
 
