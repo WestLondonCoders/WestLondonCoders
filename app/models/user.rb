@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
   after_create :send_welcome_mail
   after_create :notify_slack_of_new_user if Rails.env.production?
-  has_many :assignments
+  has_many :assignments, dependent: :destroy
   has_many :roles, through: :assignments
 
-  has_many :user_interests
+  has_many :user_interests, dependent: :destroy
   has_many :interests, through: :user_interests, source: :tag
 
   has_many :comments, dependent: :destroy
@@ -21,17 +21,17 @@ class User < ActiveRecord::Base
   has_many :user_primaries
   has_many :primary_languages, through: :user_primaries, source: :language
 
-  has_many :event_rsvps
+  has_many :event_rsvps, dependent: :destroy
   has_many :events, through: :event_rsvps
 
-  has_one :organiser_interest
+  has_one :organiser_interest, dependent: :destroy
 
-  has_many :sponsorship_admins
+  has_many :sponsorship_admins, dependent: :destroy
   has_many :sponsors, through: :sponsorship_admins
 
   has_many :managed_events, through: :sponsors, source: :events
 
-  has_many :posts, foreign_key: :created_by_id
+  has_many :posts, foreign_key: :created_by_id, dependent: :destroy
 
   mount_uploader :image, AvatarUploader
   mount_uploader :logo, LogoUploader
