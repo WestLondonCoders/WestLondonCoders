@@ -19,30 +19,22 @@
 .m-intro__logos {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   box-sizing: border-box;
-  width: 80%;
   margin-left: auto;
   margin-right: auto;
+
+  .m-intro__logo:not(:last-child) {
+    margin-right: 30px;
+  }
 }
 
 .m-intro__logo {
-  max-width: 180px;
-  min-width: 25%;
-  margin-bottom: 20px;
-}
-
-#sponsor_3 {
-  width: 120px;
-}
-
-#sponsor_1 {
-  width: 200px;
-  margin-right: 35px;
-
   img {
-    width: 200px;
+    height: 80px;
+    width: auto;
   }
 }
+
