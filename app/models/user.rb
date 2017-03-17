@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   mount_uploader :logo, LogoUploader
 
   extend FriendlyId
-  friendly_id :slug, use: :slugged
+  friendly_id :slug, use: [:slugged, :finders]
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
