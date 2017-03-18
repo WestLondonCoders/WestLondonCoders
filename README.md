@@ -14,11 +14,6 @@ Start a server:
 
 ## Database config
 
-Rename config/database.example.yml to config/database.yml and configure to your local details.
-
-Setup the database locally:
-`$ bundle exec rake db:setup`
-
 Download a copy of production database:
 `$ bundle exec rake get_database`
 (you can run this any time to reset your local database, but make sure you don't have a server running or it will fail)
