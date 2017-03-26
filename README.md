@@ -9,10 +9,13 @@ If you'd like to contribute, please open a pull request.
 ## Cloning locally
 
 You'll need the following installed:
-* Ruby
-* Rails
-* A Ruby version manager
-* Postgres
+* Ruby, via a [Ruby version manager](https://github.com/rbenv/rbenv)
+* [Rails](http://installrails.com/steps/choose_os)
+* [Postgres](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
+
+You'll also need:
+
+* An AWS access key and secret from [Steve](https://westlondoncoders.com/members/steve-brewer)
 
 Clone the repo:
 `$ git clone https://github.com/svpersteve/wlcrails.git`
@@ -23,14 +26,19 @@ Change directory into the app:
 Install gems the app depends on:
 `$ bundle install`
 
-Start a server:
+Initialise the databases:
+
+`$ bundle exec rake db:create`
+
+Start the server:
 `$ rails server`
 
 ## Database config
 
+To download a copy of the production database, you need to have Heroku access.
+
 Download a copy of production database:
 `$ bundle exec rake get_database`
-(you can run this any time to reset your local database, but make sure you don't have a server running or it will fail)
 
 If you have any issues connecting to the database, [this](http://stackoverflow.com/questions/26447736/unable-to-connect-to-postgresql-database-after-upgrading-to-yosemite-10-10/26458194#26458194) might help.
 
