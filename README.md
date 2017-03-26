@@ -1,4 +1,18 @@
-## Getting started
+## West London Coders
+
+This is the Rails app and main website for West London Coders.
+
+The protected master branch auto-deploys to Heroku.
+
+If you'd like to contribute, please open a pull request.
+
+## Cloning locally
+
+You'll need the following installed:
+* Ruby
+* Rails
+* A Ruby version manager
+* Postgres
 
 Clone the repo:
 `$ git clone https://github.com/svpersteve/wlcrails.git`
