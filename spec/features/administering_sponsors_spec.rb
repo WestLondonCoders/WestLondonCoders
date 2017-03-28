@@ -64,7 +64,6 @@ feature 'administering events' do
 
   def when_i_edit_my_page
     fill_in 'sponsor_name', with: 'New name'
-    find(:css, "#sponsor_listed[value='1']").set(true)
     click_on 'Save changes'
   end
 

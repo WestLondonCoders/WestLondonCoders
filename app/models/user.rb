@@ -68,7 +68,6 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0, 20]
       user.bio = auth.extra.raw_info.bio
       user.username = auth.info.nickname
-      user.slug = auth.info.nickname
     end
   end
 
