@@ -32,6 +32,16 @@
 
         = sanitize(@sponsor.description)
 
+  - if @sponsor.languages.any?
+    %section.a-section
+      .a-content
+        %h2
+          Technologies at
+          = @sponsor.name
+        .a-tags
+          - @sponsor.languages.each do |language|
+            = render partial: 'shared/language_tag', locals: { language: language }
+
         - if @sponsor.link.present?
           .u-center.u-margin-bottom.u-margin-top
             = link_to 'Find out more', @sponsor.link, target: '_blank', class: 'a-button'
