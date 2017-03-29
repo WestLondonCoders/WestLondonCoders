@@ -1,6 +1,6 @@
 .a-social-links {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: center;
 
   a {
@@ -9,6 +9,10 @@
     margin: 0;
     color: $color-dark-grey;
     border-bottom: 0;
+  }
+
+  a:not(:last-child) {
+    margin-right: 10px;
   }
 
   a:hover {

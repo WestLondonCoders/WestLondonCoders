@@ -32,18 +32,6 @@
     margin: 15px;
     padding: 25px;
   }
-
-  .a-social-links {
-    margin-top: 10px;
-
-    @media #{$from-medium} {
-      justify-content: center;
-    }
-
-    a:not(:last-child) {
-      margin-right: 10px;
-    }
-  }
 }
 
 .m-user-card__avatar {
