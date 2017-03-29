@@ -1,0 +1,31 @@
+%section.a-section
+  .a-content--xwide
+    .m-grid
+      - sponsors.each do |sponsor|
+        .m-grid__box
+          .u-center.u-margin-top--small
+            .m-intro__logo[sponsor]= link_to image_tag(sponsor.logo_url, alt: sponsor.name, title: sponsor.name), sponsor
+            %h1= sponsor.name
+
+          .m-hackroom__mission
+            = excerpt(sponsor.description, 240)
+
+          - if sponsor.events.upcoming.any?
+            %p
+              = pluralize(sponsor.events.upcoming.count, "meetup")
+              scheduled.
+          - if sponsor.events.past.any?
+            %p
+              = sponsor.name
+              have hosted
+              = pluralize(sponsor.events.past.count, "meetup")
+              with us in the past.
+
+          - if sponsor.users.any?
+            %h2 Contacts
+            .a-identities
+              - sponsor.users.take(3).each do |user|
+                = render partial: 'shared/user_tag', locals: { user: user }
+
+          .u-margin-top.u-right
+            = link_to "View", sponsor, class: 'a-button a-button--elastic'
