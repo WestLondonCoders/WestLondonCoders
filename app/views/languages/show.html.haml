@@ -32,7 +32,16 @@
           - @language.users.each do |user|
             = render partial: 'shared/user_tag', locals: { user: user }
 
-  %section.a-section
-    .a-content--xwide
-      %h2.u-center Hackrooms
-    = render partial: 'shared/hackrooms', locals: { hackrooms: @language.primary_hackrooms }
+  - if @language.primary_hackrooms.any?
+    %section.a-section
+      .a-content--xwide
+        %h2.u-center Hackrooms
+      = render partial: 'shared/hackrooms', locals: { hackrooms: @language.primary_hackrooms }
+
+  - if @language.sponsors.any?
+    %section.a-section
+      .a-content--xwide
+        %h2.u-center
+          Sponsors using
+          = @language.name
+        = render partial: 'shared/sponsors', locals: { sponsors: @language.sponsors }

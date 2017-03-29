@@ -11,6 +11,9 @@ class Language < ActiveRecord::Base
   has_many :user_primaries
   has_many :primary_users, through: :user_primaries, source: :user
 
+  has_many :sponsor_languages
+  has_many :sponsors, through: :sponsor_languages
+
   extend FriendlyId
   friendly_id :slug, use: :slugged
 

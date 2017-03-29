@@ -4,6 +4,9 @@ class Sponsor < ActiveRecord::Base
   has_many :sponsorship_admins
   has_many :users, through: :sponsorship_admins
 
+  has_many :sponsor_languages
+  has_many :languages, through: :sponsor_languages
+
   mount_uploader :logo, LogoUploader
 
   validates :link, presence: true

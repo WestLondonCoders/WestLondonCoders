@@ -25,32 +25,4 @@
       .a-content.u-center
         = link_to "Add sponsor", new_admin_sponsor_path, class: 'a-button a-button--edit'
 
-  %section.a-section
-    .a-content--xwide
-      .m-grid
-        - @sponsors.each do |sponsor|
-          .m-grid__box
-            .m-intro__logo[sponsor]= link_to image_tag(sponsor.logo_url, alt: sponsor.name, title: sponsor.name), sponsor
-
-            .m-hackroom__mission
-              = excerpt(sponsor.description, 240)
-
-            - if sponsor.events.upcoming.any?
-              %h2
-                = pluralize(sponsor.events.upcoming.count, "meetup")
-                scheduled.
-            - if sponsor.events.past.any?
-              %h2
-                = sponsor.name
-                have hosted
-                = pluralize(sponsor.events.past.count, "meetup")
-                with us in the past.
-
-            - if sponsor.users.any?
-              %h2 Contacts
-              .a-identities
-                - sponsor.users.take(3).each do |user|
-                  = render partial: 'shared/user_tag', locals: { user: user }
-
-            .u-margin-top.u-right
-              = link_to "View", sponsor, class: 'a-button a-button--elastic'
+  = render partial: 'shared/sponsors', locals: { sponsors: @sponsors }
