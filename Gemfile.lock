@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/galetahub/ckeditor.git
+  revision: 11d3a5b905646c6fd397f7710f95fb9eb29f0865
+  specs:
+    ckeditor (4.2.2)
+      cocaine
+      orm_adapter (~> 0.5.0)
+
+GIT
   remote: https://github.com/activerecord-hackery/ransack.git
   revision: 8ca8c95c6543c5da9b98a4e2747a0a4023d60bfc
   specs:
@@ -75,7 +83,10 @@ GEM
       coffee-rails (>= 3.2)
       railties (>= 3.0)
       sass-rails (>= 3.2)
+    climate_control (0.1.0)
     cliver (0.3.2)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     cocoon (1.2.9)
     coderay (1.1.1)
     coffee-rails (4.1.1)
@@ -514,6 +525,7 @@ DEPENDENCIES
   capybara
   carrierwave (~> 1.0)
   chosen-rails
+  ckeditor!
   cocoon
   coffee-rails (~> 4.1.0)
   database_cleaner

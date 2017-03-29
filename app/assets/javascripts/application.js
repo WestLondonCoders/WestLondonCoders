@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require chosen-jquery
+//= require ckeditor/init
 //= require application/main.js
 //= require cocoon
 //= require trix

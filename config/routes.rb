@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   resources :post_attachments
   root to: 'pages#home'
   get '/learn', to: 'pages#learn', as: 'learn'
@@ -6,9 +7,8 @@ Rails.application.routes.draw do
   get '/organisers', to: 'users#organisers', as: 'organisers'
   get '/past-events', to: 'events#past_events', as: 'past_events'
   get 'events', to: redirect('meetups')
-  get 'posts', to: redirect('blog')
 
-  resources :posts, path: 'blog' do
+  resources :posts do
     collection do
       match 'search' => 'posts#search', via: [:get, :post], as: :search
     end
