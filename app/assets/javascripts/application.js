@@ -18,7 +18,6 @@
 //= require ckeditor/init
 //= require application/main.js
 //= require cocoon
-//= require trix
 //= require application/dropdown.js
 //= require application/show_section.js
 //= require application/filter.js

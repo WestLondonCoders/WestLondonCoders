@@ -13,7 +13,7 @@
     .m-post-editor__title
       %h1= f.text_field :title, placeholder: "Title"
     .m-post-editor__content
-      = f.trix_editor :content
+      = f.cktext_area :content, cols: 40, ckeditor: { uiColor: '$colour-grey' }
 
     .m-post-editor__options
       %h2 Sharing options
@@ -52,17 +52,6 @@
                 = tag.text_field :name
       .links.u-right
         = link_to_add_association 'Add', f, :tags, class: 'a-button a-button--ghost', id: 'js-add'
-
-      %h2.u-margin-top Photos
-      = f.fields_for :post_attachments do |photo|
-        .nested-fields
-          .field
-            - if photo.object.persisted?
-              = image_tag photo.object.avatar
-              = link_to_remove_association "Remove", photo, class: 'u-float-right'
-            = photo.file_field :avatar
-      .links.u-right
-        = link_to_add_association 'Add', f, :post_attachments, class: 'a-button a-button--ghost', id: 'js-add'
 
       .u-margin-top
         .m-post-editor__submit

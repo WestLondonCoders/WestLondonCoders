@@ -21,7 +21,7 @@
     %section.a-section
       .a-content
         %h2 Mission
-        = f.trix_editor :mission, placeholder: "What are you building?"
+        = f.cktext_area :mission, cols: 40, ckeditor: { uiColor: '$colour-grey' }
 
     %section.a-section
       .a-content.m-hackroom__languages

@@ -57,7 +57,7 @@
   %section.a-section
     .a-content
       %h2 Bio
-      = f.trix_editor :bio, placeholder: "Try and think of something unique that others will remember you by."
+      = f.cktext_area :bio, cols: 40, ckeditor: { uiColor: '$colour-grey' }
 
   %section.a-section
     .a-content

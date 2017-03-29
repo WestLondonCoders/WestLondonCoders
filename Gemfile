@@ -33,7 +33,6 @@ gem 'cocoon'
 gem "autoprefixer-rails"
 gem 'ransack', git: "https://github.com/activerecord-hackery/ransack.git"
 gem 'thin'
-gem 'trix'
 gem 'slacked'
 gem 'carrierwave', '~> 1.0'
 gem 'fog'
