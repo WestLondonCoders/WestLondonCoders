@@ -21,11 +21,10 @@
 
 - if @sponsors.any?
   %section.a-section.m-intro
-    .a-content
-      %h3 Our partners
-      .m-intro__logos.u-margin-bottom
-        - @sponsors.each do |sponsor|
-          .m-intro__logo[sponsor]= link_to image_tag(sponsor.logo_url), sponsor
+    %h3 Our partners
+    .m-intro__logos.u-margin-bottom
+      - @sponsors.each do |sponsor|
+        .m-intro__logo[sponsor]= link_to image_tag(sponsor.logo_url), sponsor
 
 %section.a-section.a-section--img-block
 
