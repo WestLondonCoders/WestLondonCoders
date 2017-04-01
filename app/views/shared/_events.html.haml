@@ -8,7 +8,7 @@
           %h3.u-right
             =event.date.to_date.to_formatted_s(:long)
             %br
-            = default_times
+            = default_times(event)
           %h1= event.name
 
         = simple_format(truncate(sanitize(event.description), length: 440, escape: false, omission: '...'))

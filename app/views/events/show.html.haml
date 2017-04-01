@@ -16,7 +16,7 @@
 
       %h3
         = @event.date.to_date.to_formatted_s(:long_ordinal)
-        = default_times
+        = default_times(@event)
         %br
         = time_as_sentence(@event.date)
 
