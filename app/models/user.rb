@@ -66,7 +66,7 @@ class User < ActiveRecord::Base
       user.last_name = last_name
       user.github = auth.info.nickname
       user.password = Devise.friendly_token[0, 20]
-      user.bio = auth.extra.raw_info.bio
+      user.bio = auth.extra.raw_info.bio || ''
       user.username = auth.info.nickname
     end
   end
