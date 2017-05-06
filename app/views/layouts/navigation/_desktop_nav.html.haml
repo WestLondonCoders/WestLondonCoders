@@ -24,7 +24,7 @@
       %a.m-navbar__item{class: ('m-navbar__item--is-selected' if current_page?('/meetups')), href: events_path}
         %h2
           %i.fa.fa-group{"aria-hidden" => "true"}
-          Meetups
+          Events
 
     - if current_user
       = render partial: 'layouts/navigation/user_nav', locals: {logged_in: true}
