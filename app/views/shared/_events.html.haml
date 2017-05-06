@@ -6,7 +6,7 @@
           %h3.u-float-left
             = time_as_sentence(event.date)
           %h3.u-right
-            =event.date.to_date.to_formatted_s(:long)
+            = event.date.to_formatted_s(:day_long_ordinal)
             %br
             = default_times(event)
           %h1= event.name

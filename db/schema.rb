@@ -254,7 +254,6 @@ ActiveRecord::Schema.define(version: 20170329221916) do
     t.string   "website_url"
     t.string   "linkedin"
     t.string   "tagline"
-    t.string   "slug"
     t.integer  "permission"
     t.string   "logo"
     t.string   "logo_link"
@@ -266,7 +265,6 @@ ActiveRecord::Schema.define(version: 20170329221916) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-  add_index "users", ["slug"], name: "index_users_on_slug", using: :btree
 
   add_foreign_key "event_rsvps", "events", on_delete: :cascade
   add_foreign_key "event_rsvps", "users", on_delete: :cascade
