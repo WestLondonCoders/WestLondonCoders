@@ -5,8 +5,7 @@ class HackroomsController < ApplicationController
 
   def index
     @search = Hackroom.ransack(params[:q])
-    @search.sorts = 'updated_at desc' if @search.sorts.empty?
-    @hackrooms = @search.result.includes(:primary_languages, :languages, :owners, :users)
+    @hackrooms = @search.result.includes(:primary_languages, :languages, :owners, :users).in_popularity_order
     @languages = Language.all
   end
 
@@ -55,11 +54,14 @@ class HackroomsController < ApplicationController
     enrolment = UserHackroom.find_by(hackroom: @hackroom, user: @user)
     if enrolment.present?
       enrolment.destroy
+      @hackroom.popularity_score -= 1
       flash[:alert] = "You've left this hackroom."
     else
       UserHackroom.create(hackroom: @hackroom, user: @user)
+      @hackroom.popularity_score += 1
       flash[:alert] = 'You joined this hackroom!'
     end
+    @hackroom.save
     redirect_to @hackroom
   end
 
