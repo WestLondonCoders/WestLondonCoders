@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329221916) do
+ActiveRecord::Schema.define(version: 20170602162737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,13 +90,14 @@ ActiveRecord::Schema.define(version: 20170329221916) do
   end
 
   create_table "hackrooms", force: :cascade do |t|
-    t.string   "name",        null: false
+    t.string   "name",                         null: false
     t.text     "mission"
     t.string   "slack"
     t.string   "project_url"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "slug"
+    t.integer  "popularity_score", default: 0
   end
 
   add_index "hackrooms", ["slug"], name: "index_hackrooms_on_slug", unique: true, using: :btree
