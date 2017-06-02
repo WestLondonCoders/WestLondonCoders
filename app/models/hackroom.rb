@@ -13,6 +13,8 @@ class Hackroom < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
 
+  scope :in_popularity_order, -> { order('popularity_score desc') }
+
   extend FriendlyId
   friendly_id :slug, use: :slugged
 

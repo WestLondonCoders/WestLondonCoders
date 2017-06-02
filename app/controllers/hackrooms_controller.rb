@@ -5,8 +5,7 @@ class HackroomsController < ApplicationController
 
   def index
     @search = Hackroom.ransack(params[:q])
-    @search.sorts = 'updated_at desc' if @search.sorts.empty?
-    @hackrooms = @search.result.includes(:primary_languages, :languages, :owners, :users)
+    @hackrooms = @search.result.includes(:primary_languages, :languages, :owners, :users).in_popularity_order
     @languages = Language.all
   end
 
