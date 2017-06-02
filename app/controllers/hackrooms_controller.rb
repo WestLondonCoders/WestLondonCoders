@@ -55,11 +55,14 @@ class HackroomsController < ApplicationController
     enrolment = UserHackroom.find_by(hackroom: @hackroom, user: @user)
     if enrolment.present?
       enrolment.destroy
+      @hackroom.popularity_score -= 1
       flash[:alert] = "You've left this hackroom."
     else
       UserHackroom.create(hackroom: @hackroom, user: @user)
+      @hackroom.popularity_score += 1
       flash[:alert] = 'You joined this hackroom!'
     end
+    @hackroom.save
     redirect_to @hackroom
   end
 
