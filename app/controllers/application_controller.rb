@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
     redirect_to users_path, notice: exception.message
   end
 
+  if Rails.env.production?
+    force_ssl
+  end
+
   protect_from_forgery with: :exception
   after_filter :store_location
 
