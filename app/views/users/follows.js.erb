@@ -1,0 +1,1 @@
+$("#follower_count_user_<%= @user.id %>").html("<%= escape_javascript(render partial: 'shared/follow_link', locals: { user: @user, user_list: true }) %>");
