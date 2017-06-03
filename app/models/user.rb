@@ -33,6 +33,12 @@ class User < ActiveRecord::Base
 
   has_many :posts, foreign_key: :created_by_id, dependent: :destroy
 
+  has_many :user_follows, foreign_key: "follower_id", dependent: :destroy
+  has_many :followed_users, through: :user_follows, source: 'user'
+
+  has_many :followings, class_name: "UserFollow", foreign_key: "user_id", dependent: :destroy
+  has_many :followers, through: :followings, source: 'follower'
+
   mount_uploader :image, AvatarUploader
   mount_uploader :logo, LogoUploader
 
