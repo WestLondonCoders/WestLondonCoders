@@ -1,4 +1,6 @@
 .s-navbar__user-nav-menu-dropdown
+  %h4 Settings
+  %hr.u-blue-line--thin
   = link_to "Admin", admin_root_path, class: 's-navbar__nav' if current_user.has_role?(:admin) || (current_user.has_role?(:sponsor) && current_user.sponsors.any?)
   = link_to "Your profile", user_path(current_user), class: 's-navbar__nav'
   = link_to "Write a post", new_post_path, class: 's-navbar__nav'
