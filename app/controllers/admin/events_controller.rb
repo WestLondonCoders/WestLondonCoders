@@ -35,6 +35,7 @@ class Admin::EventsController < Admin::BaseController
     @event.slug = create_slug(@event)
 
     if @event.save
+      post_new_event_slack_message(@event)
       redirect_to admin_events_path, notice: 'Event successfully created.'
     else
       flash[:alert] = "Error"
@@ -81,5 +82,13 @@ class Admin::EventsController < Admin::BaseController
     slug_date = event.date.to_date.to_s.strip.downcase.tr(" ", "-").tr(",", "")
     slug_name = event.name.strip.downcase.tr(" ", "-").tr(",", "")
     "#{slug_date}-#{slug_name}"
+  end
+
+  def post_new_event_slack_message(event)
+    Slacked.post_async new_event_slack_message(event_url(@event), @event.date), channel: 'general', username: 'Schedule Bot'
+  end
+
+  def new_event_slack_message(url, date)
+    "A new meetup's been scheduled for #{date.to_date.to_formatted_s(:long_ordinal)}! RSVP here: #{url}"
   end
 end

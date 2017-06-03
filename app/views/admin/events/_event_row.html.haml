@@ -8,6 +8,6 @@
   %br
   = time_as_sentence(event.date)
 .m-admin__20
-  = event.sponsor.name
+  = link_to event.sponsor.name, event.sponsor
 .m-admin__user-submit
   = link_to 'Edit', edit_admin_event_path(event), class: 'a-button'
