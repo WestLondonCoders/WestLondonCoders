@@ -31,7 +31,7 @@
       = link_to sanitize(@event.sponsor.address), "http://maps.google.com/?q=#{strip_tags @event.sponsor.address}", target: "_blank"
 
       .u-margin-top.u-center--mobile
-        = render partial: 'rsvp_button'
+        = render partial: 'rsvp_button', locals: { event: @event }
       %h3.u-float-right--desktop.u-center--mobile.u-margin-bottom
         = pluralize(@event.rsvps.count, "member")
         = @event.date.past? ? "attended" : "attending"
