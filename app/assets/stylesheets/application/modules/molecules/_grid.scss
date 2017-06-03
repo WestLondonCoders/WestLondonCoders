@@ -25,6 +25,10 @@
 .m-grid__bottom {
   margin-top: auto;
   text-align: right;
+
+  .a-button:not(:last-child) {
+    margin-right: 15px;
+  }
 }
 
 .m-grid--wide {
