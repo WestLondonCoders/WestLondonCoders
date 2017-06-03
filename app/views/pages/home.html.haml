@@ -31,8 +31,8 @@
 %section.a-section
   .a-content--xwide
     .a-content--home
-      .m-grid
-        = render partial: 'shared/posts', locals: { posts: @posts.take(4) }
+      .m-grid.m-grid--wide
+        = render partial: 'shared/posts', locals: { posts: @posts.take(3) }
 
       .m-comments
         %h2
