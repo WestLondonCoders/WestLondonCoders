@@ -87,6 +87,8 @@ $admin-navbar-height: 40px;
 }
 
 #notifications-dropdown {
+  z-index: 1000;
+
   @media #{$from-medium} {
     position: absolute;
     width: 350px;
@@ -100,6 +102,11 @@ $admin-navbar-height: 40px;
     .s-navbar__notifications-dropdown {
       margin: 0;
     }
+  }
+
+  h4 {
+    font-size: 24px;
+    margin: 0;
   }
 }
 
@@ -185,4 +192,24 @@ $admin-navbar-height: 40px;
   padding: 10px 20px;
   width: 100%;
   overflow: scroll;
+}
+
+.m-chat__inbox-icon {
+  position: relative;
+}
+
+.m-chat__inbox-icon[data-badge]::after {
+  content: attr(data-badge);
+  position: absolute;
+  top: -6px;
+  right: 4px;
+  font-size: .6em;
+  background: $color-pink;
+  color: $color-white;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  line-height: 16px;
+  border-radius: 50%;
+  box-shadow: 0 0 1px $color-box-shadow;
 }
