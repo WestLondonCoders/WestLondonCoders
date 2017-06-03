@@ -26,6 +26,12 @@ Rails.application.routes.draw do
     collection do
       match 'search' => 'users#search', via: [:get, :post], as: :search
     end
+    member do
+      get :follow
+      post :follow
+      get :unfollow
+      post :unfollow
+    end
   end
 
   get "/users/:id/user-languages" => 'users#languages', as: 'user_languages'
