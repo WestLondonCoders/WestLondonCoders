@@ -48,6 +48,10 @@
     .a-social-links {
       flex-direction: column;
       padding: 5px;
+
+      a {
+        margin-right: 0;
+      }
     }
   }
 }
