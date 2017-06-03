@@ -82,6 +82,8 @@ Rails.application.routes.draw do
 
   resources :organiser_interests, only: [:create]
 
+  resources :notifications, only: :index
+
   namespace :admin do
     root to: 'users#index'
 
