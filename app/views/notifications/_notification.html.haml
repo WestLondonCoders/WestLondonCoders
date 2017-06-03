@@ -1,14 +1,7 @@
 %p
-  - if notification.notifiable_type == 'User'
-    %strong= link_to notification.notified_by.name, notification.notified_by
-    = notification.action
-    you
-  - else
-    = link_to notification.notified_by.full_name, notification.notified_by
-    = notification.action
-    your
-    = notification.notifiable_type.downcase
-    %strong= link_to notification.notifiable.label, link_through_path(notification)
+  %strong= link_to notification.notified_by.name, notification.notified_by
+  = notification.action
+  you
   %br
   %span.u-small-text
     = time_as_sentence(notification.created_at)

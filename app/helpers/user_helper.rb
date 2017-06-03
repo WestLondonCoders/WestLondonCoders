@@ -31,6 +31,14 @@ module UserHelper
     users.map { |u| link_to(u.name, user_path(u)) }.to_sentence
   end
 
+  def list_all(users)
+    users.map { |u| link_to(u.name, user_path(u)) }.join(', ')
+  end
+
+  def remaining_follow_count(user)
+    pluralize((user.followers.count - 3), 'other person')
+  end
+
   def user_follower_count(user)
     case user.followers.count
     when 0
@@ -38,7 +46,7 @@ module UserHelper
     when 1..3
       "followed by #{list_all_sentence(user.followers)}".html_safe
     else
-      "followed by #{list_all(user.followers.take(3))} and #{remaining_like_count(user)}".html_safe
+      "followed by #{list_all(user.followers.take(3))} and #{remaining_follow_count(user)}".html_safe
     end
   end
 
