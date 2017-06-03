@@ -199,6 +199,13 @@ ActiveRecord::Schema.define(version: 20170603072331) do
 
   add_index "tags", ["creator_id"], name: "index_tags_on_creator_id", using: :btree
 
+  create_table "user_follows", force: :cascade do |t|
+    t.integer  "follower_id", null: false
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "user_hackrooms", force: :cascade do |t|
     t.integer  "user_id",     null: false
     t.integer  "hackroom_id", null: false
