@@ -24,3 +24,4 @@
 //= require application/code_highlighting.js
 //= require jquery.minicolors
 //= require application/menu.js
+//= require application/notifications.js

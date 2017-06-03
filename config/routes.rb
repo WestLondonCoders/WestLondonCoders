@@ -26,6 +26,12 @@ Rails.application.routes.draw do
     collection do
       match 'search' => 'users#search', via: [:get, :post], as: :search
     end
+    member do
+      get :follow
+      post :follow
+      get :unfollow
+      post :unfollow
+    end
   end
 
   get "/users/:id/user-languages" => 'users#languages', as: 'user_languages'
@@ -75,6 +81,10 @@ Rails.application.routes.draw do
   end
 
   resources :organiser_interests, only: [:create]
+
+  get 'notifications/:id/link_through', to: 'notifications#link_through', as: :link_through
+  get 'notifications/mark_all_read', to: 'notifications#mark_all_read', as: :mark_all_read
+  resources :notifications, only: :index
 
   namespace :admin do
     root to: 'users#index'

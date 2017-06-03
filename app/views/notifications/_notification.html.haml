@@ -1,0 +1,8 @@
+%p
+  %strong= link_to notification.notified_by.name, notification.notified_by
+  = notification.action
+  you
+  %br
+  %span.u-small-text
+    = time_as_sentence(notification.created_at)
+%hr.u-blue-line--thin

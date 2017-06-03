@@ -1,0 +1,20 @@
+- if current_user
+  - if current_user == user
+    %p
+      %i.fa.fa-heart
+      = user_follower_count(user) if defined?(user_list)
+  - elsif user_following?(current_user, user)
+    %p
+      = link_to unfollow_user_path(user), class: 'a-love-link', remote: true do
+        %i.fa.fa-heart
+      = user_follower_count(user) if defined?(user_list)
+  - else
+    %p
+      = link_to follow_user_path(user), class: 'a-love-link', remote: true do
+        %i.fa.fa-heart-o
+      = user_follower_count(user) if defined?(user_list)
+- else
+  %p
+    = link_to new_user_session_path, class: 'a-love-link' do
+      %i.fa.fa-heart-o
+    = user_follower_count(user) if defined?(user_list)

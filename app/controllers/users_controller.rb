@@ -8,8 +8,7 @@ class UsersController < ApplicationController
 
   def index
     @search = User.listed.ransack(params[:q])
-    @search.sorts = 'updated_at desc' if @search.sorts.empty?
-    @users = @search.result.includes(:languages, :primary_languages)
+    @users = @search.result.includes(:languages, :primary_languages).in_popularity_order
   end
 
   def search
@@ -59,6 +58,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def follow
+    @user_follow = UserFollow.find_or_create_by(follower_id: current_user.id, user_id: @user.id)
+    @user.user_follows_count += 1
+    create_follow_notification(@user)
+    render :follows
+  end
+
+  def unfollow
+    @user_follow = UserFollow.find_by(follower_id: current_user, user_id: @user)
+    @user_follow.destroy if @user_follow
+    @user.user_follows_count -= 1
+    delete_follow_notification(@user)
+    render :follows
+  end
+
   private
 
   def get_user
@@ -74,5 +88,14 @@ class UsersController < ApplicationController
       redirect_to user_path(@user)
       flash[:alert] = "You're not authorised to do that"
     end
+  end
+
+  def create_follow_notification(user)
+    Notification.create(user: user, notified_by: current_user, notifiable: user, action: 'followed')
+  end
+
+  def delete_follow_notification(user)
+    notification = Notification.find_by(user_id: user.id, notified_by_id: current_user.id, notifiable_id: user.id, notifiable_type: 'User')
+    notification.destroy if notification.present?
   end
 end

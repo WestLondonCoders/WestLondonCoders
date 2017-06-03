@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170603072331) do
+ActiveRecord::Schema.define(version: 20170603075854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,6 +119,21 @@ ActiveRecord::Schema.define(version: 20170603072331) do
     t.integer  "popularity_score", default: 0
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "notified_by_id"
+    t.string   "action"
+    t.string   "notifiable_type"
+    t.integer  "notifiable_id"
+    t.boolean  "read",            default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "notifications", ["notifiable_id"], name: "index_notifications_on_notifiable_id", using: :btree
+  add_index "notifications", ["notified_by_id"], name: "index_notifications_on_notified_by_id", using: :btree
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
+
   create_table "organiser_interests", force: :cascade do |t|
     t.integer  "user_id",     null: false
     t.datetime "created_at",  null: false
@@ -199,6 +214,13 @@ ActiveRecord::Schema.define(version: 20170603072331) do
 
   add_index "tags", ["creator_id"], name: "index_tags_on_creator_id", using: :btree
 
+  create_table "user_follows", force: :cascade do |t|
+    t.integer  "follower_id", null: false
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "user_hackrooms", force: :cascade do |t|
     t.integer  "user_id",     null: false
     t.integer  "hackroom_id", null: false
@@ -265,6 +287,7 @@ ActiveRecord::Schema.define(version: 20170603072331) do
     t.boolean  "listed",                 default: true
     t.string   "first_name",             default: "",   null: false
     t.string   "last_name",              default: "",   null: false
+    t.integer  "user_follows_count",     default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -273,4 +296,6 @@ ActiveRecord::Schema.define(version: 20170603072331) do
 
   add_foreign_key "event_rsvps", "events", on_delete: :cascade
   add_foreign_key "event_rsvps", "users", on_delete: :cascade
+  add_foreign_key "notifications", "users"
+  add_foreign_key "notifications", "users", column: "notified_by_id"
 end

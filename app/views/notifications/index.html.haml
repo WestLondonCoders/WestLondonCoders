@@ -1,0 +1,9 @@
+- set_page_title('Notifications')
+
+.a-page-holder
+  %section.a-section
+    .a-content
+      %h2.u-center Notifications
+      %hr.u-blue-line--thin
+      - @notifications.each do |notification|
+        = render partial: 'notification', locals: { notification: notification }
