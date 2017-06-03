@@ -14,6 +14,8 @@ class Language < ActiveRecord::Base
   has_many :sponsor_languages
   has_many :sponsors, through: :sponsor_languages
 
+  scope :in_popularity_order, -> { order('popularity_score desc') }
+
   extend FriendlyId
   friendly_id :slug, use: :slugged
 
