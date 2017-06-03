@@ -201,8 +201,8 @@ $admin-navbar-height: 40px;
 .m-chat__inbox-icon[data-badge]::after {
   content: attr(data-badge);
   position: absolute;
-  top: -6px;
-  right: 4px;
+  top: -8px;
+  right: -8px;
   font-size: .6em;
   background: $color-pink;
   color: $color-white;
