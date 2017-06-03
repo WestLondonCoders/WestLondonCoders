@@ -8,6 +8,7 @@
       .m-billboard__description= sanitize @user.bio
       = render partial: 'highlights', locals: { user: @user }
       = render partial: 'social_links', locals: { user: @user }
+      #follower_count[@user]= render partial: 'shared/follow_link', locals: { user: @user, user_list: true }
 
       = link_to 'Edit', edit_user_path(@user), class: 'a-button' if can? :manage, @user
 
