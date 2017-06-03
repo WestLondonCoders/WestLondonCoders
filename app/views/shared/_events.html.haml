@@ -6,9 +6,12 @@
           %h3.u-float-left
             = time_as_sentence(event.date)
           %h3.u-right
-            =event.date.to_date.to_formatted_s(:long)
+            = event.date.to_date.to_formatted_s(:long_ordinal)
             %br
-            = default_times(event)
+            = event.date.strftime("%I:%M%p")
+            - if event.finish_date.present?
+              = ' - '
+              = event.finish_date.strftime("%I:%M%p")
           %h1= event.name
 
         = simple_format(truncate(sanitize(event.description), length: 440, escape: false, omission: '...'))

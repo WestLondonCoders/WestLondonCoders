@@ -47,14 +47,6 @@ module ApplicationHelper
     sentence.slice(0, 1).capitalize + sentence.slice(1..-1)
   end
 
-  def default_times(event)
-    if event.sponsor.name == "Yoox NET-A-PORTER"
-      "12:00 - 5:30pm"
-    else
-      "6:30 - 9:30pm"
-    end
-  end
-
   def time_as_sentence(date)
     date.past? ? "#{relative_time(date)} ago" : "In #{relative_time(date)}"
   end

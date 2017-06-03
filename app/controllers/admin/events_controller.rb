@@ -74,7 +74,7 @@ class Admin::EventsController < Admin::BaseController
   end
 
   def event_params
-    params.require(:event).permit(:name, :description, :address, :date, :sponsor_id, :slug)
+    params.require(:event).permit(:name, :description, :address, :date, :sponsor_id, :slug, :finish_date)
   end
 
   def create_slug(event)

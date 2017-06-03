@@ -16,7 +16,11 @@
 
       %h3
         = @event.date.to_date.to_formatted_s(:long_ordinal)
-        = default_times(@event)
+        %br
+        = @event.date.strftime("%I:%M%p")
+        - if @event.finish_date.present?
+          = ' - '
+          = @event.finish_date.strftime("%I:%M%p")
         %br
         = time_as_sentence(@event.date)
 
