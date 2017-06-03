@@ -1,0 +1,5 @@
+.s-navbar__messages-dropdown
+  %h4 Messages
+  %hr.u-black-line--thin
+  - current_user.conversations.order('updated_at DESC').each do |conversation|
+    = render partial: 'conversations/inbox_entry', locals: { conversation: conversation }

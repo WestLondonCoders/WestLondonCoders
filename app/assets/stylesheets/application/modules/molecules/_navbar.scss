@@ -1,108 +1,188 @@
-header {
-  height: 58px;
-}
+$navbar-height: 60px;
+$navbar-menu-height: 40px;
+$admin-navbar-height: 40px;
 
-.m-navbar--mobile {
-  @media #{$from-large} {
-    display: none;
-  }
-}
-
-.m-navbar--desktop {
-  @media #{$to-large} {
-    display: none;
-  }
-}
-
-.m-navbar--mobile-left {
-  margin: 10px;
-}
-
-.m-navbar--mobile-right {
-  margin: 10px;
-}
-
-.m-navbar {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+.s-navbar {
+  @include flex($justify-content: space-between);
+  height: $navbar-height;
+  padding: 0 25px;
+  margin-bottom: -$navbar-height;
+  font-family: $body-font;
   border-bottom: 1px solid $color-border-light;
-  padding: 0 10px;
 
-  @media #{$from-medium} {
-    flex-direction: row;
-    justify-content: space-between;
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-    background-color: $color-white;
+  i {
+    font-size: 25px;
+  }
+}
+
+.s-navbar__logo {
+  margin-right: auto;
+  font-family: $header-font;
+
+  a {
+    font-weight: bold;
+    font-family: $header-font;
+    font-size: 20px;
+
+    @media #{$to-medium} {
+      .s-navbar__logo-text {
+        display: none;
+      }
+    }
+
+    @media #{$from-large} {
+      font-size: 28px;
+    }
   }
 
   img {
-    border-radius: 50%;
-    width: 36px;
-    margin-top: 5px;
-  }
-
-  h1 a {
-    font-family: $header-font;
-    font-size: 0.8em;
-    white-space: nowrap;
-
-    @media #{$from-medium} {
-      font-size: 0.8em;
-    }
+    width: 54px;
+    margin-bottom: -3px;
   }
 }
 
-.m-navbar__logo {
-  text-align: center;
-  margin: 20px 0;
-
-  @media #{$from-medium} {
-    margin: 0;
-    a:hover {
-      @include link-fade;
-    }
-    margin-top: -9px;
+.s-navbar__desktop-nav-menu {
+  @media #{$to-medium} {
+    display: none;
   }
-}
 
-.m-navbar__nav {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-
-  a {
-    font-family: $header-font;
+  .s-navbar__nav {
+    font-size: 16px;
     color: $color-dark-grey;
-    padding-bottom: 2px;
+    margin: 0 15px;
+    &:hover {
+      color: $color-pink;
+    }
   }
 
-  .m-navbar__item {
-    border-bottom: solid 3px transparent;
+  .is-selected {
+    color: $color-blue;
   }
+}
 
-  .m-navbar__item:hover {
-    border-bottom: solid 3px $color-pink;
-  }
-
-  .m-navbar__item--is-selected {
-    border-bottom: solid 3px $color-pink;
-  }
-
-  h2 {
-    margin: 0;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    font-size: 1.2em;
-  }
-
+.s-navbar__mobile-burger {
   @media #{$from-medium} {
-    width: 60%;
-    flex-direction: row;
-    justify-content: space-around;
+    display: none;
   }
+}
+
+.s-navbar__user-nav-icons {
+  margin-left: auto;
+  @include flex($justify-content: flex-end);
+
+  a:not(:last-child) {
+    margin-right: 15px;
+  }
+
+  .a-button {
+    font-size: 16px;
+  }
+}
+
+#nav-menu-dropdown-mobile,
+#user-nav-menu-dropdown,
+#notifications-dropdown,
+#messages-dropdown {
+  display: none;
+}
+
+#notifications-dropdown {
+  @media #{$from-medium} {
+    position: absolute;
+    width: 350px;
+    background-color: $color-white;
+    max-height: 70vh;
+    overflow: scroll;
+    right: 10px;
+    top: $navbar-height;
+    border: solid 1px $color-box-shadow;
+
+    .s-navbar__notifications-dropdown {
+      margin: 0;
+    }
+  }
+}
+
+#messages-dropdown {
+  @media #{$from-medium} {
+    position: absolute;
+    width: 350px;
+    background-color: $color-white;
+    max-height: 70vh;
+    overflow: scroll;
+    right: 10px;
+    top: $navbar-height;
+    border: solid 1px $color-box-shadow;
+
+    .s-navbar__messages-dropdown {
+      margin: 0;
+    }
+  }
+}
+
+#user-nav-menu-dropdown {
+  z-index: 1000;
+  @media #{$from-medium} {
+    position: absolute;
+    width: 250px;
+    background-color: $color-white;
+    overflow: scroll;
+    right: 10px;
+    top: $navbar-height;
+    border: solid 1px $color-box-shadow;
+
+    .s-navbar__user-nav-menu-dropdown {
+      margin: 0;
+    }
+  }
+}
+
+.s-navbar__menu-mobile {
+  @include flex($direction: column);
+  margin-top: $navbar-height;
+  margin-bottom: -$navbar-height;
+  padding: 10px 20px;
+  width: 100%;
+
+  .s-navbar__nav {
+    padding: 20px;
+  }
+}
+
+.s-navbar__user-nav-menu-dropdown {
+  @include flex($direction: column);
+  margin-top: $navbar-height;
+  margin-bottom: -$navbar-height;
+  padding: 10px 20px;
+  width: 100%;
+
+  .s-navbar__nav {
+    padding: 20px;
+  }
+}
+
+.s-navbar__notifications-dropdown {
+  @include flex($direction: column, $align-items: flex-start);
+  margin-top: $navbar-height;
+  margin-bottom: -$navbar-height;
+  padding: 10px 20px;
+  width: 100%;
+  overflow: scroll;
+
+  .s-navbar__notification {
+    padding: 5px;
+  }
+
+  .s-navbar__notification__unread {
+    background-color: $color-box-shadow;
+  }
+}
+
+.s-navbar__messages-dropdown {
+  @include flex($direction: column, $align-items: flex-start);
+  margin-top: $navbar-height;
+  margin-bottom: -$navbar-height;
+  padding: 10px 20px;
+  width: 100%;
+  overflow: scroll;
 }

@@ -51,3 +51,21 @@ img {
     clear: both;
   }
 }
+
+@mixin flex($direction: row, $justify-content: center, $align-items: center, $flex-wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  flex-wrap: $flex-wrap;
+}
+
+@mixin clearfix {
+  &::before, &::after {
+    content: " ";
+    display: table;
+  }
+  &::after {
+    clear: both;
+  }
+}

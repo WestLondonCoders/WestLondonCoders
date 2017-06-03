@@ -97,3 +97,16 @@
 .js .hide-if-js {
   display: none;
 }
+
+.u-navbar-clear {
+  padding-top: $navbar-height;
+}
+
+.u-blue-line--thin {
+  border: solid 1px $color-blue;
+  width: 100%;
+
+  @media #{$from-medium} {
+    border: solid 2px $color-blue;
+  }
+}

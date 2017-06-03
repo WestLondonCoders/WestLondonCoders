@@ -18,9 +18,9 @@
 //= require ckeditor/init
 //= require application/main.js
 //= require cocoon
-//= require application/dropdown.js
 //= require application/show_section.js
 //= require application/filter.js
 //= require application/meetup.js
 //= require application/code_highlighting.js
 //= require jquery.minicolors
+//= require application/menu.js

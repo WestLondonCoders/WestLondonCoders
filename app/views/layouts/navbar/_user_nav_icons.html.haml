@@ -1,0 +1,7 @@
+- if current_user
+  = link_to user_path(current_user), class: 'js-user-nav-trigger' do
+    %i.fa.fa-gear
+
+- else
+  = link_to new_user_session_path, class: 'a-button a-button--small' do
+    Sign in
