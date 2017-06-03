@@ -8,8 +8,7 @@ class UsersController < ApplicationController
 
   def index
     @search = User.listed.ransack(params[:q])
-    @search.sorts = 'updated_at desc' if @search.sorts.empty?
-    @users = @search.result.includes(:languages, :primary_languages)
+    @users = @search.result.includes(:languages, :primary_languages).in_popularity_order
   end
 
   def search

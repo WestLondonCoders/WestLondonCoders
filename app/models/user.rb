@@ -42,6 +42,8 @@ class User < ActiveRecord::Base
   mount_uploader :image, AvatarUploader
   mount_uploader :logo, LogoUploader
 
+  scope :in_popularity_order, -> { order('user_follows_count desc') }
+
   extend FriendlyId
   friendly_id :slug, use: [:slugged, :finders]
 
