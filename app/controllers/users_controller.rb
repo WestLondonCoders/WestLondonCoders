@@ -59,6 +59,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def follow
+    @user_follow = UserFollow.find_or_create_by(follower_id: current_user.id, user_id: @user.id)
+    @user.user_follows_count += 1
+    render :follows
+  end
+
+  def unfollow
+    @user_follow = UserFollow.find_by(follower_id: current_user, user_id: @user)
+    @user_follow.destroy if @user_follow
+    @user.user_follows_count -= 1
+    render :follows
+  end
+
   private
 
   def get_user
