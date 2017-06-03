@@ -272,6 +272,7 @@ ActiveRecord::Schema.define(version: 20170603072331) do
     t.boolean  "listed",                 default: true
     t.string   "first_name",             default: "",   null: false
     t.string   "last_name",              default: "",   null: false
+    t.integer  "user_follows_count",     default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
