@@ -14,8 +14,6 @@
               = event.finish_date.strftime("%I:%M%p")
           %h1= event.name
 
-        = simple_format(truncate(sanitize(event.description), length: 440, escape: false, omission: '...'))
-
         = render partial: 'shared/tags', locals: { tags: event.languages.take(4) } if event.rsvps.any?
 
         .u-margin-top
