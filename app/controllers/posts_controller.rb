@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :get_post, only: [:show, :edit, :update, :destroy]
+  before_action :get_post, only: [:show, :edit, :update, :destroy, :announce]
   after_action :slack, only: [:create]
   skip_before_action :verify_authenticity_token, only: [:search]
 
@@ -65,6 +65,13 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to user_path(@post.created_by) }
     end
+  end
+
+  def announce
+    return if @post.announced
+    notify_all(@post.created_by, @post, 'published a new')
+    @post.update(announced: true)
+    render :edit
   end
 
   private

@@ -59,6 +59,8 @@
             = link_to "Delete post", @post, method: :delete, data: { confirm: 'Delete post?' }, class: 'a-button a-button--ghost u-left'
             = link_to "Cancel", post_path(@post), class: 'a-button a-button--ghost u-left'
             = f.submit 'Save changes', class: 'a-button u-float-right'
+            - if can? :manage, Post.all
+              = link_to 'Announce', announce_post_path(@post), class: 'a-button a-button--ghost' unless @post.announced
           - else
             = link_to "Cancel", posts_path, class: 'a-button a-button--ghost'
             = f.submit 'Publish', class: 'a-button'

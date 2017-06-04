@@ -68,6 +68,6 @@ class CommentsController < ApplicationController
   end
 
   def notify_post_author(post, current_user)
-    Notification.create(user: post.author, notified_by: current_user, notifiable: post, action: 'commented on')
+    Notification.create(user: post.author, notified_by: current_user, notifiable: post, action: 'commented on your')
   end
 end

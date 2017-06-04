@@ -13,6 +13,9 @@ Rails.application.routes.draw do
       match 'search' => 'posts#search', via: [:get, :post], as: :search
     end
     resources :comments
+    member do
+      get :announce
+    end
   end
 
   resources :comments do

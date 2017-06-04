@@ -30,4 +30,10 @@ class ApplicationController < ActionController::Base
       flash[:alert] = "You're not authorised to do that"
     end
   end
+
+  def notify_all(triggered_by_user, subject, action)
+    User.all.each do |user|
+      Notification.create(user: user, notified_by: triggered_by_user, notifiable: subject, action: action)
+    end
+  end
 end

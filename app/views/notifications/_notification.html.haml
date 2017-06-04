@@ -6,7 +6,6 @@
   - elsif notification.notifiable_type == 'Comment'
     = link_to notification.notifiable.description, post_path(notification.notifiable.commentable, anchor: "comment-#{notification.notifiable.id}")
   - elsif notification.notifiable_type == 'Post'
-    your
     = notification.notifiable_type.downcase
     = link_to notification.notifiable.title, notification.notifiable
   %br
