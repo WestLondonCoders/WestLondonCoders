@@ -1,5 +1,6 @@
-%p
-  %strong= link_to notification.notified_by.label, notification.notified_by
+%p{class: ('s-navbar__notification--unread' unless notification.read)}
+  = notification.notifiable.icon
+  = link_to notification.notified_by.label, notification.notified_by
   = notification.action
   - if notification.notifiable_type == 'User'
     you

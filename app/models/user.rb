@@ -105,6 +105,10 @@ class User < ActiveRecord::Base
     name
   end
 
+  def icon
+    "<i class='fa fa-user u-notification-icon'></i>".html_safe
+  end
+
   private
 
   def send_welcome_mail

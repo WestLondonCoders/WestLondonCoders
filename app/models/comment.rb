@@ -14,6 +14,10 @@ class Comment < ActiveRecord::Base
     "your comment"
   end
 
+  def icon
+    "<i class='fa fa-chat u-notification-icon'></i>".html_safe
+  end
+
   private
 
   def announce_comment

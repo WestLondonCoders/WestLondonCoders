@@ -219,3 +219,13 @@ $admin-navbar-height: 40px;
   border-radius: 50%;
   box-shadow: 0 0 1px $color-box-shadow;
 }
+
+.s-navbar__notification--unread {
+  background-color: $color-pale-blue;
+  margin: -0.5em 0;
+  padding: 15px 10px;
+
+  @media #{$from-medium} {
+    width: 101.3%;
+  }
+}

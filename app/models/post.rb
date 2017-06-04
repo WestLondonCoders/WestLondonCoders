@@ -16,4 +16,8 @@ class Post < ActiveRecord::Base
   def author
     created_by
   end
+
+  def icon
+    "<i class='fa fa-comment-o u-notification-icon'></i>".html_safe
+  end
 end
