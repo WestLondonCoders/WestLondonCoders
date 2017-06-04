@@ -33,8 +33,9 @@
       .u-margin-top.u-center--mobile
         = render partial: 'rsvp_button', locals: { event: @event }
       %h3.u-float-right--desktop.u-center--mobile.u-margin-bottom
-        = pluralize(@event.rsvps.count, "member")
-        = @event.date.past? ? "attended" : "attending"
+        - if @event.rsvps.any?
+          = pluralize(@event.rsvps.count, "member")
+          = @event.date.past? ? "attended" : "attending"
 
   %section.a-section.u-margin-top--desktop
     .a-content
