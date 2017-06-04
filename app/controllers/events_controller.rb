@@ -17,7 +17,7 @@ class EventsController < ApplicationController
   end
 
   def past_events
-    @past_events = Event.past.all
+    @past_events = Event.past.all.order('date desc')
   end
 
   def rsvp # rubocop:disable Metrics/MethodLength
