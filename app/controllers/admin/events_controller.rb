@@ -35,8 +35,10 @@ class Admin::EventsController < Admin::BaseController
     @event.slug = create_slug(@event)
 
     if @event.save
-      post_new_event_slack_message(@event)
-      notify_all(current_user, @event, 'scheduled a new meetup for')
+      unless @event.past
+        post_new_event_slack_message(@event)
+        notify_all(current_user, @event, 'scheduled a new meetup for')
+      end
       redirect_to admin_events_path, notice: 'Event successfully created.'
     else
       flash[:alert] = "Error"
