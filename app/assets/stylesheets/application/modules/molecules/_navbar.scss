@@ -224,6 +224,7 @@ $admin-navbar-height: 40px;
   background-color: $color-pale-blue;
   margin: -0.5em 0;
   padding: 15px 10px;
+  width: 100%;
 
   @media #{$from-medium} {
     width: 101.3%;
