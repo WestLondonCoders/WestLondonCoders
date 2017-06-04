@@ -1,27 +1,32 @@
 .a-page-holder
   %section.a-section
     .a-content--xwide
-      .m-admin__user.u-margin-top
-        .m-admin__20
-          %strong Logo
-        .m-admin__20
-          %strong Name
-        .m-admin__20
-          %strong Total meetups
-        .m-admin__user-submit
-
-      - @sponsors.each do |sponsor|
-        .m-admin__user
-          .m-admin__20
-            .m-admin__logo
-              = link_to sponsor_path(sponsor) do
-                = image_tag(sponsor.logo_url)
-          .m-admin__20
-            = link_to sponsor.name, sponsor_path(sponsor)
-          .m-admin__20.u-center
-            = sponsor.events.count
-          .m-admin__user-submit
-            = link_to 'Edit', edit_admin_sponsor_path(sponsor), class: 'a-button'
+      %table.m-admin-table
+        %thead
+          %tr
+            %th{style: 'width: 37%'}
+              Name
+            %th{style: 'width: 37%'}
+              Logo
+            %th{style: 'width: 10%'}
+              Meetups
+            %th{style: 'width: 10%'}
+              Contacts
+            %th{style: 'width: 5%'}
+        %tbody
+          - @sponsors.each do |sponsor|
+            %tr
+              %td{style: 'width: 37%'}
+                = link_to sponsor.name, sponsor_path(sponsor)
+              %td{style: 'width: 37%'}
+                = link_to sponsor_path(sponsor) do
+                  = image_tag(sponsor.logo_url)
+              %td{style: 'width: 10%'}
+                = sponsor.events.count
+              %td{style: 'width: 10%'}
+                = sponsor.users.count
+              %td{style: 'width: 5%'}
+                = link_to 'Edit', edit_admin_sponsor_path(sponsor), class: 'a-button'
 
   %section.a-section.u-margin-top--mobile
     .a-content

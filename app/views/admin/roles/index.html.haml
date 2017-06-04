@@ -2,16 +2,22 @@
   %section.a-section
     .a-content--xwide
       %h1.u-center Roles
-      .m-admin__roles
-        - @roles.each do |role|
-          .m-admin__user
-            .m-admin__20
-              = role.name
-            .m-admin__80
-              = sanitize role.description
-            .m-admin__user-submit
-              - if can? :update, role
-                = link_to 'Edit', edit_role_path(role), class: 'a-button'
+      %table.m-admin-table
+        %thead
+          %tr
+            %th{style: 'width: 15%'}
+            %th{style: 'width: 80%'}
+            %th{style: 'width: 5%'}
+        %tbody
+          - @roles.each do |role|
+            %tr
+              %td{style: 'width: 15%'}
+                = role.name
+              %td{style: 'width: 80%'}
+                = sanitize role.description
+              %td{style: 'width: 5%'}
+                - if can? :update, role
+                  = link_to 'Edit', edit_role_path(role), class: 'a-button'
 
       .u-margin-top.u-right
         = link_to 'New role', new_role_path, class: 'a-button'

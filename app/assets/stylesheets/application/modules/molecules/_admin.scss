@@ -1,38 +1,14 @@
-.m-admin__user {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+.m-admin-table {
   padding: 10px;
-  border-bottom: 1px solid $color-border;
   text-align: left;
-}
 
-.m-admin__10 {
-  width: 10%;
-}
-
-.m-admin__20 {
-  width: 20%;
-}
-
-.m-admin__40 {
-  width: 40%;
-}
-
-.m-admin__60 {
-  width: 60%;
-}
-
-.m-admin__80 {
-  width: 80%;
-}
-
-.m-admin__logo {
-  width: 150px;
+  td, th {
+    border-bottom: 1px solid $color-border;
+    padding: 5px 0;
+  }
 
   img {
     max-height: 100px;
-    max-width: 150px;
+    max-width: 100px;
   }
 }

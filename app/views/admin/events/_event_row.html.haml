@@ -1,13 +1,12 @@
-.m-admin__20
-  = link_to event do
-    = event.name
-.m-admin__10
-  = event.rsvps.count
-.m-admin__20
-  = event.date.to_formatted_s(:long)
-  %br
-  = time_as_sentence(event.date)
-.m-admin__20
-  = link_to event.sponsor.name, event.sponsor
-.m-admin__user-submit
-  = link_to 'Edit', edit_admin_event_path(event), class: 'a-button'
+%tr
+  %td{style: 'width: 20%'}
+    = link_to event do
+      = event.name
+  %td{style: 'width: 5%'}
+    = event.rsvps.count
+  %td{style: 'width: 20%'}
+    = event.date.to_formatted_s(:long)
+  %td{style: 'width: 20%'}
+    = link_to event.sponsor.name, event.sponsor
+  %td{style: 'width: 5%'}
+    = link_to 'Edit', edit_admin_event_path(event), class: 'a-button'

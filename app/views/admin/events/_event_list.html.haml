@@ -1,43 +1,41 @@
-.m-admin__user
-  %h2 Upcoming
+%h2 Upcoming
+
 - if upcoming_events.any?
-  .m-admin__user.u-margin-top
-    .m-admin__20
-      %strong Name
-    .m-admin__20
-      %strong RSVPs
-    .m-admin__20
-      %strong Date
-    .m-admin__20
-      %strong Venue
-    .m-admin__user-permission
-      %strong
-    .m-admin__user-submit
-  - upcoming_events.each do |event|
-    .m-admin__user
-      = render partial: 'event_row', locals: { event: event }
+  %table.m-admin-table.u-margin-top
+    %thead
+      %tr
+        %th{style: 'width: 20%'}
+          Name
+        %th{style: 'width: 5%'}
+          RSVPs
+        %th{style: 'width: 20%'}
+          Date
+        %th{style: 'width: 20%'}
+          Venue
+        %th{style: 'width: 5%'}
+    %tbody
+      - upcoming_events.each do |event|
+        = render partial: 'event_row', locals: { event: event }
 - else
-  .m-admin__user
-    %p No events scheduled
+  %p No events scheduled
 %br
-.m-admin__user
-  %h2 Past
+%h2 Past
 - if past_events.any?
-  .m-admin__user.u-margin-top
-    .m-admin__20
-      %strong Name
-    .m-admin__20
-      %strong RSVPs
-    .m-admin__20
-      %strong Date
-    .m-admin__20
-      %strong Venue
-    .m-admin__user-permission
-      %strong
-    .m-admin__user-submit
-  - past_events.each do |event|
-    .m-admin__user
-      = render partial: 'event_row', locals: { event: event }
+  %table.m-admin-table.u-margin-top
+    %thead
+      %tr
+        %td{style: 'width: 20%'}
+          Name
+        %td{style: 'width: 5%'}
+          RSVPs
+        %td{style: 'width: 20%'}
+          Date
+        %td{style: 'width: 20%'}
+          Venue
+        %th{style: 'width: 5%'}
+    %tbody
+      - past_events.each do |event|
+        = render partial: 'event_row', locals: { event: event }
 - else
-  .m-admin__user
+  .m-admin-table
     %p No events have passed yet
