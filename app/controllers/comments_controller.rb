@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
     if @comment.save
       respond_to do |format|
         format.html do
-          redirect_to @commentable
+          redirect_to @commentable, anchor: "comment-#{@comment.id}"
         end
         format.js
       end

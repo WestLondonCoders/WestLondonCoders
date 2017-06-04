@@ -14,9 +14,6 @@
         Comments
         %i.fa.fa-comment-o
 
-      %ul.m-comments__feed#comments-list
-        = render 'comment_feed'
-
       - if current_user
         .m-comment__new
           = form_for [@post, @new_comment], class: 'js-remote-form', remote: true do |f|
@@ -29,3 +26,7 @@
             = link_to user_github_omniauth_authorize_path, class: 'a-button a-button--small' do
               %i.fa.fa-github
               Sign in
+
+      %ul.m-comments__feed#comments-list
+        = render partial: 'comment_feed', locals: { post: @post, comments: @comments }
+

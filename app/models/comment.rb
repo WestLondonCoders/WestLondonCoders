@@ -5,9 +5,8 @@ class Comment < ActiveRecord::Base
   belongs_to :author, class_name: "User"
   validates :body, presence: true
 
-  scope :published, -> do
-    where(public: true)
-  end
+  scope :published, -> { where(public: true) }
+  scope :most_recent_first, -> { order("created_at desc") }
 
   private
 
