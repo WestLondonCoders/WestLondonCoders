@@ -9,6 +9,7 @@ class CommentRepliesController < ApplicationController
   def create
     @reply = @comment.replies.new comment_params
     @reply.author = current_user if current_user
+    notify_comment_author unless @comment.author == @reply.author
 
     if @reply.save
       respond_to do |format|
@@ -52,5 +53,9 @@ class CommentRepliesController < ApplicationController
   def find_comment
     @comment = Comment.find(params[:comment_id])
     @post = @comment.commentable
+  end
+
+  def notify_comment_author
+    Notification.create(user: @comment.author, notified_by: current_user, notifiable: @comment, action: 'replied to')
   end
 end

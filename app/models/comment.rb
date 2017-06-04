@@ -10,6 +10,10 @@ class Comment < ActiveRecord::Base
   scope :published, -> { where(public: true) }
   scope :most_recent_first, -> { order("created_at desc") }
 
+  def description
+    "your comment"
+  end
+
   private
 
   def announce_comment
