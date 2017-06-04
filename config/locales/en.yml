@@ -22,8 +22,9 @@
 ---
 en:
   index_introductions:
-    events: Welcome to our new events planner. We're still testing this and haven't
-      announced them yet. Feel free to RSVP to any of the events here.
+    events: Our meetup planner is still new, and people are still mostly confirming
+      attendance on Meetup.com. Having our own planner allows us to use the data we
+      generate about our meetups.
     hackrooms: Hackrooms are a way to bring together people with shared interests
       or goals. It could be a group of beginners learning HTML, or some Pythonists
       building an app, or both of those things.
