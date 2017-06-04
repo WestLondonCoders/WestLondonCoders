@@ -35,7 +35,7 @@ class Admin::EventsController < Admin::BaseController
     @event.slug = create_slug(@event)
 
     if @event.save
-      unless @event.past
+      unless @event.date.past?
         post_new_event_slack_message(@event)
         notify_all(current_user, @event, 'scheduled a new meetup for')
       end
