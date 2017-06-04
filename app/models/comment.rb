@@ -2,7 +2,9 @@ class Comment < ActiveRecord::Base
   after_create :announce_comment
   belongs_to :commentable, polymorphic: true
   has_many :comments, as: :commentable
-  belongs_to :author, class_name: "User"
+  belongs_to :author, class_name: 'User'
+  has_many :replies, class_name: 'CommentReply'
+
   validates :body, presence: true
 
   scope :published, -> { where(public: true) }
