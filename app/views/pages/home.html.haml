@@ -1,7 +1,7 @@
 - set_page_title("Learn, discuss and practice code")
 
 .m-hero--video
-  = video_tag "video/gdg.mov", controls: false, autoplay: true, loop: true, id: 'home-vid'
+  = video_tag "video/gdg.mov", controls: false, autoplay: true, muted: true, loop: true, id: 'home-vid'
   %h1#next-meetup-banner Learn, discuss and practice code.
 
 %section.a-section.a-section--separated
@@ -40,3 +40,7 @@
         = render partial: 'comments_feed'
 
 .m-hero--home
+
+:javascript
+  var videoHero = document.getElementById('home-vid');
+  videoHero.muted = "muted";
