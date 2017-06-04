@@ -1,7 +1,12 @@
 %p
-  %strong= link_to notification.notified_by.name, notification.notified_by
+  %strong= link_to notification.notified_by.label, notification.notified_by
   = notification.action
-  you
+  - if notification.notifiable_type == 'User'
+    you
+  - elsif notification.notifiable_type == 'Comment'
+    = link_to notification.notifiable.description, post_path(notification.notifiable.commentable, anchor: "comment-#{notification.notifiable.id}")
+  - else
+    = link_to notification.notifiable.description, notification.notifiable
   %br
   %span.u-small-text
     = time_as_sentence(notification.created_at)

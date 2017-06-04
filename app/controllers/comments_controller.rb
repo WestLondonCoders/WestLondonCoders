@@ -35,7 +35,22 @@ class CommentsController < ApplicationController
     end
   end
 
+  def hide
+    find_comment
+    @post = @comment.commentable
+
+    @comment.update(public: false)
+
+    if @comment.save
+      render :update
+    end
+  end
+
   private
+
+  def find_comment
+    @comment = Comment.find(params[:id])
+  end
 
   def set_post_and_comments
     @post = @commentable

@@ -102,6 +102,10 @@ class User < ActiveRecord::Base
     primary_languages&.first&.colour || languages&.first&.colour || '#000000'
   end
 
+  def label
+    name
+  end
+
   private
 
   def send_welcome_mail
