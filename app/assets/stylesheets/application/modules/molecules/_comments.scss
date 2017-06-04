@@ -45,3 +45,12 @@
 .js-reveal-section {
   display: none;
 }
+
+.m-comment__replies {
+  margin-top: 20px;
+  margin-left: 30px;
+
+  .m-comment__previous {
+    margin-bottom: 20px;
+  }
+}
