@@ -16,7 +16,7 @@
       - if @hackroom.mission
         .u-margin-top= sanitize(@hackroom.mission)
 
-      = render partial: 'language_list', locals: { hackroom: @hackroom }
+      = render partial: 'hackrooms/language_list', locals: { hackroom: @hackroom }
 
       - if @hackroom.all_members.any?
         %h2 Members
