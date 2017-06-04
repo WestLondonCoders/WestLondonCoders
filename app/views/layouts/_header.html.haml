@@ -6,7 +6,7 @@
         %span.s-navbar__logo-text West London Coders
     .s-navbar__desktop-nav-menu= render partial: 'layouts/navbar/nav_menu_items'
     .s-navbar__mobile-burger= render partial: 'layouts/navbar/mobile_burger'
-    .s-navbar__user-nav-icons= render partial: 'layouts/navbar/user_nav_icons'
+    .s-navbar__user-nav-icons#nav-icons= render partial: 'layouts/navbar/user_nav_icons'
 
   #nav-menu-dropdown-mobile= render partial: 'layouts/navbar/nav_menu_dropdown_mobile'
   #user-nav-menu-dropdown= render partial: 'layouts/navbar/user_nav_menu_dropdown' if current_user

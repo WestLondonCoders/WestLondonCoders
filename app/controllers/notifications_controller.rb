@@ -16,6 +16,8 @@ class NotificationsController < ApplicationController
       n.update read: true
     end
 
-    render nothing: true
+    respond_to do |format|
+      format.js
+    end
   end
 end
