@@ -8,6 +8,8 @@
   - elsif notification.notifiable_type == 'Post'
     = notification.notifiable_type.downcase
     = link_to notification.notifiable.title, notification.notifiable
+  - elsif notification.notifiable_type == 'Event'
+    = link_to "#{notification.notifiable.start_date}", notification.notifiable
   %br
   %span.u-small-text
     = time_as_sentence(notification.created_at)

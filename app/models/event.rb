@@ -13,4 +13,8 @@ class Event < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :slug, use: :slugged
+
+  def start_date
+    date.to_date.to_formatted_s(:long_ordinal)
+  end
 end
