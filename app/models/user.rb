@@ -56,10 +56,9 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :update }
 
   scope :listed, -> { where(listed: true) }
-
   scope :with_role, lambda { |role| joins(:roles).where(roles: { name: role }) }
-
   scope :organiser, -> { with_role("Organiser") }
+  scope :oldest_first, -> { order('created_at desc') }
 
   def all_hackrooms
     (own_hackrooms.all + hackrooms.all).uniq

@@ -44,9 +44,9 @@ module UserHelper
     when 0
       nil
     when 1..3
-      "followed by #{list_all_sentence(user.followers)}".html_safe
+      "followed by #{list_all_sentence(user.followers.oldest_first)}".html_safe
     else
-      "followed by #{list_all(user.followers.take(3))} and #{remaining_follow_count(user)}".html_safe
+      "followed by #{list_all(user.followers.oldest_first.take(3))} and #{remaining_follow_count(user)}".html_safe
     end
   end
 
