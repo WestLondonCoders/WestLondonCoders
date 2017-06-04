@@ -17,10 +17,10 @@
       %h3
         = @event.date.to_date.to_formatted_s(:long_ordinal)
         %br
-        = @event.date.strftime("%I:%M%p")
+        = @event.date.strftime("%l:%M%P")
         - if @event.finish_date.present?
           = ' - '
-          = @event.finish_date.strftime("%I:%M%p")
+          = @event.finish_date.strftime("%l:%M%P")
         %br
         = time_as_sentence(@event.date)
 
@@ -39,10 +39,6 @@
 
   %section.a-section.u-margin-top--desktop
     .a-content
-      - if @event.rsvps.any?
-        .a-tags
-          - @event.languages.each do |language|
-            = render partial: 'shared/language_tag', locals: { language: language }
       %h2 What's this meetup about?
       = sanitize(@event.description)
 
@@ -59,4 +55,9 @@
             - @event.rsvps.each do |rsvp|
               = render partial: 'shared/user_tag', locals: { user: rsvp } unless rsvp.has_role?(:organiser)
 
+      - if @event.rsvps.any?
+        %h2 What languages are attendees interested in?
+        .a-tags
+          - @event.languages.each do |language|
+            = render partial: 'shared/language_tag', locals: { language: language }
       .u-center.u-margin-top= render partial: 'rsvp_button'

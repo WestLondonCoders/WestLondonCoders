@@ -17,4 +17,8 @@ class Event < ActiveRecord::Base
   def start_date
     date.to_date.to_formatted_s(:long_ordinal)
   end
+
+  def past?
+    date.past?
+  end
 end

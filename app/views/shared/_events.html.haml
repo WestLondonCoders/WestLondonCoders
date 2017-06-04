@@ -3,24 +3,19 @@
     - events.each do |event|
       .m-grid__box
         = link_to event_path(event) do
-          %h3.u-float-left
-            = time_as_sentence(event.date)
-          %h3.u-right
-            = event.date.to_date.to_formatted_s(:long_ordinal)
-            %br
-            = event.date.strftime("%I:%M%p")
-            - if event.finish_date.present?
-              = ' - '
-              = event.finish_date.strftime("%I:%M%p")
           %h1= event.name
+          = image_tag event.sponsor.logo, class: 'm-grid__logo'
+          .m-grid__meta
+            %h3.u-left
+              = event.date.to_date.to_formatted_s(:long_ordinal)
+              %br
+              = event.date.strftime("%l:%M%P")
+              - if event.finish_date.present?
+                = ' - '
+                = event.finish_date.strftime("%l:%M%P")
+              %br
+              = time_as_sentence(event.date)
 
-        = render partial: 'shared/tags', locals: { tags: event.languages.take(4) } if event.rsvps.any?
+            .u-right
+              = render partial: 'events/rsvp_button', locals: { event: event }
 
-        .u-margin-top
-          - if event.rsvps.any?
-            %h3.u-float-left
-              = pluralize(event.rsvps.count, "member")
-              = event.date.past? ? "attended" : "attending"
-          .u-float-right
-            = link_to "View", event, class: 'a-button a-button--elastic'
-            = render partial: 'events/rsvp_button', locals: { event: event }
