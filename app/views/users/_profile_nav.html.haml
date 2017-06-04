@@ -1,9 +1,16 @@
 %nav.a-subnav
-  = link_to user_languages_path, id: 'language-nav', class: 'a-subnav__item is-selected',  :remote => true do
-    %h3 Languages
-  = link_to user_hackrooms_path, id: 'hackroom-nav', class: 'a-subnav__item',  :remote => true do
-    %h3 Hackrooms
-  = link_to user_posts_path, id: 'post-nav', class: 'a-subnav__item',  :remote => true do
-    %h3 Posts
-  = link_to user_events_path, id: 'meetup-nav', class: 'a-subnav__item', :remote => true do
-    %h3 Meetups
+  - if @user.primary_languages.any? || @user.languages.any?
+    = link_to user_languages_path, id: 'language-nav', class: 'a-subnav__item is-selected',  :remote => true do
+      %h3 Languages
+
+  - if @user.hackrooms.any? || @user.own_hackrooms.any?
+    = link_to user_hackrooms_path, id: 'hackroom-nav', class: 'a-subnav__item',  :remote => true do
+      %h3 Hackrooms
+
+  - if @user.posts.any?
+    = link_to user_posts_path, id: 'post-nav', class: 'a-subnav__item',  :remote => true do
+      %h3 Posts
+
+  - if @user.events.upcoming.any?
+    = link_to user_events_path, id: 'meetup-nav', class: 'a-subnav__item', :remote => true do
+      %h3 Meetups
