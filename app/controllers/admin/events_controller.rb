@@ -86,7 +86,9 @@ class Admin::EventsController < Admin::BaseController
   end
 
   def post_new_event_slack_message(event)
-    Slacked.post_async new_event_slack_message(event_url(@event), @event.date), channel: 'general', username: 'Schedule Bot'
+    if Rails.env.production?
+      Slacked.post_async new_event_slack_message(event_url(@event), @event.date), channel: 'general', username: 'Schedule Bot'
+    end
   end
 
   def new_event_slack_message(url, date)
