@@ -16,8 +16,7 @@
         %span#next-meetup-venue-name
       %h3
         %span#next-meetup-venue
-      #next-meetup-link
-        %a.a-button{href: "https://www.meetup.com/West-London-Coders/"} RSVP
+      = render partial: 'events/rsvp_button', locals: { event: @next_event }
 
 - if @sponsors.any?
   %section.a-section.m-intro
