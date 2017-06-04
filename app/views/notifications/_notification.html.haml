@@ -5,8 +5,10 @@
     you
   - elsif notification.notifiable_type == 'Comment'
     = link_to notification.notifiable.description, post_path(notification.notifiable.commentable, anchor: "comment-#{notification.notifiable.id}")
-  - else
-    = link_to notification.notifiable.description, notification.notifiable
+  - elsif notification.notifiable_type == 'Post'
+    your
+    = notification.notifiable_type.downcase
+    = link_to notification.notifiable.title, notification.notifiable
   %br
   %span.u-small-text
     = time_as_sentence(notification.created_at)

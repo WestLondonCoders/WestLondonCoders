@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new comment_params
     @comment.author = current_user if current_user
+    notify_post_author(@commentable, current_user) unless @commentable.author == current_user
 
     if @comment.save
       respond_to do |format|
@@ -64,5 +65,9 @@ class CommentsController < ApplicationController
   def find_commentable
     @commentable = Comment.find(params[:comment_id]) if params[:comment_id]
     @commentable = Post.find_by_slug(params[:post_id]) if params[:post_id]
+  end
+
+  def notify_post_author(post, current_user)
+    Notification.create(user: post.author, notified_by: current_user, notifiable: post, action: 'commented on')
   end
 end

@@ -12,4 +12,8 @@ class Post < ActiveRecord::Base
   def to_param
     slug
   end
+
+  def author
+    created_by
+  end
 end
