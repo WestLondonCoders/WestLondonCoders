@@ -8,7 +8,7 @@ class Admin::EventsController < Admin::BaseController
     @search = Event.ransack(params[:q])
     @search.sorts = 'date asc' if @search.sorts.empty?
     @upcoming_events = @search.result.upcoming
-    @past_events = @search.result.past
+    @past_events = @search.result.past.reverse
     @events = @search.result
   end
 
