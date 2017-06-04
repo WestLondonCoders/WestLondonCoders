@@ -15,5 +15,7 @@ class NotificationsController < ApplicationController
     current_user.notifications.unread.each do |n|
       n.update read: true
     end
+
+    render nothing: true
   end
 end
