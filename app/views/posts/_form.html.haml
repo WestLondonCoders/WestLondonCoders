@@ -43,9 +43,9 @@
       .a-tags
         = f.fields_for :tags do |tag|
           .nested-fields
-            .field.a-tags--form
+            .a-tags--form
               - if tag.object.persisted?
-                %h1.a-tag.a-tag--post-tag
+                %h1.a-tag.a-tag--light-blue
                   = tag.object.name
                   = link_to_remove_association "x", tag, class: 'a-tag--remove'
               - else
