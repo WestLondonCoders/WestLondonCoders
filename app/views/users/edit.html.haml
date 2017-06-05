@@ -25,12 +25,6 @@
       %h2 Secondary languages you use
       = f.select :language_ids, user_options_for_select(Language.order('name asc'), f.object.language_ids), { label: 'Secondary Languages' }, multiple: true, class: 'chosen-select'
 
-  %section.a-section.a-section--overflow
-    .a-content
-      %h2 Interests
-      = f.select :interest_ids, user_options_for_select(Tag.order('name asc'), f.object.interest_ids), { label: 'Interests' }, multiple: true, class: 'chosen-select'
-
-
   %section.a-section
     .a-content
       %h2 Links

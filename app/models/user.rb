@@ -4,8 +4,6 @@ class User < ActiveRecord::Base
 
   has_many :assignments, dependent: :destroy
   has_many :roles, through: :assignments
-  has_many :user_interests, dependent: :destroy
-  has_many :interests, through: :user_interests, source: :tag
   has_many :comments, dependent: :destroy
   has_many :user_hackrooms
   has_many :hackrooms, through: :user_hackrooms

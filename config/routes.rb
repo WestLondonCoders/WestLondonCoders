@@ -50,12 +50,6 @@ Rails.application.routes.draw do
 
   get '/users', to: redirect('members')
 
-  resources :interests do
-    collection do
-      match 'search' => 'interests#search', via: [:get, :post], as: :search
-    end
-  end
-
   get '/meetup-17-python-hackroom', to: redirect('/posts/python-hackroom-with-ali-hamdan', status: 302)
   get '/getting-a-job-in-software-development-shabbir-naqvi', to: redirect('http://westlondoncoders.com/posts/getting-a-job-in-software-development', status: 302)
 

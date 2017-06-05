@@ -10,10 +10,6 @@ module UserHelper
     pluralize(hackrooms, 'hackroom')
   end
 
-  def interest_count(user)
-    pluralize(user.interests.size, 'interest')
-  end
-
   def language_count(user)
     languages = user.primary_languages.size + user.languages.size
     pluralize(languages, 'language')
