@@ -1,6 +1,6 @@
 - if current_user
   = link_to mark_all_read_path, remote: true, class: 'js-open-notifications' do
-    .m-chat__inbox-icon{"data-badge" => (current_user.notifications.unread.size if current_user.notifications.unread.size > 0)}
+    .s-navbar__notification-icon{"data-badge" => (current_user.notifications.unread.size if current_user.notifications.unread.size > 0)}
       %i.fa.fa-bell-o
   = link_to user_path(current_user), class: 'js-user-nav-trigger' do
     %i.fa.fa-gear

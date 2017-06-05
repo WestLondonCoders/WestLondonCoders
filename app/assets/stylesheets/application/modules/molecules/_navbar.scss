@@ -200,11 +200,11 @@ $admin-navbar-height: 40px;
   overflow: scroll;
 }
 
-.m-chat__inbox-icon {
+.s-navbar__notification-icon {
   position: relative;
 }
 
-.m-chat__inbox-icon[data-badge]::after {
+.s-navbar__notification-icon[data-badge]::after {
   content: attr(data-badge);
   position: absolute;
   top: -8px;
