@@ -24,13 +24,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def require_admin
-    unless user_is_admin
-      redirect_to root_path
-      flash[:alert] = "You're not authorised to do that"
-    end
-  end
-
   def notify_all(triggered_by_user, subject, action)
     User.all.each do |user|
       Notification.create(user: user, notified_by: triggered_by_user, notifiable: subject, action: action)

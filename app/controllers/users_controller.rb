@@ -83,13 +83,6 @@ class UsersController < ApplicationController
     params[:user].permit(:name, :listed, :bio, :image, :logo, :logo_link, :tagline, :twitter, :instagram, :github, :facebook, :linkedin, :permission, :website_url, :email, primary_language_ids: [], language_ids: [], interest_ids: [])
   end
 
-  def require_admin_or_owner
-    unless user_is_owner_or_admin
-      redirect_to user_path(@user)
-      flash[:alert] = "You're not authorised to do that"
-    end
-  end
-
   def create_follow_notification(user)
     Notification.create(user: user, notified_by: current_user, notifiable: user, action: 'followed')
   end
