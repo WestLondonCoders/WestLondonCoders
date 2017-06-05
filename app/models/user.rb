@@ -1,45 +1,32 @@
 class User < ActiveRecord::Base
   after_create :send_welcome_mail
   after_create :notify_slack_of_new_user if Rails.env.production?
+
   has_many :assignments, dependent: :destroy
   has_many :roles, through: :assignments
-
   has_many :user_interests, dependent: :destroy
   has_many :interests, through: :user_interests, source: :tag
-
   has_many :comments, dependent: :destroy
-
   has_many :user_hackrooms
   has_many :hackrooms, through: :user_hackrooms
-
   has_many :hackroom_owners
   has_many :own_hackrooms, through: :hackroom_owners, source: :hackroom
-
   has_many :user_languages
   has_many :languages, through: :user_languages
-
   has_many :user_primaries
   has_many :primary_languages, through: :user_primaries, source: :language
-
   has_many :event_rsvps, dependent: :destroy
   has_many :events, through: :event_rsvps
-
-  has_one :organiser_interest, dependent: :destroy
-
   has_many :sponsorship_admins, dependent: :destroy
   has_many :sponsors, through: :sponsorship_admins
-
   has_many :managed_events, through: :sponsors, source: :events
-
   has_many :posts, foreign_key: :created_by_id, dependent: :destroy
-
   has_many :user_follows, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :user_follows, source: 'user'
-
   has_many :followings, class_name: "UserFollow", foreign_key: "user_id", dependent: :destroy
   has_many :followers, through: :followings, source: 'follower'
-
   has_many :notifications, dependent: :destroy
+  has_one :organiser_interest, dependent: :destroy
 
   mount_uploader :image, AvatarUploader
   mount_uploader :logo, LogoUploader

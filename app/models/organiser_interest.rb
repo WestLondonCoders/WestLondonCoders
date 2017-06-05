@@ -1,5 +1,6 @@
 class OrganiserInterest < ActiveRecord::Base
   after_create :notify
+
   belongs_to :user
 
   validates :user, uniqueness: true

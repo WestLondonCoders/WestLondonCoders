@@ -1,6 +1,6 @@
 class CommentReply < ActiveRecord::Base
-  belongs_to :comment
   belongs_to :author, class_name: 'User'
+  belongs_to :comment
 
   validates :body, presence: true
 
