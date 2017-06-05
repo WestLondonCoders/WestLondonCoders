@@ -1,0 +1,10 @@
+:ruby
+  trigger = notification.notified_by
+  target = notification.user
+  subject = notification.notifiable
+  action = notification.action
+
+%i.fa.fa-user.u-notification-icon
+= link_to trigger.label, trigger
+= action
+= 'you.'

@@ -1,0 +1,11 @@
+:ruby
+  trigger = notification.notified_by
+  target = notification.user
+  subject = notification.notifiable
+  action = notification.action
+
+%i.fa.fa-comment-o.u-notification-icon
+= link_to trigger.label, trigger
+= action
+= link_to 'your comment', post_path(subject.commentable, anchor: "comment-#{subject.id}")
+= "on '#{subject.commentable.title}'"

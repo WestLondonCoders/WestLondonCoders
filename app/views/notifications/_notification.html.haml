@@ -1,16 +1,17 @@
 %p{class: ('s-navbar__notification--unread' unless notification.read)}
-  = notification.notifiable.icon
-  = link_to notification.notified_by.label, notification.notified_by
-  = notification.action
-  - if notification.notifiable_type == 'User'
-    you
-  - elsif notification.notifiable_type == 'Comment'
-    = link_to notification.notifiable.description, post_path(notification.notifiable.commentable, anchor: "comment-#{notification.notifiable.id}")
-  - elsif notification.notifiable_type == 'Post'
-    = notification.notifiable_type.downcase
-    = link_to notification.notifiable.title, notification.notifiable
-  - elsif notification.notifiable_type == 'Event'
-    = link_to "#{notification.notifiable.start_date}", notification.notifiable
+
+  - if notification.about_new_follow?
+    = render partial: 'notifications/new_follow', locals: { notification: notification }
+
+  - elsif notification.about_reply_to_your_comment?
+    = render partial: 'notifications/replied_to_your_comment', locals: { notification: notification }
+
+  - elsif notification.about_comment_on_your_post?
+    = render partial: 'notifications/comment_on_your_post', locals: { notification: notification }
+
+  - elsif notification.about_new_meetup?
+    = render partial: 'notifications/new_meetup_scheduled', locals: { notification: notification }
+
   %br
   %span.u-small-text
     = time_as_sentence(notification.created_at)

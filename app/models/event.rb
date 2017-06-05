@@ -21,8 +21,4 @@ class Event < ActiveRecord::Base
   def past?
     date.past?
   end
-
-  def icon
-    "<i class='fa fa-meetup u-notification-icon'></i>".html_safe
-  end
 end

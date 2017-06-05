@@ -5,4 +5,20 @@ class Notification < ActiveRecord::Base
 
   scope :unread, -> { where(read: false) }
   scope :read, -> { where(read: true) }
+
+  def about_new_follow?
+    notifiable_type == 'User' && action == 'followed'
+  end
+
+  def about_comment_on_your_post?
+    notifiable_type == 'Post'
+  end
+
+  def about_reply_to_your_comment?
+    notifiable_type == 'Comment'
+  end
+
+  def about_new_meetup?
+    notifiable_type == 'Event'
+  end
 end
