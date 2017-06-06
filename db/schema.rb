@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170604185559) do
+ActiveRecord::Schema.define(version: 20170606183006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,6 +127,19 @@ ActiveRecord::Schema.define(version: 20170604185559) do
     t.string   "slug",             default: ""
     t.integer  "popularity_score", default: 0
   end
+
+  create_table "mentions", force: :cascade do |t|
+    t.integer  "mentionee_id"
+    t.string   "mentionee_type"
+    t.integer  "mentioner_id"
+    t.string   "mentioner_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "mentions", ["mentionee_id", "mentionee_type", "mentioner_id", "mentioner_type"], name: "mentions_mentionee_mentioner_idx", unique: true, using: :btree
+  add_index "mentions", ["mentionee_id", "mentionee_type"], name: "mentions_mentionee_idx", using: :btree
+  add_index "mentions", ["mentioner_id", "mentioner_type"], name: "mentions_mentioner_idx", using: :btree
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "user_id"
