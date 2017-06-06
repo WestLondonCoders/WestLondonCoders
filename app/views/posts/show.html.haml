@@ -17,7 +17,7 @@
       - if current_user
         .m-comment__new
           = form_for [@post, @new_comment], class: 'js-remote-form', remote: true do |f|
-            = f.text_field :body, class: 'js-remote-text-field', autocomplete: :off, placeholder: "Write a comment..."
+            = f.text_field :body, data: { mentionable: 'users'}, class: 'js-remote-text-field', autocomplete: :off, placeholder: "Write a comment..."
       - else
         .a-prompt
           %p
@@ -29,4 +29,3 @@
 
       %ul.m-comments__feed#comments-list
         = render partial: 'comment_feed', locals: { post: @post, comments: @comments }
-

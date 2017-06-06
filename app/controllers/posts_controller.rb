@@ -19,6 +19,7 @@ class PostsController < ApplicationController
     @comments = @post.comments.published.most_recent_first
     @new_comment = @post.comments.new
     @new_reply = CommentReply.new
+    @usernames = User.pluck(:name)
   end
 
   def new_comment

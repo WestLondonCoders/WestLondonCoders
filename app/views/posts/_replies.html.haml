@@ -11,4 +11,4 @@
 - if current_user
   .m-comment__new
     = form_for [comment, CommentReply.new], class: 'js-remote-form', remote: true do |f|
-      = f.text_field :body, class: 'js-remote-text-field', autocomplete: :off, placeholder: "Reply..."
+      = f.text_field :body, data: { mentionable: 'users'}, class: 'js-remote-text-field', autocomplete: :off, placeholder: "Reply..."

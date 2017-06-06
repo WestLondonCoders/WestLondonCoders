@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery.atwho
 //= require turbolinks
 //= require chosen-jquery
 //= require ckeditor/init

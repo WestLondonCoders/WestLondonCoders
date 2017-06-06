@@ -46,6 +46,7 @@ gem 'modernizr-rails'
 gem 'jquery-minicolors-rails'
 gem 'chosen-rails'
 gem 'ckeditor', github: 'galetahub/ckeditor'
+gem 'jquery-atwho-rails'
 
 group :development, :test do
   gem 'byebug'

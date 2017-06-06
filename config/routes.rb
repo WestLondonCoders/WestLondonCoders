@@ -43,6 +43,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'share/users', as: :mentionables
+
   get "/users/:id/user-languages" => 'users#languages', as: 'user_languages'
   get "/users/:id/user-hackrooms" => 'users#hackrooms', as: 'user_hackrooms'
   get "/users/:id/user-events" => 'users#events', as: 'user_events'
