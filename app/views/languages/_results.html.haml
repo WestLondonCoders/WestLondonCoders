@@ -4,7 +4,7 @@
       %h1.u-center= link_to language.name, language, style: "border-bottom: solid 2px #{language.colour}"
       = render partial: 'highlights', locals: { language: language }
 
-      = excerpt(language.description)
+      = excerpt(language.description) if language.description
 
       .a-identities.a-tags--center
         - language.all_users.take(10).each do |user|
