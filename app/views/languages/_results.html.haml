@@ -2,7 +2,8 @@
   - @languages.each do |language|
     .m-grid__box
       %h1.u-center= link_to language.name, language, style: "border-bottom: solid 2px #{language.colour}"
-      = render partial: 'highlights', locals: { language: language }
+
+      .u-margin-bottom--small= render partial: 'highlights', locals: { language: language }
 
       = excerpt(language.description) if language.description
 
