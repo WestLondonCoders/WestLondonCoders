@@ -3,6 +3,9 @@
   - if notification.about_new_follow?
     = render partial: 'notifications/new_follow', locals: { notification: notification }
 
+  - elsif notification.about_mention_in_comment?
+    = render partial: 'notifications/mentioned_you_in_a_comment', locals: { notification: notification }
+
   - elsif notification.about_reply_to_your_comment?
     = render partial: 'notifications/replied_to_your_comment', locals: { notification: notification }
 

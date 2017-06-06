@@ -4,7 +4,10 @@ $(document).on('turbolinks:load', function() {
   jQuery(function() {
     return $('[data-mentionable="users"]').atwho({
       at: "@",
-      data: "/share/users"
+      data: "/share/users",
+      insertTpl: '@${username}',
+      displayTpl: '<li data-id="${id}"><span>${name}</span></li>',
+      limit: 15,
     });
   });
 });

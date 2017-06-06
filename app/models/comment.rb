@@ -1,4 +1,5 @@
 class Comment < ActiveRecord::Base
+  act_as_mentioner
   after_create :announce_comment
 
   belongs_to :author, class_name: 'User'

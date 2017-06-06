@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  act_as_mentionee
   after_create :send_welcome_mail
   after_create :notify_slack_of_new_user if Rails.env.production?
 

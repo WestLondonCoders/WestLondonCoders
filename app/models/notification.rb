@@ -21,4 +21,8 @@ class Notification < ActiveRecord::Base
   def about_new_meetup?
     notifiable_type == 'Event'
   end
+
+  def about_mention_in_comment?
+    action = 'mentioned you' && notifiable_type == 'Comment'
+  end
 end

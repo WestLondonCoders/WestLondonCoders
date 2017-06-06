@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new comment_params
     @comment.author = current_user if current_user
     notify_post_author(@commentable, current_user) unless @commentable.author == current_user
+    notify_mentioned_users(@comment)
 
     if @comment.save
       respond_to do |format|
@@ -69,5 +70,11 @@ class CommentsController < ApplicationController
 
   def notify_post_author(post, current_user)
     Notification.create(user: post.author, notified_by: current_user, notifiable: post, action: 'commented on your')
+  end
+
+  def notify_mentioned_users(comment)
+    mention = ProcessMention.new
+    mention.add_after_callback Proc.new { |comment, user| Notification.create(user: user, notified_by: comment.author, notifiable: comment, action: 'mentioned you') }
+    mention.process_mentions(comment)
   end
 end

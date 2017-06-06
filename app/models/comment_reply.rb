@@ -1,4 +1,5 @@
 class CommentReply < ActiveRecord::Base
+  act_as_mentioner
   belongs_to :author, class_name: 'User'
   belongs_to :comment
 
