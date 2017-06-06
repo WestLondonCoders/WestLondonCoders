@@ -6,7 +6,7 @@
 
         = render partial: 'shared/user_tag', locals: { user: post.created_by, with_date: true, date: post.created_at }
 
-        = excerpt(post.content, 500)
+        .m-grid__text= excerpt(post.content, 500)
 
         .a-tags
           - post.tags.take(1).each do |tag|

@@ -56,6 +56,6 @@ module ApplicationHelper
   end
 
   def excerpt(text, length = 250)
-    simple_format(truncate(sanitize(text), length: length, escape: false, omission: '...'))
+    sanitize text.truncate(length, escape: false, omission: '...')
   end
 end
