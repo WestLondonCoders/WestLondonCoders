@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   scope :in_popularity_order, -> { order('user_follows_count desc') }
 
   extend FriendlyId
-  friendly_id :slug, use: [:slugged, :finders]
+  friendly_id :name, use: [:slugged, :finders]
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
