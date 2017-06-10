@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  after_create :send_welcome_mail
   after_create :notify_slack_of_new_user if Rails.env.production?
 
   has_many :assignments, dependent: :destroy
@@ -91,10 +90,6 @@ class User < ActiveRecord::Base
   end
 
   private
-
-  def send_welcome_mail
-    UserMailer.welcome_email(self).deliver_now
-  end
 
   def notify_slack_of_new_user
     Slacked.post_async slack_message, channel: 'new-signups', username: 'New User Bot'
