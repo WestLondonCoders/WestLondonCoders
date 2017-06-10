@@ -8,18 +8,18 @@ class UserMailer < ApplicationMailer
     mail to: user.email, subject: "Welcome to West London Coders!"
   end
 
-  def rsvp_confirmation(user, event)
+  def rsvp_confirmation(user, meetup)
     headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"<%Unsubscribe%>","text/plain":"<% %>"}}}}'
     @user = user
-    @event = event
-    mail to: user.email, subject: "You're attending on #{@event.date.to_date.to_formatted_s(:long_ordinal)}!"
+    @meetup = meetup
+    mail to: user.email, subject: "You're attending on #{@meetup.date.to_date.to_formatted_s(:long_ordinal)}!"
   end
 
-  def unrsvp_confirmation(user, event)
+  def unrsvp_confirmation(user, meetup)
     headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"<%Unsubscribe%>","text/plain":"<% %>"}}}}'
     @user = user
-    @event = event
-    mail to: user.email, subject: "You're no longer attending on #{@event.date.to_date.to_formatted_s(:long_ordinal)}"
+    @meetup = meetup
+    mail to: user.email, subject: "You're no longer attending on #{@meetup.date.to_date.to_formatted_s(:long_ordinal)}"
   end
 
   def organiser_promotion(user)

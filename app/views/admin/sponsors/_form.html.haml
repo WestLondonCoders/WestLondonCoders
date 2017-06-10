@@ -32,7 +32,7 @@
 
       .m-post-editor__content
         %h2 Address
-        %p This will be linked to on Google Maps in emails, on event pages and on your sponsor page.
+        %p This will be linked to on Google Maps in emails, on meetup pages and on your sponsor page.
         = f.cktext_area :address, cols: 40, ckeditor: { uiColor: '$colour-grey' }
 
       .m-profile__image-upload
@@ -55,7 +55,7 @@
           .m-hackroom__admins
             %h1 WLC admins only
             %h2 Sponsorship admins
-            %p This provides access to a sponsor's representative to manage their page and meetup events.
+            %p This provides access to a sponsor's representative to manage their page and meetups.
             = f.select :user_ids, user_options_for_select(User.all, f.object.user_ids), { label: 'Sponsorship admins' }, multiple: true, class: 'chosen-select'
 
         .m-post-editor__title

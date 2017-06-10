@@ -3,15 +3,15 @@
     .a-content--xwide
       .m-admin
         %h1.u-center
-          #admin-event-search-heading
+          #admin-meetup-search-heading
             = render 'heading'
 
         = render partial: 'filter'
 
-        #admin-event-search-results
+        #admin-meetup-search-results
           = render 'results'
 
 
   %section.a-section.u-margin-top--mobile
     .a-content.u-center
-      = link_to "Schedule an event", new_admin_event_path, class: 'a-button  a-button--admin-edit'
+      = link_to "Schedule a meetup", new_admin_meetup_path, class: 'a-button  a-button--admin-edit'

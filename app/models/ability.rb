@@ -26,7 +26,7 @@ class Ability
     end
 
     if user.has_role? :organiser
-      can :manage, Event
+      can :manage, Meetup
     end
 
     # Custom abilities
@@ -40,9 +40,9 @@ class Ability
     # Users can manage hackrooms if they are an owner
     can :manage, Hackroom, owners: { id: user.id }
 
-    # Sponsors can manage their own events and pages
+    # Sponsors can manage their own meetups and pages
 
     can :manage, Sponsor, users: { id: user.id }
-    can :manage, Event, sponsor_admins: { id: user.id }
+    can :manage, Meetup, sponsor_admins: { id: user.id }
   end
 end

@@ -32,9 +32,9 @@ feature 'accessing edit resource pages' do
       and_notified_of_authorisation_failure
     end
 
-    scenario 'trying to edit an event' do
+    scenario 'trying to edit an meetup' do
       when_there_are_meetups
-      visit edit_admin_event_path(@ruby_meetup)
+      visit edit_admin_meetup_path(@ruby_meetup)
       then_i_should_be_redirected_to_people_page
       and_notified_of_authorisation_failure
     end
@@ -76,9 +76,9 @@ feature 'accessing edit resource pages' do
       and_notified_of_authorisation_failure
     end
 
-    scenario 'trying to edit an event' do
+    scenario 'trying to edit an meetup' do
       when_there_are_meetups
-      visit edit_admin_event_path(@ruby_meetup)
+      visit edit_admin_meetup_path(@ruby_meetup)
       then_i_should_be_redirected_to_people_page
       and_notified_of_authorisation_failure
     end
@@ -118,9 +118,9 @@ feature 'accessing edit resource pages' do
       then_i_should_not_be_redirected_to_people_page
     end
 
-    scenario 'trying to edit an event' do
+    scenario 'trying to edit an meetup' do
       when_there_are_meetups
-      visit edit_admin_event_path(@ruby_meetup)
+      visit edit_admin_meetup_path(@ruby_meetup)
       then_i_should_not_be_redirected_to_people_page
     end
 

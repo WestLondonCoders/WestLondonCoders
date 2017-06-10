@@ -7,7 +7,7 @@ feature 'searching for things' do
 
     scenario 'finding meetups' do
       when_there_are_meetups
-      visit events_path
+      visit meetups_path
       then_i_should_see_the_meetups
       when_i_search_for_ruby_meetup
       then_i_should_see_ruby_meetup
@@ -43,6 +43,6 @@ feature 'searching for things' do
   end
 
   def then_i_am_taken_to_ruby_meetup_page
-    expect(current_path).to eq(event_path(@ruby_meetup))
+    expect(current_path).to eq(meetup_path(@ruby_meetup))
   end
 end

@@ -1,0 +1,11 @@
+- meetup = meetup || @meetup
+
+- if current_user && !meetup.date.past?
+  - if user_attending_meetup?(meetup, current_user)
+    = link_to 'Cancel your RSVP', rsvp_meetup_path(meetup), class: 'a-button'
+  - else
+    = link_to 'RSVP', rsvp_meetup_path(meetup), class: 'a-button'
+- elsif !meetup.date.past?
+  = link_to 'RSVP', new_user_session_path, class: 'a-button'
+- else
+  = link_to 'See more', meetup, class: 'a-button'

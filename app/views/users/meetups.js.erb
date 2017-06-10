@@ -1,0 +1,3 @@
+$('.is-selected').removeClass('is-selected')
+$('#meetup-nav').addClass('is-selected')
+$("#profile-content").html("<%= escape_javascript(render partial: 'shared/meetups', locals: { meetups: @user.meetups.upcoming } ) %>");

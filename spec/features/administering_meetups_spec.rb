@@ -1,19 +1,19 @@
 require 'rails_helper'
 include Warden::Test::Helpers
 
-feature 'administering events' do
+feature 'administering meetups' do
 
   as_an_admin do
 
-    scenario 'scheduling new events' do
-      visit admin_events_path
+    scenario 'scheduling new meetups' do
+      visit admin_meetups_path
       then_i_should_see_the_admin_navbar
       given_there_is_a_sponsor
       when_i_schedule_a_meetup
       then_i_should_see_the_meetup
     end
 
-    scenario 'editing existing events' do
+    scenario 'editing existing meetups' do
       given_there_is_a_sponsor
       given_there_is_a_meetup
       and_i_edit_the_meetup
@@ -29,11 +29,11 @@ feature 'administering events' do
   end
 
   def when_i_schedule_a_meetup
-    visit new_admin_event_path
-    fill_in 'event_name', with: 'Learn, discuss and practice code'
-    fill_in 'event_description', with: 'This meetup will be cool'
-    fill_in 'event_date', with: '2017-03-17 00:00:00.000000'
-    select 'Sky', from: 'event_sponsor_id'
+    visit new_admin_meetup_path
+    fill_in 'meetup_name', with: 'Learn, discuss and practice code'
+    fill_in 'meetup_description', with: 'This meetup will be cool'
+    fill_in 'meetup_date', with: '2017-03-17 00:00:00.000000'
+    select 'Sky', from: 'meetup_sponsor_id'
     click_on 'Schedule'
   end
 
@@ -42,12 +42,12 @@ feature 'administering events' do
   end
 
   def given_there_is_a_meetup
-    @meetup = FactoryGirl.create(:event, id: 2, name: 'Learn, do and chat code')
+    @meetup = FactoryGirl.create(:meetup, id: 2, name: 'Learn, do and chat code')
   end
 
   def and_i_edit_the_meetup
-    visit edit_admin_event_path(@meetup)
-    fill_in 'event_name', with: 'Rad new name'
+    visit edit_admin_meetup_path(@meetup)
+    fill_in 'meetup_name', with: 'Rad new name'
     click_on 'Save changes'
   end
 

@@ -22,17 +22,17 @@
 ---
 en:
   index_introductions:
-    events: Our meetup planner is still new, and people are still mostly confirming
-      attendance on Meetup.com. Having our own planner allows us to use the data we
-      generate about our meetups.
     hackrooms: Hackrooms are a way to bring together people with shared interests
       or goals. It could be a group of beginners learning HTML, or some Pythonists
       building an app, or both of those things.
     languages: We've used the word languages here, but these can be any tools or frameworks.
       Languages can have primary hackrooms, where that language is the main focus,
       or secondary hackrooms where it's used as a sideline.
+    meetups: Our meetup planner is still new, and people are still mostly confirming
+      attendance on Meetup.com. Having our own planner allows us to use the data we
+      generate about our meetups.
     organisers: Our organisers help make sure everyone is comfortable at our meetups,
-      organise hackrooms and help setup events. Interested in helping?
+      organise hackrooms and help setup meetups. Interested in helping?
     posts: Anyone can write posts at West London Coders. Writing about development
       or your experience at our meetups is a great way to express yourself, provoke
       discussion and get involved in the developer community.

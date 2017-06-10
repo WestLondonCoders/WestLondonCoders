@@ -1,6 +1,6 @@
 %h2 Upcoming
 
-- if upcoming_events.any?
+- if upcoming_meetups.any?
   %table.m-admin-table.u-margin-top
     %thead
       %tr
@@ -14,13 +14,13 @@
           Venue
         %th{style: 'width: 5%'}
     %tbody
-      - upcoming_events.each do |event|
-        = render partial: 'event_row', locals: { event: event }
+      - upcoming_meetups.each do |meetup|
+        = render partial: 'meetup_row', locals: { meetup: meetup }
 - else
-  %p No events scheduled
+  %p No meetups scheduled
 %br
 %h2 Past
-- if past_events.any?
+- if past_meetups.any?
   %table.m-admin-table.u-margin-top
     %thead
       %tr
@@ -34,8 +34,8 @@
           Venue
         %th{style: 'width: 5%'}
     %tbody
-      - past_events.each do |event|
-        = render partial: 'event_row', locals: { event: event }
+      - past_meetups.each do |meetup|
+        = render partial: 'meetup_row', locals: { meetup: meetup }
 - else
   .m-admin-table
-    %p No events have passed yet
+    %p No meetups have passed yet

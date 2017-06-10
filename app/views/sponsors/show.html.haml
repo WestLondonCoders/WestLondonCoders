@@ -46,28 +46,28 @@
           .u-center.u-margin-bottom.u-margin-top
             = link_to 'Find out more', @sponsor.link, target: '_blank', class: 'a-button'
 
-  - if @sponsor.events.upcoming.any?
+  - if @sponsor.meetups.upcoming.any?
     %section.a-section
       .a-content
-        %h2 Upcoming events
-        - @sponsor.events.upcoming.take(3).each do |event|
+        %h2 Upcoming meetups
+        - @sponsor.meetups.upcoming.take(3).each do |meetup|
           %p
-            = link_to event_path(event) do
-              = event.name
+            = link_to meetup_path(meetup) do
+              = meetup.name
               %br
-              = time_as_sentence(event.date)
+              = time_as_sentence(meetup.date)
               on
-              = event.date.to_date.to_formatted_s(:long_ordinal)
+              = meetup.date.to_date.to_formatted_s(:long_ordinal)
 
-  - if @sponsor.events.past.any?
+  - if @sponsor.meetups.past.any?
     %section.a-section
       .a-content
-        %h3 Past events
-        - @sponsor.events.past.take(3).each do |event|
+        %h3 Past meetups
+        - @sponsor.meetups.past.take(3).each do |meetup|
           %p
-            = link_to event_path(event) do
-              = event.name
+            = link_to meetup_path(meetup) do
+              = meetup.name
               %br
-              = time_as_sentence(event.date)
+              = time_as_sentence(meetup.date)
               on
-              = event.date.to_date.to_formatted_s(:long_ordinal)
+              = meetup.date.to_date.to_formatted_s(:long_ordinal)

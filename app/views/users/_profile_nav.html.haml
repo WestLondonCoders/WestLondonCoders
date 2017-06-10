@@ -11,6 +11,6 @@
     = link_to user_posts_path, id: 'post-nav', class: 'a-subnav__item',  :remote => true do
       %h3 Posts
 
-  - if @user.events.upcoming.any?
-    = link_to user_events_path, id: 'meetup-nav', class: 'a-subnav__item', :remote => true do
+  - if @user.meetups.upcoming.any?
+    = link_to user_meetups_path, id: 'meetup-nav', class: 'a-subnav__item', :remote => true do
       %h3 Meetups

@@ -20,7 +20,7 @@ module UserHelper
   end
 
   def meetup_count(user)
-    pluralize(user.events.size, 'meetup')
+    pluralize(user.meetups.size, 'meetup')
   end
 
   def list_all_sentence(users)

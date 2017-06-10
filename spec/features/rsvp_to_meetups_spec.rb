@@ -1,17 +1,17 @@
 require 'rails_helper'
 include Warden::Test::Helpers
 
-feature 'rsvp to events' do
+feature 'rsvp to meetups' do
 
   as_a_logged_in_user do
 
     before do
       when_there_are_languages
       when_there_are_meetups
-      visit event_path(@ruby_meetup)
+      visit meetup_path(@ruby_meetup)
     end
 
-    scenario 'rsvp to an event' do
+    scenario 'rsvp to an meetup' do
       and_i_have_a_primary_language
       and_i_rsvp
       then_my_name_should_appear_on_the_list
@@ -19,7 +19,7 @@ feature 'rsvp to events' do
       and_i_should_be_able_to_unrsvp
     end
 
-    scenario 'cancelling rsvp to an event' do
+    scenario 'cancelling rsvp to an meetup' do
       and_i_rsvp
       and_i_unrsvp
     end

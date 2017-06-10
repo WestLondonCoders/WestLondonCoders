@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-describe 'events/show.html.haml' do
-  let(:event) { FactoryGirl.create(:event, sponsor: sponsor) }
+describe 'meetups/show.html.haml' do
+  let(:meetup) { FactoryGirl.create(:meetup, sponsor: sponsor) }
 
   let(:attending_user) { FactoryGirl.create(:user, name: 'Beth') }
   let(:attending_organiser) { FactoryGirl.create(:user, name: 'Jerome') }
-  let(:event_rsvp) { double(:event_rsvp) }
+  let(:meetup_rsvp) { double(:meetup_rsvp) }
   let(:sponsor) { FactoryGirl.create(:sponsor) }
 
   let(:primary_language) { FactoryGirl.create(:language) }
@@ -16,11 +16,11 @@ describe 'events/show.html.haml' do
     allow(view).to receive(:can?).and_return(false)
     allow(view).to receive(:current_user).and_return(current_user)
 
-    allow(event).to receive(:rsvps).and_return([attending_user, attending_organiser])
+    allow(meetup).to receive(:rsvps).and_return([attending_user, attending_organiser])
     allow(attending_user).to receive(:primary_languages).and_return([primary_language])
-    allow(event).to receive(:languages).and_return([primary_language])
+    allow(meetup).to receive(:languages).and_return([primary_language])
 
-    assign(:event, event)
+    assign(:meetup, meetup)
   end
 
   it 'sets page title' do
@@ -28,10 +28,10 @@ describe 'events/show.html.haml' do
     render
   end
 
-  it 'displays edit event button if user can edit' do
-    allow(view).to receive(:can?).with(:manage, event).and_return(true)
+  it 'displays edit meetup button if user can edit' do
+    allow(view).to receive(:can?).with(:manage, meetup).and_return(true)
     render
-    expect(rendered).to have_link('Edit event')
+    expect(rendered).to have_link('Edit meetup')
   end
 
   it 'displays an organiser list' do
@@ -40,7 +40,7 @@ describe 'events/show.html.haml' do
     expect(rendered).to have_content('Jerome')
   end
 
-  it 'displays event description' do
+  it 'displays meetup description' do
     render
     expect(rendered).to have_content('This meetup will be cool')
   end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'events/index.html.haml' do
+describe 'meetups/index.html.haml' do
   before do
     stub_template '_heading.html.haml' => ''
     stub_template '_filter.html.haml' => ''

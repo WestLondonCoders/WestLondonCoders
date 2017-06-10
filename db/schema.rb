@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170604185559) do
+ActiveRecord::Schema.define(version: 20170610110403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,27 +53,6 @@ ActiveRecord::Schema.define(version: 20170604185559) do
     t.datetime "updated_at",                      null: false
     t.integer  "author_id"
     t.boolean  "public",           default: true
-  end
-
-  create_table "event_rsvps", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "event_id",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "event_rsvps", ["user_id", "event_id"], name: "index_event_rsvps_on_user_id_and_event_id", unique: true, using: :btree
-  add_index "event_rsvps", ["user_id"], name: "index_event_rsvps_on_user_id", using: :btree
-
-  create_table "events", force: :cascade do |t|
-    t.string   "name",        null: false
-    t.text     "description"
-    t.string   "slug"
-    t.datetime "date",        null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "sponsor_id"
-    t.datetime "finish_date"
   end
 
   create_table "hackroom_languages", force: :cascade do |t|
@@ -126,6 +105,27 @@ ActiveRecord::Schema.define(version: 20170604185559) do
     t.string   "colour",           default: "#000000", null: false
     t.string   "slug",             default: ""
     t.integer  "popularity_score", default: 0
+  end
+
+  create_table "meetup_rsvps", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "meetup_id",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "meetup_rsvps", ["user_id", "meetup_id"], name: "index_meetup_rsvps_on_user_id_and_meetup_id", unique: true, using: :btree
+  add_index "meetup_rsvps", ["user_id"], name: "index_meetup_rsvps_on_user_id", using: :btree
+
+  create_table "meetups", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.text     "description"
+    t.string   "slug"
+    t.datetime "date",        null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "sponsor_id"
+    t.datetime "finish_date"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -304,8 +304,8 @@ ActiveRecord::Schema.define(version: 20170604185559) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["slug"], name: "index_users_on_slug", using: :btree
 
-  add_foreign_key "event_rsvps", "events", on_delete: :cascade
-  add_foreign_key "event_rsvps", "users", on_delete: :cascade
+  add_foreign_key "meetup_rsvps", "meetups", on_delete: :cascade
+  add_foreign_key "meetup_rsvps", "users", on_delete: :cascade
   add_foreign_key "notifications", "users"
   add_foreign_key "notifications", "users", column: "notified_by_id"
 end

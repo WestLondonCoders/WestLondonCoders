@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/learn', to: 'pages#learn', as: 'learn'
   get '/jekyll', to: 'pages#jekyll', as: 'jekyll'
   get '/organisers', to: 'users#organisers', as: 'organisers'
-  get '/past-events', to: 'events#past_events', as: 'past_events'
+  get '/past-meetups', to: 'meetups#past_meetups', as: 'past_meetups'
   get 'events', to: redirect('meetups')
 
   resources :posts do
@@ -45,7 +45,7 @@ Rails.application.routes.draw do
 
   get "/users/:id/user-languages" => 'users#languages', as: 'user_languages'
   get "/users/:id/user-hackrooms" => 'users#hackrooms', as: 'user_hackrooms'
-  get "/users/:id/user-events" => 'users#events', as: 'user_events'
+  get "/users/:id/user-meetups" => 'users#meetups', as: 'user_meetups'
   get "/users/:id/user-pages" => 'users#posts', as: 'user_posts'
 
   get '/users', to: redirect('members')
@@ -73,9 +73,9 @@ Rails.application.routes.draw do
 
   resources :sponsors
 
-  resources :events, path: 'meetups' do
+  resources :meetups, path: 'meetups' do
     collection do
-      match 'search' => 'events#search', via: [:get, :post], as: :search
+      match 'search' => 'meetups#search', via: [:get, :post], as: :search
     end
     member do
       get :rsvp
@@ -100,13 +100,13 @@ Rails.application.routes.draw do
 
     resources :roles
 
-    resources :events do
+    resources :meetups do
       collection do
-        match 'search' => 'events#search', via: [:get, :post], as: :search
+        match 'search' => 'meetups#search', via: [:get, :post], as: :search
       end
     end
 
-    get 'your-events', to: 'events#your_events'
+    get 'your-meetups', to: 'meetups#your_meetups'
 
     resources :sponsors
   end

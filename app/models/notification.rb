@@ -19,6 +19,6 @@ class Notification < ActiveRecord::Base
   end
 
   def about_new_meetup?
-    notifiable_type == 'Event'
+    notifiable_type == 'Meetup'
   end
 end

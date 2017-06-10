@@ -1,11 +1,11 @@
-- set_page_title("Meetup event")
+- set_page_title("Meetup")
 
 .a-page-holder
 
   .m-post-editor
-    %h1 Meetup event
+    %h1 Meetup
 
-    = form_for [:admin, @event] do |f|
+    = form_for [:admin, @meetup] do |f|
       .m-form
         %h3 Meetup title
         .u-margin-bottom--small= f.text_field :name, placeholder: "Learn, discuss and practice code"
@@ -15,7 +15,7 @@
         %h3 Meetup start and finish dates
         .u-margin-bottom--small.m-form--narrow= f.datetime_local_field :date
         .u-margin-bottom--small.m-form--narrow= f.datetime_local_field :finish_date
-        - if @event.persisted?
+        - if @meetup.persisted?
           %h3 URL slug
           %p Changing this will break the previous link to the meetup page.
           .u-margin-bottom--small= f.text_field :slug
@@ -30,14 +30,14 @@
         .u-margin-top
           .m-post-editor__submit
             - if current_user.has_role?(:admin)
-              - if @event.persisted?
-                = link_to "Delete event", [:admin, @event], method: :delete, data: { confirm: 'Delete event?' }, class: 'a-button a-button--ghost u-left'
-                = link_to "Cancel", admin_events_path, class: 'a-button a-button--ghost u-left'
+              - if @meetup.persisted?
+                = link_to "Delete meetup", [:admin, @meetup], method: :delete, data: { confirm: 'Delete meetup?' }, class: 'a-button a-button--ghost u-left'
+                = link_to "Cancel", admin_meetups_path, class: 'a-button a-button--ghost u-left'
                 = f.submit 'Save changes', class: 'a-button u-float-right'
 
               - else
-                = link_to "Cancel", admin_events_path, class: 'a-button a-button--ghost'
+                = link_to "Cancel", admin_meetups_path, class: 'a-button a-button--ghost'
                 = f.submit 'Schedule', class: 'a-button'
             - else
-              = link_to "Cancel", admin_your_events_path, class: 'a-button a-button--ghost u-left'
+              = link_to "Cancel", admin_your_meetups_path, class: 'a-button a-button--ghost u-left'
               = f.submit 'Save changes', class: 'a-button u-float-right'

@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def events
+  def meetups
     respond_to do |format|
       format.js
     end

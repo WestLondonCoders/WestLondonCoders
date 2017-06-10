@@ -7,17 +7,17 @@
       %h1.a-heading.u-center#post-search-heading= render 'heading'
 
       .a-content
-        %p= I18n.t('index_introductions.events')
+        %p= I18n.t('index_introductions.meetups')
 
       = render partial: 'filter'
       = render partial: 'sort'
 
-  - if can? :create, Event
+  - if can? :create, Meetup
     %section.a-section.u-margin-top--mobile
       .a-content.u-center
-        = link_to "Schedule meetup", new_admin_event_path, class: 'a-button a-button--edit'
+        = link_to "Schedule meetup", new_admin_meetup_path, class: 'a-button a-button--edit'
 
-  %section.a-section#event-search-results= render 'results'
+  %section.a-section#meetup-search-results= render 'results'
 
   .u-center.u-margin-top
-    = link_to "Past meetups", past_events_path, class: 'a-button'
+    = link_to "Past meetups", past_meetups_path, class: 'a-button'

@@ -1,0 +1,63 @@
+- set_page_title(@meetup.name)
+
+.a-page-holder
+
+  - if can? :manage, @meetup
+    %section.a-section.u-margin-top--mobile
+      .a-content.u-center
+        = link_to "Edit meetup", edit_admin_meetup_path(@meetup), class: "a-button a-button--edit"
+
+  %section.a-section.a-section--separated.u-margin-top--mobile
+    .a-content
+      %h1.a-heading
+        West London Coders meetup:
+        %br
+        = @meetup.name
+
+      %h3
+        = @meetup.date.to_date.to_formatted_s(:long_ordinal)
+        %br
+        = @meetup.date.strftime("%l:%M%P")
+        - if @meetup.finish_date.present?
+          = ' - '
+          = @meetup.finish_date.strftime("%l:%M%P")
+        %br
+        = time_as_sentence(@meetup.date)
+
+      .u-float-right--desktop.u-margin-bottom
+        = link_to sponsor_path(@meetup.sponsor) do
+          = image_tag(@meetup.sponsor.logo, class: 'a-logo')
+
+      = link_to sanitize(@meetup.sponsor.address), "http://maps.google.com/?q=#{strip_tags @meetup.sponsor.address}", target: "_blank"
+
+      .u-margin-top.u-center--mobile
+        = render partial: 'rsvp_button', locals: { meetup: @meetup }
+      %h3.u-float-right--desktop.u-center--mobile.u-margin-bottom
+        - if @meetup.rsvps.any?
+          = pluralize(@meetup.rsvps.count, "member")
+          = @meetup.date.past? ? "attended" : "attending"
+
+  %section.a-section.u-margin-top--desktop
+    .a-content
+      %h2 What's this meetup about?
+      = sanitize(@meetup.description)
+
+      - if @meetup.organisers.any?
+        %h2 Organisers
+        .a-identities
+          - @meetup.organisers.each do |user|
+            = render partial: 'shared/user_tag', locals: { user: user }
+
+      - if @meetup.rsvps.any?
+        .a-content
+          %h2 Who's coming?
+          .a-identities
+            - @meetup.rsvps.each do |rsvp|
+              = render partial: 'shared/user_tag', locals: { user: rsvp } unless rsvp.has_role?(:organiser)
+
+      - if @meetup.rsvps.any?
+        %h2 What languages are attendees interested in?
+        .a-tags
+          - @meetup.languages.each do |language|
+            = render partial: 'shared/language_tag', locals: { language: language }
+      .u-center.u-margin-top= render partial: 'rsvp_button'

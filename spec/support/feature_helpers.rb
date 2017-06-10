@@ -22,8 +22,8 @@ module FeatureHelpers
 
   def when_there_are_meetups
     @sponsor = FactoryGirl.create(:sponsor, name: 'Sky')
-    @ruby_meetup = FactoryGirl.create(:event, name: 'Ruby meetup', sponsor: @sponsor)
-    @python_meetup = FactoryGirl.create(:event, name: 'Python meetup', sponsor: @sponsor)
+    @ruby_meetup = FactoryGirl.create(:meetup, name: 'Ruby meetup', sponsor: @sponsor)
+    @python_meetup = FactoryGirl.create(:meetup, name: 'Python meetup', sponsor: @sponsor)
   end
 
   def when_there_are_sponsors

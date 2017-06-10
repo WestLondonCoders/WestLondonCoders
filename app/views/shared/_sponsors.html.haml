@@ -10,15 +10,15 @@
           .m-hackroom__mission
             = excerpt(sponsor.description, 240)
 
-          - if sponsor.events.upcoming.any?
+          - if sponsor.meetups.upcoming.any?
             %p
-              = pluralize(sponsor.events.upcoming.count, "meetup")
+              = pluralize(sponsor.meetups.upcoming.count, "meetup")
               scheduled.
-          - if sponsor.events.past.any?
+          - if sponsor.meetups.past.any?
             %p
               = sponsor.name
               have hosted
-              = pluralize(sponsor.events.past.count, "meetup")
+              = pluralize(sponsor.meetups.past.count, "meetup")
               with us in the past.
 
           - if sponsor.users.any?

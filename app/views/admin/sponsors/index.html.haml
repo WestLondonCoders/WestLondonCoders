@@ -22,7 +22,7 @@
                 = link_to sponsor_path(sponsor) do
                   = image_tag(sponsor.logo_url)
               %td{style: 'width: 10%'}
-                = sponsor.events.count
+                = sponsor.meetups.count
               %td{style: 'width: 10%'}
                 = sponsor.users.count
               %td{style: 'width: 5%'}

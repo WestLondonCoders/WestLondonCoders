@@ -1,7 +1,7 @@
 require 'rails_helper'
 include Warden::Test::Helpers
 
-feature 'administering events' do
+feature 'administering meetups' do
 
   as_an_admin do
 

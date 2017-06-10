@@ -1472,8 +1472,8 @@
                                 %th
                                   %b
                                     %br
-                                    %h4.text-center= @event.name
-                                    %h5.text-center= @event.date.to_formatted_s(:long_ordinal)
+                                    %h4.text-center= @meetup.name
+                                    %h5.text-center= @meetup.date.to_formatted_s(:long_ordinal)
                     %table.row.masthead
                       %tbody
                         %tr
@@ -1511,14 +1511,14 @@
                                     We've updated your RSVP and you're no longer on the list for the meetup.
                                     If you change your mind, you can always
                                     = succeed '.' do
-                                      = link_to 'RSVP again', event_url(@event)
+                                      = link_to 'RSVP again', meetup_url(@meetup)
                                   %br/
                                   %h5 Want to come to other meetups?
                                   %p
                                     Don't forget to check the
-                                    = link_to events_url do
+                                    = link_to meetups_url do
                                       meetups page
-                                    for new events.
+                                    for new meetups.
                                   %br
                                   %table.button.swu-button
                                     %tr
@@ -1526,7 +1526,7 @@
                                         %table
                                           %tr
                                             %td
-                                              = link_to 'Meetups', events_url
+                                              = link_to 'Meetups', meetups_url
                                 %th.expander
                     %table.row
                       %tbody

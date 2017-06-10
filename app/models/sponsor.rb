@@ -1,5 +1,5 @@
 class Sponsor < ActiveRecord::Base
-  has_many :events, counter_cache: true
+  has_many :meetups, counter_cache: true
   has_many :sponsorship_admins
   has_many :users, through: :sponsorship_admins
   has_many :sponsor_languages
