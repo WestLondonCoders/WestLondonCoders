@@ -1,5 +1,5 @@
 class CreateNotifications < ActiveRecord::Migration
-  def change
+  def change # rubocop:disable Metrics/MethodLength
     create_table :notifications do |t|
       t.references :user, index: true
       t.references :notified_by, index: true

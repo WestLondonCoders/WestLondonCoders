@@ -20,10 +20,9 @@ class HackroomsController < ApplicationController
 
   def create # rubocop:disable Metrics/MethodLength
     @hackroom = Hackroom.new(hackroom_params)
-    @hackroom.slug = @hackroom.name.strip.downcase.tr(" ", "-")
-
     respond_to do |format|
       if @hackroom.save
+        @hackroom.slug = @hackroom.name.strip.downcase.tr(" ", "-")
         HackroomOwner.create(hackroom: @hackroom, user: current_user) unless @hackroom.owners.any?
         slack_announce_new_hackroom
         format.html { redirect_to @hackroom, notice: 'Hackroom created successfully.' }
@@ -52,7 +51,7 @@ class HackroomsController < ApplicationController
 
   def join
     enrolment = UserHackroom.find_by(hackroom: @hackroom, user: @user)
-    if enrolment.present? ? remove_user_from_hackroom(enrolment) : add_user_to_hackroom
+    enrolment.present? ? remove_user_from_hackroom(enrolment) : add_user_to_hackroom
     redirect_to @hackroom if @hackroom.save
   end
 

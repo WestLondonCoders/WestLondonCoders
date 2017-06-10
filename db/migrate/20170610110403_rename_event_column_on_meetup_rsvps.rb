@@ -5,6 +5,5 @@ class RenameEventColumnOnMeetupRsvps < ActiveRecord::Migration
 
   def down
     rename_column :meetup_rsvps, :meetup_id, :event_id
-
   end
 end
