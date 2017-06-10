@@ -1,6 +1,11 @@
 class RegistrationsController < Devise::RegistrationsController
   prepend_before_action :check_captcha, only: [:create]
 
+  def create
+    super
+    UserMailer.welcome_email(resource).deliver unless resource.invalid?
+  end
+
   private
 
   def check_captcha

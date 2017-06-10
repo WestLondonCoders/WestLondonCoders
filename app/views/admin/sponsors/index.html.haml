@@ -19,8 +19,9 @@
               %td{style: 'width: 37%'}
                 = link_to sponsor.name, sponsor_path(sponsor)
               %td{style: 'width: 37%'}
-                = link_to sponsor_path(sponsor) do
-                  = image_tag(sponsor.logo_url)
+                - if sponsor.logo.present?
+                  = link_to sponsor_path(sponsor) do
+                    = image_tag(sponsor.logo_url)
               %td{style: 'width: 10%'}
                 = sponsor.meetups.count
               %td{style: 'width: 10%'}
