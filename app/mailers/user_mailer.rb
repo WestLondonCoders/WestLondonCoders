@@ -12,14 +12,14 @@ class UserMailer < ApplicationMailer
     headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"<%Unsubscribe%>","text/plain":"<% %>"}}}}'
     @user = user
     @meetup = meetup
-    mail to: user.email, subject: "You're attending on #{@meetup.date.to_date.to_formatted_s(:long_ordinal)}!"
+    mail to: user.email, subject: "You're attending on #{@meetup.start_date}!"
   end
 
   def unrsvp_confirmation(user, meetup)
     headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"<%Unsubscribe%>","text/plain":"<% %>"}}}}'
     @user = user
     @meetup = meetup
-    mail to: user.email, subject: "You're no longer attending on #{@meetup.date.to_date.to_formatted_s(:long_ordinal)}"
+    mail to: user.email, subject: "You're no longer attending on #{@meetup.start_date}"
   end
 
   def organiser_promotion(user)

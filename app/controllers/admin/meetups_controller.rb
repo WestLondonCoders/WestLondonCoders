@@ -86,11 +86,11 @@ class Admin::MeetupsController < Admin::BaseController
 
   def post_new_meetup_slack_message
     if Rails.env.production?
-      Slacked.post_async new_meetup_slack_message(meetup_url(@meetup), @meetup.date), channel: 'general', username: 'Schedule Bot'
+      Slacked.post_async new_meetup_slack_message(meetup_url(@meetup), @meetup.start_date), channel: 'general', username: 'Schedule Bot'
     end
   end
 
   def new_meetup_slack_message(url, date)
-    "A new meetup's been scheduled for #{date.to_date.to_formatted_s(:long_ordinal)}! RSVP here: #{url}"
+    "A new meetup's been scheduled for #{date}! RSVP here: #{url}"
   end
 end

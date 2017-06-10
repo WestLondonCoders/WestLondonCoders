@@ -57,7 +57,7 @@
               %br
               = time_as_sentence(meetup.date)
               on
-              = meetup.date.to_date.to_formatted_s(:long_ordinal)
+              = meetup.start_date
 
   - if @sponsor.meetups.past.any?
     %section.a-section
@@ -70,4 +70,4 @@
               %br
               = time_as_sentence(meetup.date)
               on
-              = meetup.date.to_date.to_formatted_s(:long_ordinal)
+              = meetup.start_date

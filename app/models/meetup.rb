@@ -19,6 +19,10 @@ class Meetup < ActiveRecord::Base
     date.to_date.to_formatted_s(:long_ordinal)
   end
 
+  def end_date
+    finish_date.to_date.to_formatted_s(:long_ordinal)
+  end
+
   def past?
     date.past?
   end

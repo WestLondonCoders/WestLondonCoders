@@ -7,7 +7,7 @@
           = image_tag meetup.sponsor.logo, class: 'm-grid__logo'
           .m-grid__meta
             %h3.u-left
-              = meetup.date.to_date.to_formatted_s(:long_ordinal)
+              = meetup.start_date
               %br
               = meetup.date.strftime("%l:%M%P")
               - if meetup.finish_date.present?

@@ -58,4 +58,8 @@ module ApplicationHelper
   def excerpt(text, length = 250)
     sanitize text.truncate(length, escape: false, omission: '...')
   end
+
+  def extract_time_from(date)
+    date.strftime("%l:%M%P")
+  end
 end

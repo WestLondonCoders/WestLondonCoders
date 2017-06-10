@@ -15,12 +15,12 @@
         = @meetup.name
 
       %h3
-        = @meetup.date.to_date.to_formatted_s(:long_ordinal)
+        = @meetup.start_date
         %br
-        = @meetup.date.strftime("%l:%M%P")
+        = extract_time_from(@meetup.date)
         - if @meetup.finish_date.present?
           = ' - '
-          = @meetup.finish_date.strftime("%l:%M%P")
+          = extract_time_from(@meetup.finish_date)
         %br
         = time_as_sentence(@meetup.date)
 
