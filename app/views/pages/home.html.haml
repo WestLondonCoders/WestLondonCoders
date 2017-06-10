@@ -16,7 +16,7 @@
         %span#next-meetup-venue-name
       %h3
         %span#next-meetup-venue
-      = render partial: 'meetups/rsvp_button', locals: { meetup: @next_meetup }
+      = render partial: 'meetups/rsvp_button', locals: { meetup: @next_meetup } if @next_meetup
 
 - if @sponsors.any?
   %section.a-section.m-intro
