@@ -1,6 +1,7 @@
 class CommentRepliesController < ApplicationController
   before_action :find_comment
   before_action :find_reply, only: [:destroy, :hide]
+  after_action :notify_comment_author, only: :create
 
   def new
     @reply = CommentReply.new
@@ -8,10 +9,8 @@ class CommentRepliesController < ApplicationController
 
   def create
     @reply = @comment.replies.new comment_params
-    @reply.author = current_user if current_user
-    notify_comment_author unless @comment.author == @reply.author
-
     if @reply.save
+      @reply.author = current_user
       respond_to do |format|
         format.html do
           redirect_to @comment.commentable, anchor: "comment-#{@comment.id}"
@@ -56,6 +55,6 @@ class CommentRepliesController < ApplicationController
   end
 
   def notify_comment_author
-    Notification.create(user: @comment.author, notified_by: current_user, notifiable: @comment, action: 'replied to')
+    Notification.create(user: @comment.author, notified_by: current_user, notifiable: @comment, action: 'replied to') unless @comment.author == @reply.author
   end
 end

@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :find_commentable
   before_action :set_post_and_comments, only: [:create, :destroy, :update]
+  after_action :notify_post_author
 
   def show
   end
@@ -11,10 +12,8 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @commentable.comments.new comment_params
-    @comment.author = current_user if current_user
-    notify_post_author(@commentable, current_user) unless @commentable.author == current_user
-
     if @comment.save
+      @comment.author = current_user if current_user
       respond_to do |format|
         format.html do
           redirect_to @commentable, anchor: "comment-#{@comment.id}"
@@ -68,6 +67,6 @@ class CommentsController < ApplicationController
   end
 
   def notify_post_author(post, current_user)
-    Notification.create(user: post.author, notified_by: current_user, notifiable: post, action: 'commented on your')
+    Notification.create(user: post.author, notified_by: current_user, notifiable: post, action: 'commented on your') unless @commentable.author == current_user
   end
 end
