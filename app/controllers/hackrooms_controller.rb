@@ -52,17 +52,8 @@ class HackroomsController < ApplicationController
 
   def join
     enrolment = UserHackroom.find_by(hackroom: @hackroom, user: @user)
-    if enrolment.present?
-      enrolment.destroy
-      @hackroom.popularity_score -= 1
-      flash[:alert] = "You've left this hackroom."
-    else
-      UserHackroom.create(hackroom: @hackroom, user: @user)
-      @hackroom.popularity_score += 1
-      flash[:alert] = 'You joined this hackroom!'
-    end
-    @hackroom.save
-    redirect_to @hackroom
+    if enrolment.present? ? remove_user_from_hackroom(enrolment) : add_user_to_hackroom
+    redirect_to @hackroom if @hackroom.save
   end
 
   def destroy
@@ -100,5 +91,17 @@ class HackroomsController < ApplicationController
     else
       Slacked.post_async "#{current_user.name} created a hackroom: #{@hackroom.name} #{hackroom_url(@hackroom)}", channel: 'testing', username: 'Hackroom Bot'
     end
+  end
+
+  def remove_user_from_hackroom(enrolment)
+    enrolment.destroy
+    @hackroom.popularity_score -= 1
+    flash[:alert] = "You've left this hackroom."
+  end
+
+  def add_user_to_hackroom
+    UserHackroom.create(hackroom: @hackroom, user: @user)
+    @hackroom.popularity_score += 1
+    flash[:alert] = 'You joined this hackroom!'
   end
 end
