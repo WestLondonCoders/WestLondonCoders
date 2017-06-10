@@ -30,9 +30,10 @@ feature 'administering meetups' do
 
   def when_i_schedule_a_meetup
     visit new_admin_meetup_path
-    fill_in 'meetup_name', with: 'Learn, discuss and practice code'
+    fill_in 'meetup_name', with: 'Learn, discuss and practice code bitches'
     fill_in 'meetup_description', with: 'This meetup will be cool'
-    fill_in 'meetup_date', with: '2017-03-17 00:00:00.000000'
+    fill_in 'meetup_date', with: 1.week.from_now
+    fill_in 'meetup_finish_date', with: 1.week.from_now
     select 'Sky', from: 'meetup_sponsor_id'
     click_on 'Schedule'
   end
