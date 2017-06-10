@@ -7,7 +7,7 @@
 
       = excerpt(language.description) if language.description
 
-      .a-identities.a-tags--center
+      .a-identities.a-tags--center.u-margin-top--small
         - language.all_users.take(10).each do |user|
           = render partial: 'shared/user_tag', locals: { user: user, image_only: true }
 
