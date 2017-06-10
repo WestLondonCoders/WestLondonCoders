@@ -5,6 +5,7 @@ describe 'pages/home.html.haml' do
   let(:posts) { [post] }
   let(:sponsor) { FactoryGirl.create(:sponsor) }
   let(:sponsors) { [sponsor] }
+  let(:next_meetup) { double(:meetup, date: 1.week.from_now, finish_date: 1.week.from_now) }
 
   before do
     allow(posts).to receive(:take).and_return(posts)
@@ -12,6 +13,7 @@ describe 'pages/home.html.haml' do
 
     assign(:posts, posts)
     assign(:sponsors, sponsors)
+    assign(:next_meetup, next_meetup)
     stub_template 'shared/_posts.html.haml' => ''
     stub_template 'pages/_comments_feed.html.haml' => ''
   end
