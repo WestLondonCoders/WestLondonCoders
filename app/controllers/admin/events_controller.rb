@@ -32,9 +32,10 @@ class Admin::EventsController < Admin::BaseController
   def create
     authorize! :create, @events
     @event = Event.new(event_params)
-    @event.slug = create_slug(@event)
 
     if @event.save
+      @event.slug = create_slug(@event)
+
       unless @event.date.past?
         post_new_event_slack_message(@event)
         notify_all(current_user, @event, 'scheduled a new meetup for')
