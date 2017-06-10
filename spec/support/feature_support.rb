@@ -25,7 +25,7 @@ module FeatureSupport
     end
 
     def as_a_sponsor(&block)
-      context 'as an admin' do
+      context 'as a sponsor' do
         let(:sponsorship_admin) { FactoryGirl.create(:sponsorship_admin, email: 'admin@example.com', name: 'Steve') }
 
         before do
