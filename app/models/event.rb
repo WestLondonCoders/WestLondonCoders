@@ -8,6 +8,7 @@ class Event < ActiveRecord::Base
 
   scope :upcoming, -> { where("date >= ?", Date.today) }
   scope :past, -> { where("date <= ?", Date.today) }
+  scope :in_upcoming_order, -> { upcoming.order('date asc') }
 
   extend FriendlyId
   friendly_id :slug, use: :slugged
