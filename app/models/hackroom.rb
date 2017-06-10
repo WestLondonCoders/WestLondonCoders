@@ -13,7 +13,7 @@ class Hackroom < ActiveRecord::Base
   scope :in_popularity_order, -> { order('popularity_score desc') }
 
   extend FriendlyId
-  friendly_id :slug, use: :slugged
+  friendly_id :name, use: :slugged
 
   def all_members
     (owners.all + users.all).uniq
