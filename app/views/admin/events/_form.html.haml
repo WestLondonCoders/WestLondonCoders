@@ -24,6 +24,7 @@
           .a-content
             %h2 WLC Admins only
             %h3 Sponsor
+            %p This is the providor of the venue where the meetup will take place.
             = f.select :sponsor_id, user_options_for_select(Sponsor.all, f.object.sponsor_id), { label: 'Sponsors' }
 
         .u-margin-top

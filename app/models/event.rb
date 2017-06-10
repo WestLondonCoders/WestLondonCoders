@@ -10,6 +10,8 @@ class Event < ActiveRecord::Base
   scope :past, -> { where("date <= ?", Date.today) }
   scope :in_upcoming_order, -> { upcoming.order('date asc') }
 
+  validates_presence_of :name, :sponsor, :date, :finish_date
+
   extend FriendlyId
   friendly_id :slug, use: :slugged
 
