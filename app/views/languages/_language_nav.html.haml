@@ -1,0 +1,11 @@
+%nav.a-subnav
+  = link_to language_discussion_path, id: 'comment-nav', class: 'a-subnav__item is-selected',  :remote => true do
+    %h3 Discussion
+
+  - if language.primary_hackrooms.any?
+    = link_to language_hackrooms_path, id: 'hackroom-nav', class: 'a-subnav__item',  :remote => true do
+      %h3 Hackrooms
+
+  - if @language.primary_users.any?
+    = link_to language_fans_path, id: 'fans-nav', class: 'a-subnav__item',  :remote => true do
+      %h3 Fans

@@ -1,63 +1,20 @@
 - set_page_title(@language.name)
-
 .a-page-holder
+  .m-billboard
+    .m-billboard__container
+      .m-billboard__container-left
+        %h1.m-billboard__title= @language.name
+        .m-billboard__description= sanitize @language.description
+        %hr{style: "border-bottom: solid 2px #{@language.colour}"}
+      .m-billboard__container-right
 
-  - if current_user && current_user.has_role?(:admin)
-    %section.a-section.u-margin-top--mobile
-      .a-content.u-center
-        = link_to "Edit language", edit_language_path(@language), class: "a-button a-button--edit"
+    .u-interval= render partial: 'highlights', locals: { language: @language }
+
+    .u-float-right= link_to 'Edit', edit_language_path(@language), class: 'a-button' if can? :manage, @language
+
+    .m-billboard__nav= render partial: 'language_nav', locals: { language: @language }
 
   %section.a-section
-    .a-content
-      %h1.u-center= link_to @language.name, @language, style: "border-bottom: solid 2px #{@language.colour}"
+    .u-margin-top#language-content= render partial: 'comments', locals: { language: @language, comments: @comments }
 
-      = render partial: 'highlights', locals: { language: @language }
-
-      - if @language.description
-        .u-margin-top= sanitize @language.description
-
-  %section.a-section
-    .a-content
-      - if @language.primary_users.any?
-        %h2
-          = @language.name
-          fans
-        .a-identities
-          - @language.primary_users.each do |user|
-            = render partial: 'shared/user_tag', locals: { user: user, image_only: true }
-
-      - if @language.users.any?
-        %h2 Casual users
-        .a-identities
-          - @language.users.each do |user|
-            = render partial: 'shared/user_tag', locals: { user: user, image_only: true }
-
-  - if @language.primary_hackrooms.any?
-    %section.a-section
-      .a-content--xwide
-        %h2.u-center Hackrooms
-      = render partial: 'shared/hackrooms', locals: { hackrooms: @language.primary_hackrooms }
-
-%section.a-section
-  .a-content
-    .m-comments
-      %h2
-        Comments
-        %i.fa.fa-comment-o
-
-      - if current_user
-        .m-comment__new
-          = form_for [@language, @new_comment], class: 'js-remote-form', remote: true do |f|
-            = f.text_field :body, class: 'js-remote-text-field', autocomplete: :off, placeholder: "Write a comment..."
-            = hidden_field_tag :authenticity_token, form_authenticity_token
-      - else
-        .a-prompt
-          %p
-            Sign in with GitHub to comment
-            %br
-            = link_to user_github_omniauth_authorize_path, class: 'a-button a-button--small' do
-              %i.fa.fa-github
-              Sign in
-
-      %ul.m-comments__feed#comments-list
-        = render partial: 'posts/comment_feed', locals: { post: @language, comments: @comments }
+  .u-margin-bottom

@@ -1,0 +1,3 @@
+$('.is-selected').removeClass('is-selected')
+$('#fans-nav').addClass('is-selected')
+$("#language-content").html("<%= escape_javascript(render partial: 'shared/people', locals: { users: @language.primary_users } ) %>");

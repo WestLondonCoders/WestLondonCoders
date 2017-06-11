@@ -1,0 +1,3 @@
+$('.is-selected').removeClass('is-selected')
+$('#hackroom-nav').addClass('is-selected')
+$("#language-content").html("<%= escape_javascript(render partial: 'shared/hackrooms', locals: { hackrooms: @language.primary_hackrooms } ) %>");

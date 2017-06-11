@@ -60,6 +60,10 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  get "/languages/:id/language-discussion" => 'languages#discussion', as: 'language_discussion'
+  get "/languages/:id/language-hackrooms" => 'languages#hackrooms', as: 'language_hackrooms'
+  get "/languages/:id/language-fans" => 'languages#fans', as: 'language_fans'
+
   resources :hackrooms do
     collection do
       match 'search' => 'hackrooms#search', via: [:get, :post], as: :search

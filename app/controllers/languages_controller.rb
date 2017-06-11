@@ -1,11 +1,24 @@
 class LanguagesController < ApplicationController
-  before_action :find_language, only: [:show, :edit, :update, :destroy]
+  before_action :find_language, only: [:show, :edit, :update, :destroy, :discussion, :hackrooms, :fans]
+  before_action :find_comments, only: [:show, :discussion]
   skip_before_action :verify_authenticity_token, only: [:search]
 
-  def show
-    @comments = @language.comments.published.most_recent_first
-    @new_comment = @language.comments.new
-    @new_reply = CommentReply.new
+  def discussion
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def hackrooms
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def fans
+    respond_to do |format|
+      format.js
+    end
   end
 
   def index
@@ -73,5 +86,11 @@ class LanguagesController < ApplicationController
   def set_other_attributes
     @language.slug = @language.name.strip.downcase.tr(" ", "-")
     @language.author = current_user
+  end
+
+  def find_comments
+    @comments = @language.comments.published.most_recent_first
+    @new_comment = @language.comments.new
+    @new_reply = CommentReply.new
   end
 end
