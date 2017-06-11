@@ -1,7 +1,7 @@
 .a-social-links
-  - unless hackroom.project_url.empty?
+  - unless hackroom.project_url.nil? || hackroom.project_url.empty?
     = link_to hackroom.project_url, target: '_blank' do
       %i.fa.fa-link
-  - unless hackroom.slack.empty?
+  - unless hackroom.slack.nil? || hackroom.slack.empty?
     = link_to "https://westlondoncoders.slack.com/messages/#{hackroom.slack}", target: '_blank' do
       %i.fa.fa-slack
