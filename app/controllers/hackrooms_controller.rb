@@ -1,7 +1,25 @@
 class HackroomsController < ApplicationController
-  before_action :get_hackroom, only: [:show, :edit, :update, :destroy, :join, :leave]
+  before_action :get_hackroom, only: [:show, :edit, :update, :destroy, :join, :leave, :languages, :members, :admins]
   before_action :get_user, only: [:join, :leave]
   skip_before_action :verify_authenticity_token, only: [:search]
+
+  def languages
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def members
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def admins
+    respond_to do |format|
+      format.js
+    end
+  end
 
   def index
     @search = Hackroom.ransack(params[:q])

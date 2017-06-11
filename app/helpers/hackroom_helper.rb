@@ -8,7 +8,7 @@ module HackroomHelper
   end
 
   def member_count(hackroom)
-    pluralize(hackroom.users.count, 'member')
+    pluralize(hackroom.all_members.count, 'member')
   end
 
   def language_count(hackroom)

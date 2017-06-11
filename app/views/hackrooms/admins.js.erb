@@ -1,0 +1,3 @@
+$('.is-selected').removeClass('is-selected')
+$('#admins-nav').addClass('is-selected')
+$("#hackroom-content").html("<%= escape_javascript(render partial: 'shared/people', locals: { users: @hackroom.owners } ) %>");
