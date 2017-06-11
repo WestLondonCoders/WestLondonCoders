@@ -68,7 +68,7 @@ class CommentsController < ApplicationController
   end
 
   def notify_post_author
-    if @comment.commentable_type == 'Post' && @commentable.author == !current_user
+    if @comment.commentable_type == 'Post' && @commentable.author != current_user
       Notification.create(user: @commentable.author, notified_by: current_user, notifiable: @commentable, action: 'commented on your')
     end
   end

@@ -55,7 +55,7 @@ class CommentRepliesController < ApplicationController
   end
 
   def notify_comment_author
-    if @comment.commentable_type == 'Post' && @commentable.author == !current_user
+    if @comment.commentable_type == 'Post' && @comment.commentable.author != current_user
       Notification.create(user: @comment.author, notified_by: current_user, notifiable: @comment, action: 'replied to')
     end
   end
