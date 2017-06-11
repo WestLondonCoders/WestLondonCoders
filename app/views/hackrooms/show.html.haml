@@ -5,6 +5,9 @@
       .m-billboard__container-left
         %h1.m-billboard__title= @hackroom.name
         .m-billboard__description= sanitize @hackroom.mission
+        .m-billboard__description
+          Created by
+          = link_to @hackroom.author.name, @hackroom.author
         %hr{style: "border-bottom: solid 2px #{@hackroom.colour}"}
       .m-billboard__container-right
 
