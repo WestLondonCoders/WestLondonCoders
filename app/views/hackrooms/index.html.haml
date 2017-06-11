@@ -5,16 +5,11 @@
   %section.a-section.a-section--alt
     .a-content--xwide.a-content--tight
 
-      %h1.u-center
-        #hackroom-search-heading
-          = render 'heading'
+      %h1.a-heading.u-center#hackroom-search-heading= render 'heading'
 
     .a-content.a-content--tight-bottom
       %p= I18n.t('index_introductions.hackrooms')
 
-    .a-content--wide.a-content--tight-top
       = render partial: 'filter'
 
-  %section.a-section
-    #hackroom-search-results
-      = render 'results'
+  %section.a-section#hackroom-search-results= render 'results'

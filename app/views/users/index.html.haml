@@ -1,9 +1,11 @@
 - set_page_title("Members")
 
 .a-page-holder
+
   %section.a-section.a-section--alt
     .a-content--xwide.a-content--tight
-      %h1.u-center#user-search-heading= render 'heading'
+
+      %h1.a-heading.u-center#user-search-heading= render 'heading'
 
       .a-content
         %p
@@ -17,5 +19,4 @@
 
         = render partial: 'filter'
 
-  %section.a-section
-    #user-search-results= render 'results'
+  %section.a-section#user-search-results= render 'results'

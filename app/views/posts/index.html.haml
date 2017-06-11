@@ -4,15 +4,11 @@
 
   %section.a-section.a-section--alt
     .a-content--wide.a-content--tight
-      %h1.a-heading
-        #post-search-heading
-          = render 'heading'
+      %h1.a-heading.u-center#post-search-heading= render 'heading'
 
       .a-content
         %p= I18n.t('index_introductions.posts')
 
       = render partial: 'filter'
 
-  .a-content--xwide
-    #post-search-results
-      = render 'results'
+  .a-content--xwide#post-search-results= render 'results'

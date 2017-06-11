@@ -1,14 +1,11 @@
 - set_page_title("Languages")
 
-
 .a-page-holder
 
   %section.a-section.a-section--alt
     .a-content--xwide.a-content--tight
 
-      %h1.u-center
-        #language-search-heading
-          = render 'heading'
+      %h1.a-heading.u-center#language-search-heading= render 'heading'
 
       .a-content
         %p= I18n.t('index_introductions.languages')
@@ -16,10 +13,7 @@
         = render partial: 'filter'
 
   %section.a-section
-    .a-content--xwide
-
-      #language-search-results
-        = render 'results'
+    .a-content--xwide#language-search-results= render 'results'
 
   - if can? :create, Language
     %section.a-section.u-margin-top--mobile

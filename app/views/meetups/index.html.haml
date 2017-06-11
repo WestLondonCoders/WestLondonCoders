@@ -14,10 +14,8 @@
 
   - if can? :create, Meetup
     %section.a-section.u-margin-top--mobile
-      .a-content.u-center
-        = link_to "Schedule meetup", new_admin_meetup_path, class: 'a-button a-button--edit'
+      .a-content.u-center= link_to "Schedule meetup", new_admin_meetup_path, class: 'a-button a-button--edit'
 
   %section.a-section#meetup-search-results= render 'results'
 
-  .u-center.u-margin-top
-    = link_to "Past meetups", past_meetups_path, class: 'a-button'
+  .u-center.u-margin-top= link_to "Past meetups", past_meetups_path, class: 'a-button'
