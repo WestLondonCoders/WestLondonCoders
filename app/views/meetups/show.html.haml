@@ -61,3 +61,5 @@
           - @meetup.languages.each do |language|
             = render partial: 'shared/language_tag', locals: { language: language }
       .u-center.u-margin-top= render partial: 'rsvp_button'
+
+    = render partial: 'comments', locals: { meetup: @meetup, comments: @comments }

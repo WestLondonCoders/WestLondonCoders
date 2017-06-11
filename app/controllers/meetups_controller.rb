@@ -1,5 +1,6 @@
 class MeetupsController < ApplicationController
   before_action :get_meetup, only: [:show, :rsvp]
+  before_action :find_comments, only: :show
   skip_before_action :verify_authenticity_token, only: [:search]
 
   def show
@@ -39,5 +40,11 @@ class MeetupsController < ApplicationController
 
   def get_meetup
     @meetup = Meetup.friendly.find(params[:id])
+  end
+
+  def find_comments
+    @comments = @meetup.comments.published.most_recent_first
+    @new_comment = @meetup.comments.new
+    @new_reply = CommentReply.new
   end
 end

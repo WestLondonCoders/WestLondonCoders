@@ -92,6 +92,7 @@ Rails.application.routes.draw do
       get :rsvp
       post :rsvp
     end
+    resources :comments
   end
 
   resources :organiser_interests, only: [:create]

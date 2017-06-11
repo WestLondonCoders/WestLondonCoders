@@ -33,6 +33,7 @@ class Admin::MeetupsController < Admin::BaseController
   def create
     authorize! :create, @meetups
     @meetup = Meetup.new(meetup_params)
+    @meetup.author = current_user
     if @meetup.save
       create_slug
       notify_all(current_user, @meetup, 'scheduled a new meetup for') unless @meetup.date.past?

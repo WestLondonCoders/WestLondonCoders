@@ -5,6 +5,8 @@ class Meetup < ActiveRecord::Base
   has_many :sponsor_admins, through: :sponsor, source: :users
   has_many :organisers, -> { with_role("Organiser") }, through: :meetup_rsvps, source: :user
   has_many :languages, -> { distinct }, through: :rsvps, source: :primary_languages
+  has_many :comments, as: :commentable
+  belongs_to :author, class_name: 'User'
 
   scope :upcoming, -> { where("date >= ?", Date.today) }
   scope :past, -> { where("date <= ?", Date.today) }
