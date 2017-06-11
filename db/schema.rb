@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170610120359) do
+ActiveRecord::Schema.define(version: 20170611210541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 20170610120359) do
     t.string "colour", default: "#000000", null: false
     t.string "slug", default: ""
     t.integer "popularity_score", default: 0
+    t.integer "author_id"
   end
 
   create_table "meetup_rsvps", id: :serial, force: :cascade do |t|

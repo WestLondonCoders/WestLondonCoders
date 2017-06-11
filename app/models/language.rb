@@ -10,6 +10,7 @@ class Language < ActiveRecord::Base
   has_many :sponsor_languages
   has_many :sponsors, through: :sponsor_languages
   has_many :comments, as: :commentable
+  belongs_to :author, class_name: 'User'
 
   scope :in_popularity_order, -> { order('popularity_score desc') }
 
