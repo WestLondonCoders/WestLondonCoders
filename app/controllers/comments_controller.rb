@@ -12,8 +12,8 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @commentable.comments.new comment_params
+    @comment.author = current_user
     if @comment.save
-      @comment.update(author: current_user)
       respond_to do |format|
         format.html do
           redirect_to @commentable, anchor: "comment-#{@comment.id}"
