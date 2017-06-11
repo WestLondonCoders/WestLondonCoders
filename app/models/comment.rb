@@ -31,7 +31,9 @@ class Comment < ActiveRecord::Base
     if commentable_type == 'Post'
       post_url(commentable, anchor: "comment-#{id}")
     elsif commentable_type == 'Language'
-      language_url(commentable, anchor: 'comment-#{id}')
+      language_url(commentable, anchor: "comment-#{id}")
+    elsif commentable_type == 'Hackroom'
+      hackroom_url(commentable, anchor: "comment-#{id}")
     end
   end
 

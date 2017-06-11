@@ -20,4 +20,8 @@ class Language < ActiveRecord::Base
   def all_users
     (primary_users.all + users.all).uniq
   end
+
+  def title
+    name
+  end
 end

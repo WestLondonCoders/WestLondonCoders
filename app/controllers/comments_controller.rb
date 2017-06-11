@@ -65,6 +65,7 @@ class CommentsController < ApplicationController
     @commentable = Comment.find(params[:comment_id]) if params[:comment_id]
     @commentable = Post.find_by_slug(params[:post_id]) if params[:post_id]
     @commentable = Language.find_by_slug(params[:language_id]) if params[:language_id]
+    @commentable = Hackroom.find_by_slug(params[:hackroom_id]) if params[:hackroom_id]
   end
 
   def notify_post_author

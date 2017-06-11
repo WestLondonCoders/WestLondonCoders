@@ -1,7 +1,14 @@
 class HackroomsController < ApplicationController
-  before_action :get_hackroom, only: [:show, :edit, :update, :destroy, :join, :leave, :languages, :members, :admins]
+  before_action :get_hackroom, only: [:show, :edit, :update, :destroy, :join, :leave, :languages, :members, :admins, :discussion]
   before_action :get_user, only: [:join, :leave]
+  before_action :find_comments, only: [:show, :discussion]
   skip_before_action :verify_authenticity_token, only: [:search]
+
+  def discussion
+    respond_to do |format|
+      format.js
+    end
+  end
 
   def languages
     respond_to do |format|
@@ -120,5 +127,11 @@ class HackroomsController < ApplicationController
     UserHackroom.create(hackroom: @hackroom, user: @user)
     @hackroom.popularity_score += 1
     flash[:alert] = 'You joined this hackroom!'
+  end
+
+  def find_comments
+    @comments = @hackroom.comments.published.most_recent_first
+    @new_comment = @hackroom.comments.new
+    @new_reply = CommentReply.new
   end
 end

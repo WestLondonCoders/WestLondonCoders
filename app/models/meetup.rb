@@ -26,4 +26,8 @@ class Meetup < ActiveRecord::Base
   def past?
     date.past?
   end
+
+  def title
+    name
+  end
 end

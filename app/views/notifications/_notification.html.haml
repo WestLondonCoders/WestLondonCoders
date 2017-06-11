@@ -6,8 +6,8 @@
   - elsif notification.about_reply_to_your_comment?
     = render partial: 'notifications/replied_to_your_comment', locals: { notification: notification }
 
-  - elsif notification.about_comment_on_your_post?
-    = render partial: 'notifications/comment_on_your_post', locals: { notification: notification }
+  - elsif notification.about_comment_on_your_thing?
+    = render partial: 'notifications/comment_on_your_thing', locals: { notification: notification }
 
   - elsif notification.about_new_meetup?
     = render partial: 'notifications/new_meetup_scheduled', locals: { notification: notification }

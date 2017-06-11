@@ -10,8 +10,8 @@ class Notification < ActiveRecord::Base
     notifiable_type == 'User' && action == 'followed'
   end
 
-  def about_comment_on_your_post?
-    notifiable_type == 'Post'
+  def about_comment_on_your_thing?
+    notifiable_type == 'Post' || 'Hackroom' || 'Language'
   end
 
   def about_reply_to_your_comment?
