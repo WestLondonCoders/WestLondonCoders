@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  # after_create :announce_comment
+  after_create :announce_comment
 
   belongs_to :author, class_name: 'User'
   belongs_to :commentable, polymorphic: true
@@ -28,7 +28,11 @@ class Comment < ActiveRecord::Base
   end
 
   def comment_url
-    post_url(commentable, anchor: "comment-#{id}")
+    if commentable_type == 'Post'
+      post_url(commentable, anchor: "comment-#{id}")
+    elsif commentable_type == 'Language'
+      language_url(commentable, anchor: 'comment-#{id}')
+    end
   end
 
   def slack_channel
