@@ -10,6 +10,7 @@ class Comment < ActiveRecord::Base
 
   scope :published, -> { where(public: true) }
   scope :most_recent_first, -> { order("created_at desc") }
+  scope :from_posts, -> { where(commentable_type: 'Post') }
 
   def description
     "your comment"
