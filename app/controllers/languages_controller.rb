@@ -2,6 +2,12 @@ class LanguagesController < ApplicationController
   before_action :find_language, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token, only: [:search]
 
+  def show
+    @comments = @language.comments.published.most_recent_first
+    @new_comment = @language.comments.new
+    @new_reply = CommentReply.new
+  end
+
   def index
     @search = Language.ransack(params[:q])
     @languages = @search.result.includes(:primary_users, :users, :primary_hackrooms, :hackrooms).in_popularity_order

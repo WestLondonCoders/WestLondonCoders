@@ -57,6 +57,7 @@ Rails.application.routes.draw do
     collection do
       match 'search' => 'languages#search', via: [:get, :post], as: :search
     end
+    resources :comments
   end
 
   resources :hackrooms do

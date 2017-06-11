@@ -22,7 +22,7 @@
         %h2 Members
         .a-identities
           - @hackroom.all_members.each do |user|
-            = render partial: 'shared/user_tag', locals: { user: user }
+            = render partial: 'shared/user_tag', locals: { user: user, image_only: true }
 
       .u-margin-top.u-float-right
         - if current_user

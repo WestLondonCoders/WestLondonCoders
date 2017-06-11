@@ -24,13 +24,13 @@
           fans
         .a-identities
           - @language.primary_users.each do |user|
-            = render partial: 'shared/user_tag', locals: { user: user }
+            = render partial: 'shared/user_tag', locals: { user: user, image_only: true }
 
       - if @language.users.any?
         %h2 Casual users
         .a-identities
           - @language.users.each do |user|
-            = render partial: 'shared/user_tag', locals: { user: user }
+            = render partial: 'shared/user_tag', locals: { user: user, image_only: true }
 
   - if @language.primary_hackrooms.any?
     %section.a-section
@@ -38,10 +38,25 @@
         %h2.u-center Hackrooms
       = render partial: 'shared/hackrooms', locals: { hackrooms: @language.primary_hackrooms }
 
-  - if @language.sponsors.any?
-    %section.a-section
-      .a-content--xwide
-        %h2.u-center
-          Sponsors using
-          = @language.name
-        = render partial: 'shared/sponsors', locals: { sponsors: @language.sponsors }
+%section.a-section
+  .a-content
+    .m-comments
+      %h2
+        Comments
+        %i.fa.fa-comment-o
+
+      - if current_user
+        .m-comment__new
+          = form_for [@language, @new_comment], class: 'js-remote-form', remote: true do |f|
+            = f.text_field :body, class: 'js-remote-text-field', autocomplete: :off, placeholder: "Write a comment..."
+      - else
+        .a-prompt
+          %p
+            Sign in with GitHub to comment
+            %br
+            = link_to user_github_omniauth_authorize_path, class: 'a-button a-button--small' do
+              %i.fa.fa-github
+              Sign in
+
+      %ul.m-comments__feed#comments-list
+        = render partial: 'posts/comment_feed', locals: { post: @language, comments: @comments }

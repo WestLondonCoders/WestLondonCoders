@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  after_create :announce_comment
+  # after_create :announce_comment
 
   belongs_to :author, class_name: 'User'
   belongs_to :commentable, polymorphic: true

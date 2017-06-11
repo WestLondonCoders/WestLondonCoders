@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new comment_params
     if @comment.save
-      @comment.author = current_user if current_user
+      @comment.update(author: current_user)
       respond_to do |format|
         format.html do
           redirect_to @commentable, anchor: "comment-#{@comment.id}"
@@ -58,15 +58,18 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:body, :author_id, :post_id, :public)
+    params.require(:comment).permit(:body, :author_id, :post_id, :public, :language_id, :commentable_id)
   end
 
   def find_commentable
     @commentable = Comment.find(params[:comment_id]) if params[:comment_id]
     @commentable = Post.find_by_slug(params[:post_id]) if params[:post_id]
+    @commentable = Language.find_by_slug(params[:language_id]) if params[:language_id]
   end
 
-  def notify_post_author(post, current_user)
-    Notification.create(user: post.author, notified_by: current_user, notifiable: post, action: 'commented on your') unless @commentable.author == current_user
+  def notify_post_author
+    if @comment.commentable_type == 'Post' && @commentable.author == !current_user
+      Notification.create(user: @commentable.author, notified_by: current_user, notifiable: @commentable, action: 'commented on your')
+    end
   end
 end

@@ -9,8 +9,8 @@ class CommentRepliesController < ApplicationController
 
   def create
     @reply = @comment.replies.new comment_params
+    @reply.author = current_user
     if @reply.save
-      @reply.author = current_user
       respond_to do |format|
         format.html do
           redirect_to @comment.commentable, anchor: "comment-#{@comment.id}"
@@ -55,6 +55,8 @@ class CommentRepliesController < ApplicationController
   end
 
   def notify_comment_author
-    Notification.create(user: @comment.author, notified_by: current_user, notifiable: @comment, action: 'replied to') unless @comment.author == @reply.author
+    if @comment.commentable_type == 'Post' && @commentable.author == !current_user
+      Notification.create(user: @comment.author, notified_by: current_user, notifiable: @comment, action: 'replied to')
+    end
   end
 end
