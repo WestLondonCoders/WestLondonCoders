@@ -5,6 +5,9 @@
       .m-billboard__container-left
         %h1.m-billboard__title= @language.name
         .m-billboard__description= sanitize @language.description
+        .m-billboard__description
+          Added by
+          = link_to @language.author.name, @language.author
         %hr{style: "border-bottom: solid 2px #{@language.colour}"}
       .m-billboard__container-right
 
