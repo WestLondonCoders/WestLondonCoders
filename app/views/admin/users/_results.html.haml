@@ -16,7 +16,7 @@
       %tr
         = form_for user, url: admin_user_path(user) do |f|
           %td{style: 'width: 20%'}
-            = user.name
+            = link_to user.name, user
           %td{style: 'width: 5%'}
             = user.notifications.unread.count
           %td.u-center{style: 'width: 10%'}

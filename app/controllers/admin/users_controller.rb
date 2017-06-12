@@ -6,8 +6,7 @@ class Admin::UsersController < Admin::BaseController
   def index
     authorize! :manage, @users
     @search = User.ransack(params[:q])
-    @search.sorts = 'last_sign_in_at desc' if @search.sorts.empty?
-    @users = @search.result.includes(:roles, :hackrooms, :own_hackrooms)
+    @users = @search.result.includes(:roles, :hackrooms, :own_hackrooms).in_popularity_order
     @roles = Role.all
   end
 
