@@ -21,6 +21,7 @@ describe 'meetups/show.html.haml' do
     allow(meetup).to receive(:languages).and_return([primary_language])
 
     assign(:meetup, meetup)
+    stub_template '_comments.html.haml' => ''
   end
 
   it 'sets page title' do
