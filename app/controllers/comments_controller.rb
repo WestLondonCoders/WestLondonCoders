@@ -23,19 +23,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  def destroy
-    @comment = Comment.find(params[:id])
-    @comment.destroy
-
-    respond_to do |format|
-      @commentable = @comment.commentable.commentable if @comment.commentable_type == 'Comment'
-      format.html do
-        redirect_to @commentable
-      end
-      format.js
-    end
-  end
-
   def hide
     find_comment
     @commentable = @comment.commentable
