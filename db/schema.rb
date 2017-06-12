@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612231827) do
+ActiveRecord::Schema.define(version: 20170612233319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,15 +32,6 @@ ActiveRecord::Schema.define(version: 20170612231827) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["type"], name: "index_ckeditor_assets_on_type"
-  end
-
-  create_table "comment_replies", id: :serial, force: :cascade do |t|
-    t.text "body", null: false
-    t.integer "comment_id", null: false
-    t.integer "author_id", null: false
-    t.boolean "public", default: true, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "comments", id: :serial, force: :cascade do |t|
