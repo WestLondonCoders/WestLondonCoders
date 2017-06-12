@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @posts = Post.all.where(created_by_id: @user).order("created_at asc")
+    @comments = @user.comments.published.most_recent_first
   end
 
   def index
@@ -35,6 +36,13 @@ class UsersController < ApplicationController
   end
 
   def meetups
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def discussion
+    @comments = @user.comments.published.most_recent_first
     respond_to do |format|
       format.js
     end

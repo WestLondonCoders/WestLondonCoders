@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   get "/users/:id/user-hackrooms" => 'users#hackrooms', as: 'user_hackrooms'
   get "/users/:id/user-meetups" => 'users#meetups', as: 'user_meetups'
   get "/users/:id/user-pages" => 'users#posts', as: 'user_posts'
+  get "/users/:id/user-discussion" => 'users#discussion', as: 'user_discussion'
 
   get '/users', to: redirect('members')
 

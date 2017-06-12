@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :assignments, dependent: :destroy
   has_many :roles, through: :assignments
-  has_many :comments, dependent: :destroy
+  has_many :comments, foreign_key: :author_id, dependent: :destroy
   has_many :user_hackrooms
   has_many :hackrooms, through: :user_hackrooms
   has_many :hackroom_owners

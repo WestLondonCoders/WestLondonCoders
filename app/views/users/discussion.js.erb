@@ -1,0 +1,3 @@
+$('.is-selected').removeClass('is-selected')
+$('#comment-nav').addClass('is-selected')
+$("#profile-content").html("<%= escape_javascript(render partial: 'users/comments', locals: { user: @user, comments: @comments } ) %>");
