@@ -34,7 +34,7 @@ gem "rolify"
 gem 'modernizr-rails'
 gem 'jquery-minicolors-rails'
 gem 'chosen-rails'
-gem 'ckeditor', git: 'https://github.com/galetahub/ckeditor.git'
+gem "wysiwyg-rails"
 
 group :development, :test do
   gem 'rails-controller-testing'

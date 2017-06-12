@@ -10,10 +10,14 @@
       %h1= f.text_field :name, placeholder: "What's your name?"
       %h3= f.text_field :tagline, placeholder: "Tagline"
 
-
       = f.check_box :listed
       Show my profile on the
       = link_to 'people page', users_path
+
+  %section.a-section
+    .a-content--wide
+      %h2 Bio
+      = f.text_area :bio, id: 'froala'
 
   %section.a-section.a-section--overflow
     .a-content
@@ -47,11 +51,6 @@
         .m-profile__links--field
           %i.fa.fa-link
           = f.text_field :website_url, placeholder: 'website.com'
-
-  %section.a-section
-    .a-content
-      %h2 Bio
-      = f.cktext_area :bio, cols: 40, ckeditor: { uiColor: '$colour-grey' }
 
   %section.a-section
     .a-content
