@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :find_commentable
   before_action :set_post_and_comments, only: [:create, :destroy, :update]
-  after_action :notify_post_author
+  after_action :send_notifications, only: :create
 
   def show
   end
@@ -69,7 +69,11 @@ class CommentsController < ApplicationController
     @commentable = Meetup.find_by_slug(params[:meetup_id]) if params[:meetup_id]
   end
 
-  def notify_post_author
-    Notification.create(user: @commentable.author, notified_by: current_user, notifiable: @commentable, action: 'commented on your') unless @commentable.author == current_user
+  def send_notifications
+    if @comment.commentable_type == 'Hackroom'
+      @comment.commentable.all_members.map { |member| Notification.create(user: member, notified_by: current_user, notifiable: @commentable, action: 'commented on the') unless @commentable.author == current_user }
+    else
+      Notification.create(user: @commentable.author, notified_by: current_user, notifiable: @commentable, action: 'commented on your') unless @commentable.author == current_user
+    end
   end
 end
