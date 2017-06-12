@@ -1,2 +1,2 @@
-$('#comments-list').html('<%= escape_javascript(render partial: "/posts/comment_feed", locals: { post: @post, comments: @post.comments.published.most_recent_first }) %>');
+$('#comments-list').html('<%= escape_javascript(render partial: "/shared/comment_feed", locals: { comments: @commentable.comments.published.most_recent_first }) %>');
 setRevealTriggers();

@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
   before_action :find_commentable
-  before_action :set_post_and_comments, only: [:create, :destroy, :update]
   after_action :send_notifications, only: :create
 
   def show
@@ -14,6 +13,7 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new comment_params
     @comment.author = current_user
     if @comment.save
+      @commentable = @comment.commentable.commentable if @comment.commentable_type == 'Comment'
       respond_to do |format|
         format.html do
           redirect_to @commentable, anchor: "comment-#{@comment.id}"
@@ -28,6 +28,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
+      @commentable = @comment.commentable.commentable if @comment.commentable_type == 'Comment'
       format.html do
         redirect_to @commentable
       end
@@ -37,11 +38,12 @@ class CommentsController < ApplicationController
 
   def hide
     find_comment
-    @post = @comment.commentable
+    @commentable = @comment.commentable
 
     @comment.update(public: false)
 
     if @comment.save
+      @commentable = @comment.commentable.commentable if @comment.commentable_type == 'Comment'
       render :update
     end
   end
@@ -52,21 +54,25 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
-  def set_post_and_comments
-    @post = @commentable
-    @comments = @commentable.comments.where(public: true).order("created_at asc")
-  end
-
   def comment_params
-    params.require(:comment).permit(:body, :author_id, :post_id, :public, :language_id, :commentable_id)
+    params.require(:comment).permit(:body)
   end
 
   def find_commentable
-    @commentable = Comment.find(params[:comment_id]) if params[:comment_id]
-    @commentable = Post.find_by_slug(params[:post_id]) if params[:post_id]
-    @commentable = Language.find_by_slug(params[:language_id]) if params[:language_id]
-    @commentable = Hackroom.find_by_slug(params[:hackroom_id]) if params[:hackroom_id]
-    @commentable = Meetup.find_by_slug(params[:meetup_id]) if params[:meetup_id]
+    case
+    when params[:comment_id]
+      @commentable = Comment.find(params[:comment_id])
+    when params[:post_id]
+      @commentable = Post.find_by_slug(params[:post_id])
+    when params[:language_id]
+      @commentable = Language.find_by_slug(params[:language_id])
+    when params[:hackroom_id]
+      @commentable = Hackroom.find_by_slug(params[:hackroom_id])
+    when params[:meetup_id]
+      @commentable = Meetup.find_by_slug(params[:meetup_id])
+    else
+      nil
+    end
   end
 
   def send_notifications

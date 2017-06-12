@@ -7,7 +7,7 @@
       = simple_format(truncate(comment.body, length: 250, escape: false, omission: '...', separator: '.'))
 
       .u-float-right
-        - if comment.replies.any?
-          = link_to pluralize(comment.replies.size, 'reply'), post_path(comment.commentable, anchor: "comment-#{comment.id}")
+        - if comment.comments.any?
+          = link_to pluralize(comment.comments.size, 'reply'), post_path(comment.commentable, anchor: "comment-#{comment.id}")
         - else
           = link_to 'Reply', post_path(comment.commentable, anchor: "comment-#{comment.id}")

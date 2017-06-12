@@ -9,8 +9,8 @@
 
     .m-comment__content
       = comment.body
-      - unless comment.replies.published.empty?
-        .u-float-right= pluralize(comment.replies.published.size, 'reply')
+      - unless comment.comments.published.empty?
+        .u-float-right= pluralize(comment.comments.published.size, 'reply')
 
       .m-comment__replies#comment-replies
         = render partial: 'shared/replies', locals: { comment: comment }

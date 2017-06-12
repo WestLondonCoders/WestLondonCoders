@@ -1,16 +1,16 @@
-- if comment.replies.published.size > 3
+- if comment.comments.published.size > 3
   %p.m-comment__previous= link_to 'View previous comments', '#', class: 'js-reveal__trigger js-reveal__hide-trigger'
 
   .m-comment__previous-replies.js-reveal__hidden
-    - comment.replies.published.in_created_by_order[0..-4].each do |reply|
-      = render partial: 'shared/reply', locals: { comment: comment, reply: reply }
+    - comment.comments.published.in_created_by_order[0..-4].each do |reply|
+      = render partial: 'shared/reply', locals: { reply: reply }
 
-- comment.replies.published.last_three.each do |reply|
-  = render partial: 'shared/reply', locals: { comment: comment, reply: reply }
+- comment.comments.published.last_three.each do |reply|
+  = render partial: 'shared/reply', locals: { reply: reply }
 
 - if current_user
   .m-comment__new
-    = form_for [comment, CommentReply.new], class: 'js-remote-form', remote: true do |f|
+    = form_for [comment, comment.comments.new], class: 'js-remote-form', remote: true do |f|
       = f.text_field :body, class: 'js-remote-text-field', autocomplete: :off, placeholder: "Reply..."
       = hidden_field_tag :authenticity_token, form_authenticity_token
       .hide-if-js.u-float-right= f.submit 'Reply', class: 'a-button'

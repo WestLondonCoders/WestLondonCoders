@@ -19,11 +19,7 @@ Rails.application.routes.draw do
   end
 
   resources :comments do
-    resources :comment_replies do
-      member do
-        get :hide
-      end
-    end
+    resources :comments
   end
 
   get 'comments/:id/hide', to: 'comments#hide', as: :hide_comment
