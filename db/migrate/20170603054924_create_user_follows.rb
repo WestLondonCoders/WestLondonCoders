@@ -1,4 +1,4 @@
-class CreateUserFollows < ActiveRecord::Migration
+class CreateUserFollows < ActiveRecord::Migration[4.2][4.2]
   def change
     create_table :user_follows do |t|
       t.references :follower, references: :user, null: false

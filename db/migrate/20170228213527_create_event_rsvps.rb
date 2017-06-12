@@ -1,4 +1,4 @@
-class CreateEventRsvps < ActiveRecord::Migration
+class CreateEventRsvps < ActiveRecord::Migration[4.2]
   def change
     create_table :event_rsvps do |t|
       t.references :user, null: false

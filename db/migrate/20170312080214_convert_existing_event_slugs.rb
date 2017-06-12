@@ -1,4 +1,4 @@
-class ConvertExistingEventSlugs < ActiveRecord::Migration
+class ConvertExistingEventSlugs < ActiveRecord::Migration[4.2]
   def change
     Event.all.each do |event|
       slug_date = event.date.to_date.to_s.strip.downcase.tr(" ", "-").tr(",", "")

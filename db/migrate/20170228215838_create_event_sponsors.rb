@@ -1,4 +1,4 @@
-class CreateEventSponsors < ActiveRecord::Migration
+class CreateEventSponsors < ActiveRecord::Migration[4.2]
   def change
     create_table :event_sponsors do |t|
       t.references :event, null: false

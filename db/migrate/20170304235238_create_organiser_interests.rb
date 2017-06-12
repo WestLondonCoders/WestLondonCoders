@@ -1,4 +1,4 @@
-class CreateOrganiserInterests < ActiveRecord::Migration
+class CreateOrganiserInterests < ActiveRecord::Migration[4.2]
   def change
     create_table :organiser_interests do |t|
       t.references :user, null: false, unique: true

@@ -1,4 +1,4 @@
-class RenameEventRsvpToMeetupRsvp < ActiveRecord::Migration
+class RenameEventRsvpToMeetupRsvp < ActiveRecord::Migration[4.2]
   def up
     rename_table :event_rsvps, :meetup_rsvps
   end

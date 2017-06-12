@@ -1,4 +1,4 @@
-class CreateSlugForEachLanguage < ActiveRecord::Migration
+class CreateSlugForEachLanguage < ActiveRecord::Migration[4.2]
   def change
     Language.all.each do |lang|
       slug = lang.name.downcase.strip.tr(" ", "-").tr('/', '-')

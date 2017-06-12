@@ -1,4 +1,4 @@
-class DeviseCreateUsers < ActiveRecord::Migration
+class DeviseCreateUsers < ActiveRecord::Migration[4.2]
   def change # rubocop:disable Metrics/MethodLength
     create_table :users do |t|
       t.string :email,              null: false, default: ""

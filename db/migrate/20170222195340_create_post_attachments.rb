@@ -1,4 +1,4 @@
-class CreatePostAttachments < ActiveRecord::Migration
+class CreatePostAttachments < ActiveRecord::Migration[4.2]
   def change
     create_table :post_attachments do |t|
       t.integer :post_id

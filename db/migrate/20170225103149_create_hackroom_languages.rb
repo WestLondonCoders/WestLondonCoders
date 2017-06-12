@@ -1,4 +1,4 @@
-class CreateHackroomLanguages < ActiveRecord::Migration
+class CreateHackroomLanguages < ActiveRecord::Migration[4.2]
   def change
     create_table :hackroom_languages do |t|
       t.references :hackroom, null: false

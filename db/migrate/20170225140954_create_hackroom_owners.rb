@@ -1,4 +1,4 @@
-class CreateHackroomOwners < ActiveRecord::Migration
+class CreateHackroomOwners < ActiveRecord::Migration[4.2]
   def change
     create_table :hackroom_owners do |t|
       t.references :user, null: false

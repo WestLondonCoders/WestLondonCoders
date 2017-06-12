@@ -1,4 +1,4 @@
-class TransferInterestsToTags < ActiveRecord::Migration
+class TransferInterestsToTags < ActiveRecord::Migration[4.2]
   def change
     UserInterest.all.each do |user_interest|
       unless user_interest.user.present? && user_interest.interest.present?

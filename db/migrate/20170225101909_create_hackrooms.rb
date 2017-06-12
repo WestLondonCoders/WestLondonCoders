@@ -1,4 +1,4 @@
-class CreateHackrooms < ActiveRecord::Migration
+class CreateHackrooms < ActiveRecord::Migration[4.2]
   def change
     create_table :hackrooms do |t|
       t.string :name, null: false

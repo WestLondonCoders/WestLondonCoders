@@ -1,4 +1,4 @@
-class CreateCommentReplies < ActiveRecord::Migration
+class CreateCommentReplies < ActiveRecord::Migration[4.2]
   def change
     create_table :comment_replies do |t|
       t.text :body, null: false

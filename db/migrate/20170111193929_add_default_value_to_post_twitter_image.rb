@@ -1,4 +1,4 @@
-class AddDefaultValueToPostTwitterImage < ActiveRecord::Migration
+class AddDefaultValueToPostTwitterImage < ActiveRecord::Migration[4.2]
   def up
     change_column :posts, :twitter_image, :string, default: "http://westlondoncoders.com/assets/general/twitter-81cac2affbb3e01cae4dce459fbf82a25f465cc53da98bf9d742afa3320ffe71.jpg"
   end

@@ -1,4 +1,4 @@
-class SteveFollowsEveryone < ActiveRecord::Migration
+class SteveFollowsEveryone < ActiveRecord::Migration[4.2]
   def change
     User.all.each do |u|
       record = UserFollow.find_by(follower: User.find(1), user: u)
