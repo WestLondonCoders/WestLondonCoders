@@ -20,7 +20,7 @@
               = render partial: 'shared/user_tag', locals: { user: user, image_only: true }
 
         .m-grid__bottom.u-center
-          = link_to "View", hackroom, class: 'a-button a-button--elastic'
+          = link_to "View", hackroom, class: 'a-button'
           - if current_user
             - if user_in_hackroom?(hackroom, current_user)
               = link_to 'Leave', join_hackroom_path(hackroom), class: 'a-button'
