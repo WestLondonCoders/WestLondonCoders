@@ -1,68 +1,66 @@
 - set_page_title("Post editor")
 
-%section.a-section
-  .a-content--wide
+.m-post-editor
+  %h1 New post
+  %p
+    Your posts appear on
+    = link_to "your profile", user_path(current_user)
+    and the
+    = link_to "blog posts", posts_path
+    page. It can be a blog post or even just a link to something cool.
 
-    %h1 New post
-    %p
-      Your posts appear on
-      = link_to "your profile", user_path(current_user)
-      and the
-      = link_to "blog posts", posts_path
-      page. It can be a blog post or even just a link to something cool.
+  = form_for @post do |f|
+    .m-post-editor__title
+      %h1= f.text_field :title, placeholder: "Title"
+    .m-post-editor__content
+      = f.cktext_area :content, cols: 40, ckeditor: { uiColor: '$colour-grey' }
 
-    = form_for @post do |f|
+    .m-post-editor__options
+      %h2 Sharing options
 
+      - if can? :manage, Post.all
+        = f.check_box :featured
+        = f.label :featured, "Show this post on the home page"
 
-      %h3= f.text_field :title, placeholder: "Title", class: 'u-full-width'
-      = f.text_area :content, id: 'froala'
+      %p
+        The text and image that appears on your post's link when it's shared. You can preview this on
+        %i.fa.fa-twitter
+        = link_to "Twitter", "https://cards-dev.twitter.com/validator"
+        and
+        %i.fa.fa-facebook
+        = link_to "Facebook", "https://developers.facebook.com/tools/debug/"
+        after you've saved the post. You can change them anytime.
+      %p
+        Description
+      = f.text_field :description, placeholder: "I wrote a post on West London Coders"
+      %p
+        Image
+      = f.text_field :twitter_image
 
-      .m-post-editor__options
-        %h2 Sharing options
+      %h2.u-margin-top Tags
+      %p
+        Tags make it easier to find posts on Google and when people search the site.
+      .a-tags
+        = f.fields_for :tags do |tag|
+          .nested-fields
+            .a-tags--form
+              - if tag.object.persisted?
+                %h1.a-tag.a-tag--light-blue
+                  = tag.object.name
+                  = link_to_remove_association "x", tag, class: 'a-tag--remove'
+              - else
+                = tag.text_field :name
+      .links.u-right
+        = link_to_add_association 'Add', f, :tags, class: 'a-button a-button--ghost', id: 'js-add'
 
-        - if can? :manage, Post.all
-          = f.check_box :featured
-          = f.label :featured, "Show this post on the home page"
-
-        %p
-          The text and image that appears on your post's link when it's shared. You can preview this on
-          %i.fa.fa-twitter
-          = link_to "Twitter", "https://cards-dev.twitter.com/validator"
-          and
-          %i.fa.fa-facebook
-          = link_to "Facebook", "https://developers.facebook.com/tools/debug/"
-          after you've saved the post. You can change them anytime.
-        %p
-          Description
-        = f.text_field :description, placeholder: "I wrote a post on West London Coders", class: 'u-full-width'
-        %p
-          Image
-        = f.text_field :twitter_image, class: 'u-full-width'
-
-        %h2.u-margin-top Tags
-        %p
-          Tags make it easier to find posts on Google and when people search the site.
-        .a-tags
-          = f.fields_for :tags do |tag|
-            .nested-fields
-              .a-tags--form
-                - if tag.object.persisted?
-                  %h1.a-tag.a-tag--light-blue
-                    = tag.object.name
-                    = link_to_remove_association "x", tag, class: 'a-tag--remove'
-                - else
-                  = tag.text_field :name
-        .links.u-right
-          = link_to_add_association 'Add', f, :tags, class: 'a-button a-button--ghost', id: 'js-add'
-
-        .u-margin-top
-          .m-post-editor__submit
-            - if @post.persisted?
-              = link_to "Delete post", @post, method: :delete, data: { confirm: 'Delete post?' }, class: 'a-button a-button--ghost u-left'
-              = link_to "Cancel", post_path(@post), class: 'a-button a-button--ghost u-left'
-              = f.submit 'Save changes', class: 'a-button u-float-right'
-              - if can? :manage, Post.all
-                = link_to 'Announce', announce_post_path(@post), class: 'a-button a-button--ghost' unless @post.announced
-            - else
-              = link_to "Cancel", posts_path, class: 'a-button a-button--ghost'
-              = f.submit 'Publish', class: 'a-button'
+      .u-margin-top
+        .m-post-editor__submit
+          - if @post.persisted?
+            = link_to "Delete post", @post, method: :delete, data: { confirm: 'Delete post?' }, class: 'a-button a-button--ghost u-left'
+            = link_to "Cancel", post_path(@post), class: 'a-button a-button--ghost u-left'
+            = f.submit 'Save changes', class: 'a-button u-float-right'
+            - if can? :manage, Post.all
+              = link_to 'Announce', announce_post_path(@post), class: 'a-button a-button--ghost' unless @post.announced
+          - else
+            = link_to "Cancel", posts_path, class: 'a-button a-button--ghost'
+            = f.submit 'Publish', class: 'a-button'

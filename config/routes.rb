@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   resources :post_attachments
   root to: 'pages#home'
   get '/learn', to: 'pages#learn', as: 'learn'

@@ -11,7 +11,7 @@
         .u-margin-bottom--small= f.text_field :name, placeholder: "Learn, discuss and practice code"
         %h3 Describe the plan for the day
         .u-margin-bottom--small
-          = f.text_area :description, id: 'froala'
+          = f.cktext_area :description, cols: 40, ckeditor: { uiColor: '$colour-grey' }
         %h3 Meetup start and finish dates
         .u-margin-bottom--small.m-form--narrow= f.datetime_local_field :date
         .u-margin-bottom--small.m-form--narrow= f.datetime_local_field :finish_date

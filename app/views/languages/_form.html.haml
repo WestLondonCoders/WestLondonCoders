@@ -9,7 +9,7 @@
       %section.a-section
         .a-content
           %h2 Description
-          = f.text_area :description, id: 'froala'
+          = f.cktext_area :description, cols: 40, ckeditor: { uiColor: '$colour-grey' }
 
       %section.a-section.a-section--overflow
         .a-content.a-content--tight-bottom

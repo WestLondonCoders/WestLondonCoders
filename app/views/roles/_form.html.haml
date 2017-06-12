@@ -5,7 +5,7 @@
     .m-post-editor
       %h1= f.text_field :name, placeholder: 'Role name'
       %h2 Description
-      = f.text_area :description, id: 'froala'
+      = f.cktext_area :description, cols: 40, ckeditor: { uiColor: '$colour-grey' }
 
     .u-margin-top
       .m-post-editor__submit
