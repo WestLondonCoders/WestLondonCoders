@@ -7,28 +7,4 @@
 - else
   = render partial: 'posts/templates/post'
 
-%section.a-section
-  .a-content
-    .m-comments
-      %h2
-        Comments
-        %i.fa.fa-comment-o
-
-      - if current_user
-        .m-comment__new
-          = form_for [@post, @new_comment], class: 'js-remote-form', remote: true do |f|
-            = f.text_field :body, class: 'js-remote-text-field', autocomplete: :off, placeholder: "Write a comment..."
-            = hidden_field_tag :authenticity_token, form_authenticity_token
-            .hide-if-js.u-float-right= f.submit 'Post', class: 'a-button'
-      - else
-        .a-prompt
-          %p
-            Sign in with GitHub to comment
-            %br
-            = link_to user_github_omniauth_authorize_path, class: 'a-button a-button--small' do
-              %i.fa.fa-github
-              Sign in
-
-      %ul.m-comments__feed#comments-list
-        = render partial: 'comment_feed', locals: { post: @post, comments: @comments }
-
+= render partial: 'shared/comments', locals: { commentable: @post }

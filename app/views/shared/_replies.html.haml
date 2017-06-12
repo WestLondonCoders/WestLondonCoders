@@ -3,10 +3,10 @@
 
   .m-comment__previous-replies.js-reveal__hidden
     - comment.replies.published.in_created_by_order[0..-4].each do |reply|
-      = render partial: 'posts/reply', locals: { comment: comment, reply: reply }
+      = render partial: 'shared/reply', locals: { comment: comment, reply: reply }
 
 - comment.replies.published.last_three.each do |reply|
-  = render partial: 'posts/reply', locals: { comment: comment, reply: reply }
+  = render partial: 'shared/reply', locals: { comment: comment, reply: reply }
 
 - if current_user
   .m-comment__new

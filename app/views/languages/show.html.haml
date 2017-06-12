@@ -18,6 +18,6 @@
     .m-billboard__nav= render partial: 'language_nav', locals: { language: @language }
 
   %section.a-section
-    .u-margin-top#language-content= render partial: 'comments', locals: { language: @language, comments: @comments }
+    .u-margin-top#language-content= render partial: 'shared/comments', locals: { commentable: @language }
 
   .u-margin-bottom

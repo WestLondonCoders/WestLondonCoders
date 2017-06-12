@@ -1,3 +1,3 @@
 $('.is-selected').removeClass('is-selected')
 $('#comment-nav').addClass('is-selected')
-$("#language-content").html("<%= escape_javascript(render partial: 'languages/comments', locals: { language: @language, comments: @comments } ) %>");
+$("#language-content").html("<%= escape_javascript(render partial: 'shared/comments', locals: { commentable: @language } ) %>");

@@ -1,8 +1,8 @@
 - comments.each do |comment|
   %div{id: "comment-#{comment.id}"}
     %li.m-comment.m-comment--delete
-      = render partial: 'shared/user_tag', locals: { user: comment.author, with_date: true, date: post.created_at }
-      .u-small-text= render partial: 'shared/follow_link_text', locals: { user: comment.author }
+      = render partial: 'shared/user_tag', locals: { user: comment.author, with_date: true, date: comment.created_at }
+      .u-small-text= render partial: 'shared/follow_link_text', locals: { user: comment.author } if current_user
       - if can? :update, comment
         = link_to hide_comment_path(comment), remote: true do
           %i.fa.fa-trash
@@ -13,4 +13,4 @@
         .u-float-right= pluralize(comment.replies.published.size, 'reply')
 
       .m-comment__replies#comment-replies
-        = render partial: 'posts/replies', locals: { comment: comment }
+        = render partial: 'shared/replies', locals: { comment: comment }

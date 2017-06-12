@@ -1,4 +1,4 @@
-%section.a-section
+%section
   .a-content
     .m-comments
       %h2
@@ -7,9 +7,10 @@
 
       - if current_user
         .m-comment__new
-          = form_for [meetup, meetup.comments.new], class: 'js-remote-form', remote: true do |f|
+          = form_for [commentable, commentable.comments.new], class: 'js-remote-form', remote: true do |f|
             = f.text_field :body, class: 'js-remote-text-field', autocomplete: :off, placeholder: "Write a comment..."
             = hidden_field_tag :authenticity_token, form_authenticity_token
+            .hide-if-js.u-float-right= f.submit 'Post', class: 'a-button'
       - else
         .a-prompt
           %p
@@ -20,4 +21,4 @@
               Sign in
 
       %ul.m-comments__feed#comments-list
-        = render partial: 'posts/comment_feed', locals: { post: meetup, comments: comments }
+        = render partial: 'shared/comment_feed', locals: { comments: commentable.comments.published.most_recent_first }
