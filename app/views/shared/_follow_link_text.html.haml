@@ -1,0 +1,9 @@
+- if current_user == user || user_following?(current_user, user)
+  = pluralize user.user_follows_count, 'follower'
+- elsif current_user
+  - if user_following?(current_user, user)
+    = user.user_follows_count
+  - else
+    #js-remove-follow-link= link_to 'Follow', follow_user_path(user), remote: true
+- else
+  = link_to 'Follow', new_user_session_path
