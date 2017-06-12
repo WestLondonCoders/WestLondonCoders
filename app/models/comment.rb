@@ -42,7 +42,6 @@ class Comment < ActiveRecord::Base
   end
 
   def link_host
-    "http://westlondoncoders.com" if Rails.env.production?
-    "http://localhost:3000" if Rails.env.development?
+    "http://westlondoncoders.com"
   end
 end
