@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170611232955) do
+ActiveRecord::Schema.define(version: 20170612193021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -138,14 +138,6 @@ ActiveRecord::Schema.define(version: 20170611232955) do
     t.index ["notifiable_id"], name: "index_notifications_on_notifiable_id"
     t.index ["notified_by_id"], name: "index_notifications_on_notified_by_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
-  end
-
-  create_table "organiser_interests", id: :serial, force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.datetime "notified_at"
-    t.index ["user_id"], name: "index_organiser_interests_on_user_id", unique: true
   end
 
   create_table "post_attachments", id: :serial, force: :cascade do |t|

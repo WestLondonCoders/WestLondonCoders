@@ -23,7 +23,6 @@ class User < ActiveRecord::Base
   has_many :followings, class_name: "UserFollow", foreign_key: "user_id", dependent: :destroy
   has_many :followers, through: :followings, source: 'follower'
   has_many :notifications, dependent: :destroy
-  has_one :organiser_interest, dependent: :destroy
 
   mount_uploader :image, AvatarUploader
   mount_uploader :logo, LogoUploader
