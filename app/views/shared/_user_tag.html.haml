@@ -1,12 +1,12 @@
 :ruby
-  with_date ||= nil
   image_only ||= nil
+  date ||= nil
 
 .a-identity
   .a-identity__photo
-    = link_to image_tag(avatar_url(user), title: user.name), user_path(user), title: user.name
+    = link_to image_tag(avatar_url(user), title: user.name, style: "border-left: solid 3px #{user.primary_languages&.first&.colour};"), user_path(user)
   - unless image_only
     .a-identity__tagline
-      = link_to user.name, user_path(user), style: "border-bottom: solid 2px #{user.primary_languages&.first&.colour}"
+      = link_to user.name, user_path(user)
       %br
-      = with_date ? date_and_time_as_sentence(date) : user.tagline
+      = time_as_sentence(date) if date

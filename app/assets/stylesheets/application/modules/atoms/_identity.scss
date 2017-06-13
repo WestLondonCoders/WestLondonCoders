@@ -18,6 +18,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  font-size: 14px;
 }
 
 .a-identity__photo {
@@ -25,7 +26,6 @@
   margin-right: 10px;
 
   img {
-    border-radius: 50%;
     display: block;
   }
 }
