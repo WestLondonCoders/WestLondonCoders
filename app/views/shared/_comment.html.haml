@@ -13,7 +13,7 @@
         = link_to 'See comment',path_to_comment(comment)
 
   .m-comment__content
-    = comment.body
+    = sanitize comment.body
 
   .m-comment__footer
     .m-comment__actions.u-small-text
