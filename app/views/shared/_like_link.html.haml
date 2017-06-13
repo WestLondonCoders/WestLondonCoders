@@ -1,0 +1,13 @@
+- if current_user
+  - if current_user.already_likes(likeable)
+    = link_to comment_like_path(likeable, current_user.already_likes(likeable)), method: :delete, remote: true do
+      %i.fa.fa-thumbs-up
+      = likeable.likes.count
+  - else
+    = link_to comment_likes_path(likeable), method: :post, remote: true do
+      %i.fa.fa-thumbs-o-up
+      = likeable.likes.count
+- else
+  = link_to new_user_session_path do
+    %i.fa.fa-thumbs-o-up
+    = likeable.likes.count

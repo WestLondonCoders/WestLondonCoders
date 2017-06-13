@@ -10,10 +10,7 @@
   .m-comment__footer
     .m-comment__actions.u-small-text
       .m-comment__action
-        = link_to '#' do
-          %i.fa.fa-thumbs-up
-          1
-      .m-comment__action= link_to 'Edit', '#'
+        %div{id: "like-link-#{comment.id}"}= render partial: 'shared/like_link', locals: { likeable: comment }
 
       - if can? :update, comment
         .m-comment__action

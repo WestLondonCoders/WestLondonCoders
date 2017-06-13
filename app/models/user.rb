@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   has_many :followings, class_name: "UserFollow", foreign_key: "user_id", dependent: :destroy
   has_many :followers, through: :followings, source: 'follower'
   has_many :notifications, dependent: :destroy
+  has_many :likes
 
   mount_uploader :image, AvatarUploader
   mount_uploader :logo, LogoUploader
@@ -86,6 +87,10 @@ class User < ActiveRecord::Base
 
   def label
     name
+  end
+
+  def already_likes(this)
+    likes.where(likeable: this).first
   end
 
   private

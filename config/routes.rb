@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   resources :comments do
     resources :comments
+    resources :likes
   end
 
   get 'comments/:id/hide', to: 'comments#hide', as: :hide_comment

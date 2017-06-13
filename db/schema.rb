@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612233319) do
+ActiveRecord::Schema.define(version: 20170613213846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,16 @@ ActiveRecord::Schema.define(version: 20170612233319) do
     t.string "slug", default: ""
     t.integer "popularity_score", default: 0
     t.integer "author_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "likeable_id"
+    t.string "likeable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["likeable_id"], name: "index_likes_on_likeable_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "meetup_rsvps", id: :serial, force: :cascade do |t|
@@ -278,6 +288,7 @@ ActiveRecord::Schema.define(version: 20170612233319) do
     t.index ["slug"], name: "index_users_on_slug"
   end
 
+  add_foreign_key "likes", "users"
   add_foreign_key "meetup_rsvps", "meetups", on_delete: :cascade
   add_foreign_key "meetup_rsvps", "users", on_delete: :cascade
   add_foreign_key "notifications", "users"
