@@ -1,0 +1,24 @@
+%div.m-comment{id: "comment-#{comment.id}"}
+  %li.m-comment__header
+    = render partial: 'shared/user_tag', locals: { user: comment.author, with_date: true, date: comment.created_at }
+
+    .u-small-text= render partial: 'shared/follow_link_text', locals: { user: comment.author } if current_user
+
+  .m-comment__content
+    = comment.body
+
+  .m-comment__footer
+    .m-comment__actions.u-small-text
+      .m-comment__action
+        = link_to '#' do
+          %i.fa.fa-thumbs-up
+          1
+      .m-comment__action= link_to 'Edit', '#'
+
+      - if can? :update, comment
+        .m-comment__action
+          = link_to hide_comment_path(comment), remote: true do
+            Delete
+
+    .u-small-text= linked_reply_count(comment) unless comment.has_no_replies
+

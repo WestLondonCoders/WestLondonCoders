@@ -1,4 +1,4 @@
-.m-comment.m-comment--delete{id: "reply-#{reply.id}"}
+.m-comment__header{id: "reply-#{reply.id}"}
   = render partial: 'shared/user_tag', locals: { user: reply.author, with_date: true, date: reply.created_at }
   - if can? :update, reply
     = link_to hide_comment_path(reply), remote: true do

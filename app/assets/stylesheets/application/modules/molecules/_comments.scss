@@ -19,23 +19,31 @@
   margin-bottom: 50px;
 }
 
-.m-comment__content {
-  margin-top: 10px;
-  padding: 10px;
+.m-comments__feed-item {
+  margin-bottom: 50px;
+}
+
+
+.m-comment {
   margin-bottom: 30px;
 }
 
+.m-comment__content {
+  margin: 15px 0;
+  padding: 10px;
+}
+
 .m-comment__new {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 
   input {
     width: 100%;
-    padding: 10px;
+    padding: 8px;
     border: solid 1px $color-light-grey;
   }
 }
 
-.m-comment {
+.m-comment__header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -47,10 +55,32 @@
 }
 
 .m-comment__replies {
-  margin-top: 40px;
-  margin-left: 30px;
+  margin-top: 20px;
+  margin-left: 20px;
+
+  @media #{$from-medium} {
+    margin-left: 30px;
+  }
 
   .m-comment__previous {
     margin-bottom: 20px;
   }
+}
+
+.m-comment__actions {
+  @include flex($justify-content: flex-start);
+  padding-left: 10px;
+
+  >:not(:last-child) {
+    margin-right: 15px;
+  }
+}
+
+.m-comment__footer {
+  @include flex($justify-content: space-between);
+  padding: 8px;
+  margin-top: 10px;
+  background-color: darken($color-pale-blue, 2%);
+  border-top: solid 1px $color-blue;
+  border-bottom: solid 1px $color-blue;
 }

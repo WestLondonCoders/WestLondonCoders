@@ -1,17 +1,8 @@
 - comments.each do |comment|
-  %div{id: "comment-#{comment.id}"}
-    %li.m-comment
-      = render partial: 'shared/user_tag', locals: { user: comment.author, with_date: true, date: comment.created_at }
+  .m-comments__feed-item
+    = render partial: 'shared/comment', locals: { comment: comment }
 
-      .u-small-text= render partial: 'shared/follow_link_text', locals: { user: comment.author } if current_user
+    .m-comment__replies#comment-replies
+      = render partial: 'shared/replies', locals: { comment: comment }
 
-      - if can? :update, comment
-        = link_to hide_comment_path(comment), remote: true do
-          %i.fa.fa-trash
-
-    .m-comment__content
-      = comment.body
-      .u-right= linked_reply_count(comment) unless comment.has_no_replies
-
-      .m-comment__replies#comment-replies
-        = render partial: 'shared/replies', locals: { comment: comment }
+    .u-blue-line--thin
