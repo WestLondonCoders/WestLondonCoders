@@ -29,16 +29,6 @@ class Comment < ActiveRecord::Base
     "#{author.name} commented: #{body} - #{link_host}#{comment_url}"
   end
 
-  def comment_url
-    if commentable_type == 'Post'
-      post_url(commentable, anchor: "comment-#{id}")
-    elsif commentable_type == 'Language'
-      language_url(commentable, anchor: "comment-#{id}")
-    elsif commentable_type == 'Hackroom'
-      hackroom_url(commentable, anchor: "comment-#{id}")
-    end
-  end
-
   def slack_channel
     Rails.env.production? ? 'general' : 'testing'
   end

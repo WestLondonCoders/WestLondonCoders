@@ -1,5 +1,5 @@
 %ul.m-comments__feed
-  - @comments.from_posts.published.take(14).each do |comment|
+  - @comments.published.take(14).each do |comment|
     %li.m-comment.m-comment--delete
       = render partial: 'shared/user_tag', locals: { user: comment.author, with_date: true, date: comment.created_at }
 
@@ -8,6 +8,6 @@
 
       .u-float-right
         - if comment.comments.any?
-          = link_to pluralize(comment.comments.size, 'reply'), post_path(comment.commentable, anchor: "comment-#{comment.id}")
+          = link_to pluralize(comment.comments.size, 'reply'), path_to_comment(comment)
         - else
           = link_to 'Reply', post_path(comment.commentable, anchor: "comment-#{comment.id}")
