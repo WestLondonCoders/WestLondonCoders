@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
   before_action :find_commentable
-  after_action :send_notifications, only: :create
 
   def show
   end
@@ -13,6 +12,7 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new comment_params
     @comment.author = current_user
     if @comment.save
+      send_notifications
       @commentable = @comment.commentable.commentable if @comment.commentable_type == 'Comment'
       respond_to do |format|
         format.html do
@@ -47,10 +47,10 @@ class CommentsController < ApplicationController
 
   def find_commentable
     case
-    when params[:comment_id]
-      @commentable = Comment.find(params[:comment_id])
     when params[:post_id]
       @commentable = Post.find_by_slug(params[:post_id])
+    when params[:comment_id]
+      @commentable = Comment.find(params[:comment_id])
     when params[:language_id]
       @commentable = Language.find_by_slug(params[:language_id])
     when params[:hackroom_id]

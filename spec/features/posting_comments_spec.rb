@@ -64,7 +64,7 @@ feature 'posting comments' do
 
   def then_the_comment_author_should_be_notified
     notification = @comment_one.author.notifications.last
-    expect(notification.notifiable).to eq Comment.last
+    expect(notification.notifiable).to eq @comment_one
     expect(notification.notified_by).to eq user
   end
 end
