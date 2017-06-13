@@ -9,8 +9,7 @@
 
     .m-comment__content
       = comment.body
-      - unless comment.comments.published.empty?
-        .u-float-right= pluralize(comment.comments.published.size, 'reply')
+      .u-right= linked_reply_count(comment) unless comment.has_no_replies
 
       .m-comment__replies#comment-replies
         = render partial: 'shared/replies', locals: { comment: comment }

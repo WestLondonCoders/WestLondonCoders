@@ -18,6 +18,10 @@ class Comment < ActiveRecord::Base
     "your comment"
   end
 
+  def has_no_replies
+    comments.published.empty?
+  end
+
   private
 
   def announce_comment
