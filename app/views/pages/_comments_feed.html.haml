@@ -1,13 +1,4 @@
 %ul.m-comments__feed
-  - @comments.published.take(14).each do |comment|
-    %li.m-comment.m-comment--delete
-      = render partial: 'shared/user_tag', locals: { user: comment.author, with_date: true, date: comment.created_at }
-
-    .m-comment__content
-      = simple_format(truncate(comment.body, length: 250, escape: false, omission: '...', separator: '.'))
-
-      .u-float-right
-        - if comment.comments.any?
-          = link_to pluralize(comment.comments.size, 'reply'), path_to_comment(comment)
-        - else
-          = link_to 'Reply', post_path(comment.commentable, anchor: "comment-#{comment.id}")
+  - @comments.top_level.published.take(14).each do |comment|
+    .m-comments__feed-item
+      = render partial: 'shared/comment', locals: { comment: comment }

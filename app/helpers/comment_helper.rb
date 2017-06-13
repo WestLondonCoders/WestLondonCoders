@@ -9,6 +9,8 @@ module CommentHelper
       hackroom_path(comment.commentable, anchor: "comment-#{comment.id}")
     when comment.commentable_type == 'Meetup'
       meetup_path(comment.commentable, anchor: "comment-#{comment.id}")
+    when comment.commentable_type == 'Comment'
+      post_path(comment.commentable.commentable, anchor: "comment-#{comment.id}")
     else
       nil
     end

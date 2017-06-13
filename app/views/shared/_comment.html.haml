@@ -1,8 +1,16 @@
+:ruby
+  delete_link ||= nil
+  follow_link ||= nil
+
 %div.m-comment{id: "comment-#{comment.id}"}
   %li.m-comment__header
     = render partial: 'shared/user_tag', locals: { user: comment.author, with_date: true, date: comment.created_at }
 
-    .u-small-text= render partial: 'shared/follow_link_text', locals: { user: comment.author } if current_user
+    .u-small-text
+      - if follow_link
+        = render partial: 'shared/follow_link_text', locals: { user: comment.author } if current_user
+      - else
+        = link_to 'See comment',path_to_comment(comment)
 
   .m-comment__content
     = comment.body
@@ -13,9 +21,10 @@
         %div{id: "like-link-#{comment.id}"}= render partial: 'shared/like_link', locals: { likeable: comment }
 
       - if can? :update, comment
-        .m-comment__action
-          = link_to hide_comment_path(comment), remote: true do
-            Delete
+        - if delete_link
+          .m-comment__action
+            = link_to hide_comment_path(comment), remote: true do
+              Delete
 
     .u-small-text= linked_reply_count(comment) unless comment.has_no_replies
 

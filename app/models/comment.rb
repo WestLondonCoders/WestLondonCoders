@@ -14,6 +14,7 @@ class Comment < ActiveRecord::Base
   scope :in_created_by_order, -> { order('created_at asc') }
   scope :from_posts, -> { where(commentable_type: 'Post') }
   scope :last_three, -> { order('created_at desc').limit(3).reverse }
+  scope :top_level, -> { where.not(commentable_type: 'Comment') }
 
   def description
     "your comment"
