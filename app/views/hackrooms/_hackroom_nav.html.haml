@@ -1,9 +1,9 @@
 %nav.a-subnav
-  = link_to hackroom_languages_path, id: 'languages-nav', class: 'a-subnav__item is-selected',  remote: true do
-    %h3 Languages
-
-  = link_to hackroom_discussion_path, id: 'comment-nav', class: 'a-subnav__item', remote: true do
+  = link_to hackroom_discussion_path, id: 'comment-nav', class: 'a-subnav__item is-selected', remote: true do
     %h3 Discussion
+
+  = link_to hackroom_languages_path, id: 'languages-nav', class: 'a-subnav__item',  remote: true do
+    %h3 Languages
 
   - if @hackroom.all_members.any?
     = link_to hackroom_members_path, id: 'members-nav', class: 'a-subnav__item',  remote: true do
