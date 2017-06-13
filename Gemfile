@@ -1,6 +1,11 @@
 source 'https://rubygems.org'
 ruby '2.4.1'
 
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
+
 gem 'rails',        '5.1.1'
 gem 'pg'
 gem 'puma'
@@ -39,8 +44,9 @@ gem 'ckeditor', git: 'https://github.com/galetahub/ckeditor.git'
 group :development, :test do
   gem 'rails-controller-testing'
   gem 'pry'
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails', '~> 3.6'
   gem 'capybara'
+  gem 'poltergeist'
   gem "factory_girl_rails"
   gem 'scss_lint', require: false
   gem 'railroady'
@@ -52,12 +58,13 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers', '~> 2.8.0'
-  gem 'poltergeist', '~> 1.11.0'
 end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem 'listen', '~> 3.0.5'
   gem 'spring'
+  gem 'spring-watcher-listen'
   gem 'spring-commands-rspec'
 end
 
