@@ -38,7 +38,7 @@ class LanguagesController < ApplicationController
   def create
     authorize! :create, Language
     @language = Language.new(language_params)
-    set_other_attributes
+    @language.author = current_user
 
     respond_to do |format|
       if @language.save
@@ -80,10 +80,5 @@ class LanguagesController < ApplicationController
 
   def language_params
     params.require(:language).permit(:name, :description, :colour)
-  end
-
-  def set_other_attributes
-    @language.slug = @language.name.strip.downcase.tr(" ", "-")
-    @language.author = current_user
   end
 end

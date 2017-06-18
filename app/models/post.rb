@@ -10,9 +10,8 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :slug
 
-  def to_param
-    slug
-  end
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :finders]
 
   def author
     created_by

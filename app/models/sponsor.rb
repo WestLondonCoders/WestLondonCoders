@@ -12,5 +12,5 @@ class Sponsor < ActiveRecord::Base
   scope :listed, -> { where(listed: true) }
 
   extend FriendlyId
-  friendly_id :slug, use: :slugged
+  friendly_id :name, use: [:slugged, :finders]
 end

@@ -31,7 +31,6 @@ end
   def create
     @post = Post.new(post_params)
     @post.created_by = current_user
-    @post.slug = @post.title.strip.downcase.tr(" ", "-")
 
     respond_to do |format|
       if @post.save
@@ -74,11 +73,11 @@ end
   private
 
   def get_post
-    @post = Post.find_by_slug(params[:id])
+    @post = Post.friendly.find(params[:id])
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :description, :twitter_image, :featured, :slug, tags_attributes: [:id, :name, :_destroy], post_attachments_attributes: [:id, :post_id, :avatar, :_destroy])
+    params.require(:post).permit(:title, :content, :description, :twitter_image, :featured, tags_attributes: [:id, :name, :_destroy], post_attachments_attributes: [:id, :post_id, :avatar, :_destroy])
   end
 
   def tag_params

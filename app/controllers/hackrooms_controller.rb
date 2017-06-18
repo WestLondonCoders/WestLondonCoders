@@ -46,7 +46,6 @@ class HackroomsController < ApplicationController
     @hackroom = Hackroom.new(hackroom_params)
     respond_to do |format|
       if @hackroom.save
-        @hackroom.slug = @hackroom.name.strip.downcase.tr(" ", "-")
         HackroomOwner.create(hackroom: @hackroom, user: current_user) unless @hackroom.owners.any?
         slack_announce_new_hackroom
         format.html { redirect_to @hackroom, notice: 'Hackroom created successfully.' }

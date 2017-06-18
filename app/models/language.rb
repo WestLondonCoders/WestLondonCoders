@@ -15,7 +15,7 @@ class Language < ActiveRecord::Base
   scope :in_popularity_order, -> { order('popularity_score desc') }
 
   extend FriendlyId
-  friendly_id :slug, use: :slugged
+  friendly_id :name, use: [:slugged, :finders]
 
   def all_users
     (primary_users.all + users.all).uniq
