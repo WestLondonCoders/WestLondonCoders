@@ -9,14 +9,6 @@ GIT
       i18n
       polyamorous (~> 1.3)
 
-GIT
-  remote: https://github.com/galetahub/ckeditor.git
-  revision: d0194ccd3f181be603f419c233ca7d4ce657b09a
-  specs:
-    ckeditor (4.2.3)
-      cocaine
-      orm_adapter (~> 0.5.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -86,10 +78,7 @@ GEM
       coffee-rails (>= 3.2)
       railties (>= 3.0)
       sass-rails (>= 3.2)
-    climate_control (0.2.0)
     cliver (0.3.2)
-    cocaine (0.5.8)
-      climate_control (>= 0.0.3, < 1.0)
     cocoon (1.2.10)
     coderay (1.1.1)
     coffee-rails (4.2.2)
@@ -519,6 +508,8 @@ GEM
     thread_safe (0.3.6)
     thread_safe (0.3.6-java)
     tilt (2.0.7)
+    trix (0.10.1)
+      rails
     trollop (2.1.2)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
@@ -559,7 +550,6 @@ DEPENDENCIES
   capybara
   carrierwave
   chosen-rails
-  ckeditor!
   cocoon
   coffee-rails (~> 4.2)
   database_cleaner
@@ -603,6 +593,7 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   spring-watcher-listen
+  trix
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)

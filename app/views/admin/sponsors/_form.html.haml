@@ -28,12 +28,12 @@
 
       .m-post-editor__content
         %h2 Description
-        = f.cktext_area :description, cols: 40, ckeditor: { uiColor: '$colour-grey' }
+        = f.trix_editor :description
 
       .m-post-editor__content
         %h2 Address
         %p This will be linked to on Google Maps in emails, on meetup pages and on your sponsor page.
-        = f.cktext_area :address, cols: 40, ckeditor: { uiColor: '$colour-grey' }
+        = f.trix_editor :address
 
       .m-profile__image-upload
         %h2 Logo

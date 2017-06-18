@@ -15,7 +15,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require chosen-jquery
-//= require ckeditor/init
 //= require application/main.js
 //= require cocoon
 //= require application/show_section.js
@@ -25,3 +24,4 @@
 //= require jquery.minicolors
 //= require application/menu.js
 //= require application/notifications.js
+//= require trix

@@ -13,7 +13,7 @@
     .m-post-editor__title
       %h1= f.text_field :title, placeholder: "Title"
     .m-post-editor__content
-      = f.cktext_area :content, cols: 40, ckeditor: { uiColor: '$colour-grey' }
+      = f.trix_editor :content
 
     .m-post-editor__options
       %h2 Sharing options
