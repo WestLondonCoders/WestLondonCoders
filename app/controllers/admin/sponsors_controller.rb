@@ -1,5 +1,6 @@
 class Admin::SponsorsController < Admin::BaseController
   before_action :get_sponsor, only: [:update, :edit, :destroy]
+  load_and_authorize_resource
 
   layout 'admin'
 

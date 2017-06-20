@@ -1,6 +1,7 @@
 class Admin::MeetupsController < Admin::BaseController
   before_action :get_meetup, only: [:show, :edit, :update, :destroy]
   after_action :post_new_meetup_slack_message, only: :create
+  load_and_authorize_resource
 
   layout 'admin'
 

@@ -25,7 +25,6 @@ feature 'administering languages' do
     visit languages_path
     click_on 'Add language'
     fill_in 'language_name', with: 'SteveScript'
-    fill_in 'language_description', with: 'This language is cool'
     click_on 'Save'
   end
 

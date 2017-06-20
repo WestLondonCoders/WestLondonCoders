@@ -12,6 +12,8 @@
         %h3 Describe the plan for the day
         .u-margin-bottom--small
           = f.trix_editor :description
+        .hide-if-js
+          = f.text_area :description
         %h3 Meetup start and finish dates
         .u-margin-bottom--small.m-form--narrow= f.datetime_local_field :date
         .u-margin-bottom--small.m-form--narrow= f.datetime_local_field :finish_date

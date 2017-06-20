@@ -50,7 +50,7 @@
           %p What languages does your organisation use?
           = f.select :language_ids, language_options_for_select(Language.all, f.object.language_ids), { label: 'Sponsor languages' }, multiple: true, class: 'chosen-select'
 
-      - if current_user.has_role?(:admin)
+      - if current_user && current_user.has_role?(:admin)
         .a-section--overflow
           .m-hackroom__admins
             %h1 WLC admins only

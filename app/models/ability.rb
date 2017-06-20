@@ -10,6 +10,10 @@ class Ability
     else
       can :read, :all
       can :index, :all
+      can :search, :all
+      can [:join, :leave], Hackroom
+      can :rsvp, Meetup
+      can :create, Comment
     end
 
     # Roles
