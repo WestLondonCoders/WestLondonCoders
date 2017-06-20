@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   def new_comment
     show
     render :show
-end
+  end
 
   def new
     @post = Post.new

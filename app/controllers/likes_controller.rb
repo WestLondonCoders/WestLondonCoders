@@ -23,8 +23,6 @@ class LikesController < ApplicationController
       @likeable = @like.likeable
     when params[:comment_id]
       @likeable = Comment.find(params[:comment_id])
-    else
-      nil
     end
   end
 

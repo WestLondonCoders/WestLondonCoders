@@ -46,7 +46,7 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:body)
   end
 
-  def find_commentable
+  def find_commentable # rubocop:disable Metrics/CyclomaticComplexity
     case
     when params[:post_id]
       @commentable = Post.find_by_slug(params[:post_id])
@@ -62,8 +62,6 @@ class CommentsController < ApplicationController
       @commentable = Step.friendly.find(params[:step_id])
     when params[:course_id]
       @commentable = Course.friendly.find(params[:course_id])
-    else
-      nil
     end
   end
 

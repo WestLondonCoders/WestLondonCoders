@@ -54,4 +54,3 @@ class CoursesController < ApplicationController
     params.require(:course).permit(:title, :description, language_ids: [])
   end
 end
-

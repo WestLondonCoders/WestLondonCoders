@@ -172,3 +172,6 @@ Style/WordArray:
 
 Style/ZeroLengthPredicate:
   Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
