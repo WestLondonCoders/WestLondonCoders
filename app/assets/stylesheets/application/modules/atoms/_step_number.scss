@@ -19,6 +19,12 @@
   border: solid 1px $color-blue;
 }
 
+.a-step__number--current {
+  background-color: $color-pink;
+  color: $color-white;
+  border: solid 1px $color-pink;
+}
+
 .a-step__progress-list {
   @include flex($direction: row, $justify-content: flex-start);
   margin-top: 30px;

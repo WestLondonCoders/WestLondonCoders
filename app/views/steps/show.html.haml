@@ -1,10 +1,6 @@
 %section.a-section
   .a-content
-    .a-step__progress-list
-      - @course.steps.each do |step|
-        = link_to course_step_path(@course, step) do
-          .a-step__step
-            .a-step__number{class: ('a-step__number--complete' if step.completed_by?(current_user))}= step.position
+    = render partial: 'progress_bar', locals: { course: @course }
     %h1= @step.title
     .u-margin-top--small= sanitize @step.content
 

@@ -1,0 +1,6 @@
+.a-step__progress-list
+  - course.steps.each do |step|
+    = link_to course_step_path(course, step) do
+      .a-step__step
+        .a-step__number{class: step_number_classes(@step, step)}
+          = step.position
