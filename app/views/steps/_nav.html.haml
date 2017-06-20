@@ -4,13 +4,13 @@
       %i.fa.fa-backward
       Back
 
-- unless step.position == course.steps.count
-  %h2.u-float-right
-    = link_to next_course_step_path(course, (step.position)) do
-      Next
-      %i.fa.fa-forward
-
 - if step.position == course.steps.count
   %h2.u-float-right
-    = link_to finish_course_step_path(course, (step.position)) do
+    = link_to finish_course_step_path(course, step) do
       Finish
+
+- else step.position == course.steps.count
+  %h2.u-float-right
+    = link_to next_course_step_path(course, step) do
+      Next
+      %i.fa.fa-forward

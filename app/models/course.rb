@@ -5,6 +5,7 @@ class Course < ActiveRecord::Base
   has_many :language_courses
   has_many :languages, through: :language_courses
   has_many :users, -> { distinct }, through: :steps
+  has_many :step_comments, through: :steps, source: :comments
 
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
@@ -13,5 +14,9 @@ class Course < ActiveRecord::Base
 
   def published?
     published_at.present?
+  end
+
+  def all_comments
+    comments.count + step_comments.count
   end
 end
