@@ -1,19 +1,17 @@
 require 'rails_helper'
 
 describe 'posts/show.html.haml' do
-  let(:post) { FactoryGirl.create(:post) }
-  let(:user) { FactoryGirl.create(:user, name: 'Jake Shears') }
-  let(:post_attachment) { FactoryGirl.create(:post_attachment) }
+  let(:post) { FactoryGirl.create(:post, created_by: user) }
+  let(:user) { FactoryGirl.create(:user, name: 'Jake') }
+  let(:tag) { double(:tag, name: 'Rails tag') }
 
   before do
     allow(view).to receive(:can?).and_return(false)
+    allow(post).to receive(:tags).and_return([tag])
 
     assign(:user, user)
     assign(:post, post)
-    assign(:post_attachments, [])
 
-    stub_template 'posts/templates/_gallery.html.haml' => ''
-    stub_template 'posts/templates/_post.html.haml' => ''
     stub_template '_comment_feed.html.haml' => ''
     stub_template '_og_header.html.haml' => ''
   end
@@ -23,14 +21,23 @@ describe 'posts/show.html.haml' do
     render
   end
 
-  it 'uses post template when no post attachments' do
+  it 'displays the post title' do
     render
-    expect(rendered).to render_template(partial: 'posts/templates/_post')
+    expect(rendered).to have_content('Why I love Rails')
   end
 
-  it 'uses gallery template if it has post attachments' do
-    allow(post).to receive(:post_attachments).and_return([post_attachment])
+  it 'displays a link to the author' do
     render
-    expect(rendered).to render_template(partial: 'posts/templates/_gallery')
+    expect(rendered).to have_link('Jake', href: user_path(user))
+  end
+
+  it 'displays the post content' do
+    render
+    expect(rendered).to have_content("I love Rails because it's so cool")
+  end
+
+  it 'displays each post tag' do
+    render
+    expect(rendered).to have_content('Rails tag')
   end
 end

@@ -1,8 +1,0 @@
-= image_tag @post_attachment.avatar
-= form_for(@post_attachment) do |f|
-  .field
-    = f.label :avatar
-    %br/
-    = f.file_field :avatar
-  .actions
-    = f.submit

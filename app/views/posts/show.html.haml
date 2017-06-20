@@ -1,10 +1,16 @@
 - set_page_title(@post.title)
 = render partial: 'og_header'
 
-- if @post.post_attachments.any?
-  = render partial: 'posts/templates/gallery'
+%section.a-section
+  .a-content
+    %h1= @post.title
 
-- else
-  = render partial: 'posts/templates/post'
+    = render partial: 'shared/user_tag', locals: { user: @post.created_by, with_date: true, date: @post.created_at }
+
+    .u-margin-top--small= sanitize @post.content
+
+    .a-tags
+      - @post.tags.each do |tag|
+        %h2.a-tag.a-tag--light-blue= tag.name
 
 = render partial: 'shared/comments', locals: { commentable: @post }

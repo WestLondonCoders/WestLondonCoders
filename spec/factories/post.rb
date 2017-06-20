@@ -6,7 +6,6 @@ FactoryGirl.define do
   factory :post do
     slug { FactoryGirl.generate(:slug) }
     title "Why I love Rails"
-    post_attachments []
     content "I love Rails because it's so cool"
     created_by factory: :user
   end
