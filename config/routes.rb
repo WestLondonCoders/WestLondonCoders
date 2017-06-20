@@ -95,6 +95,8 @@ Rails.application.routes.draw do
   get 'notifications/mark_all_read', to: 'notifications#mark_all_read', as: :mark_all_read
   resources :notifications, only: :index
 
+  resources :courses
+
   namespace :admin do
     root to: 'users#index'
 

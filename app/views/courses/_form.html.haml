@@ -1,0 +1,19 @@
+- set_page_title("Course editor")
+
+.m-course-editor
+  %h1 New course
+  = form_for @course do |f|
+    .m-course-editor__title
+      %h1= f.text_field :title, placeholder: "Title"
+    .m-course-editor__content
+      = f.trix_editor :description
+
+      .u-margin-top
+        .m-course-editor__submit
+          - if @course.persisted?
+            = link_to "Delete course", @course, method: :delete, data: { confirm: 'Delete course?' }, class: 'a-button a-button--ghost u-left'
+            = link_to "Cancel", course_path(@course), class: 'a-button a-button--ghost u-left'
+            = f.submit 'Save changes', class: 'a-button u-float-right'
+          - else
+            = link_to "Cancel", courses_path, class: 'a-button a-button--ghost'
+            = f.submit 'Create course', class: 'a-button u-float-right'

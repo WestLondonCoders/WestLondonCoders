@@ -1,0 +1,9 @@
+%section.a-section
+  .a-content
+    - @courses.each do |course|
+      = link_to course.title, course
+
+- if can? :create, Course
+  %section.a-section.u-margin-top--mobile
+    .a-content.u-center
+      = link_to "Create course", new_course_path, class: 'a-button a-button--edit'
