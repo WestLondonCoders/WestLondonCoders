@@ -12,3 +12,15 @@
   text-align: center;
   padding-top: 3px;
 }
+
+.a-step__number--complete {
+  background-color: $color-blue;
+  color: $color-white;
+  border: solid 1px $color-blue;
+}
+
+.a-step__progress-list {
+  @include flex($direction: row, $justify-content: flex-start);
+  margin-top: 30px;
+  margin-bottom: -10px;
+}

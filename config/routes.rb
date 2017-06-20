@@ -98,6 +98,10 @@ Rails.application.routes.draw do
   resources :courses do
     resources :steps do
       resources :comments
+      member do
+        get :next
+        get :finish
+      end
     end
   end
 

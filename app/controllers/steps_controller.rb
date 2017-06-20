@@ -1,6 +1,6 @@
 class StepsController < ApplicationController
   before_action :find_course
-  before_action :find_step, only: [:show, :edit, :update, :destroy]
+  before_action :find_step, only: [:show, :edit, :update, :destroy, :next, :finish]
 
   def index
     @steps = @course.steps.all
@@ -36,6 +36,16 @@ class StepsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to course_path(@course) }
     end
+  end
+
+  def next
+    @step_completion = StepCompletion.find_or_create_by(user: current_user, step: @step)
+    redirect_to course_step_path(@course, (@step.position + 1))
+  end
+
+  def finish
+    @step_completion = StepCompletion.find_or_create_by(user: current_user, step: @step)
+    redirect_to @course
   end
 
   private

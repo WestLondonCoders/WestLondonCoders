@@ -1,19 +1,20 @@
-%section.a-section
-  .a-content
-    %h1= @course.title
-    .u-margin-top--small= sanitize @course.description
-
-    - if current_user
-      = render partial: 'todo', locals: { course: @course }
-    - else
-      = render partial: 'step_list', locals: { course: @course }
-
-- if can? :manage, @course
-  %section.a-section.u-margin-top--mobile
+.a-page-holder
+  %section.a-section
     .a-content
-      = link_to "Add step", new_course_step_path(@course), class: 'a-button'
+      %h1= @course.title
+      .u-margin-top--small= sanitize @course.description
 
-- if can? :edit, @course
-  %section.a-section.u-margin-top--mobile
-    .a-content
-      = link_to "Edit course", edit_course_path(@course), class: 'a-button a-button--edit'
+      - if current_user
+        = render partial: 'todo', locals: { course: @course }
+      - else
+        = render partial: 'step_list', locals: { course: @course }
+
+  - if can? :manage, @course
+    %section.a-section.u-margin-top--mobile
+      .a-content
+        = link_to "Add step", new_course_step_path(@course), class: 'a-button'
+
+  - if can? :edit, @course
+    %section.a-section.u-margin-top--mobile
+      .a-content
+        = link_to "Edit course", edit_course_path(@course), class: 'a-button a-button--edit'

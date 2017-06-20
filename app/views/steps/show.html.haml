@@ -1,7 +1,29 @@
 %section.a-section
   .a-content
+    .a-step__progress-list
+      - @course.steps.each do |step|
+        = link_to course_step_path(@course, step) do
+          .a-step__step
+            .a-step__number{class: ('a-step__number--complete' if step.completed_by?(current_user))}= step.position
     %h1= @step.title
     .u-margin-top--small= sanitize @step.content
+
+    - unless @step.position == 1
+      %h2.u-float-left
+        = link_to course_step_path(@course, (@step.position - 1)) do
+          %i.fa.fa-backward
+          Back
+
+    - unless @step.position == @course.steps.count
+      %h2.u-float-right
+        = link_to next_course_step_path(@course, (@step.position)) do
+          Next
+          %i.fa.fa-forward
+
+    - if @step.position == @course.steps.count
+      %h2.u-float-right
+        = link_to finish_course_step_path(@course, (@step.position)) do
+          Finish
 
 %section.a-section
   .a-content
