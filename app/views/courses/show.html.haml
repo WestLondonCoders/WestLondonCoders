@@ -3,16 +3,17 @@
     %h1= @course.title
     .u-margin-top--small= sanitize @course.description
 
-    %ul.u-margin-top
-      - @course.steps.each do |step|
-        %li= link_to step.title, course_step_path(@course, step)
+    - if current_user
+      = render partial: 'todo', locals: { course: @course }
+    - else
+      = render partial: 'step_list', locals: { course: @course }
 
 - if can? :manage, @course
   %section.a-section.u-margin-top--mobile
-    .a-content.u-center
-      = link_to "Add step", new_course_step_path(@course), class: 'a-button a-button--edit'
+    .a-content
+      = link_to "Add step", new_course_step_path(@course), class: 'a-button'
 
 - if can? :edit, @course
   %section.a-section.u-margin-top--mobile
-    .a-content.u-center
-      = link_to "Edit course", edit_course_path(@course), class: 'a-button'
+    .a-content
+      = link_to "Edit course", edit_course_path(@course), class: 'a-button a-button--edit'

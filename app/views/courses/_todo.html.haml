@@ -1,0 +1,3 @@
+%ul.u-margin-top
+  - course.steps.each do |step|
+    %li= link_to step.title, course_step_path(course, step)
