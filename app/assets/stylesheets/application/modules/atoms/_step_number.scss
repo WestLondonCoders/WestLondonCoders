@@ -1,0 +1,14 @@
+.a-step__step {
+  @include flex($justify-content: flex-start);
+  margin-bottom: 10px;
+}
+
+.a-step__number {
+  height: 32px;
+  width: 32px;
+  border: solid 1px $color-border;
+  border-radius: 50%;
+  margin-right: 10px;
+  text-align: center;
+  padding-top: 3px;
+}

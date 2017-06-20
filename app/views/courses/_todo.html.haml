@@ -1,3 +1,7 @@
-%ul.u-margin-top
-  - course.steps.each do |step|
-    %li= link_to step.title, course_step_path(course, step)
+.u-margin-top
+  .a-step__list
+    - course.steps.each do |step|
+      = link_to course_step_path(course, step) do
+        .a-step__step
+          .a-step__number= step.position
+          = step.title
