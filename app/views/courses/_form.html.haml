@@ -8,12 +8,17 @@
     .m-course-editor__content
       = f.trix_editor :description
 
-      .u-margin-top
-        .m-course-editor__submit
-          - if @course.persisted?
-            = link_to "Delete course", @course, method: :delete, data: { confirm: 'Delete course?' }, class: 'a-button a-button--ghost u-left'
-            = link_to "Cancel", course_path(@course), class: 'a-button a-button--ghost u-left'
-            = f.submit 'Save changes', class: 'a-button u-float-right'
-          - else
-            = link_to "Cancel", courses_path, class: 'a-button a-button--ghost'
-            = f.submit 'Create course', class: 'a-button u-float-right'
+    %h2 Languages covered
+
+    = f.select :language_ids, user_options_for_select(Language.order('name asc'), f.object.language_ids), { label: 'Languages' }, multiple: true, class: 'chosen-select'
+
+    .u-margin-top
+      .m-course-editor__submit
+        - if @course.persisted?
+          = link_to "Delete course", @course, method: :delete, data: { confirm: 'Delete course?' }, class: 'a-button a-button--ghost u-left'
+          = link_to "Cancel", course_path(@course), class: 'a-button a-button--ghost u-left'
+          = f.submit 'Save changes', class: 'a-button u-float-right'
+        - else
+          = link_to "Cancel", courses_path, class: 'a-button a-button--ghost'
+          = f.submit 'Create course', class: 'a-button u-float-right'
+

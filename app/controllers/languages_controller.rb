@@ -1,5 +1,5 @@
 class LanguagesController < ApplicationController
-  before_action :find_language, only: [:show, :edit, :update, :destroy, :discussion, :hackrooms, :fans]
+  before_action :find_language, only: [:show, :edit, :update, :destroy, :discussion, :hackrooms, :fans, :courses]
   skip_before_action :verify_authenticity_token, only: [:search]
 
   def discussion
@@ -15,6 +15,12 @@ class LanguagesController < ApplicationController
   end
 
   def fans
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def courses
     respond_to do |format|
       format.js
     end

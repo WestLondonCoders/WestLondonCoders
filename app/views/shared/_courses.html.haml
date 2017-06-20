@@ -1,0 +1,12 @@
+.a-content--xwide
+  .m-grid
+    - courses.each do |course|
+      .m-grid__box
+        %h1= link_to course.title, course, style: "border-bottom: solid 2px #{course.languages.first.colour}"
+
+        = render partial: 'courses/highlights', locals: { course: course }
+
+        = excerpt(course.description) if course.description
+
+        .m-grid__bottom.u-center.u-margin-top--small
+          = link_to "More", course, class: 'a-button'

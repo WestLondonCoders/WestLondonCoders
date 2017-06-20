@@ -1,8 +1,7 @@
 %section.a-section
   .a-content
     %h1 Courses
-    - @courses.each do |course|
-      = link_to course.title, course
+  = render partial: 'shared/courses', locals: { courses: @courses }
 
 - if can? :create, Course
   %section.a-section.u-margin-top--mobile

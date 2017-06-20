@@ -1,0 +1,13 @@
+.a-highlights.u-margin-bottom--small
+  .a-highlight{style: "border-right: solid 2px #{course.languages.first.colour}"}
+    %i.fa.fa-wrench
+    = pluralize(course.steps.count, 'Step')
+
+  .a-highlight{style: "border-right: solid 2px #{course.languages.first.colour}"}
+    %i.fa.fa-user
+    = pluralize(course.users.count, 'Learner')
+
+  .a-highlight{style: "border-right: solid 2px #{course.languages.first.colour}"}
+    %i.fa.fa-comments
+    = pluralize(course.comments.count, 'Comment')
+

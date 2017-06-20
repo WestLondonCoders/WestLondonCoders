@@ -9,3 +9,7 @@
   - if @language.primary_users.any?
     = link_to language_fans_path, id: 'fans-nav', class: 'a-subnav__item',  :remote => true do
       %h3 Fans
+
+  - if @language.courses.published.any?
+    = link_to language_courses_path, id: 'courses-nav', class: 'a-subnav__item',  :remote => true do
+      %h3 Courses

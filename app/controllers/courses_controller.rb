@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
   before_action :find_course, except: [:index, :new, :create]
 
   def index
-    @courses = Course.all
+    @courses = Course.published
   end
 
   def new
@@ -43,7 +43,7 @@ class CoursesController < ApplicationController
   end
 
   def course_params
-    params.require(:course).permit(:title, :description)
+    params.require(:course).permit(:title, :description, language_ids: [])
   end
 end
 
