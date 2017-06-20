@@ -5,7 +5,6 @@ class Admin::MeetupsController < Admin::BaseController
   layout 'admin'
 
   def index
-    authorize! :manage, @meetups
     @search = Meetup.ransack(params[:q])
     @search.sorts = 'date asc' if @search.sorts.empty?
     @upcoming_meetups = @search.result.upcoming
@@ -26,12 +25,10 @@ class Admin::MeetupsController < Admin::BaseController
   end
 
   def new
-    authorize! :manage, Meetup
     @meetup = Meetup.new
   end
 
   def create
-    authorize! :create, @meetups
     @meetup = Meetup.new(meetup_params)
     @meetup.author = current_user
     if @meetup.save
@@ -44,12 +41,7 @@ class Admin::MeetupsController < Admin::BaseController
     end
   end
 
-  def edit
-    authorize! :manage, @meetup
-  end
-
   def update
-    authorize! :manage, @meetup
     if @meetup.update(meetup_params)
       if current_user.has_role?(:admin)
         redirect_to admin_meetups_path
@@ -62,7 +54,6 @@ class Admin::MeetupsController < Admin::BaseController
   end
 
   def destroy
-    authorize! :destroy, @meetup
     @meetup.destroy
     respond_to do |format|
       format.html { redirect_to admin_meetups_path }

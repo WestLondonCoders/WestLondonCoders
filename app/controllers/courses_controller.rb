@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   before_action :find_course, except: [:index, :new, :create, :search]
   skip_before_action :verify_authenticity_token, only: [:search]
+  load_and_authorize_resource
 
   def search
     index

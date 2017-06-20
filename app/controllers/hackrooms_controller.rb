@@ -2,6 +2,7 @@ class HackroomsController < ApplicationController
   before_action :get_hackroom, only: [:show, :edit, :update, :destroy, :join, :leave, :languages, :members, :admins, :discussion]
   before_action :get_user, only: [:join, :leave]
   skip_before_action :verify_authenticity_token, only: [:search]
+  load_and_authorize_resource
 
   def discussion
     respond_to do |format|
@@ -57,12 +58,10 @@ class HackroomsController < ApplicationController
   end
 
   def edit
-    authorize! :edit, @hackroom
     @languages = Language.all
   end
 
   def update
-    authorize! :update, @hackroom
     respond_to do |format|
       if @hackroom.update(hackroom_params)
         format.html { redirect_to @hackroom, notice: 'Hackroom was successfully updated.' }
@@ -79,7 +78,6 @@ class HackroomsController < ApplicationController
   end
 
   def destroy
-    authorize! :destroy, @hackroom
     @hackroom.destroy
     respond_to do |format|
       format.html { redirect_to hackrooms_path }

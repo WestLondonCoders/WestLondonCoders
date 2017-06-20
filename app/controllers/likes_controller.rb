@@ -1,5 +1,6 @@
 class LikesController < ApplicationController
   before_action :find_like
+  load_and_authorize_resource
 
   def create
     @like = @likeable.likes.find_or_create_by(user: current_user)

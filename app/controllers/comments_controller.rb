@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :find_commentable
+  load_and_authorize_resource
 
   def show
   end

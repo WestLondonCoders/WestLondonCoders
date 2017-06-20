@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :get_post, only: [:show, :edit, :update, :destroy, :announce]
   after_action :slack, only: [:create]
   skip_before_action :verify_authenticity_token, only: [:search]
+  load_and_authorize_resource
 
   def index
     @search = Post.ransack(params[:q])
@@ -51,12 +52,7 @@ end
     end
   end
 
-  def edit
-    authorize! :edit, @user
-  end
-
   def destroy
-    authorize! :destroy, @hackroom
     @post.destroy
     respond_to do |format|
       format.html { redirect_to user_path(@post.created_by) }

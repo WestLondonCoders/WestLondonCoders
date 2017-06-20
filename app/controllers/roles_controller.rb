@@ -1,13 +1,12 @@
 class RolesController < ApplicationController
   before_action :find_role, only: [:edit, :update, :destroy]
+  load_and_authorize_resource
 
   def new
-    authorize! :new, Role
     @role = Role.new
   end
 
   def create
-    authorize! :create, Role
     @role = Role.new(role_params)
 
     respond_to do |format|
@@ -20,7 +19,6 @@ class RolesController < ApplicationController
   end
 
   def update
-    authorize! :update, @role
     respond_to do |format|
       if @role.update(role_params)
         format.html { redirect_to admin_roles_path, notice: 'Role was successfully updated.' }
@@ -31,7 +29,6 @@ class RolesController < ApplicationController
   end
 
   def destroy
-    authorize! :destroy, @role
     @role.destroy
     respond_to do |format|
       format.html { redirect_to admin_roles_path, notice: 'Role deleted.' }

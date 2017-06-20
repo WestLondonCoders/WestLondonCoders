@@ -4,17 +4,14 @@ class Admin::SponsorsController < Admin::BaseController
   layout 'admin'
 
   def index
-    authorize! :manage, @sponsors
     @sponsors = Sponsor.all
   end
 
   def new
-    authorize! :create, Sponsor
     @sponsor = Sponsor.new
   end
 
   def create
-    authorize! :create, Sponsor
     @sponsor = Sponsor.new(sponsor_params)
 
     if @sponsor.save
@@ -25,12 +22,7 @@ class Admin::SponsorsController < Admin::BaseController
     end
   end
 
-  def edit
-    authorize! :manage, @sponsor
-  end
-
   def update
-    authorize! :manage, @sponsor
     if @sponsor.update(sponsor_params)
       if current_user.has_role?(:admin)
         redirect_to admin_sponsors_path
@@ -43,7 +35,6 @@ class Admin::SponsorsController < Admin::BaseController
   end
 
   def destroy
-    authorize! :destroy, @sponsor
     @sponsor.destroy
     respond_to do |format|
       format.html { redirect_to admin_sponsors_path }

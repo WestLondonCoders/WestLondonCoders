@@ -1,6 +1,7 @@
 class MeetupsController < ApplicationController
   before_action :get_meetup, only: [:show, :rsvp]
   skip_before_action :verify_authenticity_token, only: [:search]
+  load_and_authorize_resource
 
   def show
   end

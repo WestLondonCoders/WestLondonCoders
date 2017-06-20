@@ -1,6 +1,7 @@
 class LanguagesController < ApplicationController
   before_action :find_language, only: [:show, :edit, :update, :destroy, :discussion, :hackrooms, :fans, :courses]
   skip_before_action :verify_authenticity_token, only: [:search]
+  load_and_authorize_resource
 
   def discussion
     respond_to do |format|
@@ -37,12 +38,10 @@ class LanguagesController < ApplicationController
   end
 
   def new
-    authorize! :create, Language
     @language = Language.new
   end
 
   def create
-    authorize! :create, Language
     @language = Language.new(language_params)
     @language.author = current_user
 
@@ -55,12 +54,7 @@ class LanguagesController < ApplicationController
     end
   end
 
-  def edit
-    authorize! :manage, @language
-  end
-
   def update
-    authorize! :update, @language
     respond_to do |format|
       if @language.update(language_params)
         format.html { redirect_to @language, notice: 'Language was successfully updated.' }
@@ -71,7 +65,6 @@ class LanguagesController < ApplicationController
   end
 
   def destroy
-    authorize! :destroy, @language
     @language.destroy
     respond_to do |format|
       format.html { redirect_to languages_path, notice: 'Language deleted.' }

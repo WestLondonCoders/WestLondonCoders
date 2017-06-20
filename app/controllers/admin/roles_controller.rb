@@ -4,12 +4,10 @@ class Admin::RolesController < Admin::BaseController
   layout 'admin'
 
   def index
-    authorize! :manage, @roles
     @roles = Role.all
   end
 
   def update
-    authorize! :update, @roles
     if @role.update(role_params)
       redirect_to admin_roles_path
       UserMailer.welcome_email(User.first).deliver_now

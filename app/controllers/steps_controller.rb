@@ -1,6 +1,7 @@
 class StepsController < ApplicationController
   before_action :find_course
   before_action :find_step, only: [:show, :edit, :update, :destroy, :next, :finish]
+  load_and_authorize_resource
 
   def index
     @steps = @course.steps.all

@@ -22,6 +22,8 @@
 ---
 en:
   index_introductions:
+    courses: Learn web development or improve your skills with courses made by developers
+      from our meetup.
     hackrooms: Hackrooms are a way to bring together people with shared interests
       or goals. It could be a group of beginners learning HTML, or some Pythonists
       building an app, or both of those things.
@@ -36,4 +38,3 @@ en:
     posts: Anyone can write posts at West London Coders. Writing about development
       or your experience at our meetups is a great way to express yourself, provoke
       discussion and get involved in the developer community.
-    courses: Learn web development or improve your skills with courses made by developers from our meetup.

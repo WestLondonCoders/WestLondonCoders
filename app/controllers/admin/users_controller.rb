@@ -4,7 +4,6 @@ class Admin::UsersController < Admin::BaseController
   layout 'admin'
 
   def index
-    authorize! :manage, @users
     @search = User.ransack(params[:q])
     @users = @search.result.includes(:roles, :hackrooms, :own_hackrooms).in_popularity_order
     @roles = Role.all
@@ -16,7 +15,6 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def update
-    authorize! :update, @user
     if @user.update(user_params)
       redirect_to admin_users_path
     else
@@ -25,7 +23,6 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def destroy
-    authorize! :destroy, @user
     @user.destroy
     respond_to do |format|
       format.html { redirect_to admin_users_path }

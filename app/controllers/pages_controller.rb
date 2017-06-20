@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  load_and_authorize_resource
 
   def home
     @posts = Post.all.where(featured: true).order("created_at desc")
