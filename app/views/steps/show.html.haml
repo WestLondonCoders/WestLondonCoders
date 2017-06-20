@@ -4,22 +4,7 @@
     %h1= @step.title
     .u-margin-top--small= sanitize @step.content
 
-    - unless @step.position == 1
-      %h2.u-float-left
-        = link_to course_step_path(@course, (@step.position - 1)) do
-          %i.fa.fa-backward
-          Back
-
-    - unless @step.position == @course.steps.count
-      %h2.u-float-right
-        = link_to next_course_step_path(@course, (@step.position)) do
-          Next
-          %i.fa.fa-forward
-
-    - if @step.position == @course.steps.count
-      %h2.u-float-right
-        = link_to finish_course_step_path(@course, (@step.position)) do
-          Finish
+    = render partial: 'nav', locals: { course: @course, step: @step }
 
 %section.a-section
   .a-content
