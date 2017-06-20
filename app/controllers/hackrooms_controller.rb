@@ -43,7 +43,7 @@ class HackroomsController < ApplicationController
     @hackroom = Hackroom.new
   end
 
-  def create # rubocop:disable Metrics/MethodLength
+  def create
     @hackroom = Hackroom.new(hackroom_params)
     respond_to do |format|
       if @hackroom.save

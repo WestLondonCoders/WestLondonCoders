@@ -85,6 +85,9 @@ Style/EmptyLinesAroundClassBody:
 Style/EmptyLinesAroundModuleBody:
   Enabled: false
 
+Metrics/MethodLength:
+  Enabled: false
+
 Style/EmptyMethod:
   EnforcedStyle: expanded
 

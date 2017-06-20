@@ -21,7 +21,7 @@ class MeetupsController < ApplicationController
     @past_meetups = Meetup.past.all.order('date desc')
   end
 
-  def rsvp # rubocop:disable Metrics/MethodLength
+  def rsvp
     rsvp = MeetupRsvp.find_by(meetup: @meetup, user: current_user)
 
     if rsvp.present?

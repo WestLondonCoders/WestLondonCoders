@@ -1,7 +1,7 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user) # rubocop:disable Metrics/MethodLength
+  def initialize(user)
     # Admins can do everything, all users can see everything
 
     user ||= User.new

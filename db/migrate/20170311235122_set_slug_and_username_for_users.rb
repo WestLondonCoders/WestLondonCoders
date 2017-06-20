@@ -1,5 +1,5 @@
 class SetSlugAndUsernameForUsers < ActiveRecord::Migration[4.2]
-  def change # rubocop:disable Metrics/MethodLength
+  def change
     User.all.each do |user|
       if user.slug.nil? || user.slug == ''
         unless user.github.nil?

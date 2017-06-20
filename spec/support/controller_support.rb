@@ -59,7 +59,7 @@ module ControllerSupport
     )
   end
 
-  def format_args(args) # rubocop:disable Metrics/MethodLength
+  def format_args(args)
     if args.empty?
       args
     elsif kwarg_request?(args)
