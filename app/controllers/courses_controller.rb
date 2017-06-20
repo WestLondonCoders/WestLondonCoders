@@ -31,6 +31,11 @@ class CoursesController < ApplicationController
     end
   end
 
+  def publish
+    @course.update(published_at: Time.now) unless @course.published?
+    redirect_to @course
+  end
+
   private
 
   def find_course

@@ -59,6 +59,8 @@ class CommentsController < ApplicationController
       @commentable = Meetup.find_by_slug(params[:meetup_id])
     when params[:step_id]
       @commentable = Step.friendly.find(params[:step_id])
+    when params[:course_id]
+      @commentable = Course.friendly.find(params[:course_id])
     else
       nil
     end

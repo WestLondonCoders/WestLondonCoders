@@ -12,9 +12,16 @@
   - if can? :manage, @course
     %section.a-section.u-margin-top--mobile
       .a-content
-        = link_to "Add step", new_course_step_path(@course), class: 'a-button'
+        = link_to "Add step", new_course_step_path(@course), class: 'a-button u-float-right'
+
+  - if can?(:publish, @course) && !@course.published?
+    %section.a-section.u-margin-top--mobile
+      .a-content
+        = link_to "Publish course", publish_course_path(@course), class: 'a-button'
 
   - if can? :edit, @course
     %section.a-section.u-margin-top--mobile
       .a-content
         = link_to "Edit course", edit_course_path(@course), class: 'a-button a-button--edit'
+
+= render partial: 'shared/comments', locals: { commentable: @course }

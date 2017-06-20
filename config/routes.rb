@@ -96,6 +96,10 @@ Rails.application.routes.draw do
   resources :notifications, only: :index
 
   resources :courses do
+    member do
+      get :publish
+    end
+    resources :comments
     resources :steps do
       resources :comments
       member do
