@@ -1,9 +1,21 @@
-%section.a-section
-  .a-content
-    %h1 Courses
-  = render partial: 'shared/courses', locals: { courses: @courses }
+- set_page_title("Courses")
 
-- if can? :create, Course
-  %section.a-section.u-margin-top--mobile
-    .a-content.u-center
-      = link_to "Create course", new_course_path, class: 'a-button a-button--edit'
+.a-page-holder
+
+  %section.a-section.a-section--alt
+    .a-content--xwide.a-content--tight
+
+      %h1.a-heading.u-center#course-search-heading= render 'heading'
+
+      .a-content
+        %p= I18n.t('index_introductions.courses')
+
+        = render partial: 'filter'
+
+  %section.a-section
+    .a-content--xwide#course-search-results= render 'results'
+
+  - if can? :create, Course
+    %section.a-section.u-margin-top--mobile
+      .a-content.u-center
+        = link_to "Create course", new_course_path, class: 'a-button a-button--edit'

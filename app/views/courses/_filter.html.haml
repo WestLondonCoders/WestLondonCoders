@@ -1,0 +1,4 @@
+.a-filter
+  = search_form_for @search, url: search_courses_path, method: :post, remote: true do |f|
+    = f.search_field :title_or_languages_name_cont, id: 'search', placeholder: 'Search'
+    = f.submit "Search", class: 'a-button m-filter__button'

@@ -97,6 +97,9 @@ Rails.application.routes.draw do
   resources :notifications, only: :index
 
   resources :courses do
+    collection do
+      match 'search' => 'courses#search', via: [:get, :post], as: :search
+    end
     member do
       get :publish
     end

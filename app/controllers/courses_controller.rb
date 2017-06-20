@@ -1,8 +1,15 @@
 class CoursesController < ApplicationController
-  before_action :find_course, except: [:index, :new, :create]
+  before_action :find_course, except: [:index, :new, :create, :search]
+  skip_before_action :verify_authenticity_token, only: [:search]
+
+  def search
+    index
+    render :index
+  end
 
   def index
-    @courses = Course.published
+    @search = Course.ransack(params[:q])
+    @courses = @search.result.includes(:languages, :users).published
   end
 
   def new
