@@ -1,0 +1,4 @@
+%section.a-section
+  .a-content
+    = form_for [@course, @step], url: course_step_path(@course, @step) do |f|
+      = render partial: "form", locals: { f: f }

@@ -1,0 +1,13 @@
+%section.a-section
+  .a-content
+    %h1= @step.title
+    .u-margin-top--small= sanitize @step.content
+
+- if can? :edit, @step
+  %section.a-section.u-margin-top--mobile
+    .a-content.u-center
+      = link_to "Edit step", edit_course_step_path(@course, @step), class: 'a-button a-button--edit'
+
+%section.a-section.u-margin-top--mobile
+  .a-content.u-center
+    = link_to "Back to course", course_path(@course), class: 'a-button'

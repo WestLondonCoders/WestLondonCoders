@@ -1,0 +1,19 @@
+- set_page_title("Course editor")
+
+.m-post-editor
+  %h1 New step
+  .m-post-editor__title
+    %h1= f.text_field :title, placeholder: "Title"
+    %p= f.text_field :position
+  .m-post-editor__content
+    = f.trix_editor :content
+
+    .u-margin-top
+      .m-post-editor__submit
+        - if @step.persisted?
+          = link_to "Delete step", course_step_path(@course, @step), method: :delete, data: { confirm: 'Delete step?' }, class: 'a-button a-button--ghost u-left'
+          = link_to "Cancel", course_step_path(@step), class: 'a-button a-button--ghost u-left'
+          = f.submit 'Save changes', class: 'a-button u-float-right'
+        - else
+          = link_to "Cancel", course_steps_path, class: 'a-button a-button--ghost'
+          = f.submit 'Create step', class: 'a-button u-float-right'
