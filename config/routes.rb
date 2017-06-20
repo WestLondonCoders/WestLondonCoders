@@ -96,7 +96,9 @@ Rails.application.routes.draw do
   resources :notifications, only: :index
 
   resources :courses do
-    resources :steps
+    resources :steps do
+      resources :comments
+    end
   end
 
   namespace :admin do

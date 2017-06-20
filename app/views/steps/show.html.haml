@@ -3,6 +3,26 @@
     %h1= @step.title
     .u-margin-top--small= sanitize @step.content
 
+%section.a-section
+  .a-content
+    .m-comments
+      %h2
+        Comments
+        %i.fa.fa-comment-o
+
+      - if current_user
+        .m-comment__new
+          = form_for [@course, @step, @step.comments.new], class: 'js-remote-form', remote: true do |f|
+            = f.text_field :body, class: 'js-remote-text-field', autocomplete: :off, placeholder: "Write a comment..."
+            = hidden_field_tag :authenticity_token, form_authenticity_token
+            .hide-if-js.u-float-right= f.submit 'Post', class: 'a-button'
+
+      - else
+        = render partial: 'shared/sign_in_to_comment'
+
+      %ul.m-comments__feed#comments-list
+        = render partial: 'shared/comment_feed', locals: { comments: @step.comments.published.most_recent_first }
+
 - if can? :edit, @step
   %section.a-section.u-margin-top--mobile
     .a-content.u-center
