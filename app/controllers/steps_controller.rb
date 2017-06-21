@@ -30,6 +30,7 @@ class StepsController < ApplicationController
 
   def update
     if @step.update(step_params)
+      @step.update(slug: @step.position)
       flash[:notice] = 'Step updated.'
       redirect_to course_step_path(@course, @step), notice: 'Course updated.'
     else
