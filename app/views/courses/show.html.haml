@@ -2,6 +2,9 @@
   %section.a-section
     .a-content
       %h1= @course.title
+
+      = render partial: 'shared/user_tag', locals: { user: @course.author, with_date: true, date: @course.created_at }
+
       .u-margin-top--small= sanitize @course.description
 
       - if current_user
