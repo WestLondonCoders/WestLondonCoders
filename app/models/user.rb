@@ -93,6 +93,13 @@ class User < ActiveRecord::Base
     likes.where(likeable: this).first
   end
 
+  def score
+    score = 0
+    score += followers.count * 10
+    score += completed_steps.count * 50
+    score
+  end
+
   private
 
   def notify_slack_of_new_user

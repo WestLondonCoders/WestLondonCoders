@@ -1,4 +1,7 @@
 - if current_user
+  - if current_user.score > 0
+    %a.s-navbar__score= score(current_user)
+
   = link_to mark_all_read_path, remote: true, class: 'js-open-notifications' do
     .s-navbar__notification-icon{"data-badge" => (current_user.notifications.unread.size if current_user.notifications.unread.size > 0)}
       %i.fa.fa-bell-o

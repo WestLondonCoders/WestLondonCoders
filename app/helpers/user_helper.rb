@@ -49,4 +49,8 @@ module UserHelper
   def user_following?(current_user, user)
     current_user.followed_users.any? { |l| l == user }
   end
+
+  def score(user)
+    pluralize(number_with_delimiter(user.score, delimiter: ','), 'pt')
+  end
 end
