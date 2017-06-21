@@ -29,13 +29,11 @@
       .m-post-editor__content
         %h2 Description
         = f.trix_editor :description
-        .hide-if-js= f.text_area :description
 
       .m-post-editor__content
         %h2 Address
         %p This will be linked to on Google Maps in emails, on meetup pages and on your sponsor page.
         = f.trix_editor :address
-        .hide-if-js= f.text_area :address
 
       .m-profile__image-upload
         %h2 Logo
