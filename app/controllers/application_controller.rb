@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  after_action :store_location
+  before_action :store_location, unless: :devise_controller?
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to users_path, notice: exception.message
@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def store_location
-    session[:previous_url] = request.fullpath unless request.fullpath =~ %r{/users}
+    session[:previous_url] = request.fullpath unless request.fullpath =~ %r{users/}
   end
 
   def after_sign_in_path_for(resource)
@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
   def require_sign_in
     unless user_signed_in?
-      redirect_to user_github_omniauth_authorize_path
+      redirect_to new_user_session_path, notice: "You'll need to sign in to visit this page"
     end
   end
 
