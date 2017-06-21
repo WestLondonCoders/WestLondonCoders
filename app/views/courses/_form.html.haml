@@ -5,6 +5,7 @@
   = form_for @course do |f|
     .m-course-editor__title
       %h1= f.text_field :title, placeholder: "Title"
+      %p= f.text_field :colour, class: 'colour-select'
     .m-course-editor__content
       = f.trix_editor :description
 

@@ -2,7 +2,7 @@
   .m-grid
     - courses.each do |course|
       .m-grid__box
-        %h1= link_to course.title, course, style: "border-bottom: solid 2px #{course.languages.first.colour}"
+        %h1= link_to course.title, course, style: "border-bottom: solid 2px #{course.colour}"
 
         = render partial: 'courses/highlights', locals: { course: course }
 
