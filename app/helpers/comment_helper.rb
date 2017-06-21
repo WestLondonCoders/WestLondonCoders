@@ -1,16 +1,21 @@
 module CommentHelper
   def path_to_comment(comment)
+    anchor = "comment-#{comment.id}"
     case
     when comment.commentable_type == 'Post'
-      post_path(comment.commentable, anchor: "comment-#{comment.id}")
+      post_path(comment.commentable, anchor: anchor)
     when comment.commentable_type == 'Language'
-      language_path(comment.commentable, anchor: "comment-#{comment.id}")
+      language_path(comment.commentable, anchor: anchor)
     when comment.commentable_type == 'Hackroom'
-      hackroom_path(comment.commentable, anchor: "comment-#{comment.id}")
+      hackroom_path(comment.commentable, anchor: anchor)
     when comment.commentable_type == 'Meetup'
-      meetup_path(comment.commentable, anchor: "comment-#{comment.id}")
+      meetup_path(comment.commentable, anchor: anchor)
     when comment.commentable_type == 'Comment'
-      post_path(comment.commentable.commentable, anchor: "comment-#{comment.id}")
+      post_path(comment.commentable.commentable, anchor: anchor)
+    when comment.commentable_type == 'Course'
+      course_path(comment.commentable, anchor: anchor)
+    when comment.commentable_type == 'Step'
+      course_step_path(comment.commentable.course, comment.commentable, anchor: anchor)
     end
   end
 

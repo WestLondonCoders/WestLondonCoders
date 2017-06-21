@@ -11,5 +11,5 @@
 
 = link_to trigger.label, trigger
 = action
-= link_to 'your comment', post_path(subject.commentable, anchor: "comment-#{subject.id}")
+= link_to 'your comment', path_to_comment(notification.notifiable)
 = "on '#{subject.commentable.title}'"
