@@ -4,13 +4,13 @@ class User < ActiveRecord::Base
   has_many :assignments, dependent: :destroy
   has_many :roles, through: :assignments
   has_many :comments, foreign_key: :author_id, dependent: :destroy
-  has_many :user_hackrooms
+  has_many :user_hackrooms, dependent: :destroy
   has_many :hackrooms, through: :user_hackrooms
-  has_many :hackroom_owners
+  has_many :hackroom_owners, dependent: :destroy
   has_many :own_hackrooms, through: :hackroom_owners, source: :hackroom
-  has_many :user_languages
+  has_many :user_languages, dependent: :destroy
   has_many :languages, through: :user_languages
-  has_many :user_primaries
+  has_many :user_primaries, dependent: :destroy
   has_many :primary_languages, through: :user_primaries, source: :language
   has_many :meetup_rsvps, dependent: :destroy
   has_many :meetups, through: :meetup_rsvps
@@ -23,7 +23,8 @@ class User < ActiveRecord::Base
   has_many :followings, class_name: "UserFollow", foreign_key: "user_id", dependent: :destroy
   has_many :followers, through: :followings, source: 'follower'
   has_many :notifications, dependent: :destroy
-  has_many :likes
+  has_many :likes, dependent: :destroy
+  has_many :completed_steps, class_name: 'StepCompletion', dependent: :destroy
 
   mount_uploader :image, AvatarUploader
   mount_uploader :logo, LogoUploader

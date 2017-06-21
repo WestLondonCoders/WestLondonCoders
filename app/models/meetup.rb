@@ -1,11 +1,11 @@
 class Meetup < ActiveRecord::Base
   belongs_to :sponsor
-  has_many :meetup_rsvps
+  has_many :meetup_rsvps, dependent: :destroy
   has_many :rsvps, through: :meetup_rsvps, source: :user
   has_many :sponsor_admins, through: :sponsor, source: :users
   has_many :organisers, -> { with_role("Organiser") }, through: :meetup_rsvps, source: :user
   has_many :languages, -> { distinct }, through: :rsvps, source: :primary_languages
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
   belongs_to :author, class_name: 'User'
 
   scope :upcoming, -> { where("date >= ?", Date.today) }
