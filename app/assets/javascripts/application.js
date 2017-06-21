@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require chosen-jquery
+//= require application/tooltip.js
 //= require application/main.js
 //= require cocoon
 //= require application/show_section.js
