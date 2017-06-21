@@ -14,10 +14,11 @@
   padding: 15px 30px 30px;
   border-radius: 5px;
   border: 1px solid $color-border;
-  margin-right: 5%;
-  margin-top: 50px;
+  margin: 50px auto 0;
+  width: 90%;
 
   @media #{$from-large} {
+    margin-right: 5%;
     width: 45%;
   }
 }
