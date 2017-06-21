@@ -19,6 +19,10 @@ $admin-navbar-height: 40px;
   margin-right: auto;
   font-family: $header-font;
 
+  .s-navbar__logo-text {
+    margin-bottom: 5px;
+  }
+
   a {
     font-weight: bold;
     font-family: $header-font;
@@ -31,18 +35,18 @@ $admin-navbar-height: 40px;
     }
 
     @media #{$from-large} {
-      font-size: 28px;
+      font-size: 22px;
     }
   }
 
   img {
-    width: 54px;
-    margin-bottom: -3px;
+    width: 50px;
+    margin-bottom: -5px;
   }
 }
 
 .s-navbar__desktop-nav-menu {
-  @media #{$to-medium} {
+  @media #{$to-large} {
     display: none;
   }
 
@@ -61,7 +65,7 @@ $admin-navbar-height: 40px;
 }
 
 .s-navbar__mobile-burger {
-  @media #{$from-medium} {
+  @media #{$from-large} {
     display: none;
   }
 }
