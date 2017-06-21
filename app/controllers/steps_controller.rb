@@ -10,26 +10,31 @@ class StepsController < ApplicationController
 
   def new
     @step = @course.steps.new
+    @position_field = @course.steps.count + 1
+  end
+
+  def edit
+    @position_field = @step.position
   end
 
   def create
     @step = @course.steps.new(step_params)
-    respond_to do |format|
-      if @step.save
-        format.html { redirect_to course_step_path(@course, @step), notice: 'Step added.' }
-      else
-        format.html { render :new }
-      end
+    if @step.save
+      flash[:notice] = 'Step added.'
+      redirect_to course_step_path(@course, @step)
+    else
+      flash[:notice] = 'Please check the fields in red.'
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @step.update(step_params)
-        format.html { redirect_to course_step_path(@course, @step), notice: 'Course updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @step.update(step_params)
+      flash[:notice] = 'Step updated.'
+      redirect_to course_step_path(@course, @step), notice: 'Course updated.'
+    else
+      flash[:notice] = 'Please check the fields in red.'
+      render :edit
     end
   end
 

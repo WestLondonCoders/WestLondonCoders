@@ -7,6 +7,8 @@ class Step < ActiveRecord::Base
   extend FriendlyId
   friendly_id :position, use: [:slugged, :finders]
 
+  validates_presence_of :position
+
   def author
     course.author
   end
