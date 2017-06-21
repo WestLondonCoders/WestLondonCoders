@@ -17,12 +17,25 @@
   background-color: $color-blue;
   color: $color-white;
   border: solid 1px $color-blue;
+  &:hover {
+    border: solid 1px $color-pink;
+    background-color: $color-pink;
+  }
 }
 
 .a-step__number--current {
   background-color: $color-pink;
   color: $color-white;
   border: solid 1px $color-pink;
+}
+
+.a-step__number--back {
+  color: $color-blue;
+  border: solid 1px $color-blue;
+  &:hover {
+  color: $color-pink;
+  border: solid 1px $color-pink;
+  }
 }
 
 .a-step__progress-list {

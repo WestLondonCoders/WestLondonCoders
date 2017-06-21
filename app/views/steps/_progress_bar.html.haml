@@ -1,7 +1,7 @@
 .a-step__progress-list
   = link_to course do
     .a-step__step
-      .a-step__number.a-step__number--complete
+      .a-step__number.a-step__number--back
         %i.fa.fa-arrow-left
   - course.steps.each do |step|
     = link_to course_step_path(course, step) do
