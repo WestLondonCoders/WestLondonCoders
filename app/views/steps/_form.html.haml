@@ -7,6 +7,7 @@
     %p= f.text_field :position
   .m-post-editor__content
     = f.trix_editor :content
+    .hide-if-js= f.text_area :content
 
     .u-margin-top
       .m-post-editor__submit

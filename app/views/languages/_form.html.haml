@@ -10,6 +10,7 @@
         .a-content
           %h2 Description
           = f.trix_editor :description
+          .hide-if-js= f.text_area :description
 
       %section.a-section.a-section--overflow
         .a-content.a-content--tight-bottom
