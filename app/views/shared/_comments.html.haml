@@ -16,4 +16,4 @@
         = render partial: 'shared/sign_in_to_comment'
 
       %ul.m-comments__feed#comments-list
-        = render partial: 'shared/comment_feed', locals: { comments: commentable.comments.published.most_recent_first }
+        = render partial: 'shared/comment_feed', locals: { comments: commentable.comments.published.most_recent_first, follow_link: true }

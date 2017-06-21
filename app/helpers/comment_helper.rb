@@ -11,7 +11,7 @@ module CommentHelper
     when comment.commentable_type == 'Meetup'
       meetup_path(comment.commentable, anchor: anchor)
     when comment.commentable_type == 'Comment'
-      post_path(comment.commentable.commentable, anchor: anchor)
+      path_to_comment(comment.commentable)
     when comment.commentable_type == 'Course'
       course_path(comment.commentable, anchor: anchor)
     when comment.commentable_type == 'Step'

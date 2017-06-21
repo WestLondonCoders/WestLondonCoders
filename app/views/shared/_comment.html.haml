@@ -10,7 +10,7 @@
       - if follow_link
         = render partial: 'shared/follow_link_text', locals: { user: comment.author } if current_user
       - else
-        = link_to 'See comment',path_to_comment(comment)
+        = link_to 'See comment', path_to_comment(comment)
 
   .m-comment__content
     = sanitize comment.body

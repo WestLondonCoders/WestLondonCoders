@@ -1,6 +1,6 @@
 - comments.each do |comment|
   .m-comments__feed-item
-    = render partial: 'shared/comment', locals: { comment: comment, delete_link: true, follow_link: true }
+    = render partial: 'shared/comment', locals: { comment: comment, delete_link: true, follow_link: follow_link }
 
     .m-comment__replies#comment-replies
       = render partial: 'shared/replies', locals: { comment: comment }
