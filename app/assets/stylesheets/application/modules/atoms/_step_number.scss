@@ -39,7 +39,7 @@
 }
 
 .a-step__progress-list {
-  @include flex($direction: row, $justify-content: flex-start);
+  @include flex($direction: row, $justify-content: flex-start, $flex-wrap: wrap);
   margin-top: 30px;
   margin-bottom: -10px;
 }
