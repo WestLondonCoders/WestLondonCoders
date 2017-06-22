@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get '/past-meetups', to: 'meetups#past_meetups', as: 'past_meetups'
   get 'events', to: redirect('meetups')
 
+match "/404", to: "errors#not_found", via: :all
+match "/500", to: "errors#internal_server_error", via: :all
+
   resources :posts do
     collection do
       match 'search' => 'posts#search', via: [:get, :post], as: :search
