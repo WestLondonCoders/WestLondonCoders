@@ -1,6 +1,4 @@
 class Comment < ActiveRecord::Base
-  after_create :announce_comment
-
   belongs_to :author, class_name: 'User'
   belongs_to :commentable, polymorphic: true
   has_many :comments, as: :commentable, dependent: :destroy
@@ -21,24 +19,5 @@ class Comment < ActiveRecord::Base
 
   def has_no_replies
     comments.published.empty?
-  end
-
-  private
-
-  def announce_comment
-    Slacked.post_async slack_message, channel: slack_channel, username: 'Comment Bot'
-  end
-
-  def slack_message
-    comment_url = Rails.application.routes.url_helpers.post_path(commentable, anchor: "comment-#{id}")
-    "#{author.name} commented: #{body} - #{link_host}#{comment_url}"
-  end
-
-  def slack_channel
-    Rails.env.production? ? 'general' : 'testing'
-  end
-
-  def link_host
-    "http://westlondoncoders.com"
   end
 end
