@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :get_user, except: [:index, :search, :organisers]
+  before_action :get_user, except: [:index, :search, :organisers, :score]
   skip_before_action :verify_authenticity_token, only: [:search]
   load_and_authorize_resource
 

@@ -1,0 +1,52 @@
+- set_page_title("Score")
+
+.a-page-holder
+
+  %section.a-section
+    .a-content--wide
+      %h1
+        = succeed "'s" do
+          = @user.first_name
+        score
+      %p
+        How involved are you at West London Coders?
+
+  %section.a-section
+    .a-content--wide
+      .u-blue-line--thin
+      %table.m-scoreboard
+        %thead
+          %tr
+            %th Source
+            %th Raw score
+            %th Modifier
+            %th Total score
+        %tbody
+          %tr
+            %td Course progress
+            %td= @user.completed_steps.count
+            %td x 50
+            %td= @user.completed_steps.count * 20
+          %tr
+            %td Comments liked
+            %td= @user.completed_steps.count
+            %td x 15
+            %td= @user.liked_comments.count * 15
+          %tr
+            %td Followers
+            %td= @user.followers.count
+            %td x 10
+            %td= @user.followers.count * 10
+          %tr
+            %td Comments made
+            %td= @user.completed_steps.count
+            %td x 5
+            %td= @user.comments.count * 5
+          %tr
+            %td
+            %td
+            %td
+            %td
+              %strong
+              = score(@user)
+      .u-blue-line--thin

@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   has_many :notifications, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :completed_steps, class_name: 'StepCompletion', dependent: :destroy
+  has_many :liked_comments, through: :comments, source: :likes
 
   mount_uploader :image, AvatarUploader
   mount_uploader :logo, LogoUploader
@@ -98,6 +99,8 @@ class User < ActiveRecord::Base
     score = 0
     score += followers.count * 10
     score += completed_steps.count * 50
+    score += comments.count * 5
+    score += liked_comments.count * 15
     score
   end
 

@@ -38,6 +38,7 @@ match "/500", to: "errors#internal_server_error", via: :all
       post :follow
       get :unfollow
       post :unfollow
+      get :score
     end
   end
 
