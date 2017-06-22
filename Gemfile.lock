@@ -432,6 +432,8 @@ GEM
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
     rolify (5.1.0)
+    rollbar (2.15.0)
+      multi_json
     rspec-core (3.6.0)
       rspec-support (~> 3.6.0)
     rspec-expectations (3.6.0)
@@ -583,6 +585,7 @@ DEPENDENCIES
   ransack!
   recaptcha
   rolify
+  rollbar
   rspec-rails (~> 3.6)
   rubocop (~> 0.47.1)
   sass-rails (~> 5.0)

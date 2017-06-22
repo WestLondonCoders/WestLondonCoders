@@ -40,6 +40,7 @@ gem 'modernizr-rails'
 gem 'jquery-minicolors-rails'
 gem 'chosen-rails'
 gem 'trix'
+gem 'rollbar'
 
 group :development, :test do
   gem 'rails-controller-testing'
