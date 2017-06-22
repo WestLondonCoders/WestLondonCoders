@@ -63,7 +63,7 @@ class StepsController < ApplicationController
   end
 
   def find_step
-    @step = Step.friendly.find(params[:id])
+    @step = Step.find_by(position: params[:id], course: @course)
   end
 
   def step_params
