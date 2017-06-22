@@ -24,7 +24,7 @@
         = render partial: 'shared/sign_in_to_comment'
 
       %ul.m-comments__feed#comments-list
-        = render partial: 'shared/comment_feed', locals: { comments: @step.comments.published.most_recent_first }
+        = render partial: 'shared/comment_feed', locals: { comments: @step.comments.published.most_recent_first, follow_link: false }
 
 - if can? :edit, @step
   %section.a-section.u-margin-top--mobile

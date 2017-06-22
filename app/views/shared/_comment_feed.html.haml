@@ -1,3 +1,6 @@
+:ruby
+  follow_link ||= nil
+
 - comments.each do |comment|
   .m-comments__feed-item
     = render partial: 'shared/comment', locals: { comment: comment, delete_link: true, follow_link: follow_link }
