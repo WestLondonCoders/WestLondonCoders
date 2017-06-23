@@ -5,14 +5,18 @@ class UserMailerPreview < ActionMailer::Preview
   end
 
   def rsvp_confirmation
-    UserMailer.rsvp_confirmation(User.first, Event.first)
+    UserMailer.rsvp_confirmation(User.first, Meetup.last)
   end
 
   def unrsvp_confirmation
-    UserMailer.unrsvp_confirmation(User.first, Event.first)
+    UserMailer.unrsvp_confirmation(User.first, Meetup.last)
   end
 
   def organiser_promotion
     UserMailer.organiser_promotion(User.first)
+  end
+
+  def meetup_scheduled
+    UserMailer.meetup_scheduled(Meetup.last, User.first)
   end
 end

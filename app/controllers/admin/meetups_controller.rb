@@ -1,5 +1,5 @@
 class Admin::MeetupsController < Admin::BaseController
-  before_action :get_meetup, only: [:show, :edit, :update, :destroy]
+  before_action :get_meetup, only: [:show, :edit, :update, :destroy, :announce]
   after_action :post_new_meetup_slack_message, only: :create
   load_and_authorize_resource
 
@@ -40,6 +40,17 @@ class Admin::MeetupsController < Admin::BaseController
       flash[:alert] = "Error"
       render :new
     end
+  end
+
+  def announce
+    if @meetup.valid?
+      User.all.each do |user|
+        UserMailer.meetup_scheduled(@meetup, user).deliver_later
+      end
+    end
+    @meetup.update(announced: true)
+    flash[:alert] = "Meetup announced"
+    redirect_to @meetup
   end
 
   def update

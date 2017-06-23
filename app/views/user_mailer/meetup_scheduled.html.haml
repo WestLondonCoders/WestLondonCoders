@@ -2,7 +2,7 @@
 %html{:lang => "en", "xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
   %head
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
-    %meta{:content => "width=device-width", :name => "viewport"}/
+    %meta{:content => "width=device-width", :name => "viewport"}
     = render partial: 'shared/email_styles'
   %body
     %table.body
@@ -52,6 +52,7 @@
                                     %br
                                     %h4.text-center= @meetup.name
                                     %h5.text-center= @meetup.date.to_formatted_s(:long_ordinal)
+                                    .text-center{style: "max-width: 200px; margin: 0 auto;"}= image_tag @meetup.sponsor.logo
                     %table.row.masthead
                       %tbody
                         %tr
@@ -86,17 +87,15 @@
                                       = succeed ',' do
                                         = @user.name
                                   %p
-                                    We've updated your RSVP and you're no longer on the list for the meetup.
-                                    If you change your mind, you can always
+                                    Our next meetup's been announced! It's on
                                     = succeed '.' do
-                                      = link_to 'RSVP again', meetup_url(@meetup)
+                                      %strong= @meetup.start_date
+                                    I hope you can make it. It's a good idea to bring a laptop, but not essential if you can't.
                                   %br/
-                                  %h5 Want to come to other meetups?
+                                  %h5 Where is the meetup?
                                   %p
-                                    Don't forget to check the
-                                    = link_to meetups_url do
-                                      meetups page
-                                    for new meetups.
+                                    = link_to "http://maps.google.com/?q=#{strip_tags @meetup.sponsor.address}" do
+                                      = sanitize @meetup.sponsor.address
                                   %br
                                   %table.button.swu-button
                                     %tr
@@ -104,7 +103,7 @@
                                         %table
                                           %tr
                                             %td
-                                              = link_to 'Meetups', meetups_url
+                                              = link_to 'RSVP', rsvp_meetup_url(@meetup)
                                 %th.expander
                     %table.row
                       %tbody
