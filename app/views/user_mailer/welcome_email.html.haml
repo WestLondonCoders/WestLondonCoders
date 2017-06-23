@@ -1,132 +1,43 @@
-!!! Strict
-%html{:lang => "en", "xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
-  %head
-    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
-    %meta{:content => "width=device-width", :name => "viewport"}/
-    = render partial: 'shared/email_styles'
-  %body
-    %table.body
-      %tr
-        %td.center{:align => "center", :valign => "top"}
-          %center{"data-parsed" => ""}
-            %table.container.text-center
-              %tbody
+= render partial: 'banner_with_text', locals: { text: 'Welcome!' }
+= render partial: 'photo', locals: { source: "https://s3.eu-west-2.amazonaws.com/wlcimages/welcome_header.jpg" }
+%br
+%table.row
+  %tbody
+    %tr
+      %th.small-12.large-12.columns.first.last
+        %table
+          %tr
+            %th
+              %b
+                %h5
+                  Hi,
+                  = succeed '!' do
+                    = @user.name
+              %p
+                We're glad you've joined us! You now have a
+                = succeed ',' do
+                  = link_to 'profile', user_url(@user)
+                which you can use to help other members get to know you.
+              %br/
+              %h5 How do you like to code?
+              %p
+                Add some languages to your profile and you'll appear on the
+                = succeed ',' do
+                  = link_to 'language pages', languages_url
+                making it easier for others to spot you and find people with common interests.
+              %br/
+              %h5 Ready to get involved?
+              %p
+                Why not join a
+                = link_to 'hackroom', hackrooms_url
+                and start learning, discussing and practicing code with like-mind folk?
+              %br/
+              %table.button.swu-button
                 %tr
                   %td
-                    / This container adds the grey gap at the top of the email
-                    %table.row.grey
-                      %tbody
-                        %tr
-                          %th.small-12.large-12.columns.first.last
-                            %table
-                              %tr
-                                %th
-                                   
-                                %th.expander
-            %table.container.text-center
-              %tbody
-                %tr
-                  %td
-                    / This container is the main email content
-                    %table.row
-                      %tbody
-                        %tr
-                          / Logo
-                          %th.small-12.large-12.columns.first.last
-                            %table
-                              %tr
-                                %th
-                                  %center{"data-parsed" => ""}
-                                    %a.text-center{:align => "center", :href => "http://www.westlondoncoders.com"}
-                                      %img.swu-logo{:src => "https://s3.eu-west-2.amazonaws.com/wlcimages/logo-long.png"}/
-                                %th.expander
-                    %table.row.masthead
-                      %tbody
-                        %tr
-                          / Masthead
-                          %th.small-12.large-12.columns.first.last.full-size{ style: 'padding: 0;' }
-                            %table
-                              %tr
-                                %th
-                                  %img.text-center{style: 'width: 100%;', :align => "center", :src => "https://s3.eu-west-2.amazonaws.com/wlcimages/welcome_header.jpg", :valign => "bottom"}
-                                %th.expander
-                    %table.row
-                      %tbody
-                        %tr
-                          / This container adds the gap between masthead and digest content
-                          %th.small-12.large-12.columns.first.last
-                            %table
-                              %tr
-                                %th
-                                   
-                                %th.expander
-                    %table.row
-                      %tbody
-                        %tr
-                          / main Email content
-                          %th.small-12.large-12.columns.first.last
-                            %table
-                              %tr
-                                %th
-                                  %b
-                                    %h5
-                                      Welcome,
-                                      = succeed '!' do
-                                        = @user.name
-                                  %p
-                                    We're glad you've joined us! You now have a
-                                    = succeed ',' do
-                                      = link_to 'profile', user_url(@user)
-                                    which you can use to help other members get to know you.
-                                  %br/
-                                  %h5 How do you like to code?
-                                  %p
-                                    Add some languages to your profile, and you'll appear on the
-                                    = succeed ',' do
-                                      = link_to 'language pages', languages_url
-                                    making it easier for others to spot you and find people with common interests.
-                                  %br/
-                                  %h5 Ready to get involved?
-                                  %p
-                                    Why not join a
-                                    = link_to 'hackroom', hackrooms_url
-                                    and start learning, discussing and practicing code with like-mind folk?
-                                  %br/
-                                  %table.button.swu-button
-                                    %tr
-                                      %td
-                                        %table
-                                          %tr
-                                            %td
-                                              = link_to 'Join a hackroom', hackrooms_url
-                                %th.expander
-                    %table.row
-                      %tbody
-                        %tr
-                          / This container adds whitespace gap at the bottom of main content
-                          %th.small-12.large-12.columns.first.last
-                            %table
-                              %tr
-                                %th
-                                   
-                                %th.expander
-            / end main email content
-            %table.container.text-center
-              %tbody
-                %tr
-                  %td
-                    / footer
-                    %table.row.grey
-                      %tbody
-                        %tr
-                          %th.small-12.large-12.columns.first.last
-                            %table
-                              %tr
-                                %th
-                                  %p.text-center.footercopy{style: 'color: #fff' }
-                                    WLC is organised and run by a group of volunteers
-                                    %br
-                                    If you'd like to sponsor us or organise a meetup with us, please
-                                    = succeed '.' do
-                                      = mail_to "steve.v.brewer@gmail.com", "contact us"
-                                %th.expander
+                    %table
+                      %tr
+                        %td
+                          = link_to 'Join a hackroom', hackrooms_url
+            %th.expander
+= render partial: 'footer'

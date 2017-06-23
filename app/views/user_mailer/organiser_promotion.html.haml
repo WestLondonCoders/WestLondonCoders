@@ -1,148 +1,48 @@
-!!! Strict
-%html{:lang => "en", "xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
-  %head
-    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
-    %meta{:content => "width=device-width", :name => "viewport"}/
-    = render partial: 'shared/email_styles'
-  %body
-    %table.body
-      %tr
-        %td.center{:align => "center", :valign => "top"}
-          %center{"data-parsed" => ""}
-            %table.container.text-center
-              %tbody
-                %tr
-                  %td
-                    / This container adds the grey gap at the top of the email
-                    %table.row.grey
-                      %tbody
-                        %tr
-                          %th.small-12.large-12.columns.first.last
-                            %table
-                              %tr
-                                %th
-                                   
-                                %th.expander
-            %table.container.text-center
-              %tbody
-                %tr
-                  %td
-                    / This container is the main email content
-                    %table.row
-                      %tbody
-                        %tr
-                          / Logo
-                          %th.small-12.large-12.columns.first.last
-                            %table
-                              %tr
-                                %th
-                                  %center{"data-parsed" => ""}
-                                    %a.text-center{:align => "center", :href => "http://www.westlondoncoders.com"}
-                                      %img.swu-logo{:src => "https://s3.eu-west-2.amazonaws.com/wlcimages/logo-long.png"}/
-                                %th.expander
-                    %table.row
-                      %tbody
-                        %tr
-                          / main Email content
-                          %th.small-12.large-12.columns.first.last
-                            %table
-                              %tr
-                                %th
-                                  %b
-                                    %br
-                                    %h4.text-center Thanks for offering to help!
-                    %table.row.masthead
-                      %tbody
-                        %tr
-                          / Masthead
-                          %th.small-12.large-12.columns.first.last.full-size{ style: 'padding: 0;' }
-                            %table
-                              %tr
-                                %th
-                                  %img.text-center{style: 'width: 100%;', :align => "center", :src => "https://s3.eu-west-2.amazonaws.com/wlcimages/organiser.jpeg", :valign => "bottom"}
-                                %th.expander
-                    %table.row
-                      %tbody
-                        %tr
-                          / This container adds the gap between masthead and digest content
-                          %th.small-12.large-12.columns.first.last
-                            %table
-                              %tr
-                                %th
-                                   
-                                %th.expander
-                    %table.row
-                      %tbody
-                        %tr
-                          / main Email content
-                          %th.small-12.large-12.columns.first.last
-                            %table
-                              %tr
-                                %th
-                                  %b
-                                    %h5
-                                      Hi
-                                      = succeed ',' do
-                                        = @user.name
-                                  %p
-                                    I really appreciate your interest in helping us organise WLC. I'm figuring out ways people can help with the meetup and I'll be in touch.
-                                  %br/
+= render partial: 'banner_with_text', locals: { text: 'Thanks for offering to help!' }
+= render partial: 'photo', locals: { source: "https://s3.eu-west-2.amazonaws.com/wlcimages/organiser.jpeg" }
+%br
+%table.row
+  %tbody
+    %tr
+      %th.small-12.large-12.columns.first.last
+        %table
+          %tr
+            %th
+              %b
+                %h5
+                  Hi
+                  = succeed ',' do
+                    = @user.name
+              %p
+                I really appreciate your interest in helping us organise WLC. I'm figuring out ways people can help with the meetup and I'll be in touch.
+              %br/
 
-                                  %h5 How can you help?
-                                  %p
-                                    Our main goal is to help make sure members are relaxed and enjoying themselves, especially the new and nervous ones. Everyone's nervous when they're new, and people are great at hiding it.
-                                  %br
-                                  %h5 But I'm not an entertainer?
-                                  %p
-                                    Doesn't matter! The best way to help people enjoy the meetup is to ask them questions about themselves, introduce them to people with shared interests, and help them if they need it. You don't have to have all the answers, just be willing and patient to help them find them.
-                                  %br
+              %h5 How can you help?
+              %p
+                Our main goal is to help make sure members are relaxed and enjoying themselves, especially the new and nervous ones. Everyone's nervous when they're new, and people are great at hiding it.
+              %br
+              %h5 But I'm not an entertainer?
+              %p
+                Doesn't matter! The best way to help people enjoy the meetup is to ask them questions about themselves, introduce them to people with shared interests, and help them if they need it. You don't have to have all the answers, just be willing and patient to help them find them.
+              %br
 
-                                  %h5 What else can I do?
-                                  %p
-                                    We need sponsors willing provide us with space (and ideally food). We don't have to meet on a Saturday but that's our favourite day, and it's what we're used to.
+              %h5 What else can I do?
+              %p
+                We need sponsors willing provide us with space (and ideally food). We don't have to meet on a Saturday but that's our favourite day, and it's what we're used to.
 
-                                  %p
-                                    We're a bit limited to West London venues for obvious reasons, but it's ok to have joint meetups with other organisers across London and beyond - kind of like a big WLC day out.
-                                  %br
+              %p
+                We're a bit limited to West London venues for obvious reasons, but it's ok to have joint meetups with other organisers across London and beyond - kind of like a big WLC day out.
+              %br
 
-                                  %h5 What can I do online?
-                                  %p
-                                    Help keep Slack active, contribute to hackroom projects and help out with the site. These are all things people can do to be involved and help make the meetup even better.
-                                  %br
+              %h5 What can I do online?
+              %p
+                Help keep Slack active, contribute to hackroom projects and help out with the site. These are all things people can do to be involved and help make the meetup even better.
+              %br
 
-                                  %hr
-                                  %p
-                                    Thanks again for being a proactive part of the meetup!
-                                    %br
-                                    Steve Brewer
-                                %th.expander
-                    %table.row
-                      %tbody
-                        %tr
-                          / This container adds whitespace gap at the bottom of main content
-                          %th.small-12.large-12.columns.first.last
-                            %table
-                              %tr
-                                %th
-                                   
-                                %th.expander
-            / end main email content
-            %table.container.text-center
-              %tbody
-                %tr
-                  %td
-                    / footer
-                    %table.row.grey
-                      %tbody
-                        %tr
-                          %th.small-12.large-12.columns.first.last
-                            %table
-                              %tr
-                                %th
-                                  %p.text-center.footercopy{style: 'color: #fff' }
-                                    WLC is organised and run by a group of volunteers
-                                    %br
-                                    If you'd like to sponsor us or organise a meetup with us, please
-                                    = succeed '.' do
-                                      = mail_to "steve.v.brewer@gmail.com", "contact us"
-                                %th.expander
+              %hr
+              %p
+                Thanks again for being a proactive part of the meetup!
+                %br
+                Steve Brewer
+            %th.expander
+= render partial: 'footer'

@@ -32,6 +32,6 @@ class UserMailer < ApplicationMailer
     headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"<%Unsubscribe%>","text/plain":"<% %>"}}}}'
     @user = user
     @meetup = meetup
-    mail to: user.email, subject: "We've scheduled a meetup for #{@meetup.start_date}"
+    mail to: user.email, subject: "Invitation to join West London Coders on #{@meetup.start_date}"
   end
 end

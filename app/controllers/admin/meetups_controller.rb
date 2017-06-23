@@ -43,13 +43,15 @@ class Admin::MeetupsController < Admin::BaseController
   end
 
   def announce
-    if @meetup.valid?
+    if @meetup.valid? && !@meetup.announced
       User.all.each do |user|
-        UserMailer.meetup_scheduled(@meetup, user).deliver_later
+        UserMailer.meetup_scheduled(@meetup, user).deliver
       end
+      @meetup.update(announced: true)
+      flash[:alert] = "Meetup announced"
+    else
+      flash[:alert] = "Meetup announcement failed"
     end
-    @meetup.update(announced: true)
-    flash[:alert] = "Meetup announced"
     redirect_to @meetup
   end
 

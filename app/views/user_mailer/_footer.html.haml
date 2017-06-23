@@ -1,0 +1,18 @@
+%table.container.text-center
+  %tbody
+    %tr
+      %td
+        %table.row.grey
+          %tbody
+            %tr
+              %th.small-12.large-12.columns.first.last
+                %table
+                  %tr
+                    %th
+                      %p.text-center.footercopy{style: 'color: #fff' }
+                        WLC is organised and run by a group of volunteers
+                        %br
+                        If you'd like to sponsor us or organise a meetup with us, please
+                        = succeed '.' do
+                          = mail_to "steve.v.brewer@gmail.com", "contact us"
+                    %th.expander

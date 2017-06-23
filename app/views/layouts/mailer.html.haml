@@ -1,3 +1,18 @@
-%hmtl
+!!! Strict
+%html{:lang => "en", "xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
+    %meta{:content => "width=device-width", :name => "viewport"}
+    = render partial: 'layouts/email/email_styles'
   %body
-    = yield
+    %table.body
+      %tr
+        %td.center{:align => "center", :valign => "top"}
+          %center{"data-parsed" => ""}
+            = render partial: 'pink_bar'
+            %table.container.text-center
+              %tbody
+                %tr
+                  %td
+                    = render partial: 'layouts/email/header'
+                    = yield

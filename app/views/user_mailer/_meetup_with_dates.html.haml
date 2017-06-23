@@ -1,0 +1,12 @@
+%table.row
+  %tbody
+    %tr
+      %th.small-12.large-12.columns.first.last
+        %table
+          %tr
+            %th
+              %b
+                %h4.text-center= meetup.name
+                %h5.text-center
+                  = meetup.start_date
+                  = meetup.date.strftime("%l:%M%P")
