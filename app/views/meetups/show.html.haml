@@ -9,6 +9,8 @@
 
   %section.a-section.a-section--separated.u-margin-top--mobile
     .a-content
+      - if !@meetup.announced && can?(:announce, @meetup)
+        .u-center= link_to 'Announce meetup', announce_admin_meetup_path(@meetup), class: 'a-button'
       %h1.a-heading
         West London Coders meetup:
         %br

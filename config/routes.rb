@@ -135,6 +135,9 @@ match "/500", to: "errors#internal_server_error", via: :all
       collection do
         match 'search' => 'meetups#search', via: [:get, :post], as: :search
       end
+      member do
+        get :announce
+      end
     end
 
     get 'your-meetups', to: 'meetups#your_meetups'

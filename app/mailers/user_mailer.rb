@@ -27,4 +27,11 @@ class UserMailer < ApplicationMailer
     @user = user
     mail to: @user.email, subject: "Thanks for your support!", from: 'Steve Brewer <steve@westlondoncoders.com>'
   end
+
+  def meetup_scheduled(meetup, user)
+    headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"<%Unsubscribe%>","text/plain":"<% %>"}}}}'
+    @user = user
+    @meetup = meetup
+    mail to: user.email, subject: "We've scheduled a meetup for #{@meetup.start_date}"
+  end
 end
