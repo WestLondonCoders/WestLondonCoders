@@ -41,6 +41,7 @@ gem 'jquery-minicolors-rails'
 gem 'chosen-rails'
 gem 'trix'
 gem 'rollbar'
+gem 'sitemap_generator'
 
 group :development, :test do
   gem 'rails-controller-testing'

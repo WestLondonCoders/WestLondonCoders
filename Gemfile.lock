@@ -482,6 +482,8 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.0)
       tilt (~> 2.0)
+    sitemap_generator (5.1.0)
+      builder
     slack-notifier (2.2.1)
     slacked (0.9.1)
       dotenv
@@ -592,6 +594,7 @@ DEPENDENCIES
   scss_lint
   sendgrid-ruby
   shoulda-matchers (~> 2.8.0)
+  sitemap_generator
   slacked
   spring
   spring-commands-rspec
