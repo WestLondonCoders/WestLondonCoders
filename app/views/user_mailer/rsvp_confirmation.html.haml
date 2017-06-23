@@ -52,7 +52,7 @@
                                     %br
                                     %h4.text-center= @meetup.name
                                     %h5.text-center= @meetup.date.to_formatted_s(:long_ordinal)
-                                    .text-center.meetup-logo= image_tag @meetup.sponsor.logo
+                                    .text-center{style: "max-width: 200px; margin: 0 auto;"}= image_tag @meetup.sponsor.logo
                     %table.row.masthead
                       %tbody
                         %tr
