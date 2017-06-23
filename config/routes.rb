@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/past-meetups', to: 'meetups#past_meetups', as: 'past_meetups'
   get 'events', to: redirect('meetups')
   get '/cat-vacuums', to: redirect('http://vacdatcat.com/')
+  get '/blog', to: 'posts#index'
 
 match "/404", to: "errors#not_found", via: :all
 match "/500", to: "errors#internal_server_error", via: :all
@@ -107,6 +108,7 @@ match "/500", to: "errors#internal_server_error", via: :all
     end
     member do
       get :publish
+      get :final_step, path: 'congratulations'
     end
     resources :comments
     resources :steps do
