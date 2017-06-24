@@ -16,4 +16,8 @@ class Step < ActiveRecord::Base
   def completed_by?(user)
     step_completions.where(user: user).present?
   end
+
+  def name
+    "#{course.title}: #{title}"
+  end
 end

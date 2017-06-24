@@ -14,4 +14,8 @@ class Post < ActiveRecord::Base
   def author
     created_by
   end
+
+  def name
+    title
+  end
 end

@@ -1,4 +1,0 @@
-%ul.m-comments__feed
-  - @comments.top_level.published.take(14).each do |comment|
-    .m-comments__feed-item
-      = render partial: 'shared/comment', locals: { comment: comment }

@@ -37,38 +37,6 @@
   padding-top: 0;
 }
 
-
-.a-content--home {
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-
-  .m-grid__box {
-    width: 100%;
-  }
-
-  .m-comments {
-    margin-top: -10px;
-  }
-
-  .m-comment__content {
-    margin-top: 0;
-  }
-
-  @media #{$from-medium} {
-    flex-direction: row;
-    justify-content: space-between;
-
-    .m-grid {
-      width: 100%;
-    }
-
-    .m-comments {
-      width: 50%;
-    }
-  }
-}
-
 .a-content-top {
   margin-top: 15px;
 }

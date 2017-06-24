@@ -20,4 +20,12 @@ class Comment < ActiveRecord::Base
   def has_no_replies
     comments.published.empty?
   end
+
+  def colour
+    if defined?(commentable.colour)
+      commentable.colour
+    else
+      author.colour
+    end
+  end
 end

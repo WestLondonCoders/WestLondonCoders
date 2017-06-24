@@ -29,15 +29,14 @@
 
 %section.a-section
   .a-content--xwide
-    .a-content--home
-      .m-grid.m-grid--wide
-        = render partial: 'shared/posts', locals: { posts: @posts.take(5) }
+    %h1.a-heading.u-center Latest comments
+    .u-margin-top= render partial: 'shared/comments_grid', locals: { comments: @comments.top_level.published.take(6) }
 
-      .m-comments
-        %h2
-          Latest comments
-          %i.fa.fa-comment-o
-        = render partial: 'comments_feed'
+%section.a-section
+  .a-content--xwide
+    %h1.a-heading.u-center From the blog
+    = render partial: 'shared/posts', locals: { posts: @posts.take(4) }
+
 
 .m-hero--home
 
