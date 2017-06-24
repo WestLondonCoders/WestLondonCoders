@@ -24,4 +24,8 @@ class Post < ActiveRecord::Base
   def path_to(comment)
     post_path(self, anchor: "comment-#{comment.id}")
   end
+
+  def icon
+    'fa-pencil'
+  end
 end

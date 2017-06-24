@@ -38,4 +38,8 @@ class Meetup < ActiveRecord::Base
   def path_to(comment)
     meetup_path(self, anchor: "comment-#{comment.id}")
   end
+
+  def icon
+    'fa-users'
+  end
 end

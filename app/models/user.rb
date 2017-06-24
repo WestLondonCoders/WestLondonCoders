@@ -104,6 +104,10 @@ class User < ActiveRecord::Base
     score
   end
 
+  def icon
+    'fa-user'
+  end
+
   private
 
   def notify_slack_of_new_user

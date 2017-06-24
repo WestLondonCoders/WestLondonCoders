@@ -31,4 +31,8 @@ class Language < ActiveRecord::Base
   def path_to(comment)
     language_path(self, anchor: "comment-#{comment.id}")
   end
+
+  def icon
+    'fa-keyboard-o'
+  end
 end

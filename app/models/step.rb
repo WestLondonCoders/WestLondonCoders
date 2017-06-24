@@ -26,4 +26,8 @@ class Step < ActiveRecord::Base
   def path_to(comment)
     course_step_path(course, self, anchor: "comment-#{comment.id}")
   end
+
+  def icon
+    'fa-mortar-board'
+  end
 end

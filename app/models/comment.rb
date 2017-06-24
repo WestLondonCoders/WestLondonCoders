@@ -36,4 +36,8 @@ class Comment < ActiveRecord::Base
   def path_to(comment)
     commentable.comment_path(comment)
   end
+
+  def icon
+    'fa-comment-o'
+  end
 end

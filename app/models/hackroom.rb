@@ -33,4 +33,8 @@ class Hackroom < ActiveRecord::Base
   def path_to(comment)
     hackroom_path(self, anchor: "comment-#{comment.id}")
   end
+
+  def icon
+    'fa-wrench'
+  end
 end
