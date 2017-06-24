@@ -20,6 +20,8 @@ class Language < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 
+  mount_uploader :image, AvatarUploader
+
   def all_users
     (primary_users.all + users.all).uniq
   end

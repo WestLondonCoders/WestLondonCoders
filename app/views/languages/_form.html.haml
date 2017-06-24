@@ -5,6 +5,7 @@
     = form_for @language do |f|
       .m-post-editor__title
         %h1= f.text_field :name, placeholder: "Ruby"
+        = f.file_field :image
 
       %section.a-section
         .a-content

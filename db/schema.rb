@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170623185040) do
+ActiveRecord::Schema.define(version: 20170624114230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 20170623185040) do
     t.string "slug", default: ""
     t.integer "popularity_score", default: 0
     t.integer "author_id"
+    t.string "image"
   end
 
   create_table "likes", force: :cascade do |t|
