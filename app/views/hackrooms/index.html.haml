@@ -2,7 +2,7 @@
 
 .a-page-holder
 
-  %section.a-section.a-section--alt
+  %section.a-section.a-section--separated
     .a-content--xwide.a-content--tight
 
       %h1.a-heading.u-center#hackroom-search-heading= render 'heading'
@@ -12,4 +12,6 @@
 
       = render partial: 'filter'
 
-  %section.a-section#hackroom-search-results= render 'results'
+      .u-center.u-margin-bottom--small= link_to "Create hackroom", new_hackroom_path if can? :create, Hackroom
+
+  %section.a-section.a-section--alt#hackroom-search-results= render 'results'

@@ -3,7 +3,5 @@
   %hr.u-blue-line--thin
   = link_to "Admin", admin_root_path, class: 's-navbar__nav' if current_user.has_role?(:admin) || (current_user.has_role?(:sponsor) && current_user.sponsors.any?)
   = link_to "Your profile", user_path(current_user), class: 's-navbar__nav'
-  = link_to "Write a post", new_post_path, class: 's-navbar__nav'
-  = link_to "Start a hackroom", new_hackroom_path, class: 's-navbar__nav' if can? :create, Hackroom
   %hr.u-blue-line--thin
   = link_to "Sign out", destroy_user_session_path, method: :delete, class: 's-navbar__nav'

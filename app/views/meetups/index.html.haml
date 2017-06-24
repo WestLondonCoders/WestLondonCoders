@@ -2,7 +2,7 @@
 
 .a-page-holder
 
-  %section.a-section.a-section--alt
+  %section.a-section.a-section--separated
     .a-content--wide.a-content--tight
       %h1.a-heading.u-center#post-search-heading= render 'heading'
 
@@ -10,12 +10,11 @@
         %p= I18n.t('index_introductions.meetups')
 
       = render partial: 'filter'
+
+      .u-center.u-margin-bottom--small= link_to "Schedule meetup", new_admin_meetup_path if can? :create, Meetup
+
       = render partial: 'sort'
 
-  - if can? :create, Meetup
-    %section.a-section.u-margin-top--mobile
-      .a-content.u-center= link_to "Schedule meetup", new_admin_meetup_path, class: 'a-button a-button--edit'
-
-  %section.a-section#meetup-search-results= render 'results'
-
-  .u-center.u-margin-top= link_to "Past meetups", past_meetups_path, class: 'a-button'
+  %section.a-section.a-section--alt#meetup-search-results
+    = render 'results'
+    .u-center.u-margin-top= link_to "Past meetups", past_meetups_path, class: 'a-button'

@@ -2,7 +2,7 @@
 
 .a-page-holder
 
-  %section.a-section.a-section--alt
+  %section.a-section.a-section--separated
     .a-content--xwide.a-content--tight
 
       %h1.a-heading.u-center#user-search-heading= render 'heading'
@@ -19,4 +19,5 @@
 
         = render partial: 'filter'
 
-  %section.a-section#user-search-results= render 'results'
+  %section.a-section.a-section--alt
+    .a-content--xwide#user-search-results= render 'results'

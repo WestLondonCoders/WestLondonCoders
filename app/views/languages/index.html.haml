@@ -2,7 +2,7 @@
 
 .a-page-holder
 
-  %section.a-section.a-section--alt
+  %section.a-section.a-section--separated
     .a-content--xwide.a-content--tight
 
       %h1.a-heading.u-center#language-search-heading= render 'heading'
@@ -12,10 +12,7 @@
 
         = render partial: 'filter'
 
-  %section.a-section
-    .a-content--xwide#language-search-results= render 'results'
+        .u-center.u-margin-bottom--small= link_to "Add language", new_language_path if can? :create, Language
 
-  - if can? :create, Language
-    %section.a-section.u-margin-top--mobile
-      .a-content.u-center
-        = link_to "Add language", new_language_path, class: 'a-button a-button--edit'
+  %section.a-section.a-section--alt
+    .a-content--xwide#language-search-results= render 'results'
