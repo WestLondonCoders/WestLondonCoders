@@ -2,15 +2,16 @@
   .m-grid
     - posts.each do |post|
       .m-grid__box
-        %h1= link_to post.title, post_path(post)
+        .m-grid__box-content
+          %h1= link_to post.title, post_path(post)
 
-        = render partial: 'shared/user_tag', locals: { user: post.created_by, with_date: true, date: post.created_at }
+          = render partial: 'shared/user_tag', locals: { user: post.created_by, with_date: true, date: post.created_at }
 
-        .m-grid__text= excerpt(post.content, 500)
+          .m-grid__text= excerpt(post.content, 500)
 
-        .a-tags
-          - post.tags.take(1).each do |tag|
-            %h2.a-tag.a-tag--light-blue= tag.name
+          .a-tags
+            - post.tags.take(1).each do |tag|
+              %h2.a-tag.a-tag--light-blue= tag.name
 
-        .m-grid__bottom
-          = link_to "Read", post, class: 'a-button a-button--elastic'
+          .m-grid__bottom
+            = link_to "Read", post, class: 'a-button a-button--elastic'
