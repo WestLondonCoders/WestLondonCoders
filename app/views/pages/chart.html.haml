@@ -1,0 +1,148 @@
+%section.a-section
+  .a-content--xwide
+    .m-grid
+      .m-grid__box--invisible
+        %h2 Most popular languages
+        %p The number of people who have listed the language as one they use.
+        <canvas id="languageFans" width="400" height="400"></canvas>
+      .m-grid__box--invisible
+        %h2 Most active members
+        %p= I18n.t('explanations.score')
+        <canvas id="memberScore" width="400" height="400"></canvas>
+      .m-grid__box--invisible
+        %h2 Most popular hackrooms
+        %p The number of members who have joined the hackroom.
+        <canvas id="hackroomMembers" width="400" height="400"></canvas>
+      .m-grid__box--invisible
+        %h2 Most popular hackrooms
+        %p The number of members who have joined the hackroom.
+        <canvas id="hackroomMembersDoughnut" width="400" height="400"></canvas>
+      .m-grid__box--invisible
+        %h2 Most chatty members
+        %p Top 10 members who comment.
+        <canvas id="chattyKathys" width="400" height="400"></canvas>
+
+:javascript
+
+  var ctx = $("#hackroomMembers");
+
+  var hackroomMembers = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: gon.hackroom_names,
+
+          datasets: [{
+              label: '# of members',
+              data: gon.hackroom_members,
+              backgroundColor: gon.hackroom_colours,
+              borderColor: gon.hackroom_colours,
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }]
+          }
+      }
+  });
+
+  var ctx = $("#hackroomMembersDoughnut");
+
+  var hackroomMembersDoughnut = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+          labels: gon.hackroom_names,
+
+          datasets: [{
+              label: '# of members',
+              data: gon.hackroom_members,
+              backgroundColor: gon.hackroom_colours,
+              borderColor: gon.hackroom_colours,
+              borderWidth: 1
+          }]
+      },
+      options: {}
+  });
+
+  var ctx = $("#languageFans");
+
+  var languageFans = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: gon.language_names,
+
+          datasets: [{
+              label: '# of fans',
+              data: gon.language_fans,
+              backgroundColor: gon.language_colours,
+              borderColor: gon.language_colours,
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }]
+          }
+      }
+  });
+
+  var ctx = $("#memberScore");
+
+  var memberScore = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: gon.high_scorers,
+
+          datasets: [{
+              label: '# of points',
+              data: gon.user_points,
+              backgroundColor: gon.user_colours,
+              borderColor: gon.user_colours,
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }]
+          }
+      }
+  });
+
+  var ctx = $("#chattyKathys");
+
+  var chattyKathys = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: gon.most_chatty,
+
+          datasets: [{
+              label: '# of comments',
+              data: gon.user_comments,
+              backgroundColor: gon.chatty_user_colours,
+              borderColor: gon.chatty_user_colours,
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }]
+          }
+      }
+  });
+

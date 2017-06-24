@@ -26,3 +26,4 @@
 //= require application/menu.js
 //= require application/notifications.js
 //= require trix
+//= require Chart.min

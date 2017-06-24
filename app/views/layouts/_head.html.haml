@@ -12,6 +12,7 @@
   = favicon_link_tag('favicon.png', sizes: '64x64', type: 'image/png')
   %title
     = @page_title || "West London Coders"
+  = Gon::Base.render_data
   = render partial: 'layouts/google_analytics'
   %link{:href => "https://fonts.googleapis.com/css?family=Roboto", :rel => "stylesheet", :type => "text/css"}
   %link{:href => "https://necolas.github.io/normalize.css/4.1.1/normalize.css", :rel => "stylesheet", :type => "text/css"}

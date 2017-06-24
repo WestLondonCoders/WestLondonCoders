@@ -17,4 +17,7 @@
 
   %section.a-section.a-section--alt#meetup-search-results
     = render 'results'
-    .u-center.u-margin-top= link_to "Past meetups", past_meetups_path, class: 'a-button'
+
+  %section.a-section.a-section--alt
+    .a-content
+      .u-center.u-margin-bottom= link_to "Past meetups", past_meetups_path, class: 'a-button'

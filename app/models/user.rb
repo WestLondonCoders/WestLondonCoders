@@ -102,8 +102,8 @@ class User < ActiveRecord::Base
   def score
     score = 0
     score += followers.count * 10
-    score += completed_steps.count * 50
-    score += comments.count * 5
+    # score += completed_steps.count * 50
+    score += comments.published.count * 5
     score += liked_comments.count * 15
     score
   end

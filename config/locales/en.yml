@@ -21,6 +21,10 @@
 
 ---
 en:
+  explanations:
+    score: A member's score is made up of how many followers they have, how many comments
+      they've made and how many likes their comments have. Each score is weighted
+      based on it's value.
   index_introductions:
     courses: Learn web development or improve your skills with courses made by developers
       from our meetup.

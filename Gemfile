@@ -42,6 +42,8 @@ gem 'chosen-rails'
 gem 'trix'
 gem 'rollbar'
 gem 'sitemap_generator'
+gem 'gon'
+gem 'chart-js-rails'
 
 group :development, :test do
   gem 'rails-controller-testing'

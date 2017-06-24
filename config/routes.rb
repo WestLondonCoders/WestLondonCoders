@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
+  get '/chart', to: 'pages#chart'
   get '/organisers', to: 'users#organisers', as: 'organisers'
   get '/past-meetups', to: 'meetups#past_meetups', as: 'past_meetups'
   get 'events', to: redirect('meetups')
