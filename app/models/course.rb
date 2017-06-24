@@ -1,4 +1,6 @@
 class Course < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+
   belongs_to :author, class_name: 'User'
   has_many :steps, -> { order(position: :asc) }, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
@@ -18,5 +20,9 @@ class Course < ActiveRecord::Base
 
   def all_comments
     comments.count + step_comments.count
+  end
+
+  def path_to(comment)
+    course_path(self, anchor: "comment-#{comment.id}")
   end
 end

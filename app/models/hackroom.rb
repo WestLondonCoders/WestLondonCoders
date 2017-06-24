@@ -1,4 +1,5 @@
 class Hackroom < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
   has_many :user_hackrooms, dependent: :destroy
   has_many :users, through: :user_hackrooms
   has_many :hackroom_languages, dependent: :destroy
@@ -27,5 +28,9 @@ class Hackroom < ActiveRecord::Base
 
   def title
     name
+  end
+
+  def path_to(comment)
+    hackroom_path(self, anchor: "comment-#{comment.id}")
   end
 end

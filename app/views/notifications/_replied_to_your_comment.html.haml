@@ -10,7 +10,7 @@
 
 = link_to trigger.label, trigger
 = action
-= link_to 'your comment', path_to_comment(notification.notifiable)
+= link_to 'your comment', subject.comment_path
 - if subject.commentable_type == 'Comment'
   = "on '#{subject.commentable.commentable.title}'"
 - else

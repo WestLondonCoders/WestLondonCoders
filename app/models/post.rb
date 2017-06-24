@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+
   belongs_to :created_by, class_name: "User"
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
@@ -17,5 +19,9 @@ class Post < ActiveRecord::Base
 
   def name
     title
+  end
+
+  def path_to(comment)
+    post_path(self, anchor: "comment-#{comment.id}")
   end
 end

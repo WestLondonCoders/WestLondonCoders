@@ -1,4 +1,5 @@
 class Language < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
   has_many :hackroom_languages, dependent: :destroy
   has_many :hackrooms, through: :hackroom_languages
   has_many :hackroom_primaries, dependent: :destroy
@@ -25,5 +26,9 @@ class Language < ActiveRecord::Base
 
   def title
     name
+  end
+
+  def path_to(comment)
+    language_path(self, anchor: "comment-#{comment.id}")
   end
 end

@@ -28,4 +28,12 @@ class Comment < ActiveRecord::Base
       author.colour
     end
   end
+
+  def comment_path
+    commentable.path_to(self)
+  end
+
+  def path_to(comment)
+    commentable.comment_path(comment)
+  end
 end

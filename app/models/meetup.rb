@@ -1,4 +1,6 @@
 class Meetup < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+
   belongs_to :sponsor
   has_many :meetup_rsvps, dependent: :destroy
   has_many :rsvps, through: :meetup_rsvps, source: :user
@@ -31,5 +33,9 @@ class Meetup < ActiveRecord::Base
 
   def title
     name
+  end
+
+  def path_to(comment)
+    meetup_path(self, anchor: "comment-#{comment.id}")
   end
 end

@@ -3,11 +3,11 @@
     .m-grid__comment
       .m-grid__comment__banner{style: "background-image: url(#{avatar_url(comment.author)})"}
       .m-grid__comment__box-content
-        = link_to path_to_comment(comment) do
+        = link_to comment.comment_path do
           %i.fa.fa-quote-left
           = comment.author.name
           %br
           .u-small-text
             = excerpt(comment.body, 80)
       .m-grid__comment__context-strip{style: "background-color: #{comment.colour};"}
-        = link_to comment.commentable.name, path_to_comment(comment)
+        = link_to comment.commentable.name, comment.comment_path
