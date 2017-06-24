@@ -6,7 +6,7 @@
         = link_to organisers_path do
           = image_tag asset_path("logo.svg"), class: 'a-organiser' if user.has_role?(:organiser)
 
-        = image_tag(avatar_url(user), class: 'a-avatar a-avatar--small')
+        = image_tag(avatar_url(user), class: 'a-avatar a-avatar--small', style: "border: solid 2px #{user.colour}")
 
         %h2
           = link_to user.name, user

@@ -4,7 +4,7 @@
       .m-grid__banner{style: "background-color: #{language.colour}"}
         %h1.a-headline= link_to language.name, language
       .m-grid__box-content
-        = image_tag(language_avatar_url(language), class: 'a-avatar a-avatar--small')
+        = image_tag(language_avatar_url(language), class: 'a-avatar a-avatar--small', style: "border: solid 2px #{language.colour}")
 
         = render partial: 'languages/highlights', locals: { language: language }
 
