@@ -10,6 +10,7 @@
           = link_to @language.author.name, @language.author
         %hr{style: "border-bottom: solid 2px #{@language.colour}"}
       .m-billboard__container-right
+        .a-avatar= image_tag(language_avatar_url(@language), class: 'a-avatar')
 
     .u-interval= render partial: 'highlights', locals: { language: @language }
 

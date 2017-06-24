@@ -26,6 +26,10 @@ module ApplicationHelper
     end
   end
 
+  def language_avatar_url(language)
+    language.image || "https://s3.eu-west-2.amazonaws.com/wlcimages/avatar.png"
+  end
+
   def user_in_hackroom?(hackroom, user)
     UserHackroom.find_by(hackroom: hackroom, user: user)
   end
