@@ -9,5 +9,9 @@
           %br
           .u-small-text
             = excerpt(comment.body, 80)
+          %br
+          .u-small-text.u-right= time_as_sentence(comment.created_at)
       .m-grid__comment__context-strip{style: "background-color: #{comment.colour};"}
-        = link_to comment.commentable.name, comment.comment_path
+        = link_to comment.comment_path do
+          %i.fa{class: comment.commentable.icon}
+          = comment.commentable.name

@@ -29,4 +29,8 @@ class Course < ActiveRecord::Base
   def icon
     'fa-mortar-board'
   end
+
+  def name
+    title
+  end
 end

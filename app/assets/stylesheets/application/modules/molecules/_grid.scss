@@ -60,7 +60,7 @@
 
 .m-grid--comments {
   display: grid;
-  margin-top: -50px;
+  margin-top: -30px;
   grid-template-columns: 100%;
 
   @media #{$from-large} {
@@ -76,22 +76,23 @@
 
 .m-grid__comment {
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 35% 65%;
   width: 100%;
   background-color: $color-white;
-  margin: 50px auto 0;
+  margin: 30px auto 0;
 }
 
 .m-grid__comment__banner {
   background-size: cover;
   background-position: 0 50%;
   display: block;
+  min-height: 130px;
 }
 
 .m-grid__comment__box-content {
   padding: 5px 10px;
   background-color: $color-pale-blue;
-  height: 100px;
+  height: auto;
 
   a,
   a:hover {
@@ -102,10 +103,11 @@
 .m-grid__comment__context-strip {
   grid-column: 1 / span 2;
   padding: 5px 10px;
-  text-align: center;
+  text-align: left;
 
   a,
   a:hover {
+    font-size: 14px;
     color: $color-white;
   }
 }

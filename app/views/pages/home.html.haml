@@ -27,12 +27,12 @@
 
 %section.a-section.a-section--img-block
 
-%section.a-section
+%section.a-section.a-section--separated.u-padding-bottom
   .a-content--xwide
     %h1.a-heading.u-center Latest comments
     .u-margin-top= render partial: 'shared/comments_grid', locals: { comments: @comments.top_level.published.take(6) }
 
-%section.a-section
+%section.a-section.a-section--alt
   .a-content--xwide
     %h1.a-heading.u-center From the blog
     = render partial: 'shared/posts', locals: { posts: @posts.take(4) }

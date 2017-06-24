@@ -66,6 +66,11 @@
   margin-bottom: 25px;
 }
 
+
+.u-padding-bottom {
+  padding-bottom: 50px;
+}
+
 .u-margin-top--desktop {
   @media #{$from-medium} {
     margin-top: 50px;
