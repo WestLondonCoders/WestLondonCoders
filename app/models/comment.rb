@@ -40,4 +40,8 @@ class Comment < ActiveRecord::Base
   def icon
     'fa-comment-o'
   end
+
+  def name
+    'Reply'
+  end
 end

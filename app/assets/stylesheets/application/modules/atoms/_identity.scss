@@ -13,6 +13,14 @@
   }
 }
 
+.a-identity__collage {
+  @include flex($direction: row, $justify-content: center, $flex-wrap: wrap);
+
+  .a-identity__photo {
+    margin: 0 5px 5px 0;
+  }
+}
+
 .a-identity {
   display: flex;
   flex-direction: row;

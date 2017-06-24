@@ -1,9 +1,0 @@
-%section
-  .a-content
-    .m-comments
-      %h2
-        Comments
-        %i.fa.fa-comment-o
-
-      %ul.m-comments__feed#comments-list
-        = render partial: 'shared/comment_feed', locals: { comments: commentable.comments.published.most_recent_first, follow_link: false }

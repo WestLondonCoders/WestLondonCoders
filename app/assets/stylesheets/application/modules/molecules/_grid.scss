@@ -56,6 +56,17 @@
   background-size: 100%;
   display: block;
   height: 90px;
+
+  h1 {
+    text-align: right;
+    padding: 10px 15px;
+    margin: 0;
+  }
+
+  a,
+  a:hover {
+    color: $color-white;
+  }
 }
 
 .m-grid--comments {

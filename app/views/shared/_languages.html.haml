@@ -1,19 +1,14 @@
 .m-grid
   - languages.each do |language|
     .m-grid__box
+      .m-grid__banner{style: "background-color: #{language.colour}"}
+        %h1.a-headline= link_to language.name, language
       .m-grid__box-content
-        %h1.u-center= link_to language.name, language, style: "border-bottom: solid 2px #{language.colour}"
+        = image_tag(language_avatar_url(language), class: 'a-avatar a-avatar--small')
 
-        .u-margin-bottom--small= render partial: 'highlights', locals: { language: language }
+        = render partial: 'languages/highlights', locals: { language: language }
 
         = excerpt(language.description) if language.description
 
-        .a-identities.a-tags--center.u-margin-top--small
-          - language.all_users.take(10).each do |user|
-            = render partial: 'shared/user_tag', locals: { user: user, image_only: true }
-
-        .m-grid__bottom.u-center
-          %p.u-center
-            See the people and projects using
-            = language.name
+        .u-margin-top--small.u-right
           = link_to "See more", language, class: 'a-button'

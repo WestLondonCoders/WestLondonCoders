@@ -22,6 +22,10 @@ class Hackroom < ActiveRecord::Base
     (owners.all + users.all).uniq
   end
 
+  def all_languages
+    (primary_languages + languages).uniq
+  end
+
   def colour
     primary_languages&.first&.colour || '#000000'
   end

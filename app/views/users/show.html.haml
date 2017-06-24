@@ -19,6 +19,6 @@
     .m-billboard__nav= render partial: 'profile_nav', locals: { user: @user }
 
   %section.a-section
-    .u-margin-top#profile-content= render partial: 'languages', locals: { user: @user }
+    .a-content--xwide.u-margin-top#profile-content= render partial: 'shared/languages', locals: { languages: @user.all_languages }
 
   .u-margin-bottom
