@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170624114230) do
+ActiveRecord::Schema.define(version: 20170624173303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,18 +20,6 @@ ActiveRecord::Schema.define(version: 20170624114230) do
     t.integer "role_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "ckeditor_assets", id: :serial, force: :cascade do |t|
-    t.string "data_file_name", null: false
-    t.string "data_content_type"
-    t.integer "data_file_size"
-    t.string "type", limit: 30
-    t.integer "width"
-    t.integer "height"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
   create_table "comments", id: :serial, force: :cascade do |t|
@@ -162,13 +150,6 @@ ActiveRecord::Schema.define(version: 20170624114230) do
     t.index ["notifiable_id"], name: "index_notifications_on_notifiable_id"
     t.index ["notified_by_id"], name: "index_notifications_on_notified_by_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
-  end
-
-  create_table "post_attachments", id: :serial, force: :cascade do |t|
-    t.integer "post_id"
-    t.string "avatar"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "post_tags", id: :serial, force: :cascade do |t|
