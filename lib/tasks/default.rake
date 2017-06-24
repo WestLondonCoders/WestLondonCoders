@@ -1,3 +1,3 @@
 Rake::Task[:default].clear
 
-task default: ['sitemap:refresh', 'lint', 'rubocop', 'spec:units', 'spec:features']
+task default: ['lint', 'rubocop', 'spec:units', 'spec:features']

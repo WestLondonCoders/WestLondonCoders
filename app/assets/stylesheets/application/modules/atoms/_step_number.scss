@@ -32,9 +32,10 @@
 .a-step__number--back {
   color: $color-blue;
   border: solid 1px $color-blue;
+
   &:hover {
-  color: $color-pink;
-  border: solid 1px $color-pink;
+    color: $color-pink;
+    border: solid 1px $color-pink;
   }
 }
 

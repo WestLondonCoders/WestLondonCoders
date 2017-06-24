@@ -6,6 +6,7 @@ describe 'pages/home.html.haml' do
   let(:sponsor) { FactoryGirl.create(:sponsor) }
   let(:sponsors) { [sponsor] }
   let(:next_meetup) { FactoryGirl.create(:meetup, date: 1.week.from_now, finish_date: 1.week.from_now) }
+  let(:comments) { [FactoryGirl.create(:comment)] }
 
   before do
     allow(posts).to receive(:take).and_return(posts)
@@ -14,8 +15,9 @@ describe 'pages/home.html.haml' do
     assign(:posts, posts)
     assign(:sponsors, sponsors)
     assign(:next_meetup, next_meetup)
+    assign(:comments, comments)
     stub_template 'shared/_posts.html.haml' => ''
-    stub_template 'pages/_comments_feed.html.haml' => ''
+    stub_template 'shared/_comments_grid.html.haml' => ''
   end
 
   it 'sets page title' do
@@ -35,7 +37,7 @@ describe 'pages/home.html.haml' do
 
   it 'displays latest comments' do
     render
-    expect(rendered).to render_template(partial: '_comments_feed')
+    expect(rendered).to render_template(partial: '_comments_grid')
   end
 
   it 'displays the rsvp button for the next event' do

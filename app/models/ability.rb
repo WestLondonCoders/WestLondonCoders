@@ -40,7 +40,7 @@ class Ability
     can :manage, User, id: user.id
 
     # Users can manage their own posts but not other people's
-    can :manage, Post, created_by: user.id
+    can :manage, Post, created_by_id: user.id
 
     # Users can manage hackrooms if they are an owner
     can :manage, Hackroom, owners: { id: user.id }

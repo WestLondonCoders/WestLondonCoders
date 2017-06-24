@@ -26,7 +26,6 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @post_attachment = @post.post_attachments.build
   end
 
   def create
@@ -73,7 +72,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :description, :twitter_image, :featured, tags_attributes: [:id, :name, :_destroy], post_attachments_attributes: [:id, :post_id, :avatar, :_destroy])
+    params.require(:post).permit(:title, :content, :description, :twitter_image, :featured, tags_attributes: [:id, :name, :_destroy])
   end
 
   def tag_params
