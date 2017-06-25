@@ -7,7 +7,7 @@
       %h1
         = succeed "'s" do
           = @user.first_name
-        score
+        points
       %p
         How involved are you at West London Coders?
 
@@ -18,9 +18,9 @@
         %thead
           %tr
             %th Source
-            %th Raw score
+            %th Raw points
             %th Modifier
-            %th Total score
+            %th Total points
         %tbody
           %tr
             %td Course progress
@@ -37,11 +37,6 @@
             %td= @user.followers.count
             %td x 10
             %td= @user.followers.count * 10
-          %tr
-            %td Comments made
-            %td= @user.completed_steps.count
-            %td x 5
-            %td= @user.comments.count * 5
           %tr
             %td
             %td
