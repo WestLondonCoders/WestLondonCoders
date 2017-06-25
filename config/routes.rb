@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'events', to: redirect('meetups')
   get '/cat-vacuums', to: redirect('http://vacdatcat.com/')
   get '/blog', to: 'posts#index'
+  get '/blog/wlc-at-sky-21st-february', to: redirect('https://westlondoncoders.com/posts/wlc-at-sky-21st-february')
 
   match "/404", to: "errors#not_found", via: :all
   match "/500", to: "errors#internal_server_error", via: :all
