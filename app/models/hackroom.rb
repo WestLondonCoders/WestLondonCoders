@@ -14,6 +14,7 @@ class Hackroom < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
 
   scope :in_popularity_order, -> { order('popularity_score desc') }
+  scope :active, -> { where(archived_at: nil) }
 
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]

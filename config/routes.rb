@@ -74,6 +74,8 @@ Rails.application.routes.draw do
     member do
       get :join
       post :join
+      get :archive
+      post :archive
     end
     resources :comments
   end

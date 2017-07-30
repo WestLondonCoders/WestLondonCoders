@@ -6,7 +6,7 @@ module UserHelper
   end
 
   def hackroom_count(user)
-    hackrooms = user.own_hackrooms.size + user.hackrooms.size
+    hackrooms = user.own_hackrooms.active.size + user.hackrooms.active.size
     pluralize(hackrooms, 'hackroom')
   end
 

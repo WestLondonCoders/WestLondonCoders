@@ -1,5 +1,5 @@
 class HackroomsController < ApplicationController
-  before_action :get_hackroom, only: [:show, :edit, :update, :destroy, :join, :leave, :languages, :members, :admins, :discussion]
+  before_action :get_hackroom, except: [:index, :search, :new, :create]
   before_action :get_user, only: [:join, :leave]
   skip_before_action :verify_authenticity_token, only: [:search]
   load_and_authorize_resource
@@ -29,7 +29,7 @@ class HackroomsController < ApplicationController
   end
 
   def index
-    @search = Hackroom.ransack(params[:q])
+    @search = Hackroom.active.ransack(params[:q])
     @hackrooms = @search.result.includes(:primary_languages, :languages, :owners, :users).in_popularity_order
     @languages = Language.all
   end
@@ -82,6 +82,11 @@ class HackroomsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to hackrooms_path }
     end
+  end
+
+  def archive
+    @hackroom.update(archived_at: Time.now)
+    redirect_to hackrooms_path
   end
 
   private
