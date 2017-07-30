@@ -45,6 +45,7 @@ class HackroomsController < ApplicationController
 
   def create
     @hackroom = Hackroom.new(hackroom_params)
+    @hackroom.author = current_user
     respond_to do |format|
       if @hackroom.save
         HackroomOwner.create(hackroom: @hackroom, user: current_user) unless @hackroom.owners.any?
