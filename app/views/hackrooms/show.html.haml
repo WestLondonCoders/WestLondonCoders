@@ -14,7 +14,15 @@
     .u-interval= render partial: 'hackrooms/highlights', locals: { hackroom: @hackroom }
     .u-interval= render partial: 'hackrooms/links', locals: { hackroom: @hackroom }
 
-    .u-float-right= link_to 'Edit', edit_hackroom_path(@hackroom), class: 'a-button' if can? :manage, @hackroom
+    .u-float-right
+      - if current_user
+        - if user_in_hackroom?(@hackroom, current_user)
+          = link_to 'Leave', join_hackroom_path(@hackroom), class: 'a-button'
+        - else
+          = link_to 'Join', join_hackroom_path(@hackroom), class: 'a-button'
+      - else
+        = link_to 'Join', new_user_session_path, class: 'a-button'
+      = link_to 'Edit', edit_hackroom_path(@hackroom), class: 'a-button' if can? :manage, @hackroom
 
     .m-billboard__nav= render partial: 'hackroom_nav', locals: { hackroom: @hackroom }
 
