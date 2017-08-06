@@ -2,7 +2,6 @@ footer {
   background-color: $color-pale-blue;
   text-align: center;
   padding: 40px;
-  border-top: 5px solid $color-blue;
   position: relative;
   margin-top: 0;
 
@@ -13,4 +12,11 @@ footer {
   @media #{$to-medium} {
     padding-bottom: 80px;
   }
+}
+
+.m-footer__line {
+  background-image: none;
+  background-image: linear-gradient(to right, $color-blue, $color-pink);
+  background-color: $color-blue;
+  height: 2px;
 }
