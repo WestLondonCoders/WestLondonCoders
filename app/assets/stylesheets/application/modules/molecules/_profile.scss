@@ -58,8 +58,12 @@
 }
 
 .m-profile__avatar {
-  width: 230px;
-  height: 230px;
+  width: 100px;
+
+  @media #{$from-large} {
+    width: 230px;
+    height: 230px;
+  }
 }
 
 .m-profile__name {
