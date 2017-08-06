@@ -24,9 +24,9 @@
     - if current_user
       - unless current_user == @user
         - if user_following?(current_user, @user)
-          = link_to 'Unfollow', unfollow_user_path(@user)
+          = link_to 'Unfollow', unfollow_user_path(@user), class: 'a-button a-button--follow'
         - else
-          = link_to 'Follow', follow_user_path(@user)
+          = link_to 'Follow', follow_user_path(@user), class: 'a-button a-button--follow'
 
     .m-profile__line
 
