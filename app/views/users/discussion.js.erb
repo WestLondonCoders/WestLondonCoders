@@ -1,3 +1,0 @@
-$('.is-selected').removeClass('is-selected')
-$('#comment-nav').addClass('is-selected')
-$("#profile-content").html("<%= escape_javascript(render partial: 'shared/comments_grid', locals: { comments: @user.comments.published.top_level.most_recent_first } ) %>");

@@ -3,5 +3,6 @@
   %hr.u-blue-line--thin
   = link_to "Admin", admin_root_path, class: 's-navbar__nav' if current_user.has_role?(:admin) || (current_user.has_role?(:sponsor) && current_user.sponsors.any?)
   = link_to "Your profile", user_path(current_user), class: 's-navbar__nav'
+  = link_to "Edit profile", edit_user_path(current_user), class: 's-navbar__nav'
   %hr.u-blue-line--thin
   = link_to "Sign out", destroy_user_session_path, method: :delete, class: 's-navbar__nav'

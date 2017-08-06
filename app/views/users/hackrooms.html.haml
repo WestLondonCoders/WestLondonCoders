@@ -1,0 +1,18 @@
+- set_page_title(@user.name)
+.m-profile
+
+  = render partial: 'sidebar'
+
+  .m-profile__content
+    = render partial: 'profile_nav', locals: { selected: 'hackrooms' }
+
+    .m-profile__current-content
+      .m-profile__grid
+        - @user.hackrooms.active.each do |hackroom|
+          = link_to hackroom do
+            = image_tag(language_avatar_url(hackroom.primary_languages.first), class: 'a-avatar a-avatar--small a-avatar--square', style: "border: solid 2px #{hackroom.primary_languages.first.colour}")
+      .m-profile__grid
+        - Hackroom.active.each do |hackroom|
+          - unless @user.hackrooms.include?(hackroom)
+            = link_to hackroom do
+              = image_tag(language_avatar_url(hackroom.primary_languages.first), class: 'a-avatar a-avatar--small a-avatar--greyscale a-avatar--square', style: "border: solid 2px #a2a2a0")

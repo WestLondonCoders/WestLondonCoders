@@ -1,3 +1,0 @@
-$('.is-selected').removeClass('is-selected')
-$('#language-nav').addClass('is-selected')
-$("#profile-content").html("<%= escape_javascript(render partial: 'shared/languages', locals: { languages: @user.all_languages } ) %>");

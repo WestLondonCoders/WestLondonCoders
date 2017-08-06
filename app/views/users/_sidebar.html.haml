@@ -1,0 +1,33 @@
+.m-profile__sidebar
+  = image_tag(avatar_url(@user), class: 'm-profile__avatar', style: "border-left: solid 5px #{@user.primary_languages&.first&.colour};")
+
+  %h1
+    .m-profile__name= @user.name
+    - if @user.github.present?
+      .m-profile__username
+        = link_to "https://github.com/#{@user.github}", target: '_blank' do
+          = @user.github
+
+  .m-profile__bio
+    %p= sanitize @user.bio
+    - if @user.location
+      = link_to "http://maps.google.com/?q=#{@user.location}", target: '_blank' do
+        %p
+          %i.fa.fa-map-marker
+          = @user.location
+
+    %p
+      = link_to followers_user_path(@user) do
+        %i.fa.fa-user-o
+        = pluralize(@user.user_follows_count, 'follower')
+
+    - if current_user
+      - unless current_user == @user
+        - if user_following?(current_user, @user)
+          = link_to 'Unfollow', unfollow_user_path(@user)
+        - else
+          = link_to 'Follow', follow_user_path(@user)
+
+    .m-profile__line
+
+  .u-margin-top--smallest.a-social-links--original-colours= render partial: 'users/social_links', locals: { user: @user }

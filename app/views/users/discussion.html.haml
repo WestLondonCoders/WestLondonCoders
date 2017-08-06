@@ -1,0 +1,25 @@
+- set_page_title(@user.name)
+.m-profile
+
+  = render partial: 'sidebar'
+
+  .m-profile__content
+    = render partial: 'profile_nav', locals: { selected: 'discussion' }
+
+    .m-profile__current-content
+      .m-profile__comments
+        - @user.comments.published.top_level.most_recent_first.limit(5).each do |comment|
+          .m-profile__comment
+            .m-profile__comment-text
+              = link_to comment.comment_path do
+                %i.fa.fa-quote-left
+                = comment.author.name
+                %br
+                .u-small-text
+                  = excerpt(comment.body, 80)
+                %br
+                .u-small-text.u-right= time_as_sentence(comment.created_at)
+            .m-grid__comment__context-strip{style: "background-color: #{comment.colour};"}
+              = link_to comment.comment_path do
+                %i.fa{class: comment.commentable.icon}
+                = comment.commentable.name

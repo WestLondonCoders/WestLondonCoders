@@ -59,3 +59,26 @@
 .a-social-links--members > * {
   padding: 7px;
 }
+
+
+.a-social-links--original-colours {
+  .fa-twitter {
+    color: $color-twitter;
+  }
+
+  .fa-facebook-official {
+    color: $color-facebook;
+  }
+
+  .fa-github {
+    color: $color-github;
+  }
+
+  .fa-linkedin {
+    color: $color-linkedin;
+  }
+
+  .fa-instagram {
+      color: $color-instagram;
+  }
+}

@@ -18,37 +18,6 @@ class UsersController < ApplicationController
     render :index
   end
 
-  def languages
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def hackrooms
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def posts
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def meetups
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def discussion
-    @comments = @user.comments.published.most_recent_first
-    respond_to do |format|
-      format.js
-    end
-  end
-
   def organisers
     @organisers = User.organiser
   end
@@ -69,7 +38,7 @@ class UsersController < ApplicationController
     @user_follow = UserFollow.find_or_create_by(follower_id: current_user.id, user_id: @user.id)
     @user.user_follows_count += 1
     create_follow_notification(@user)
-    render :follows
+    redirect_to followers_user_path(@user)
   end
 
   def unfollow
@@ -77,7 +46,7 @@ class UsersController < ApplicationController
     @user_follow.destroy if @user_follow
     @user.user_follows_count -= 1
     delete_follow_notification(@user)
-    render :follows
+    redirect_to followers_user_path(@user)
   end
 
   private
@@ -87,7 +56,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params[:user].permit(:name, :listed, :bio, :image, :logo, :logo_link, :tagline, :twitter, :instagram, :github, :facebook, :linkedin, :permission, :website_url, :email, primary_language_ids: [], language_ids: [])
+    params[:user].permit(:name, :listed, :bio, :image, :location, :logo, :logo_link, :tagline, :twitter, :instagram, :github, :facebook, :linkedin, :permission, :website_url, :email, primary_language_ids: [], language_ids: [])
   end
 
   def create_follow_notification(user)

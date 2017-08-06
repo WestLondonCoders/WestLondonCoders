@@ -1,0 +1,158 @@
+.m-profile {
+  @include flex($align-items: center, $justify-content: center, $direction: column);
+  margin: 30px auto;
+  max-width: 768px;
+
+  @media #{$from-large} {
+    max-width: 1024px;
+    margin: 50px auto;
+    @include flex($align-items: flex-start, $justify-content: space-between);
+    min-height: 67vh;
+  }
+}
+
+.m-profile__sidebar {
+  width: 90%;
+
+  @media #{$from-large} {
+    width: 25%;
+    @include flex($direction: column, $align-items: flex-start);
+  }
+}
+
+.m-profile__content {
+  width: 90%;
+
+  @media #{$from-large} {
+    width: 70%;
+    margin-top: -40px;
+  }
+}
+
+.m-profile__nav {
+  @include flex($justify-content: space-between, $flex-wrap: wrap);
+  margin: 0 auto;
+  margin-top: 30px;
+
+  h2 {
+    font-size: 16px;
+    border-bottom: solid 2px transparent;
+    padding: 7px;
+  }
+
+  @media #{$from-large} {
+    @include flex($flex-wrap: wrap);
+    max-width: 80%;
+    margin-top: 0;
+
+    h2 {
+      font-size: 20px;
+      border-bottom: solid 2px transparent;
+      padding: 15px;
+    }
+
+    .is-selected {
+      padding: 15px;
+    }
+  }
+}
+
+.m-profile__avatar {
+  width: 230px;
+  height: 230px;
+}
+
+.m-profile__name {
+  font-size: 30px;
+  margin-bottom: 0;
+  display: block;
+  margin-bottom: -15px;
+}
+
+.m-profile__username {
+  a, i, p {
+    font-size: 22px;
+    color: $color-light-grey;
+    margin-top: -15px;
+    font-weight: normal;
+  }
+
+  i {
+    margin-top: 7px;
+  }
+}
+
+.m-profile__bio {
+  color: $color-light-grey;
+  margin-top: -20px;
+
+  a {
+    color: $color-black;
+  }
+
+  i {
+    width: 20px;
+    text-align: center;
+    margin-right: 5px;
+  }
+}
+
+.m-profile__line {
+  background-image: none;
+  background-image: linear-gradient(to right, $color-blue, $color-pink);
+  height: 1px;
+}
+
+.m-profile__line--nav {
+  height: 2px;
+  margin-top: 5px;
+}
+
+.m-profile__line--blank {
+  background-image: none;
+}
+
+.m-profile__current-content {
+  margin-top: 20px;
+}
+
+.m-profile__grid {
+  display: grid;
+  grid-gap: 2%;
+  grid-template-columns: 23.75% 23.75% 23.75% 23.75%;
+
+  img {
+    margin: 10px 0;
+  }
+
+  @media #{$from-medium} {
+    width: 80%;
+    margin: 0 auto;
+    grid-gap: 1%;
+    grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%;
+  }
+}
+
+.m-profile__comments {
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: 100%;
+
+  @media #{$from-medium} {
+    width: 75%;
+  }
+}
+
+.m-profile__comment {
+  background-color: $color-pale-blue;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.m-profile__comment-text {
+  padding: 10px;
+
+  a {
+    color: $color-black;
+  }
+}

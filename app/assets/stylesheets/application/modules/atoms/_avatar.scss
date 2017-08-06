@@ -2,11 +2,19 @@
   display: inline-block;
   vertical-align: middle;
   border-radius: 100%;
-  width: 150px;
-  height: 150px;
-}
-
-.a-avatar {
   width: 100px;
   height: 100px;
+}
+
+.a-avatar--small {
+  width: 80px;
+  height: 80px;
+}
+
+.a-avatar--greyscale {
+  filter: grayscale(100%);
+}
+
+.a-avatar--square {
+  border-radius: 15%;
 }

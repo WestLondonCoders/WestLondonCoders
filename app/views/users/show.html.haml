@@ -1,24 +1,22 @@
 - set_page_title(@user.name)
-.a-page-holder
-  .m-billboard
-    .m-billboard__container
-      .m-billboard__container-left
-        %h1.m-billboard__title= @user.name
-        = sanitize @user.tagline
-        .m-billboard__description= sanitize @user.bio
+.m-profile
 
-      .m-billboard__container-right
-        .a-avatar= image_tag(avatar_url(@user), class: 'a-avatar')
+  = render partial: 'sidebar'
 
-    #follower_count[@user]= render partial: 'shared/follow_link', locals: { user: @user, user_list: true }
-    .u-interval= render partial: 'highlights', locals: { user: @user }
-    .u-interval= render partial: 'social_links', locals: { user: @user }
+  .m-profile__content
+    = render partial: 'profile_nav', locals: { selected: 'languages' }
 
-    .u-float-right= link_to 'Edit', edit_user_path(@user), class: 'a-button' if can? :manage, @user
-
-    .m-billboard__nav= render partial: 'profile_nav', locals: { user: @user }
-
-  %section.a-section
-    .a-content--xwide.u-margin-top#profile-content= render partial: 'shared/languages', locals: { languages: @user.all_languages }
-
-  .u-margin-bottom
+    .m-profile__current-content
+      .m-profile__grid
+        - @user.primary_languages.each do |language|
+          = link_to language do
+            = image_tag(language_avatar_url(language), title: language.name, class: 'a-avatar a-avatar--small a-avatar--square', style: "border: solid 2px #{language.colour}")
+      .m-profile__grid
+        - @user.languages.each do |language|
+          = link_to language do
+            = image_tag(language_avatar_url(language), class: 'a-avatar a-avatar--small a-avatar--square', style: "border: solid 2px #{language.colour}")
+      .m-profile__grid
+        - Language.all.each do |language|
+          - unless @user.primary_languages.include?(language) || @user.languages.include?(language)
+            = link_to language do
+              = image_tag(language_avatar_url(language), class: 'a-avatar a-avatar--small a-avatar--greyscale a-avatar--square', style: "border: solid 2px #a2a2a0")

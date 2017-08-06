@@ -1,0 +1,13 @@
+- set_page_title(@user.name)
+.m-profile
+
+  = render partial: 'sidebar'
+
+  .m-profile__content
+    = render partial: 'profile_nav', locals: { selected: 'followers' }
+
+    .m-profile__current-content
+      .m-profile__grid
+        - @user.followers.each do |follower|
+          = link_to follower do
+            = image_tag(avatar_url(follower), class: 'a-avatar a-avatar--small a-avatar--square', style: "border: solid 2px #{follower.colour}")

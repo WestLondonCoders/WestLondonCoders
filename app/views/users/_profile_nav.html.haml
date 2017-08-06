@@ -1,20 +1,25 @@
-%nav.a-subnav
-  - if @user.primary_languages.any? || @user.languages.any?
-    = link_to user_languages_path, id: 'language-nav', class: 'a-subnav__item is-selected',  :remote => true do
-      %h3 Languages
-
-  - if @user.hackrooms.any? || @user.own_hackrooms.any?
-    = link_to user_hackrooms_path, id: 'hackroom-nav', class: 'a-subnav__item',  :remote => true do
-      %h3 Hackrooms
-
-  - if @user.posts.any?
-    = link_to user_posts_path, id: 'post-nav', class: 'a-subnav__item',  :remote => true do
-      %h3 Posts
-
-  - if @user.meetups.upcoming.any?
-    = link_to user_meetups_path, id: 'meetup-nav', class: 'a-subnav__item', :remote => true do
-      %h3 Meetups
-
-  - if @user.comments.any?
-    = link_to user_discussion_path, id: 'comment-nav', class: 'a-subnav__item', :remote => true do
-      %h3 Discussion
+.m-profile__nav
+  %h2
+    = link_to 'Languages', @user
+    - if selected == 'languages'
+      .m-profile__line.m-profile__line--nav
+    - else
+      .m-profile__line--nav.m-profile__line--blank
+  %h2
+    = link_to 'Hackrooms', hackrooms_user_path(@user)
+    - if selected == 'hackrooms'
+      .m-profile__line.m-profile__line--nav
+    - else
+      .m-profile__line--nav.m-profile__line--blank
+  %h2
+    = link_to 'Discussion', discussion_user_path(@user)
+    - if selected == 'discussion'
+      .m-profile__line.m-profile__line--nav
+    - else
+      .m-profile__line--nav.m-profile__line--blank
+  %h2
+    = link_to 'Followers', followers_user_path(@user)
+    - if selected == 'followers'
+      .m-profile__line.m-profile__line--nav
+    - else
+      .m-profile__line--nav.m-profile__line--blank
