@@ -58,12 +58,11 @@ Rails.application.routes.draw do
       match 'search' => 'languages#search', via: [:get, :post], as: :search
     end
     resources :comments
+    member do
+      get :likes
+      get :hackrooms
+    end
   end
-
-  get "/languages/:id/language-discussion" => 'languages#discussion', as: 'language_discussion'
-  get "/languages/:id/language-hackrooms" => 'languages#hackrooms', as: 'language_hackrooms'
-  get "/languages/:id/language-fans" => 'languages#fans', as: 'language_fans'
-  get "/languages/:id/language-courses" => 'languages#courses', as: 'language_courses'
 
   resources :hackrooms do
     collection do

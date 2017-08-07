@@ -1,31 +1,7 @@
 class LanguagesController < ApplicationController
-  before_action :find_language, only: [:show, :edit, :update, :destroy, :discussion, :hackrooms, :fans, :courses]
+  before_action :find_language, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token, only: [:search]
   load_and_authorize_resource
-
-  def discussion
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def hackrooms
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def fans
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def courses
-    respond_to do |format|
-      format.js
-    end
-  end
 
   def index
     @search = Language.ransack(params[:q])

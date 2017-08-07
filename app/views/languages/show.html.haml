@@ -1,24 +1,12 @@
 - set_page_title(@language.name)
-.a-page-holder
-  .m-billboard
-    .m-billboard__container
-      .m-billboard__container-left
-        %h1.m-billboard__title= @language.name
-        .m-billboard__description= sanitize @language.description
-        .m-billboard__description
-          Added by
-          = link_to @language.author.name, @language.author
-        %hr{style: "border-bottom: solid 2px #{@language.colour}"}
-      .m-billboard__container-right
-        .a-avatar= image_tag(language_avatar_url(@language), class: 'a-avatar')
+.m-profile
+  = render partial: 'sidebar'
 
-    .u-interval= render partial: 'highlights', locals: { language: @language }
+  .m-profile__content
+    = render partial: 'language_nav', locals: { selected: 'likes' }
 
-    .u-float-right= link_to 'Edit', edit_language_path(@language), class: 'a-button' if can? :manage, @language
-
-    .m-billboard__nav= render partial: 'language_nav', locals: { language: @language }
-
-  %section.a-section
-    .a-content--xwide.u-margin-top#language-content= render partial: 'shared/comments', locals: { commentable: @language }
-
-  .u-margin-bottom
+    .m-profile__current-content
+      .m-profile__grid
+        - @language.all_users.each do |user|
+          = link_to user do
+            = image_tag(avatar_url(user), class: 'a-avatar a-avatar--small a-avatar--square', style: "border: solid 2px #{user.colour}")

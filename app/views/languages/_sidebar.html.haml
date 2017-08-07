@@ -1,0 +1,23 @@
+.m-profile__sidebar
+  = image_tag(language_avatar_url(@language), class: 'm-profile__avatar', style: "border-left: solid 5px #{@language.colour};")
+
+  %h1
+    .m-profile__name= @language.name
+
+    .m-profile__admins
+      %p
+        Added by
+        = link_to @language.author.name, @language.author
+
+  .m-profile__bio
+    %p= sanitize @language.description
+
+    %p
+      = link_to language_path(@language) do
+        %i.fa.fa-user-o
+        = pluralize(@language.all_users.count, 'like')
+
+    .a-buttons
+      = link_to 'Edit', edit_language_path(@language), class: 'a-button a-button--follow a-button--slim a-button--ghost' if can? :edit, @language
+
+    .m-profile__line

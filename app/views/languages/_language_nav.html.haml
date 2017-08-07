@@ -1,15 +1,13 @@
-%nav.a-subnav
-  = link_to language_discussion_path, id: 'comment-nav', class: 'a-subnav__item is-selected',  :remote => true do
-    %h3 Discussion
-
-  - if language.primary_hackrooms.any?
-    = link_to language_hackrooms_path, id: 'hackroom-nav', class: 'a-subnav__item',  :remote => true do
-      %h3 Hackrooms
-
-  - if @language.primary_users.any?
-    = link_to language_fans_path, id: 'fans-nav', class: 'a-subnav__item',  :remote => true do
-      %h3 Fans
-
-  - if @language.courses.published.any?
-    = link_to language_courses_path, id: 'courses-nav', class: 'a-subnav__item',  :remote => true do
-      %h3 Courses
+.m-profile__nav
+  %h2
+    = link_to 'Likes', @language
+    - if selected == 'likes'
+      .m-profile__line.m-profile__line--nav
+    - else
+      .m-profile__line--nav.m-profile__line--blank
+  %h2
+    = link_to 'Hackrooms', hackrooms_language_path(@language)
+    - if selected == 'hackrooms'
+      .m-profile__line.m-profile__line--nav
+    - else
+      .m-profile__line--nav.m-profile__line--blank

@@ -1,14 +1,10 @@
 .m-grid
   - languages.each do |language|
     .m-grid__box
-      .m-grid__banner{style: "background-color: #{language.colour}"}
-        %h1.a-headline= link_to language.name, language
-      .m-grid__box-content
-        = image_tag(language_avatar_url(language), class: 'a-avatar a-avatar--small', style: "border: solid 2px #{language.colour}")
+      = link_to language do
+        .m-grid__banner{style: "background-color: #{language.colour}"}
+          %h1.a-headline= link_to language.name, language
+        .m-grid__box-content
+          = link_to image_tag(language_avatar_url(language), class: 'a-avatar a-avatar--small', style: "border: solid 2px #{language.colour}"), language
 
-        = render partial: 'languages/highlights', locals: { language: language }
-
-        = excerpt(language.description) if language.description
-
-        .u-margin-top--small.u-right
-          = link_to "See more", language, class: 'a-button'
+          = link_to excerpt(language.description), language, class: 'u-unlink' if language.description
