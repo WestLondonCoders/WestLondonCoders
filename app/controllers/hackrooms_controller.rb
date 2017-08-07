@@ -4,30 +4,6 @@ class HackroomsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:search]
   load_and_authorize_resource
 
-  def discussion
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def languages
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def members
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def admins
-    respond_to do |format|
-      format.js
-    end
-  end
-
   def index
     @search = Hackroom.active.ransack(params[:q])
     @hackrooms = @search.result.includes(:primary_languages, :languages, :owners, :users).in_popularity_order

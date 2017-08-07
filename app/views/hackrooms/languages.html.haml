@@ -1,0 +1,21 @@
+- set_page_title(@hackroom.name)
+.m-profile
+  = render partial: 'sidebar'
+
+  .m-profile__content
+    = render partial: 'hackroom_nav', locals: { selected: 'languages' }
+
+    .m-profile__current-content
+      .m-profile__grid
+        - @hackroom.primary_languages.each do |language|
+          = link_to language do
+            = image_tag(language_avatar_url(language), title: language.name, class: 'a-avatar a-avatar--small a-avatar--square', style: "border: solid 2px #{language.colour}")
+      .m-profile__grid
+        - @hackroom.languages.each do |language|
+          = link_to language do
+            = image_tag(language_avatar_url(language), class: 'a-avatar a-avatar--small a-avatar--square', style: "border: solid 2px #{language.colour}")
+      .m-profile__grid
+        - Language.all.each do |language|
+          - unless @hackroom.primary_languages.include?(language) || @hackroom.languages.include?(language)
+            = link_to language do
+              = image_tag(language_avatar_url(language), class: 'a-avatar a-avatar--small a-avatar--greyscale a-avatar--square', style: "border: solid 2px #a2a2a0")

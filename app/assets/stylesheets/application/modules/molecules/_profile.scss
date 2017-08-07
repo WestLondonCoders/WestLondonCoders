@@ -86,18 +86,30 @@
   }
 }
 
+.m-profile__admins {
+  a, p {
+    font-size: 16px;
+    color: $color-light-grey;
+  }
+}
+
 .m-profile__bio {
   color: $color-light-grey;
   margin-top: -20px;
+  width: 100%;
 
   a {
     color: $color-black;
   }
 
+  .a-buttons {
+    margin: 20px auto 10px;
+  }
+
   .a-button {
     color: $color-white;
     text-align: center;
-    margin: 10px auto 20px;
+    margin-bottom: 10px;
   }
 
   i {
@@ -165,4 +177,9 @@
   a {
     color: $color-black;
   }
+}
+
+.m-profile__page {
+  max-width: 90%;
+  margin: 0 auto;
 }

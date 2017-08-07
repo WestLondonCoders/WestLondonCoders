@@ -1,32 +1,10 @@
 - set_page_title(@hackroom.name)
-.a-page-holder
-  .m-billboard
-    .m-billboard__container
-      .m-billboard__container-left
-        %h1.m-billboard__title= @hackroom.name
-        .m-billboard__description= sanitize @hackroom.mission
-        .m-billboard__description
-          Created by
-          = link_to @hackroom.author.name, @hackroom.author
-        %hr{style: "border-bottom: solid 2px #{@hackroom.colour}"}
-      .m-billboard__container-right
+.m-profile
+  = render partial: 'sidebar'
 
-    .u-interval= render partial: 'hackrooms/highlights', locals: { hackroom: @hackroom }
-    .u-interval= render partial: 'hackrooms/links', locals: { hackroom: @hackroom }
+  .m-profile__content
+    = render partial: 'hackroom_nav', locals: { selected: 'projects' }
 
-    .u-float-right
-      - if current_user
-        - if user_in_hackroom?(@hackroom, current_user)
-          = link_to 'Leave', join_hackroom_path(@hackroom), class: 'a-button'
-        - else
-          = link_to 'Join', join_hackroom_path(@hackroom), class: 'a-button'
-      - else
-        = link_to 'Join', new_user_session_path, class: 'a-button'
-      = link_to 'Edit', edit_hackroom_path(@hackroom), class: 'a-button' if can? :manage, @hackroom
-
-    .m-billboard__nav= render partial: 'hackroom_nav', locals: { hackroom: @hackroom }
-
-  %section.a-section
-    .a-content--xwide.u-margin-top#hackroom-content= render partial: 'shared/comments', locals: { commentable: @hackroom }
-
-  .u-margin-bottom
+    .m-profile__current-content
+      .m-profile__page
+        %p.u-center This hackroom hasn't shared their projects yet.

@@ -1,0 +1,12 @@
+- set_page_title(@hackroom.name)
+.m-profile
+  = render partial: 'sidebar'
+
+  .m-profile__content
+    = render partial: 'hackroom_nav', locals: { selected: 'members' }
+
+    .m-profile__current-content
+      .m-profile__grid
+        - @hackroom.all_members.each do |follower|
+          = link_to follower do
+            = image_tag(avatar_url(follower), class: 'a-avatar a-avatar--small a-avatar--square', style: "border: solid 2px #{follower.colour}")

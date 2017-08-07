@@ -1,0 +1,34 @@
+.m-profile__sidebar
+  = image_tag(language_avatar_url(@hackroom.primary_languages.first), class: 'm-profile__avatar', style: "border-left: solid 5px #{@hackroom.primary_languages.first.colour};")
+
+  %h1
+    .m-profile__name= @hackroom.name
+
+    - if @hackroom.owners.any?
+      .m-profile__admins
+        %p
+          Led by
+          = admin_list_as_sentence(@hackroom)
+
+  .m-profile__bio
+    %p= sanitize @hackroom.mission
+
+    %p
+      = link_to members_hackroom_path(@hackroom) do
+        %i.fa.fa-user-o
+        = member_count(@hackroom)
+
+    .a-buttons
+      - if current_user
+        - if user_in_hackroom?(@hackroom, current_user)
+          = link_to 'Leave', join_hackroom_path(@hackroom), class: 'a-button a-button--follow'
+        - else
+          = link_to 'Join', join_hackroom_path(@hackroom), class: 'a-button a-button--follow'
+      - else
+        = link_to 'Join', new_user_session_path, class: 'a-button a-button--follow'
+
+      = link_to 'Edit', edit_hackroom_path(@hackroom), class: 'a-button a-button--follow a-button--slim a-button--ghost' if can? :edit, @hackroom
+
+    .m-profile__line
+
+  .u-margin-top--smallest.a-social-links--original-colours= render partial: 'hackrooms/links', locals: { hackroom: @hackroom }

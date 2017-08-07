@@ -14,4 +14,5 @@
 
       .u-center.u-margin-bottom--small= link_to "Create hackroom", new_hackroom_path if can? :create, Hackroom
 
-  %section.a-section.a-section--alt#hackroom-search-results= render 'results'
+  %section.a-section.a-section--alt
+    .a-content--xwide#hackroom-search-results= render 'results'

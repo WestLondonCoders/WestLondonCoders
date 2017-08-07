@@ -3,6 +3,7 @@
 
   %h1
     .m-profile__name= @user.name
+
     - if @user.github.present?
       .m-profile__username
         = link_to "https://github.com/#{@user.github}", target: '_blank' do

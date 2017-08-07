@@ -36,7 +36,8 @@
 
 .a-button--ghost {
   background-color: transparent;
-  color: $color-blue;
+  color: $color-blue !important;
+
   &:hover {
     @include button-fade;
     background-color: transparent;
@@ -83,4 +84,8 @@
 
 .a-button--follow {
   width: 100%;
+}
+
+.a-button--slim {
+  padding: 3px;
 }

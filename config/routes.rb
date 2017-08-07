@@ -74,14 +74,12 @@ Rails.application.routes.draw do
       post :join
       get :archive
       post :archive
+      get :languages
+      get :members
+      get :discussion
     end
     resources :comments
   end
-
-  get "/hackrooms/:id/hackroom-discussion" => 'hackrooms#discussion', as: 'hackroom_discussion'
-  get "/hackrooms/:id/hackroom-languages" => 'hackrooms#languages', as: 'hackroom_languages'
-  get "/hackrooms/:id/hackroom-members" => 'hackrooms#members', as: 'hackroom_members'
-  get "/hackrooms/:id/hackroom-admins" => 'hackrooms#admins', as: 'hackroom_admins'
 
   resources :roles
 
