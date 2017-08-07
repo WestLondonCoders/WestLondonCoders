@@ -1,14 +1,4 @@
 - set_page_title("Languages")
 
-.a-page-holder
-
-  %section.a-section.a-section--separated
-    .a-content.a-content--tight
-
-      %h1.a-heading.u-center#language-search-heading= render 'heading'
-      %p= I18n.t('index_introductions.languages')
-
-      .u-center.u-margin-bottom--small= link_to "Add language", new_language_path if can? :create, Language
-
-  %section.a-section.a-section--alt
-    .a-content--xwide#language-search-results= render 'results'
+%section.a-section.a-section--alt
+  .a-content--xwide#language-search-results= render 'results'

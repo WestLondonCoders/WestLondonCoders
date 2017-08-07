@@ -4,7 +4,7 @@
   = video_tag "video/gdg.mov", controls: false, autoplay: true, muted: true, loop: true, id: 'home-vid'
   %h1#next-meetup-banner Learn, discuss and practice code.
 
-%section.a-section.a-section--separated
+%section.a-section
   .a-content--wide
     .m-intro
       %h1.a-heading--large
@@ -29,8 +29,13 @@
 
 %section.a-section.a-section--separated.u-padding-bottom
   .a-content--xwide
-    %h1.a-heading.u-center Latest comments
-    .u-margin-top= render partial: 'shared/comments_grid', locals: { comments: @comments }
+    %h1.a-heading.u-center Hackrooms
+    .u-margin-top= render partial: 'shared/hackrooms', locals: { hackrooms: Hackroom.active }
+
+-# %section.a-section.a-section--separated.u-padding-bottom
+-#   .a-content--xwide
+-#     %h1.a-heading.u-center Latest comments
+-#     .u-margin-top= render partial: 'shared/comments_grid', locals: { comments: @comments }
 
 %section.a-section.a-section--alt
   .a-content--xwide

@@ -6,4 +6,4 @@
       .m-grid__box-content
         = link_to image_tag(language_avatar_url(hackroom.primary_languages.first), class: 'a-avatar a-avatar--small', style: "border: solid 2px #{hackroom.primary_languages.first.colour}"), hackroom
 
-        = link_to excerpt(hackroom.mission), hackroom, class: 'u-unlink' if hackroom.mission
+        = link_to excerpt(hackroom.mission, 500), hackroom, class: 'u-unlink' if hackroom.mission

@@ -1,16 +1,3 @@
 - set_page_title("Blog")
 
-.a-page-holder
-
-  %section.a-section.a-section--separated
-    .a-content--wide.a-content--tight
-      %h1.a-heading.u-center#post-search-heading= render 'heading'
-
-      .a-content
-        %p= I18n.t('index_introductions.posts')
-
-      = render partial: 'filter'
-
-      .u-center.u-margin-bottom--small= link_to "Write a post", new_post_path if can? :create, Post
-
-  %section.a-section.a-section--alt#post-search-results= render 'results'
+%section.a-section.a-section--alt#post-search-results= render 'results'

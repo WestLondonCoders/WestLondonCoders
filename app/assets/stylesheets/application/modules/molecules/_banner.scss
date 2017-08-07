@@ -1,0 +1,34 @@
+.m-banner {
+  min-height: 300px;
+  display: grid;
+  grid-template-columns: 100%;
+
+  @media #{$from-medium} {
+    max-width: 90%;
+    min-height: 300px;
+    display: grid;
+    grid-gap: 4%;
+    grid-template-columns: 58% 38%;
+  }
+}
+
+.m-banner__left {
+  @media #{$to-medium} {
+    display: none;
+  }
+}
+
+.m-banner__right {
+  @include flex($direction: column);
+  max-width: 90%;
+  margin: 0 auto;
+
+  @media #{$from-medium} {
+    max-width: 100%;
+    @include flex($direction: column);
+  }
+}
+
+.m-banner__text {
+  margin-top: -20px;
+}

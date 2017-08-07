@@ -28,10 +28,11 @@ en:
   index_introductions:
     courses: Learn web development or improve your skills with courses made by developers
       from our meetup.
-    hackrooms: Hackrooms offer an engaging, inclusive and collaborative environment
+    hackrooms: Hackrooms are an engaging, inclusive and collaborative environment
       for new and experienced developers to learn together, which <a href='http://westlondoncoders.com/posts/improving-the-meetup-with-user-feedback'>
-      is what members have told us</a> they want most from West London Coders.
-    languages: These are some of the programming languages and frameworks we like to use at West London Coders.
+      is what members have told us</a> they want most from West London Coders meetups.
+    languages: These are some of the programming languages and frameworks we like
+      to use at West London Coders.
     meetups: Our meetup planner is still new, and people are still mostly confirming
       attendance on Meetup.com. Having our own planner allows us to use the data we
       generate about our meetups.
