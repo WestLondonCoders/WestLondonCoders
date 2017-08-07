@@ -3,17 +3,12 @@
 .a-page-holder
 
   %section.a-section.a-section--separated
-    .a-content--wide.a-content--tight
-      %h1.a-heading.u-center#post-search-heading= render 'heading'
+    .a-content.a-content--tight
+      %h1.a-heading.u-center Meetups
 
-      .a-content
-        %p= I18n.t('index_introductions.meetups')
-
-      = render partial: 'filter'
+      %p= I18n.t('index_introductions.meetups')
 
       .u-center.u-margin-bottom--small= link_to "Schedule meetup", new_admin_meetup_path if can? :create, Meetup
-
-      = render partial: 'sort'
 
   %section.a-section.a-section--alt#meetup-search-results
     = render 'results'

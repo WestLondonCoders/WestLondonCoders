@@ -3,16 +3,10 @@
 .a-page-holder
 
   %section.a-section.a-section--separated
-    .a-content--xwide.a-content--tight
+    .a-content.a-content--tight.u-margin-bottom
 
-      %h1.a-heading.u-center#hackroom-search-heading= render 'heading'
-
-    .a-content.a-content--tight-bottom
-      %p= I18n.t('index_introductions.hackrooms')
-
-      = render partial: 'filter'
-
-      .u-center.u-margin-bottom--small= link_to "Create hackroom", new_hackroom_path if can? :create, Hackroom
+      %h1.a-heading.u-center Hackrooms
+      %p= I18n.t('index_introductions.hackrooms').html_safe
 
   %section.a-section.a-section--alt
     .a-content--xwide#hackroom-search-results= render 'results'

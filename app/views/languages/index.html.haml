@@ -3,16 +3,12 @@
 .a-page-holder
 
   %section.a-section.a-section--separated
-    .a-content--xwide.a-content--tight
+    .a-content.a-content--tight
 
       %h1.a-heading.u-center#language-search-heading= render 'heading'
+      %p= I18n.t('index_introductions.languages')
 
-      .a-content
-        %p= I18n.t('index_introductions.languages')
-
-        = render partial: 'filter'
-
-        .u-center.u-margin-bottom--small= link_to "Add language", new_language_path if can? :create, Language
+      .u-center.u-margin-bottom--small= link_to "Add language", new_language_path if can? :create, Language
 
   %section.a-section.a-section--alt
     .a-content--xwide#language-search-results= render 'results'
