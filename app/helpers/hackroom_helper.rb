@@ -4,7 +4,7 @@ module HackroomHelper
   end
 
   def admin_count(hackroom)
-    pluralize(hackroom.owners.count, 'admin')
+    pluralize(hackroom.owners.count, 'lead')
   end
 
   def member_count(hackroom)

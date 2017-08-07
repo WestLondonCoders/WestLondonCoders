@@ -1,32 +1,14 @@
-.a-content--xwide
-  .m-grid
-    - hackrooms.each do |hackroom|
-      .m-grid__box
-        .m-grid__box-content
-          %h1.u-center= link_to hackroom.name, hackroom_path(hackroom), style: "border-bottom: solid 2px #{hackroom.primary_languages&.first&.colour}"
+.m-grid
+  - hackrooms.each do |hackroom|
+    .m-grid__box
+      .m-grid__banner{style: "background-color: #{hackroom.primary_languages.first.colour}"}
+        %h1.a-headline= link_to hackroom.name, hackroom
+      .m-grid__box-content
+        = image_tag(language_avatar_url(hackroom.primary_languages.first), class: 'a-avatar a-avatar--small', style: "border: solid 2px #{hackroom.primary_languages.first.colour}")
 
-          = render partial: 'hackrooms/highlights', locals: { hackroom: hackroom }
+        = render partial: 'hackrooms/highlights', locals: { hackroom: hackroom }
 
-          = excerpt(hackroom.mission)
+        = excerpt(hackroom.mission) if hackroom.mission
 
-          - if hackroom.primary_languages.any?
-            .a-tags.a-tags--center.u-margin-top--small
-              - hackroom.primary_languages.each do |language|
-                = link_to language.name, language, class: "a-tag", style: "background-color: #{language.colour}"
-
-          - if hackroom.all_members.any?
-            %h2.u-margin-top.u-center= pluralize(hackroom.all_members.count, "member")
-            .a-identities.a-tags--center
-              - hackroom.all_members.take(4).each do |user|
-                = render partial: 'shared/user_tag', locals: { user: user, image_only: true }
-
-          .m-grid__bottom.u-center
-            = link_to 'Archive', archive_hackroom_path(hackroom), class: 'a-button' if can? :archive, hackroom
-            = link_to "View", hackroom, class: 'a-button'
-            - if current_user
-              - if user_in_hackroom?(hackroom, current_user)
-                = link_to 'Leave', join_hackroom_path(hackroom), class: 'a-button'
-              - else
-                = link_to 'Join', join_hackroom_path(hackroom), class: 'a-button'
-            - else
-              = link_to 'Join', new_user_session_path, class: 'a-button'
+        .u-margin-top--small.u-right
+          = link_to "See more", hackroom, class: 'a-button'
