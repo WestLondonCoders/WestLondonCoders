@@ -1,0 +1,50 @@
+%section.a-section
+  .a-content
+    %h1 API
+    %p We have a basic API that provides publicly visible data from the West London Coders website.
+
+    %p We're working on an authenticated version so we can create apps that use the API to join hackrooms, make comments, edit your profile and to allow us to create reporting apps for data analytics.
+
+    .a-content
+      %h2 Members
+      .m-profile__line
+      %h3 Index
+      %p
+        To get an index that returns all members and basic information, including an API href to each member:
+        %br
+        = link_to 'https://westlondoncoders.com/api/members', 'https://westlondoncoders.com/api/members'
+      %h3 Show
+      %p
+        To get Steve Brewer and basic information about him, append the ID:
+        %br
+        = link_to 'https://westlondoncoders.com/api/members/steve-brewer', 'https://westlondoncoders.com/api/members/steve-brewer'
+
+    .a-content
+      %h2 Hackrooms
+      .m-profile__line
+      %h3 Index
+      %p
+        To get an index that returns all hackrooms and basic information, including an API href to each hackroom:
+        %br
+        = link_to 'https://westlondoncoders.com/api/hackrooms', 'https://westlondoncoders.com/api/hackrooms'
+      %h3 Show
+      %p
+        To get the Ruby hackroom and basic information about it, append the ID:
+        %br
+        = link_to 'https://westlondoncoders.com/api/hackrooms/ruby', 'https://westlondoncoders.com/api/hackrooms/ruby'
+
+    .a-content
+      %h2 Languages
+      .m-profile__line
+      %h3 Index
+      %p
+        To get an index that returns all languages and basic information, including an API href to each language:
+        %br
+        = link_to 'https://westlondoncoders.com/api/languages', 'https://westlondoncoders.com/api/languages'
+      %h3 Show
+      %p
+        To get the Ruby language and basic information about it, append the ID:
+        %br
+        = link_to 'https://westlondoncoders.com/api/languages/ruby', 'https://westlondoncoders.com/api/languages/ruby'
+
+.u-margin-bottom

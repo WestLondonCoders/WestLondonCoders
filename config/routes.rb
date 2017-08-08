@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   mount BasicApi => '/api'
 
+  get '/api', to: 'pages#api_documentation'
+
   get '/chart', to: 'pages#chart'
   get '/organisers', to: 'users#organisers', as: 'organisers'
   get '/past-meetups', to: 'meetups#past_meetups', as: 'past_meetups'
