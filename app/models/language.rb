@@ -26,6 +26,10 @@ class Language < ActiveRecord::Base
     (primary_users.all + users.all).uniq
   end
 
+  def all_hackrooms
+    (primary_hackrooms.all + hackrooms.all).uniq
+  end
+
   def title
     name
   end
