@@ -44,6 +44,8 @@ gem 'rollbar'
 gem 'sitemap_generator'
 gem 'gon'
 gem 'chart-js-rails'
+gem 'grape'
+gem 'grape-entity'
 
 group :development, :test do
   gem 'rails-controller-testing'
