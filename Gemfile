@@ -46,6 +46,7 @@ gem 'gon'
 gem 'chart-js-rails'
 gem 'grape'
 gem 'grape-entity'
+gem 'rest-client'
 
 group :development, :test do
   gem 'rails-controller-testing'
