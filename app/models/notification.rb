@@ -17,8 +17,4 @@ class Notification < ActiveRecord::Base
   def about_reply_to_your_comment?
     notifiable_type == 'Comment'
   end
-
-  def about_new_meetup?
-    notifiable_type == 'Meetup'
-  end
 end

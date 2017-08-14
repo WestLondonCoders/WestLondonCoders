@@ -56,8 +56,6 @@ class CommentsController < ApplicationController
       @commentable = Language.find_by_slug(params[:language_id])
     when params[:hackroom_id]
       @commentable = Hackroom.find_by_slug(params[:hackroom_id])
-    when params[:meetup_id]
-      @commentable = Meetup.find_by_slug(params[:meetup_id])
     when params[:step_id]
       @commentable = Step.friendly.find(params[:step_id])
     when params[:course_id]

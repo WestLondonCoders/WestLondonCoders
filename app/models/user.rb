@@ -12,11 +12,8 @@ class User < ActiveRecord::Base
   has_many :languages, through: :user_languages
   has_many :user_primaries, dependent: :destroy
   has_many :primary_languages, through: :user_primaries, source: :language
-  has_many :meetup_rsvps, dependent: :destroy
-  has_many :meetups, through: :meetup_rsvps
   has_many :sponsorship_admins, dependent: :destroy
   has_many :sponsors, through: :sponsorship_admins
-  has_many :managed_meetups, through: :sponsors, source: :meetups
   has_many :posts, foreign_key: :created_by_id, dependent: :destroy
   has_many :user_follows, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :user_follows, source: 'user'

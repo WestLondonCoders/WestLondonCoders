@@ -1,13 +1,9 @@
-
 .m-admin_bar
   %i.fa.fa-cog
   - if current_user.has_role?(:admin)
     = link_to admin_root_path do
       %h3.m-admin_bar__item{class: ('m-admin_bar__item--is-selected' if current_page?(admin_root_path))}
         Members
-    = link_to admin_meetups_path do
-      %h3.m-admin_bar__item{class: ('m-admin_bar__item--is-selected' if current_page?(admin_meetups_path))}
-        Meetups
     = link_to admin_sponsors_path do
       %h3.m-admin_bar__item{class: ('m-admin_bar__item--is-selected' if current_page?(admin_sponsors_path))}
         Sponsors
@@ -18,7 +14,4 @@
     = link_to edit_admin_sponsor_path(current_user.sponsors.first) do
       %h3.m-admin_bar__item{class: ('m-admin_bar__item--is-selected' if current_page?(edit_admin_sponsor_path(current_user.sponsors.first)))}
         Your organisation
-    = link_to admin_your_meetups_path do
-      %h3.m-admin_bar__item{class: ('m-admin_bar__item--is-selected' if current_page?(admin_your_meetups_path))}
-        Your meetups
 .u-margin-bottom--small
