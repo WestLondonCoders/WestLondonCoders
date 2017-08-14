@@ -4,18 +4,25 @@
   = video_tag "video/gdg.mov", controls: false, autoplay: true, muted: true, loop: true, id: 'home-vid'
   %h1#next-meetup-banner Learn, discuss and practice code.
 
-%section.a-section
-  .a-content--wide
-    .m-intro
-      %h1.a-heading--large
-        Join
-        %span#next-meetup-count 20
-        others at our next meetup
-      %h2
-        %span#next-meetup-date
-        %span#next-meetup-venue-name
-      %h3
-        %span#next-meetup-venue
+- if @next_meetup['venue']
+  %section.a-section
+    .a-content--wide
+      .m-intro
+        %h1.a-heading--large
+          Join
+          = @next_meetup['yes_rsvp_count']
+          others at our next meetup
+        %h2
+          - seconds = (@next_meetup['time'].to_f / 1000).to_s
+          - date = Date.strptime(seconds, '%s')
+          = date.strftime("%A #{date.day.ordinalize} %B")
+          at
+          = @next_meetup['venue']['name']
+        %h3
+          = link_to "http://maps.google.com/?q=#{@next_meetup['venue']['address_1']}", target: '_blank' do
+            = @next_meetup['venue']['address_1']
+
+        = link_to 'RSVP', @next_meetup['link'], target: '_blank', class: 'a-button'
 
 - if @sponsors.any?
   %section.a-section.m-intro
@@ -30,11 +37,6 @@
   .a-content--xwide
     %h1.a-heading.u-center Hackrooms
     .u-margin-top= render partial: 'shared/hackrooms', locals: { hackrooms: Hackroom.active }
-
--# %section.a-section.a-section--separated.u-padding-bottom
--#   .a-content--xwide
--#     %h1.a-heading.u-center Latest comments
--#     .u-margin-top= render partial: 'shared/comments_grid', locals: { comments: @comments }
 
 %section.a-section.a-section--alt
   .a-content--xwide
