@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-  before_action :get_user, except: [:index, :search, :organisers, :score]
+  before_action :get_user, except: [:index, :search, :organisers]
   skip_before_action :verify_authenticity_token, only: [:search]
-  load_and_authorize_resource
 
   def show
     @posts = Post.all.where(created_by_id: @user).order("created_at asc")
@@ -23,10 +22,12 @@ class UsersController < ApplicationController
   end
 
   def edit
+    authorize! :edit, @user
     @languages = Language.all
   end
 
   def update
+    authorize! :edit, @user
     if @user.update(user_params)
       redirect_to user_path(user_params)
     else
