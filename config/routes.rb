@@ -89,17 +89,6 @@ Rails.application.routes.draw do
 
   resources :sponsors
 
-  resources :meetups, path: 'meetups' do
-    collection do
-      match 'search' => 'meetups#search', via: [:get, :post], as: :search
-    end
-    member do
-      get :rsvp
-      post :rsvp
-    end
-    resources :comments
-  end
-
   get 'notifications/:id/link_through', to: 'notifications#link_through', as: :link_through
   get 'notifications/mark_all_read', to: 'notifications#mark_all_read', as: :mark_all_read
   resources :notifications, only: :index
