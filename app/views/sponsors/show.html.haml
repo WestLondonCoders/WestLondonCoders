@@ -45,29 +45,3 @@
         - if @sponsor.link.present?
           .u-center.u-margin-bottom.u-margin-top
             = link_to 'Find out more', @sponsor.link, target: '_blank', class: 'a-button'
-
-  - if @sponsor.meetups.upcoming.any?
-    %section.a-section
-      .a-content
-        %h2 Upcoming meetups
-        - @sponsor.meetups.upcoming.take(3).each do |meetup|
-          %p
-            = link_to meetup_path(meetup) do
-              = meetup.name
-              %br
-              = time_as_sentence(meetup.date)
-              on
-              = meetup.start_date
-
-  - if @sponsor.meetups.past.any?
-    %section.a-section
-      .a-content
-        %h3 Past meetups
-        - @sponsor.meetups.past.take(3).each do |meetup|
-          %p
-            = link_to meetup_path(meetup) do
-              = meetup.name
-              %br
-              = time_as_sentence(meetup.date)
-              on
-              = meetup.start_date
