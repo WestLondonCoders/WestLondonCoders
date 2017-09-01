@@ -4,14 +4,7 @@
     = link_to admin_root_path do
       %h3.m-admin_bar__item{class: ('m-admin_bar__item--is-selected' if current_page?(admin_root_path))}
         Members
-    = link_to admin_sponsors_path do
-      %h3.m-admin_bar__item{class: ('m-admin_bar__item--is-selected' if current_page?(admin_sponsors_path))}
-        Sponsors
     = link_to admin_roles_path do
       %h3.m-admin_bar__item{class: ('m-admin_bar__item--is-selected' if current_page?(admin_roles_path))}
         Roles
-  - if current_user.has_role?(:sponsor) && current_user.sponsors.any?
-    = link_to edit_admin_sponsor_path(current_user.sponsors.first) do
-      %h3.m-admin_bar__item{class: ('m-admin_bar__item--is-selected' if current_page?(edit_admin_sponsor_path(current_user.sponsors.first)))}
-        Your organisation
 .u-margin-bottom--small
