@@ -1,0 +1,38 @@
+%section.a-section.a-section--alt
+  .a-content--wide
+    - seconds = (@meetup['time'].to_f / 1000).to_s
+    - date = Date.strptime(seconds, '%s')
+    %p
+      = date.strftime("%A #{date.day.ordinalize} %B")
+    %h1
+      = link_to @meetup['name'], @meetup['link'], target: '_blank'
+    %span.a-heading--small= @meetup['venue']['name']
+    %br
+    = link_to "http://maps.google.com/?q=#{@meetup['venue']['address_1']}", target: '_blank' do
+      %i.fa.fa-map-marker
+      = @meetup['venue']['address_1'].gsub(', London', '')
+
+    .u-margin-top--small
+      - if @meetup['yes_rsvp_count'] > 0
+        = link_to "RSVP", @meetup['link'], target: '_blank', class: 'a-button'
+      - else
+        = link_to "RSVP", @meetup['link'], target: '_blank', class: 'a-button'
+
+    - if current_user && current_user.has_role?(:admin)
+      %p.u-float-right= link_to 'Print badges', badges_meetup_path(@meetup['id']), target: '_blank'
+
+%section.a-section
+  .a-content--wide
+    %h1
+      = pluralize @meetup['yes_rsvp_count'], 'person'
+      going
+    .m-members
+      - @members.each do |member|
+        = link_to "https://www.meetup.com/West-London-Coders/members/#{member['member']['id']}", target: '_blank' do
+          .m-member
+            .m-member__content
+              .m-badge__avatar{style: "background-image: url(#{member['member']['photo']['thumb_link']})"}
+              .m-member__details
+                .m-member__name= member['member']['name']
+                - if member['member']['role']
+                  .m-badge__role= member['member']['role']

@@ -9,7 +9,7 @@
             %p
               = date.strftime("%A #{date.day.ordinalize} %B")
             %h2
-              = link_to meetup['name'], meetup['link'], target: '_blank'
+              = link_to meetup['name'], meetup_path(meetup['id'])
             = link_to "http://maps.google.com/?q=#{meetup['venue']['address_1']}", target: '_blank' do
               = meetup['venue']['name']
               %br
