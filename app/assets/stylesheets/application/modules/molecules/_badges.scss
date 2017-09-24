@@ -1,0 +1,74 @@
+.m-badges {
+  width: 8.25in;
+  display: grid;
+  grid-template-columns: 3.31in 3.31in 3.31in;
+}
+
+.m-badge {
+  width: 3.31in;
+  height: 2.21in;
+  border: 1px dashed $color-light-grey;;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.m-badge:nth-child(18n) {
+  margin-bottom: 160px
+}
+
+.m-badge__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-blue;
+  font-weight: bold;
+  font-size: 20px;
+
+  img {
+    width: 50px;
+    margin-right: 10px;
+  }
+}
+
+.m-badge__content {
+  display: flex;
+  justify-content: center;
+  padding: 0 15px;
+}
+
+.m-badge__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+
+  img {
+    height: 50px;
+    width: auto;
+  }
+}
+
+.m-badge__avatar {
+  height: 72px;
+  width: 72px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  border-radius: 999px;
+  margin-right: 15px;
+}
+
+.m-badge__details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.m-badge__role {
+  text-transform: capitalize;
+  color: $color-light-grey;
+  font-size: 14px;
+}

@@ -1,0 +1,20 @@
+.m-badges
+  - @members.each do |member|
+    .m-badge
+      .m-badge__header
+        %img{src: asset_path("logo.svg")}
+        %span.s-navbar__logo-text West London Coders
+      .m-badge__content
+        .m-badge__avatar{style: "background-image: url(#{member['member']['photo']['thumb_link']})"}
+        .m-badge__details
+          .m-badge__name
+            = member['member']['name']
+          - if member['member']['role']
+            .m-badge__role
+              = member['member']['role']
+      .m-badge__footer
+        .m-badge__wifi
+          Wifi: napguests
+          %br
+          Password: nap297
+        = image_tag @ynap.logo_url

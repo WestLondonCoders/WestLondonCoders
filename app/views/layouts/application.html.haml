@@ -2,7 +2,7 @@
 %html
   = render partial: 'layouts/head'
   %body
-    = render partial: 'layouts/header'
-    = render partial: 'layouts/messages'
+    = render partial: 'layouts/header' unless @no_layout
+    = render partial: 'layouts/messages' unless @no_layout
     = yield
-    = render partial: 'layouts/footer'
+    = render partial: 'layouts/footer' unless @no_layout

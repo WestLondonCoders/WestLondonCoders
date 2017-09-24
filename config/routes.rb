@@ -111,7 +111,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :meetups
+  resources :meetups do
+    member do
+      get :badges
+    end
+  end
 
   namespace :admin do
     root to: 'users#index'
