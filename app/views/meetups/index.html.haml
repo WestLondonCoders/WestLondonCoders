@@ -14,7 +14,6 @@
               = meetup['venue']['name']
               %br
               = meetup['venue']['address_1']
-            = truncate meetup['description'], length: 112, escape: false
             .u-right
               - if meetup['yes_rsvp_count'] > 0
                 = link_to "Join #{meetup['yes_rsvp_count']} others", meetup['link'], target: '_blank', class: 'a-button'
