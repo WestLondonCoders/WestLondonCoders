@@ -1,0 +1,22 @@
+.m-grid__box
+  .m-grid__box-content.m-grid__box-content--full-height
+    - seconds = (meetup['time'].to_f / 1000).to_s
+    - date = Date.strptime(seconds, '%s')
+    %p
+      = date.strftime("%A #{date.day.ordinalize} %B")
+    %h2
+      = link_to meetup['name'], meetup_path(meetup['id'])
+    = link_to "http://maps.google.com/?q=#{meetup['venue']['address_1']}", target: '_blank' do
+      = meetup['venue']['name']
+      %br
+      = meetup['venue']['address_1']
+    - if past
+      %h3.u-margin-top--small.u-right
+        = pluralize meetup['yes_rsvp_count'], 'person'
+        attended
+    - else
+      .u-right
+        - if meetup['yes_rsvp_count'] > 0
+          = link_to "Join #{meetup['yes_rsvp_count']} others", meetup['link'], target: '_blank', class: 'a-button'
+        - else
+          = link_to "RSVP", meetup['link'], target: '_blank', class: 'a-button'

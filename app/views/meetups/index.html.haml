@@ -1,23 +1,15 @@
 %section.a-section.a-section--alt
   .a-content--wide
+    %h1 Upcoming meetups
     .m-grid
       - @meetups.each do |meetup|
-        .m-grid__box
-          .m-grid__box-content
-            - seconds = (meetup['time'].to_f / 1000).to_s
-            - date = Date.strptime(seconds, '%s')
-            %p
-              = date.strftime("%A #{date.day.ordinalize} %B")
-            %h2
-              = link_to meetup['name'], meetup_path(meetup['id'])
-            = link_to "http://maps.google.com/?q=#{meetup['venue']['address_1']}", target: '_blank' do
-              = meetup['venue']['name']
-              %br
-              = meetup['venue']['address_1']
-            .u-right
-              - if meetup['yes_rsvp_count'] > 0
-                = link_to "Join #{meetup['yes_rsvp_count']} others", meetup['link'], target: '_blank', class: 'a-button'
-              - else
-                = link_to "RSVP", meetup['link'], target: '_blank', class: 'a-button'
+        = render partial: 'meetup', locals: { meetup: meetup, past: false }
 
+%section.a-section.a-section--alt
+  .a-content--wide
+    %h1 Past meetups
+    %p= link_to 'See all past meetups', past_meetups_path
+    .m-grid
+      - @last_six_past_meetups.each do |meetup|
+        = render partial: 'meetup', locals: { meetup: meetup, past: true }
   %br

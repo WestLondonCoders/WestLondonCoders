@@ -25,7 +25,7 @@
   .a-content--wide
     %h1
       = pluralize @meetup['yes_rsvp_count'], 'person'
-      going
+      = date.past? ? 'went' : 'going'
     .m-members
       - @members.each do |member|
         = link_to "https://www.meetup.com/West-London-Coders/members/#{member['member']['id']}", target: '_blank' do
@@ -36,3 +36,4 @@
                 .m-member__name= member['member']['name']
                 - if member['member']['role']
                   .m-badge__role= member['member']['role']
+

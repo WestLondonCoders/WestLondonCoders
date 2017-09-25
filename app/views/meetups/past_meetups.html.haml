@@ -1,0 +1,10 @@
+%section.a-section.a-section--alt
+  .a-content--wide
+    %h1
+      All
+      = @all_past_meetups.count
+      past meetups
+    .m-grid
+      - @all_past_meetups.each do |meetup|
+        = render partial: 'meetup', locals: { meetup: meetup, past: true }
+  %br

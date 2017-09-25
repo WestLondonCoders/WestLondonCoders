@@ -114,6 +114,7 @@ Rails.application.routes.draw do
   resources :meetups do
     member do
       get :badges
+      get :past_meetups, as: 'past'
     end
   end
 
