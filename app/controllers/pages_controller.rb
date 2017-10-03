@@ -4,7 +4,6 @@ class PagesController < ApplicationController
   def home
     get_meetups
     @posts = Post.all.where(featured: true).order("created_at desc")
-    @sponsors = [Sponsor.first, Sponsor.find_by(name: 'Treehouse')]
   end
 
   def chart

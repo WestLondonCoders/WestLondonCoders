@@ -15,7 +15,7 @@
           = link_to 'hackrooms', hackrooms_path
           we're part of.
 
-        = render partial: 'filter'
+        = render partial: 'search'
 
   %section.a-section.a-section--alt
-    .a-content--xwide#user-search-results= render 'results'
+    .a-content--xwide#user-search-results= render partial: 'shared/people', locals: { users: @users }

@@ -26,8 +26,6 @@ class MeetupsController < ApplicationController
 
     get_rsvps = RestClient.get "https://api.meetup.com/West-london-coders/events/#{params[:id]}/rsvps?&sign=true&photo-host=public&key=#{ENV['MEETUP_KEY']}"
     @members = ActiveSupport::JSON.decode(get_rsvps)
-
-    @ynap = Sponsor.find_by(slug: 'yoox-net-a-porter')
   end
 
   def get_upcoming_meetups

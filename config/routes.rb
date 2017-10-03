@@ -87,8 +87,6 @@ Rails.application.routes.draw do
 
   resources :roles
 
-  resources :sponsors
-
   get 'notifications/:id/link_through', to: 'notifications#link_through', as: :link_through
   get 'notifications/mark_all_read', to: 'notifications#mark_all_read', as: :mark_all_read
   resources :notifications, only: :index
@@ -116,30 +114,5 @@ Rails.application.routes.draw do
       get :badges
       get :past_meetups, as: 'past'
     end
-  end
-
-  namespace :admin do
-    root to: 'users#index'
-
-    resources :users do
-      collection do
-        match 'search' => 'users#search', via: [:get, :post], as: :search
-      end
-    end
-
-    resources :roles
-
-    resources :meetups do
-      collection do
-        match 'search' => 'meetups#search', via: [:get, :post], as: :search
-      end
-      member do
-        get :announce
-      end
-    end
-
-    get 'your-meetups', to: 'meetups#your_meetups'
-
-    resources :sponsors
   end
 end

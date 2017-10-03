@@ -3,9 +3,6 @@
     .m-grid__box
       .m-grid__banner{style: "background-color: #{user.colour}"}
       .m-grid__box-content
-        = link_to organisers_path do
-          = image_tag asset_path("logo.svg"), class: 'a-organiser' if user.has_role?(:organiser)
-
         = image_tag(avatar_url(user), class: 'a-avatar a-avatar--small', style: "border: solid 2px #{user.colour}")
 
         %h2

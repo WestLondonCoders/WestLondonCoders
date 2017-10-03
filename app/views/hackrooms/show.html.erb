@@ -1,0 +1,14 @@
+<% set_page_title(@hackroom.name) %>
+<div class="m-profile">
+  <%= render partial: 'sidebar' %>
+  <div class="m-profile__content">
+    <%= render partial: 'nav', locals: { selected: 'learn' } %>
+    <div class="m-profile__current-content">
+      <div class="m-profile__page">
+        <p>
+          <%= sanitize @hackroom.mission %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

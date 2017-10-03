@@ -1,8 +1,6 @@
-class Admin::UsersController < Admin::BaseController
+class Admin::UsersController < ApplicationController
   before_action :get_user, only: [:update]
   load_and_authorize_resource
-
-  layout 'admin'
 
   def index
     @search = User.ransack(params[:q])

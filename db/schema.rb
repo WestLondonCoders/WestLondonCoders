@@ -10,17 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170814210801) do
+ActiveRecord::Schema.define(version: 20171004160123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "assignments", id: :serial, force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "role_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "comments", id: :serial, force: :cascade do |t|
     t.text "body"
@@ -117,28 +110,6 @@ ActiveRecord::Schema.define(version: 20170814210801) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "meetup_rsvps", id: :serial, force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "meetup_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id", "meetup_id"], name: "index_meetup_rsvps_on_user_id_and_meetup_id", unique: true
-    t.index ["user_id"], name: "index_meetup_rsvps_on_user_id"
-  end
-
-  create_table "meetups", id: :serial, force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description"
-    t.string "slug"
-    t.datetime "date", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "sponsor_id"
-    t.datetime "finish_date"
-    t.integer "author_id"
-    t.boolean "announced", default: false
-  end
-
   create_table "notifications", id: :serial, force: :cascade do |t|
     t.integer "user_id"
     t.integer "notified_by_id"
@@ -172,40 +143,6 @@ ActiveRecord::Schema.define(version: 20170814210801) do
     t.string "twitter_image", default: "http://westlondoncoders.com/assets/general/twitter-81cac2affbb3e01cae4dce459fbf82a25f465cc53da98bf9d742afa3320ffe71.jpg"
     t.boolean "announced", default: false
     t.index ["slug"], name: "index_posts_on_slug"
-  end
-
-  create_table "roles", id: :serial, force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "description"
-  end
-
-  create_table "sponsor_languages", id: :serial, force: :cascade do |t|
-    t.integer "sponsor_id", null: false
-    t.integer "language_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "sponsors", id: :serial, force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description"
-    t.string "logo"
-    t.text "address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "link"
-    t.string "description_heading"
-    t.boolean "listed", default: false, null: false
-    t.string "slug", default: ""
-  end
-
-  create_table "sponsorship_admins", id: :serial, force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "sponsor_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "step_completions", force: :cascade do |t|
@@ -309,14 +246,13 @@ ActiveRecord::Schema.define(version: 20170814210801) do
     t.string "last_name", default: ""
     t.integer "user_follows_count", default: 0
     t.string "location"
+    t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug"
   end
 
   add_foreign_key "likes", "users"
-  add_foreign_key "meetup_rsvps", "meetups", on_delete: :cascade
-  add_foreign_key "meetup_rsvps", "users", on_delete: :cascade
   add_foreign_key "notifications", "users"
   add_foreign_key "notifications", "users", column: "notified_by_id"
 end

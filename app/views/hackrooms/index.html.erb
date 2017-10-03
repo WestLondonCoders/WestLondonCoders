@@ -1,0 +1,17 @@
+<div class="m-banner">
+  <div class="m-banner__left" style="background-image: url(<%= image_url('https://s3.eu-west-2.amazonaws.com/westlondoncoders/site-assets/heroes/small/background3.jpg') %>); background-size: cover; background-position: center;"></div>
+  <div class="m-banner__right">
+    <div class="m-banner__text">
+      <h1 class="a-heading u-center">Hackrooms</h1>
+      <p>
+        <%= I18n.t('index_introductions.hackrooms').html_safe %>
+      </p>
+    </div>
+  </div>
+</div>
+
+<section class="a-section a-section--alt">
+  <div class="a-content--xwide">
+    <%= render partial: 'shared/hackrooms', locals: { hackrooms: @hackrooms } %>
+  </div>
+</section>

@@ -9,9 +9,6 @@
   - elsif notification.about_comment_on_your_thing?
     = render partial: 'notifications/comment_on_your_thing', locals: { notification: notification }
 
-  - elsif notification.about_new_meetup?
-    = render partial: 'notifications/new_meetup_scheduled', locals: { notification: notification }
-
   %br
   %span.u-small-text
     = time_as_sentence(notification.created_at)

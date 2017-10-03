@@ -20,22 +20,8 @@ module FeatureHelpers
     @python_post = FactoryGirl.create(:post, title: 'Python post', created_by: @author)
   end
 
-  def when_there_are_meetups
-    @sponsor = FactoryGirl.create(:sponsor, name: 'Sky')
-    @ruby_meetup = FactoryGirl.create(:meetup, name: 'Ruby meetup', sponsor: @sponsor)
-    @python_meetup = FactoryGirl.create(:meetup, name: 'Python meetup', sponsor: @sponsor)
-  end
-
-  def when_there_are_sponsors
-    @sponsor = FactoryGirl.create(:sponsor, name: 'Sky')
-  end
-
   def then_i_should_be_redirected_to_people_page
     expect(current_path).to eq(users_path)
-  end
-
-  def then_i_should_see_the_admin_navbar
-    expect(page).to have_css('.m-admin_bar')
   end
 end
 

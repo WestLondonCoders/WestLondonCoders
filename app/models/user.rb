@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
   after_create :notify_slack_of_new_user if Rails.env.production?
 
-  has_many :assignments, dependent: :destroy
-  has_many :roles, through: :assignments
   has_many :comments, foreign_key: :author_id, dependent: :destroy
   has_many :user_hackrooms, dependent: :destroy
   has_many :hackrooms, through: :user_hackrooms
@@ -12,8 +10,6 @@ class User < ActiveRecord::Base
   has_many :languages, through: :user_languages
   has_many :user_primaries, dependent: :destroy
   has_many :primary_languages, through: :user_primaries, source: :language
-  has_many :sponsorship_admins, dependent: :destroy
-  has_many :sponsors, through: :sponsorship_admins
   has_many :posts, foreign_key: :created_by_id, dependent: :destroy
   has_many :user_follows, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :user_follows, source: 'user'
@@ -67,6 +63,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def admin?
+    admin
+  end
+
   def has_social_links?
     social_link = twitter || facebook || github || instagram || linkedin || website_url
     social_link.present?
@@ -74,10 +74,6 @@ class User < ActiveRecord::Base
 
   def is_hackroom_admin?(hackroom)
     own_hackrooms.include? hackroom
-  end
-
-  def has_role?(role_sym)
-    roles.any? { |r| r.name.underscore.to_sym == role_sym }
   end
 
   def self.split_name(user_full_name)
@@ -94,13 +90,6 @@ class User < ActiveRecord::Base
 
   def already_likes(this)
     likes.where(likeable: this).first
-  end
-
-  def score
-    score = 0
-    score += followers.count * 10
-    score += liked_comments.count * 15
-    score
   end
 
   def icon

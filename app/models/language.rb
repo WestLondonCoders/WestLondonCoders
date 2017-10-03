@@ -8,8 +8,6 @@ class Language < ActiveRecord::Base
   has_many :users, through: :user_languages
   has_many :user_primaries, dependent: :destroy
   has_many :primary_users, through: :user_primaries, source: :user
-  has_many :sponsor_languages, dependent: :destroy
-  has_many :sponsors, through: :sponsor_languages
   has_many :comments, as: :commentable, dependent: :destroy
   belongs_to :author, class_name: 'User'
   has_many :language_courses, dependent: :destroy

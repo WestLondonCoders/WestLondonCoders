@@ -18,7 +18,7 @@
       - else
         = link_to "RSVP", @meetup['link'], target: '_blank', class: 'a-button'
 
-    - if current_user && current_user.has_role?(:admin)
+    - if current_user && current_user.admin?
       %p.u-float-right= link_to 'Print badges', badges_meetup_path(@meetup['id']), target: '_blank'
 
 %section.a-section

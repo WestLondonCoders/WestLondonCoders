@@ -24,12 +24,11 @@
 
         = link_to 'RSVP', @next_meetup['link'], target: '_blank', class: 'a-button'
 
-- if @sponsors.any?
-  %section.a-section.m-intro
-    %h3 Our partners
-    .m-intro__logos.u-margin-bottom
-      - @sponsors.each do |sponsor|
-        .m-intro__logo[sponsor]= link_to image_tag(sponsor.logo_url), sponsor
+%section.a-section.m-intro
+  %h3 Our partners
+  .m-intro__logos.u-margin-bottom
+    .m-intro__logo= link_to image_tag('https://s3.eu-west-2.amazonaws.com/westlondoncoders/site-assets/ynap.png'), 'http://www.ynap.com/', target: '_blank'
+    .m-intro__logo= link_to image_tag('https://s3.eu-west-2.amazonaws.com//wlcavatars/uploads/sponsor/logo/3/treehouse.png'), 'http://treehouse.7eer.net/c/248218/228915/3944?subId1=wlc&u=https%3A%2F%2Fteamtreehouse.com%2Fstories', target: '_blank'
 
 %section.a-section.a-section--img-block
 
