@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def store_location
-    session[:previous_url] = request.fullpath if request.fullpath.match? %r{users/}
+    session[:previous_url] = request.fullpath unless request.fullpath.match? %r{users/}
   end
 
   def after_sign_in_path_for(resource)
