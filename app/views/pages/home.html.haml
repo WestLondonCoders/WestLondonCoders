@@ -4,7 +4,7 @@
   = video_tag "video/gdg.mov", controls: false, autoplay: true, muted: true, loop: true, id: 'home-vid'
   %h1#next-meetup-banner Learn, discuss and practice code.
 
-- if @next_meetup['venue']
+- if @next_meeup && @next_meetup['venue']
   %section.a-section
     .a-content--wide
       .m-intro
