@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   after_create :notify_slack_of_new_user if Rails.env.production?
+  after_create :send_slack_invite
 
   has_many :comments, foreign_key: :author_id, dependent: :destroy
   has_many :user_hackrooms, dependent: :destroy
@@ -105,5 +106,10 @@ class User < ActiveRecord::Base
   def slack_message
     profile_url = Rails.application.routes.url_helpers.user_path(self)
     "#{name} signed up to the site! http://westlondoncoders.com#{profile_url}"
+  end
+
+  def send_slack_invite
+    invite = SlackInvitation.create(user: self, email: self.email)
+    RestClient.get invite.invite_url
   end
 end
