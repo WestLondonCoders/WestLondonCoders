@@ -115,4 +115,6 @@ Rails.application.routes.draw do
       get :past_meetups, as: 'past'
     end
   end
+
+  resources :slack_invitations, only: [:new, :create], path: 'get-slack'
 end

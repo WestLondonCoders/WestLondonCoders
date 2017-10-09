@@ -1,0 +1,10 @@
+.a-page-holder
+  %section.a-section
+    .a-content.a-content-narrow
+      %h1 Join us on Slack
+      %p We'll email you an invite with instructions.
+
+      = form_for @invite do |f|
+        .m-sign-in
+          = f.text_field :email, placeholder: 'Email', class: 'u-full-width'
+          = f.submit 'Join', class: 'a-button a-button--elastic'

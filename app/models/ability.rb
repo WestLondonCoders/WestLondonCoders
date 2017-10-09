@@ -17,6 +17,8 @@ class Ability
       can :manage, Post, created_by_id: user.id
       # Users can manage hackrooms if they are an owner
       can :manage, Hackroom, owners: { id: user.id }
+      # Users can invite themselves to Slack
+      can :manage, SlackInvitation
     end
   end
 end
