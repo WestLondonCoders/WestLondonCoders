@@ -3,6 +3,7 @@ class Basic::Entities::Member < Grape::Entity
 
   expose :name
   expose :slug, as: :id
+  expose :image_url
   expose(:href) do |member, options|
     member_href(member, options)
   end
