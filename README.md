@@ -33,7 +33,7 @@ Initialise the databases:
 Start the server:
 `$ rails server`
 
-## Database config
+## Database config
 
 To download a copy of the production database, you need to have Heroku access.
 
