@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 AllCops:
   CacheRootDirectory: tmp/cache
   AllowSymlinksInCacheRootDirectory: true
@@ -14,6 +16,7 @@ AllCops:
     - tmp/**/*
     - vendor/bundle/**/*
     - db/schema.rb
+    - Gemfile
 
 Lint/AssignmentInCondition:
   Enabled: false
