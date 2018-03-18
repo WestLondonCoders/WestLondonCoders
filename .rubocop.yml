@@ -4,7 +4,7 @@ AllCops:
   CacheRootDirectory: tmp/cache
   AllowSymlinksInCacheRootDirectory: true
   MaxFilesInCache: 8000
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 2.5
 
   Include:
     - Rakefile
