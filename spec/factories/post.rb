@@ -1,10 +1,10 @@
-FactoryGirl.define do
+FactoryBot.define do
   sequence :slug do |n|
     "post-#{n}"
   end
 
   factory :post do
-    slug { FactoryGirl.generate(:slug) }
+    slug { FactoryBot.generate(:slug) }
     title "Why I love Rails"
     content "I love Rails because it's so cool"
     created_by factory: :user

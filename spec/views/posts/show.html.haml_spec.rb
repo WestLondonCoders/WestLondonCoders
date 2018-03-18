@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe 'posts/show.html.haml' do
-  let(:post) { FactoryGirl.create(:post, created_by: user) }
-  let(:user) { FactoryGirl.create(:user, name: 'Jake') }
+  let(:post) { FactoryBot.create(:post, created_by: user) }
+  let(:user) { FactoryBot.create(:user, name: 'Jake') }
   let(:tag) { double(:tag, name: 'Rails tag') }
 
   before do

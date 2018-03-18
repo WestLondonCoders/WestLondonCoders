@@ -20,11 +20,11 @@ feature 'viewing people page' do
   private
 
   def given_i_have_an_account
-    @beyonce = FactoryGirl.create(:user, name: 'Beyonce')
+    @beyonce = FactoryBot.create(:user, name: 'Beyonce')
   end
 
   def and_there_are_other_users
-    @christina = FactoryGirl.create(:user, name: 'Christina', email: 'dirrty@aguilera.com')
+    @christina = FactoryBot.create(:user, name: 'Christina', email: 'dirrty@aguilera.com')
   end
 
   def i_should_see_my_name

@@ -105,7 +105,7 @@ module ControllerSupport
 
     def as_an_admin(&block)
       context "as an admin" do
-        let(:admin) { FactoryGirl.create(:admin) }
+        let(:admin) { FactoryBot.create(:admin) }
 
         before do
           login_as admin

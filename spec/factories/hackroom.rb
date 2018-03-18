@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :hackroom do
     name 'Rails room'
     mission 'We make cool apps'

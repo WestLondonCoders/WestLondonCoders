@@ -13,7 +13,7 @@ feature 'user sign-in' do
   private
 
   def as_beyonce
-    @beyonce = FactoryGirl.create(:user, name: 'Beyonce', email: 'beyonce@star.com', password: 'wtf123')
+    @beyonce = FactoryBot.create(:user, name: 'Beyonce', email: 'beyonce@star.com', password: 'wtf123')
   end
 
   def create_an_account
