@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
     redirect_to users_path, notice: exception.message
   end
 
+  if Rails.env.production?
+    force_ssl
+  end
+
   def store_location
     session[:previous_url] = request.fullpath unless request.fullpath.match? %r{users/}
   end
