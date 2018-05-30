@@ -58,7 +58,7 @@ group :development, :test do
   gem 'scss_lint', require: false
   gem 'railroady'
   gem 'launchy'
-  gem 'rubocop', '~> 0.47.1', require: false
+  gem 'rubocop', '~> 0.56.0', require: false
   gem 'dotenv-rails', require: 'dotenv/rails-now'
 end
 
